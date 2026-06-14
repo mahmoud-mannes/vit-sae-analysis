@@ -6,6 +6,7 @@ import torch
 import os
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
 from main.prep_data import prep_data
+from main.model import predict
 
 
 def spatial_similarity_distance_correlation(S,grid_size, metric):
@@ -42,7 +43,7 @@ def spatial_similarity_distance_correlation(S,grid_size, metric):
     return corr
 
 def evaluate_ssdc(model, dataset, RPI = False, magnitude = 1.0):
-    dataloader = prep_data(dataset, model.config, None)  
+    dataloader = prep_data(dataset)  
 
     token_inputs = {}
 
@@ -55,14 +56,14 @@ def evaluate_ssdc(model, dataset, RPI = False, magnitude = 1.0):
 
     for name, module in model.named_modules():
 
-        if name.startswith("encoder_layers") and name.endswith(".1"): #encoder_layers.x.1 is the MultiHeadedAttention component of the encoder blocks
+        if name.startswith("vit.layers") and name.endswith("attention"): #encoder_layers.x.1 is the MultiHeadedAttention component of the encoder blocks
             handles.append(
                 module.register_forward_hook(
                     token_hook(name)
                 )
             )
 
-    model.predict(dataloader, RPI, magnitude)
+    predict(model,dataloader, RPI, magnitude)
 
     for handle in handles:
         handle.remove()
