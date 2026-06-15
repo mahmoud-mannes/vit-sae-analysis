@@ -58,7 +58,7 @@ def prep_data(dataset, processor):
 
         shuffle=False,
 
-        pin_memory=False,
+        pin_memory=True,
 
         num_workers = min(16,os.cpu_count())
 
