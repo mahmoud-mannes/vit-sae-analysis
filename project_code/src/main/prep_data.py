@@ -44,7 +44,7 @@ def prep_data(dataset, processor):
 
     DL = DataLoader(
 
-        split_dataset_by_node(data),
+        split_dataset_by_node(data, rank=0, world_size=1),
 
         data,
 
