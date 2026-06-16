@@ -11,13 +11,13 @@ import os
 
 class Data(IterableDataset):
 
-  def __init__(self, hf_dataset, processor):
+  def __init__(self, hf_dataset, processor, condition):
 
     self.dataset = hf_dataset
 
     self.processor = processor
 
-
+    self.condition = condition
 
   def __iter__(self):
       worker_info = torch.utils.data.get_worker_info()
@@ -34,8 +34,11 @@ class Data(IterableDataset):
 
       # Now you iterate through a clean, pre-split network stream without any modulo logic
       for item in current_dataset:
-          image = self.processor(images=item['image'].convert('RGB'), return_tensors="pt")
-          image['pixel_values'] = image['pixel_values'].squeeze(0).half()
+          if self.condition == "transformers":
+            image = self.processor(images=item['image'].convert('RGB'), return_tensors="pt")
+            image['pixel_values'] = image['pixel_values'].squeeze(0).half()
+          elif self.condition == "timm":
+            image = self.processor(image)
           label = item['label']
           
           yield image, label
@@ -44,11 +47,11 @@ class Data(IterableDataset):
 
 
 
-def prep_data(dataset, processor):
+def prep_data(dataset, processor, condition):
 
     val_batch_size = 1000
 
-    data = Data(dataset,processor)
+    data = Data(dataset, processor, condition)
 
     DL = DataLoader(
 

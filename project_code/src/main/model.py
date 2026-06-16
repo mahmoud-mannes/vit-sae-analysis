@@ -1,6 +1,8 @@
 import torch
 
-def predict(model, dataloader, RPI= False, magnitude = 1.0):
+def predict(model, dataloader, condition, RPI= False, magnitude = 1.0):
+  device = "cuda" if torch.cuda.is_available() else "cpu"
+
   # Attach hook to apply RPI intervention
 
   if RPI:
@@ -10,12 +12,19 @@ def predict(model, dataloader, RPI= False, magnitude = 1.0):
       perm = torch.randperm(out.shape[-1])
       return out[:,:,perm]
 
-    model.vit.embeddings.patch_embeddings.projection.register_forward_hook(RPI_hook)
+    if condition == "transformers":
+      model.vit.embeddings.patch_embeddings.projection.register_forward_hook(RPI_hook)
+    elif condition == "timm":
+      model.patch_embed.proj.register_forward_hook(RPI_hook)
 
   # Scale positional encodings (for the PE magnitude scaling experiment)
-  
-  model._modules['vit'].embeddings.position_embeddings = torch.nn.Parameter(model._modules['vit'].embeddings.position_embeddings * magnitude)
-  
+  if condition == "transformers":
+    try:
+      model._modules['vit'].embeddings.position_embeddings = torch.nn.Parameter(model._modules['vit'].embeddings.position_embeddings * magnitude)
+    except:
+      pass
+  elif condition == "timm":
+    pass
   acc_list = [] # List of accuracies
 
   model.eval()
