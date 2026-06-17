@@ -88,11 +88,11 @@ class Data(IterableDataset):
 
 
 
-def prep_data(dataset, processor, condition, corruption_type = None):
+def prep_data(dataset, processor, condition, corruption_type = None, severity = 5):
 
     val_batch_size = 1000
 
-    data = Data(dataset, processor, condition)
+    data = Data(dataset, processor, condition, corruption_type, severity)
 
     DL = DataLoader(
 
