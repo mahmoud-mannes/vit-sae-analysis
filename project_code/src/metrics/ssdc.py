@@ -42,8 +42,11 @@ def spatial_similarity_distance_correlation(S,grid_size, metric):
     corr, _ = spearmanr(-dist_vals, sim_vals)
     return corr
 
-def evaluate_ssdc(model, processor, dataset, condition, RPI = False, magnitude = 1.0):
-    dataloader = prep_data(dataset, processor, condition)  
+def evaluate_ssdc(model, processor, dataset, source, RPI = False, magnitude = 1.0):
+    if source not in ["timm", "transformers"]:
+        raise ValueError("source must be 'timm' or 'transformers")
+    
+    dataloader = prep_data(dataset, processor, source)  
 
     token_inputs = {}
 
@@ -56,7 +59,7 @@ def evaluate_ssdc(model, processor, dataset, condition, RPI = False, magnitude =
 
     for name, module in model.named_modules():
 
-        if condition == "transformers":
+        if source == "transformers":
 
             if name.startswith("vit.layers") and name.endswith("attention"): #encoder_layers.x.1 is the MultiHeadedAttention component of the encoder blocks
                 handles.append(
@@ -65,7 +68,7 @@ def evaluate_ssdc(model, processor, dataset, condition, RPI = False, magnitude =
                     )
                 )
         
-        elif condition == "timm":
+        elif source == "timm":
             if name.startswith("blocks") and name.endswith("attn"): #blocks.x.attn is the attention component of the encoder blocks in timm models
                 handles.append(
                     module.register_forward_hook(
@@ -73,17 +76,17 @@ def evaluate_ssdc(model, processor, dataset, condition, RPI = False, magnitude =
                     )
                 )
 
-    predict(model,dataloader, condition , RPI, magnitude)
+    predict(model,dataloader, source , RPI, magnitude)
 
     for handle in handles:
         handle.remove()
 
-    if condition == "transformers":
+    if source == "transformers":
         layer_names = sorted(
             token_inputs.keys(),
             key=lambda x: int(x.split(".")[2])
         )
-    elif condition == "timm":
+    elif source == "timm":
         layer_names = sorted(
             token_inputs.keys(),
             key=lambda x: int(x.split(".")[1])
