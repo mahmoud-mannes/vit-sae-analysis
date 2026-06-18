@@ -104,7 +104,7 @@ def prep_data(dataset, processor, condition, corruption_type = None, severity = 
 
         pin_memory=True,
 
-        num_workers = min(16,os.cpu_count())
+        num_workers = min(24,os.cpu_count())
 
     )
 

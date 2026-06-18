@@ -617,5 +617,5 @@ d['Gaussian Blur'] = gaussian_blur
 d['Spatter'] = spatter
 d['Saturate'] = saturate
 
-for method_name in d.keys():
-    save_distorted(d[method_name])
+#for method_name in d.keys():
+#    save_distorted(d[method_name])
