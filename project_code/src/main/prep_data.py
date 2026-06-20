@@ -1,6 +1,6 @@
 import torch
 
-from torch.utils.data import IterableDataset, DataLoader
+from torch.utils.data import IterableDataset, DataLoader, get_worker_info
 
 import sys
 
@@ -40,7 +40,7 @@ def apply_corruption(pil_img, corruption_fn, severity):
 
 class Data(IterableDataset):
 
-  def __init__(self, hf_dataset, processor, source, corruption_type = None, severity = 5):
+  def __init__(self, hf_dataset, processor, source, corruption_type=None, severity=5, number_images=None):
 
     self.dataset = hf_dataset
 
@@ -52,48 +52,65 @@ class Data(IterableDataset):
 
     self.severity = severity
 
+    self.number_images = number_images
+
   def __iter__(self):
-     
-      for item in self.dataset:
+      worker_info = get_worker_info()
+
+      if worker_info is None:
+          # Single-process loading: iterate the whole stream.
+          dataset_iter = iter(self.dataset)
+      else:
+          # Multi-worker: each worker must only see its own shard of the
+          # stream, otherwise every worker re-iterates the full stream and
+          # you get num_workers duplicates of every image.
+          # HF streaming datasets expose this for exactly this purpose.
+          worker_dataset = self.dataset.shard(
+              num_shards=worker_info.num_workers,
+              index=worker_info.id,
+          )
+          dataset_iter = iter(worker_dataset)
+
+      count = 0
+      for item in dataset_iter:
+          if self.number_images is not None and count >= self.number_images:
+              break
+          count += 1
+
+          img = item['image'].convert('RGB')
+
           if self.corruption_fn:
-             
-             item['image'] = apply_corruption(item['image'], self.corruption_fn, self.severity)
+              img = apply_corruption(img, self.corruption_fn, self.severity)
 
           if self.source == "transformers":
-            
-            image = self.processor(images=item['image'].convert('RGB'), return_tensors="pt")
-            image['pixel_values'] = image['pixel_values'].squeeze(0).half()
-          
-          elif self.source == "timm":
+              image = self.processor(images=img, return_tensors="pt")
+              image['pixel_values'] = image['pixel_values'].squeeze(0).half()
 
-            image = self.processor(item['image'].convert('RGB')).half()
-          
+          elif self.source == "timm":
+              image = self.processor(img).half()
+
+          else:
+              raise ValueError(f"Unknown source: {self.source!r}, expected 'transformers' or 'timm'")
+
           label = item['label']
-          
+
           yield image, label
 
 
+def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=32):
 
+    data = Data(dataset, processor, source, corruption_type, severity, number_images)
 
-
-def prep_data(dataset, processor, source, corruption_type = None, severity = 5):
-
-    val_batch_size = 1000
-
-    data = Data(dataset, processor, source, corruption_type, severity)
+    num_workers = min(24, os.cpu_count() or 1)
 
     DL = DataLoader(
-
         data,
-
-        val_batch_size,
-
-        shuffle=False,
-
+        batch_size=batch_size,
+        # shuffle is not supported for IterableDataset — if you want
+        # shuffling, do it upstream: hf_dataset.shuffle(buffer_size=...)
+        # before passing it in here.
         pin_memory=True,
-
-        num_workers = min(24,os.cpu_count())
-
+        num_workers=num_workers,
     )
 
     return DL

@@ -52,6 +52,7 @@ def predict(model, dataloader, source, RPI= False, magnitude = 1.0):
   except:
     pass
 
-  handle.remove()
+  if RPI:
+    handle.remove()
 
   return sum(acc_list) / len(acc_list)
