@@ -54,6 +54,8 @@ class Data(IterableDataset):
 
     self.number_images = number_images
 
+    self.count = 0
+
   def __iter__(self):
       worker_info = get_worker_info()
 
@@ -71,11 +73,10 @@ class Data(IterableDataset):
           )
           dataset_iter = iter(worker_dataset)
 
-      count = 0
       for item in dataset_iter:
-          if self.number_images is not None and count >= self.number_images:
+          if self.number_images is not None and self.count >= self.number_images:
               break
-          count += 1
+          self.count += 1
 
           img = item['image'].convert('RGB')
 
@@ -97,11 +98,11 @@ class Data(IterableDataset):
           yield image, label
 
 
-def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=32):
+def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=1000):
 
     data = Data(dataset, processor, source, corruption_type, severity, number_images)
 
-    num_workers = min(24, os.cpu_count() or 1)
+    num_workers = min(dataset.n_shards, os.cpu_count())
 
     DL = DataLoader(
         data,
