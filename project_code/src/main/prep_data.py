@@ -53,19 +53,7 @@ class Data(IterableDataset):
     self.severity = severity
 
   def __iter__(self):
-      worker_info = torch.utils.data.get_worker_info()
-
-      if worker_info is None:
-          # Single-process fallback (num_workers=0)
-          current_dataset = self.dataset
-      else:
-          # Streams only the assigned web-shards to this specific worker thread
-          current_dataset = self.dataset.shard(
-              num_shards=worker_info.num_workers, 
-              index=worker_info.id
-          )
-
-      
+     
       for item in current_dataset:
           if self.corruption_fn:
              
@@ -88,11 +76,11 @@ class Data(IterableDataset):
 
 
 
-def prep_data(dataset, processor, condition, corruption_type = None, severity = 5):
+def prep_data(dataset, processor, source, corruption_type = None, severity = 5):
 
     val_batch_size = 1000
 
-    data = Data(dataset, processor, condition, corruption_type, severity)
+    data = Data(dataset, processor, source, corruption_type, severity)
 
     DL = DataLoader(
 

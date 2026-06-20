@@ -593,7 +593,6 @@ def save_distorted(method=gaussian_noise):
 # /////////////// Display Results ///////////////
 import collections
 
-print('\nUsing ImageNet data')
 
 d = collections.OrderedDict()
 d['Gaussian Noise'] = gaussian_noise

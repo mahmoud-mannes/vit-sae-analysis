@@ -14,9 +14,9 @@ def predict(model, dataloader, source, RPI= False, magnitude = 1.0):
       return out[:,:,perm].view(B,C,H,W)
 
     if source == "transformers":
-      model.vit.embeddings.patch_embeddings.projection.register_forward_hook(RPI_hook)
+      handle = model.vit.embeddings.patch_embeddings.projection.register_forward_hook(RPI_hook)
     elif source == "timm":
-      model.patch_embed.proj.register_forward_hook(RPI_hook)
+      handle = model.patch_embed.proj.register_forward_hook(RPI_hook)
 
   # Scale positional encodings (for the PE magnitude scaling experiment)
   if source == "transformers":
@@ -51,5 +51,7 @@ def predict(model, dataloader, source, RPI= False, magnitude = 1.0):
     model._modules['vit'].embeddings.position_embeddings = original_pe
   except:
     pass
+
+  handle.remove()
 
   return sum(acc_list) / len(acc_list)
