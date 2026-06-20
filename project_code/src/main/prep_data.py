@@ -10,13 +10,15 @@ import numpy as np
 
 from PIL import Image as PILImage
 
+import multiprocessing
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 from make_imagenet_c import gaussian_blur, pixelate, fog, contrast, gaussian_noise, d
 
 def apply_corruption(pil_img, corruption_fn, severity):
     """
     Takes a PIL Image, applies the ImageNet-C math, 
-    and returns a clean PIL Image for your ViT processor.
+    and returns a clean PIL Image.
     """
     # Force RGB
     pil_img = pil_img.convert('RGB')
@@ -54,7 +56,7 @@ class Data(IterableDataset):
 
     self.number_images = number_images
 
-    self.count = 0
+    self.global_count = multiprocessing.Value('i', 0)
 
   def __iter__(self):
       worker_info = get_worker_info()
@@ -74,9 +76,10 @@ class Data(IterableDataset):
           dataset_iter = iter(worker_dataset)
 
       for item in dataset_iter:
-          if self.number_images is not None and self.count >= self.number_images:
-              break
-          self.count += 1
+          with self.global_count.get_lock():
+            if self.number_images is not None and self.global_count.value >= self.number_images:
+                break
+            self.global_count.value += 1
 
           img = item['image'].convert('RGB')
 
