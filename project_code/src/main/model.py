@@ -1,6 +1,6 @@
 import torch
 
-def predict(model, dataloader, source, RPI= False, magnitude = 1.0):
+def predict(model, dataloader, source, RPI= False, magnitude = 1.0, half = True):
   device = "cuda" if torch.cuda.is_available() else "cpu"
 
   # Attach hook to apply RPI intervention
@@ -30,7 +30,9 @@ def predict(model, dataloader, source, RPI= False, magnitude = 1.0):
   acc_list = [] # List of accuracies
 
   model.eval()
-  model = model.half()
+  if half:
+    model = model.half()
+    
   with torch.inference_mode():
     for images, labels in dataloader:
       images = images.to(device)

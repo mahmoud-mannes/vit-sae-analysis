@@ -42,7 +42,7 @@ def apply_corruption(pil_img, corruption_fn, severity):
 
 class Data(IterableDataset):
 
-  def __init__(self, hf_dataset, processor, source, corruption_type=None, severity=5, number_images=None):
+  def __init__(self, hf_dataset, processor, source, corruption_type=None, severity=5, number_images=None, half = True):
 
     self.dataset = hf_dataset
 
@@ -57,6 +57,8 @@ class Data(IterableDataset):
     self.number_images = number_images
 
     self.global_count = multiprocessing.Value('i', 0)
+
+    self.half = half
 
   def __iter__(self):
       worker_info = get_worker_info()
@@ -88,22 +90,25 @@ class Data(IterableDataset):
 
           if self.source == "transformers":
               image = self.processor(images=img, return_tensors="pt")
-              image['pixel_values'] = image['pixel_values'].squeeze(0).half()
+              image['pixel_values'] = image['pixel_values'].squeeze(0)
 
           elif self.source == "timm":
-              image = self.processor(img).half()
+              image = self.processor(img)
 
           else:
               raise ValueError(f"Unknown source: {self.source!r}, expected 'transformers' or 'timm'")
 
           label = item['label']
+        
+          if self.half:
+            yield image.half(), label
+          else:
+            yield image, label
 
-          yield image, label
 
+def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=1000, half = True):
 
-def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=1000):
-
-    data = Data(dataset, processor, source, corruption_type, severity, number_images)
+    data = Data(dataset, processor, source, corruption_type, severity, number_images, half)
 
     num_workers = min(dataset.n_shards, os.cpu_count())
 
