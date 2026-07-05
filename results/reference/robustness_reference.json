@@ -1,0 +1,19 @@
+{
+  "note": "Reference robustness from the original run. Corruption is ImageNet-C Gaussian Blur at severity 5 (sigma 6) over streamed ImageNet-1k validation. Fragility = 1 - shifted_accuracy / baseline_accuracy. Higher fragility means more sensitive to the shift.",
+  "corruption": "Gaussian Blur",
+  "severity": 5,
+  "models": {
+    "ape_vit_base_patch16_google": {
+      "hub_id": "google/vit-base-patch16-224",
+      "baseline_accuracy": 0.802,
+      "shifted_accuracy": 0.541,
+      "fragility": 0.326
+    },
+    "rope_vit_base_patch16_timm": {
+      "hub_id": "vit_base_patch16_rope_224.naver_in1k",
+      "baseline_accuracy": 0.836,
+      "shifted_accuracy": 0.586,
+      "fragility": 0.299
+    }
+  }
+}

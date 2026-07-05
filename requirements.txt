@@ -1,0 +1,20 @@
+# Core
+torch
+numpy
+scipy
+
+# Models and data
+timm
+transformers
+datasets
+huggingface_hub
+
+# Images, corruptions, plotting
+Pillow
+scikit-image
+matplotlib
+
+# Optional: the full ImageNet-C corruption suite in project_code/src/main/make_imagenet_c.py
+# also needs opencv-python and wand (plus a system ImageMagick install). The
+# experiments here only use Gaussian blur, JPEG, and pixelate, which the light
+# interventions/corruptions.py provides without those extras.

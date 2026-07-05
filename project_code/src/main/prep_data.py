@@ -13,7 +13,34 @@ from PIL import Image as PILImage
 import multiprocessing
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
-from make_imagenet_c import gaussian_blur, pixelate, fog, contrast, gaussian_noise, d
+sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
+
+
+def get_corruption_registry():
+    """Return the name to corruption function map.
+
+    Prefer the full ImageNet-C suite from make_imagenet_c.py when its heavy
+    dependencies (ImageMagick / wand / opencv) are importable. Otherwise fall
+    back to the light, pure Pillow / numpy corruptions in
+    interventions.corruptions, which cover the shifts these experiments use and
+    match the ImageNet-C math for Gaussian blur. This keeps the pipeline runnable
+    on a clean Colab without extra system packages.
+    """
+    registry = {}
+    try:
+        from make_imagenet_c import d as imagenet_c_d
+
+        registry.update(imagenet_c_d)
+    except Exception:
+        pass
+    try:
+        from interventions.corruptions import CORRUPTIONS
+
+        for name, fn in CORRUPTIONS.items():
+            registry.setdefault(name, fn)  # ImageNet-C wins if both are present
+    except Exception:
+        pass
+    return registry
 
 def apply_corruption(pil_img, corruption_fn, severity):
     """
@@ -50,7 +77,7 @@ class Data(IterableDataset):
 
     self.source = source
 
-    self.corruption_fn = d[corruption_type] if corruption_type else None
+    self.corruption_fn = get_corruption_registry()[corruption_type] if corruption_type else None
 
     self.severity = severity
 
@@ -115,7 +142,7 @@ def prep_data(dataset, processor, source, corruption_type=None, severity=5, numb
     DL = DataLoader(
         data,
         batch_size=batch_size,
-        # shuffle is not supported for IterableDataset — if you want
+        # shuffle is not supported for IterableDataset. If you want
         # shuffling, do it upstream: hf_dataset.shuffle(buffer_size=...)
         # before passing it in here.
         pin_memory=True,
