@@ -10,8 +10,6 @@ responsible for integrating spatial stucture in the models studied.
 
 """
 
-import os
-import sys
 import torch
 
 

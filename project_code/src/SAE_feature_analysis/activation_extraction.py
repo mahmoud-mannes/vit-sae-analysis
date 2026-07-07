@@ -5,9 +5,8 @@ import torch
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
 
 from experiments.common import load_imagenet
-from SAE.train_SAE import SAE_Module
 from main.prep_data import prep_data
-from main.load_models import load_ape, load_rope, get_vit_blocks, get_block_mlp
+from main.load_models import get_vit_blocks
 from main.model import predict    
 
 def activation_extraction(model, processor, source, layer, number_images, RPI = False, d_model=768):
