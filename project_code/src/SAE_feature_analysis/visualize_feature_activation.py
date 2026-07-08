@@ -12,8 +12,9 @@ import torch
 import matplotlib.pyplot as plt
 import numpy as np
 import os
+import sys
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
-import common
+import experiments.common as common
 
 def group_activations_by_position(activations, num_tokens_per_image=197):
   """ Takes a TxD tensor representing the activations of T image patches extracted from a model of
@@ -52,5 +53,5 @@ def visualize_feature_activation(activations, feature, num_tokens_per_image=197,
   grid_size = int((num_tokens_per_image - num_prefix_tokens) ** 0.5)
   feature_activations_by_position_matrix = np.array(feature_list[1:]).reshape((grid_size,grid_size)) # Exclude CLS token and reshape to a square matrix
   plt.matshow(feature_activations_by_position_matrix)
-  path_to_save = os.path.abspath(os.path.join(common._FIGURES_dir, f"feature_{feature}_activation_by_position.png"))
+  path_to_save = os.path.abspath(os.path.join(common.FIGURES_DIR, f"feature_{feature}_activation_by_position.png"))
   plt.savefig(path_to_save) 
