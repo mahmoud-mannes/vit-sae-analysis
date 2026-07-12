@@ -47,7 +47,8 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
     is a measure of how selective a feature is to a specific position in the grid, while the row/column selectivity is a 
     measure of how selective a feature is to a specific row or column in the grid.
     """
-
+    
+    TSFPD = dict() # Top Selective Features by Position Dictionary
     num_tokens -= num_prefix_tokens # Remove the prefix tokens from the number of tokens to be analyzed
     for i in range(num_tokens):
         # Extract top candidates for the current position
@@ -57,7 +58,6 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
         row = (i // grid_size)
         column = (i % grid_size)
 
-        TSFPD = dict() # Top Selective Features by Position Dictionary
 
         if verbose:
             print(f"{'-' *5} ROW {row} COLUMN {column} {'-' * 5}")
