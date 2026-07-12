@@ -59,7 +59,8 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
 
         TSFPD = dict() # Top Selective Features by Position Dictionary
 
-        print(f"{'-' *5} ROW {row} COLUMN {column} {'-' * 5}")
+        if verbose:
+            print(f"{'-' *5} ROW {row} COLUMN {column} {'-' * 5}")
 
         FCSD = dict() # Feature Column Selectivity Dictionary
         FRSD = dict() # Feature Row Selectivity Dictionary
@@ -84,7 +85,7 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
             print(f"Feature {candidate_column_feature}, Column selectivity {maximum_CS}")
             print(f"Feature {candidate_row_feature}, Row selectivity {maximum_RS}")
 
-        return TSFPD
+    return TSFPD
         
 
 
