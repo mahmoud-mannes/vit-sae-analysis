@@ -14,7 +14,7 @@ def row_selectivity(matrix):
 
   What this metric tries to capture is how much the mean activation of the most active row is
   greater than the mean activation of all rows. The higher this value, the more
-  selective the feature is to a specific row (position) in the grid.
+  selective the feature is to a specific row in the grid.
   """
   matrix = torch.from_numpy(matrix).to(torch.float32)
   max_mean_row_activation = matrix.mean(dim = 1).max()
@@ -30,9 +30,9 @@ def column_selectivity(matrix):
   """ Takes a TxT square matrix, returns a scalar indicating the column selectivity of the entries
   with values ranging from 1 to 10, with values greater than 4 indicating great selectivity.
   
-  What this metric tries to capture is how much the mean activation of the most active row is
-  greater than the mean activation of all rows. The higher this value, the more
-  selective the feature is to a specific row (position) in the grid.
+  What this metric tries to capture is how much the mean activation of the most active column is
+  greater than the mean activation of all columns. The higher this value, the more
+  selective the feature is to a specific column in the grid.
   """
   return row_selectivity(matrix.transpose())
 
@@ -49,8 +49,7 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
     """
     
     TSFPD = dict() # Top Selective Features by Position Dictionary
-    num_tokens -= num_prefix_tokens # Remove the prefix tokens from the number of tokens to be analyzed
-    for i in range(num_tokens):
+    for i in range(num_prefix_tokens, num_tokens):
         # Extract top candidates for the current position
         top = get_top_candidates(latent_activations, target_position=i, k = 3)
 
@@ -67,7 +66,7 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
         for feature in top.indices:
             grouped_activations = group_activations_by_position(latent_activations)
             feature_list = mean_feature_activation_by_position(grouped_activations, feature = feature.item())
-            MFAP = np.array(feature_list[1:]).reshape((grid_size,grid_size)) # Mean Feature Activation By Position matrix
+            MFAP = np.array(feature_list[num_prefix_tokens:]).reshape((grid_size,grid_size)) # Mean Feature Activation By Position matrix
 
             FCS,FRS = column_selectivity(MFAP), row_selectivity(MFAP) # Feature Column/Row Selectivity
 
