@@ -19,8 +19,6 @@ def activation_extraction(model, processor, source, layer, number_images, RPI = 
     the effect of the index of the image patch on the SAE feature activations.
     """
 
-    device = model.device
-
     # Define simple activation extraction hook
     activation_list = []
     def activation_extraction_hook(module, inputs, output):
