@@ -30,7 +30,9 @@ def activation_extraction(model, processor, source, layer, number_images, RPI = 
 
     # Load imagenet and get dataloader
     dataset = load_imagenet()
-    DL = prep_data(dataset, processor, source, number_images = number_images, batch_size = 500, half = False, shuffle=shuffle)
+    if shuffle:
+        dataset = dataset.shuffle(buffer_size = number_images)
+    DL = prep_data(dataset, processor, source, number_images = number_images, batch_size = 500, half = False)
 
     # Run inference
     predict(model, DL, source, half = False, RPI = RPI)
