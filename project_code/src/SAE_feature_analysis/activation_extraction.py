@@ -9,7 +9,7 @@ from main.prep_data import prep_data
 from main.load_models import get_vit_blocks
 from main.model import predict    
 
-def activation_extraction(model, processor, source, layer, number_images, RPI = False, d_model=768):
+def activation_extraction(model, processor, source, layer, number_images, RPI = False, d_model=768, shuffle=False):
     """ Activation extraction from desired layer residual stream input
 
     layer: the layer from which input activations will be extracted 
@@ -30,7 +30,7 @@ def activation_extraction(model, processor, source, layer, number_images, RPI = 
 
     # Load imagenet and get dataloader
     dataset = load_imagenet()
-    DL = prep_data(dataset, processor, source, number_images = number_images, batch_size = 500, half = False)
+    DL = prep_data(dataset, processor, source, number_images = number_images, batch_size = 500, half = False, shuffle=shuffle)
 
     # Run inference
     predict(model, DL, source, half = False, RPI = RPI)

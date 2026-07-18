@@ -137,7 +137,7 @@ class Data(IterableDataset):
           yield image, label
 
 
-def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=1000, half=True, num_workers=None):
+def prep_data(dataset, processor, source, corruption_type=None, severity=5, number_images=None, batch_size=1000, half=True, num_workers=None, shuffle=False):
 
     data = Data(dataset, processor, source, corruption_type, severity, number_images, half)
 
@@ -154,6 +154,7 @@ def prep_data(dataset, processor, source, corruption_type=None, severity=5, numb
         # before passing it in here.
         pin_memory=torch.cuda.is_available(),
         num_workers=num_workers,
+        shuffle=shuffle # This is included to allow for shuffling of the dataset, but it is not supported for IterableDataset.
     )
 
     return DL

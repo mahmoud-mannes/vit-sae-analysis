@@ -49,7 +49,7 @@ def top_selective_features(latent_activations, num_tokens=197, num_prefix_tokens
     """
     
     TSFPD = dict() # Top Selective Features by Position Dictionary
-    for i in range(num_tokens):
+    for i in range(num_tokens - 1):
         # Extract top candidates for the current position
         top = get_top_candidates(latent_activations, target_position=i + num_prefix_tokens, k = 3)
 
