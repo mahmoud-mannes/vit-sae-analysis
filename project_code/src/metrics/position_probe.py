@@ -193,7 +193,7 @@ def train_probe_streaming(
 
 
 
-def train__probe_memmap(
+def train_probe_memmap(
     acts: np.memmap,
     probe_type: str = "linear",
     num_passes:int = 10,
