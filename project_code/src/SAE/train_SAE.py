@@ -93,7 +93,7 @@ def train_SAE(
     scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer = optimizer, lr_lambda = LambdaLR)
 
     # Create a DataLoader for the training data. The DataLoader is responsible for batching the data and providing it to the model during training.
-    SAE_DL = DataLoader(data, batch_size = batch_size, pin_memory = True, num_workers = min(16, os.cpu_count()))
+    SAE_DL = DataLoader(data, batch_size = batch_size, pin_memory = True, num_workers = 0)
 
     ever_fired = torch.zeros(d_hidden, dtype=torch.bool)
     eps = 1e-6
