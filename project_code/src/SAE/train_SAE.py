@@ -3,6 +3,8 @@ from torch.utils.data import Dataset, DataLoader
 import torch
 import os
 import sys
+import math
+import time
 
 path = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(path)
@@ -43,7 +45,6 @@ class SAE_Data(Dataset):
     return len(self.data)
   
 
-
 def train_SAE(
     data, 
     d_model: int,
@@ -76,13 +77,20 @@ def train_SAE(
     # Determine the device to use for training. If a GPU is available, it will be used; otherwise, the CPU will be used.
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    # Define lambda function for learning rate scheduling, warmup strategy is implemented for the first few steps of training.
-    def LambdaLR(step):
-       if step <= warmup_steps:
-          return step / warmup_steps
-       else:
-          return 1
+    total_steps = math.ceil(len(data) / batch_size)
 
+    # Define lambda function for learning rate scheduling, warmup strategy is implemented for the first few steps of training. Then, cosine decay is applied to the learning rate for the remaining steps.
+
+    def LambdaLR(step):
+        if step < warmup_steps:
+            return step / warmup_steps
+
+        # Progress through the decay phase, normalized to [0, 1]
+        progress = (step - warmup_steps) / (total_steps - warmup_steps)
+        progress = min(progress, 1.0)
+
+        # Cosine decay from 1.0 -> 0.0
+        return 0.5 * (1 + math.cos(math.pi * progress))
       
     # Initialize the Sparse Autoencoder (SAE) model, optimizer, and learning rate scheduler.
     #  The SAE is moved to the appropriate device (GPU if available, otherwise CPU). The optimizer used is Adam,
@@ -98,6 +106,7 @@ def train_SAE(
     ever_fired = torch.zeros(d_hidden, dtype=torch.bool)
     eps = 1e-6
 
+    start = time.time()
     for step, x in enumerate(SAE_DL):
         x = x.to(device=device, dtype=torch.float32)
 
@@ -151,6 +160,7 @@ def train_SAE(
                     wandb_run.log({
                        "EV": sum(EV_window) / len(EV_window),
                         "L0": sum(L0_window) / len(L0_window), 
+                        "dead_fraction": dead_fraction,
                        })
 
             # ---- resample dead features periodically ----
@@ -177,5 +187,8 @@ def train_SAE(
 
 
             ever_fired = torch.zeros(d_hidden, dtype=torch.bool)
-
+    end = time.time()
+    wandb_run.log({
+        "train_time": end - start
+    })
     return SAE
