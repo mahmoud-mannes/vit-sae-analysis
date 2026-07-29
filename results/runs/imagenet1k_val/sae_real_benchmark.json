@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "kind": "ape",
+    "layer": 6,
+    "images": 768,
+    "d_model": 768,
+    "d_hidden": 1536,
+    "epochs": 14,
+    "n_tokens": 150528,
+    "scale": 0.2613212556053602
+  },
+  "rows": [
+    {
+      "label": "baseline_L1_no_bdec|c=1",
+      "family": "baseline_L1_no_bdec",
+      "fvu": 0.02395802872093049,
+      "l0": 289.3650013287271,
+      "dead_fraction": 0.0,
+      "cosine": 0.724303339568662,
+      "down_top1_agreement": 0.7109375,
+      "down_logit_kl": 0.6833641082048416
+    },
+    {
+      "label": "baseline_L1_no_bdec|c=8",
+      "family": "baseline_L1_no_bdec",
+      "fvu": 0.0492575069846862,
+      "l0": 78.3784214722296,
+      "dead_fraction": 0.0,
+      "cosine": 0.4414286333419147
+    },
+    {
+      "label": "baseline_L1_no_bdec|c=40",
+      "family": "baseline_L1_no_bdec",
+      "fvu": 0.14926773017241154,
+      "l0": 42.72242891310125,
+      "dead_fraction": 0.0,
+      "cosine": 0.3618657793607162
+    },
+    {
+      "label": "L1_bdec|c=8",
+      "family": "L1_bdec",
+      "fvu": 0.08668573987434366,
+      "l0": 147.98378952963063,
+      "dead_fraction": 0.0,
+      "cosine": 0.2360337516141958
+    },
+    {
+      "label": "TopK|k=32",
+      "family": "TopK",
+      "fvu": 0.03048213680825792,
+      "l0": 32.0,
+      "dead_fraction": 0.008463541977107525,
+      "cosine": 0.6276025663117858,
+      "down_top1_agreement": 0.65625,
+      "down_logit_kl": 0.9857000857591629
+    },
+    {
+      "label": "BatchTopK|k=16",
+      "family": "BatchTopK",
+      "fvu": 0.048431086041697186,
+      "l0": 15.999867127292054,
+      "dead_fraction": 0.7532551884651184,
+      "cosine": 0.31015143595950706
+    },
+    {
+      "label": "BatchTopK|k=32",
+      "family": "BatchTopK",
+      "fvu": 0.032291587380535766,
+      "l0": 31.999867127292053,
+      "dead_fraction": 0.1048177108168602,
+      "cosine": 0.5194165434825937,
+      "down_top1_agreement": 0.2265625,
+      "down_logit_kl": 3.926207184791565
+    },
+    {
+      "label": "BatchTopK|k=64",
+      "family": "BatchTopK",
+      "fvu": 0.027288977626212085,
+      "l0": 63.999867127292056,
+      "dead_fraction": 0.0,
+      "cosine": 0.6125934650503255
+    },
+    {
+      "label": "JumpReLU|c=0.3",
+      "family": "JumpReLU",
+      "fvu": 0.012792235957460173,
+      "l0": 661.0713526441668,
+      "dead_fraction": 0.0,
+      "cosine": 0.8610440187558132
+    },
+    {
+      "label": "JumpReLU|c=1.0",
+      "family": "JumpReLU",
+      "fvu": 0.012792365372074156,
+      "l0": 661.0399946850916,
+      "dead_fraction": 0.0,
+      "cosine": 0.8610421372575073
+    }
+  ]
+}

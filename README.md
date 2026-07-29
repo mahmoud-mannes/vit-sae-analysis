@@ -172,6 +172,31 @@ shuffle shift. It scrambles where local content sits while keeping the global
 palette, so it is an input level analogue of RPI and an extra probe of reliance
 on local content.
 
+## Sparse autoencoders
+
+The original `SAE/train_SAE.py` is a ReLU plus L1 dictionary with dead feature
+resampling (the 2023 recipe). `project_code/src/SAE/` is a modern replacement:
+one `SAE` class with a selectable sparsity mechanism (`relu_l1`, `topk`,
+`batchtopk`, `jumprelu`), a pre-encoder bias so the residual stream mean does not
+leak into every feature, an AuxK auxiliary loss in place of resampling, an
+activation store with normalisation and a held out split, and honest metrics
+(held out FVU, L0, dead fraction, ground truth recovery, and a downstream
+reconstruction splice). On the measured runs, TopK and BatchTopK both dominate
+the L1 baseline; TopK is the cleanest choice at low L0 and BatchTopK at a larger
+budget (see [docs/SAE_RESULTS.md](docs/SAE_RESULTS.md)).
+
+Two benchmarks establish that the new recipe is better:
+
+```bash
+cd project_code/src
+python -m SAE.benchmark_synthetic                 # ground truth recovery, offline
+python -m SAE.run_real --images 512 --layer 6     # real ViT residual stream (needs HF_TOKEN)
+```
+
+The design, the reasoning, and the research directions that follow are in
+[docs/SAE_PLAN.md](docs/SAE_PLAN.md); the measured results are in
+[docs/SAE_RESULTS.md](docs/SAE_RESULTS.md).
+
 ## Repository layout
 
 ```
@@ -195,7 +220,14 @@ project_code/src/
     ablation_layerwise.py     the new windowed ablation experiment
     effective_rank_probe.py   effective rank under ablation (extension)
   SAE/
-    train_SAE.py, resample.py   sparse autoencoder scaffolding (the SAE side)
+    sae.py                  SAE model: b_dec, relu_l1/topk/batchtopk/jumprelu, AuxK
+    activation_store.py     normalised, held out split, multi epoch iteration
+    train.py                one trainer for every variant
+    metrics.py              FVU, L0, dead fraction, recovery, downstream splice
+    benchmark_synthetic.py  ground truth recovery benchmark (offline)
+    run_real.py             real ViT residual stream benchmark
+    extract.py              build an activation store from a real ViT
+    train_SAE.py, resample.py   the original 2023 recipe, kept for the notebook
 notebooks/
   vit_ssdc_ablation_colab.ipynb   end to end, runnable on Colab
 results/
