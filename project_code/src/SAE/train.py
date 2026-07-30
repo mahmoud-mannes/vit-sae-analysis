@@ -130,5 +130,5 @@ def train_sae(
     if architecture == "batchtopk":
         sae.estimate_threshold(list(store.val_batches(batch_size, device)))
 
-    final = reconstruction_metrics(sae, store.val_batches(batch_size, device))
+    final = history[-1] if history else {}
     return sae, {"history": history, "final": final}
