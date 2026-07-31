@@ -12,12 +12,26 @@ import torch
 eps = 1e-6
 
 def row_selectivity(matrix: torch.Tensor) -> float:
-    """matrix: [grid, grid] mean activation map for one feature."""
+    """ 
+    Takes a TxT square matrix, returns a scalar indicating the row selectivity of the entries
+    with values ranging from 1 to 10, with values greater than 6 indicating great selectivity.
+
+    What this metric tries to capture is how much the mean activation of the most active row is
+    greater than the mean activation of all rows. The higher this value, the more
+    selective the feature is to a specific row in the grid.
+    """
     max_mean_row = matrix.mean(dim=1).max()
     matrix_mean = matrix.mean()
     return (max_mean_row / (matrix_mean + eps)).item()
 
 def column_selectivity(matrix: torch.Tensor) -> float:
+    """ Takes a TxT square matrix, returns a scalar indicating the row selectivity of the entries
+    with values ranging from 1 to 10, with values greater than 6 indicating great selectivity.
+
+    What this metric tries to capture is how much the mean activation of the most active row is
+    greater than the mean activation of all rows. The higher this value, the more
+    selective the feature is to a specific row in the grid.
+    """
     return row_selectivity(matrix.T)
 
 def top_selective_features(
@@ -28,9 +42,42 @@ def top_selective_features(
     verbose: bool = False,
 ):
     """
-    Memory-efficient version.
-    Precomputes position-grouped activations once, then only works
-    with the small set of candidate features.
+    Return the most row-selective and column-selective SAE features for every
+    patch position in the grid.
+
+    Parameters
+    ----------
+    latent_activations : torch.Tensor
+        SAE latent activations.
+    num_tokens : int
+        Total tokens per image (including prefix tokens).
+    num_prefix_tokens : int
+        Number of non-patch tokens to skip (e.g. CLS).
+    k_candidates : int
+        How many top position-selective candidates to consider per grid cell.
+    verbose : bool
+        If True, print the chosen features and their scores.
+
+    Notes
+    -----
+    This implementation is a more memory-efficient version of the previous one. It:
+
+    1. Groups activations by position once.
+    2. Collects the union of top position-selective candidate features across
+    all grid cells.
+    3. Precomputes a mean activation map (grid_size x grid_size) for each
+    unique candidate feature.
+    4. Scores only those precomputed maps for row and column selectivity.
+
+    "Selectivity score" (from get_top_candidates) measures how selective a
+    feature is for a specific grid position. Row/column selectivity measure
+    how strongly a feature prefers an entire row or column. The two metrics
+    are related but distinct.
+
+    Returns
+    -------
+    dict[tuple[int, int], tuple[int, int]]
+        Mapping (row, col) -> (best_row_feature, best_column_feature).
     """
     n_patch = num_tokens - num_prefix_tokens
     grid_size = int(n_patch ** 0.5)
