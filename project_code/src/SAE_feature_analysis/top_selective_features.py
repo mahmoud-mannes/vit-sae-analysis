@@ -78,6 +78,8 @@ def top_selective_features(
     -------
     dict[tuple[int, int], tuple[int, int]]
         Mapping (row, col) -> (best_row_feature, best_column_feature).
+    dict[tuple[int, int], tuple[float, float]]
+        Mapping (row, col) -> (best_row_score, best_column_score).
     """
     n_patch = num_tokens - num_prefix_tokens
     grid_size = int(n_patch ** 0.5)
@@ -110,7 +112,8 @@ def top_selective_features(
         mean_maps[f] = torch.from_numpy(arr.reshape(grid_size, grid_size))
 
     # ---------- 3. Score only the precomputed maps ----------
-    TSFPD = {}
+    TSFPD = {} # Top Selective Feature Position Dictionary
+    TSFPSD = {} # Top Selective Feature Position Score Dictionary
     for i, candidates in enumerate(candidate_sets):
         row = i // grid_size
         col = i % grid_size
@@ -132,9 +135,9 @@ def top_selective_features(
                 best_row_score, best_row_feat = frs, f
 
         TSFPD[(row, col)] = (best_row_feat, best_col_feat)
-
+        TSFPSD[(row, col)] = (best_row_score, best_col_score)
         if verbose:
             print(f"Feature {best_col_feat}, Column selectivity {best_col_score:.3f}")
             print(f"Feature {best_row_feat}, Row selectivity {best_row_score:.3f}")
 
-    return TSFPD
+    return TSFPD, TSFPSD
