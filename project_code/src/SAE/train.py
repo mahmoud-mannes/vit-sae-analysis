@@ -11,7 +11,7 @@ in the loss:
 
 Dead latents are tracked by how many tokens have passed since each last fired.
 AuxK (Gao et al., 2024) then asks the dead latents to reconstruct the residual,
-which revives them without the hand tuned resampling in ``resample.py``.
+which revives them.
 
 The decoder is kept unit norm every step, and the component of the decoder
 gradient parallel to the decoder directions is projected out first so the norm
