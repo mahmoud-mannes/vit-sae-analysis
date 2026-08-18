@@ -208,6 +208,7 @@ project_code/src/
     make_imagenet_c.py  full ImageNet-C corruption suite (heavy deps, optional)
   metrics/
     ssdc.py             SSDC metric and per layer evaluator
+    position_probe.py   token classifiers and held-out row/column ridge probes
     effective_rank.py   effective rank metric and evaluator (extension)
     robustness.py       fragility score
   interventions/
@@ -219,6 +220,11 @@ project_code/src/
     reproduce_robustness.py   fragility under Gaussian blur
     ablation_layerwise.py     the new windowed ablation experiment
     effective_rank_probe.py   effective rank under ablation (extension)
+    activation_patching.py    clean-to-RPI component patching
+    ablation_sweep.py         independent per-layer attention/MLP ablation
+    position_alignment_patching.py  aligned and misaligned donor controls
+    attention_output_analysis.py   block-stage SSDC and coordinate probes
+    metric_robustness_ablation.py  cosine/centered/Euclidean SSDC controls
   SAE/
     sae.py                  SAE model: b_dec, relu_l1/topk/batchtopk/jumprelu, AuxK
     activation_store.py     normalised, held out split, multi epoch iteration
@@ -236,6 +242,7 @@ results/
 docs/
   METHODS.md          metric and intervention details
   EXPERIMENTS.md      the ablation design, hypotheses, and future work
+  CAUSAL_FOLLOWUPS.md shared infrastructure and reproduction commands
 tests/
   test_core.py        unit tests for the metric and ablation logic
 ```
