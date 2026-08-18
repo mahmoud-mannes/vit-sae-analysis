@@ -1,0 +1,323 @@
+{
+  "experiment": "metric_robustness_zero_ablation",
+  "model": "rope",
+  "source": "timm",
+  "number_images": 512,
+  "batch_size": 32,
+  "metrics": [
+    "cosine",
+    "centered_cosine",
+    "negative_euclidean"
+  ],
+  "readout_layers": [
+    4,
+    5
+  ],
+  "specs": [
+    {
+      "name": "attn_L02",
+      "component": "attn",
+      "layer": 2
+    },
+    {
+      "name": "attn_L03",
+      "component": "attn",
+      "layer": 3
+    },
+    {
+      "name": "attn_L04",
+      "component": "attn",
+      "layer": 4
+    },
+    {
+      "name": "mlp_L02",
+      "component": "mlp",
+      "layer": 2
+    },
+    {
+      "name": "mlp_L03",
+      "component": "mlp",
+      "layer": 3
+    },
+    {
+      "name": "mlp_L04",
+      "component": "mlp",
+      "layer": 4
+    }
+  ],
+  "shuffle": true,
+  "sample_seed": 1,
+  "buffer_size": 2000,
+  "permutation_seed": 1,
+  "replacement": "zero",
+  "baselines": {
+    "clean": {
+      "metrics_by_layer": {
+        "4": {
+          "cosine": 0.6823505245094059,
+          "centered_cosine": 0.7774056140361539,
+          "negative_euclidean": 0.5121833253573957
+        },
+        "5": {
+          "cosine": 0.7106301785945661,
+          "centered_cosine": 0.7682415566737968,
+          "negative_euclidean": 0.5418445658292431
+        }
+      },
+      "accuracy": 0.81640625,
+      "n_images": 512
+    },
+    "rpi": {
+      "metrics_by_layer": {
+        "4": {
+          "cosine": 0.3045955582378872,
+          "centered_cosine": 0.330006121263172,
+          "negative_euclidean": 0.3409272187261813
+        },
+        "5": {
+          "cosine": 0.29205565122974936,
+          "centered_cosine": 0.37341150849774896,
+          "negative_euclidean": 0.37437976415268437
+        }
+      },
+      "accuracy": 0.296875,
+      "n_images": 512
+    }
+  },
+  "ablations": {
+    "attn_L02": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.6548913912352995,
+            "centered_cosine": 0.7646460122449198,
+            "negative_euclidean": 0.4895292844630361
+          },
+          "5": {
+            "cosine": 0.7030593719668647,
+            "centered_cosine": 0.7667252810161136,
+            "negative_euclidean": 0.5378920700518833
+          }
+        },
+        "accuracy": 0.82421875,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.22211562990112962,
+            "centered_cosine": 0.26827739802924017,
+            "negative_euclidean": 0.2690605209514829
+          },
+          "5": {
+            "cosine": 0.2519514102970377,
+            "centered_cosine": 0.36070522017223167,
+            "negative_euclidean": 0.34073620782848385
+          }
+        },
+        "accuracy": 0.3203125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L02",
+        "component": "attn",
+        "layer": 2
+      }
+    },
+    "attn_L03": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.6542822559724536,
+            "centered_cosine": 0.7760098444316725,
+            "negative_euclidean": 0.4911744143125633
+          },
+          "5": {
+            "cosine": 0.716267253479861,
+            "centered_cosine": 0.7737215486513153,
+            "negative_euclidean": 0.5311377425091728
+          }
+        },
+        "accuracy": 0.826171875,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.2146153701053797,
+            "centered_cosine": 0.2782906505693587,
+            "negative_euclidean": 0.2726898568446993
+          },
+          "5": {
+            "cosine": 0.2559453244661676,
+            "centered_cosine": 0.3515912273480116,
+            "negative_euclidean": 0.3313034644095956
+          }
+        },
+        "accuracy": 0.369140625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L03",
+        "component": "attn",
+        "layer": 3
+      }
+    },
+    "attn_L04": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.6133114671288719,
+            "centered_cosine": 0.7685245352705313,
+            "negative_euclidean": 0.5542454727014324
+          },
+          "5": {
+            "cosine": 0.713635672430913,
+            "centered_cosine": 0.7750958661867171,
+            "negative_euclidean": 0.5543818823087809
+          }
+        },
+        "accuracy": 0.82421875,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.21939464596730443,
+            "centered_cosine": 0.22545640617991491,
+            "negative_euclidean": 0.2436468387636834
+          },
+          "5": {
+            "cosine": 0.2589460877582121,
+            "centered_cosine": 0.3326884663125862,
+            "negative_euclidean": 0.3326952552660871
+          }
+        },
+        "accuracy": 0.345703125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L04",
+        "component": "attn",
+        "layer": 4
+      }
+    },
+    "mlp_L02": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.6647670596925651,
+            "centered_cosine": 0.7789588758916162,
+            "negative_euclidean": 0.484767695865881
+          },
+          "5": {
+            "cosine": 0.702811900136264,
+            "centered_cosine": 0.7690048413268026,
+            "negative_euclidean": 0.5119380625283397
+          }
+        },
+        "accuracy": 0.822265625,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.3062138130839862,
+            "centered_cosine": 0.34507185168352866,
+            "negative_euclidean": 0.34404646382050474
+          },
+          "5": {
+            "cosine": 0.2886801881616467,
+            "centered_cosine": 0.38828549705296694,
+            "negative_euclidean": 0.3790210358594409
+          }
+        },
+        "accuracy": 0.26171875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L02",
+        "component": "mlp",
+        "layer": 2
+      }
+    },
+    "mlp_L03": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.6739941545224908,
+            "centered_cosine": 0.7829646650850555,
+            "negative_euclidean": 0.4783724345192557
+          },
+          "5": {
+            "cosine": 0.7021079320302074,
+            "centered_cosine": 0.7726321233458481,
+            "negative_euclidean": 0.5157177365478394
+          }
+        },
+        "accuracy": 0.822265625,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.2799778672117637,
+            "centered_cosine": 0.3379092456982263,
+            "negative_euclidean": 0.3517508588966871
+          },
+          "5": {
+            "cosine": 0.28522938216688076,
+            "centered_cosine": 0.39470590358004776,
+            "negative_euclidean": 0.3684613155735521
+          }
+        },
+        "accuracy": 0.255859375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L03",
+        "component": "mlp",
+        "layer": 3
+      }
+    },
+    "mlp_L04": {
+      "clean": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.7373767442215977,
+            "centered_cosine": 0.7693007542501548,
+            "negative_euclidean": 0.4263438581876371
+          },
+          "5": {
+            "cosine": 0.7059751292103305,
+            "centered_cosine": 0.7712454530899108,
+            "negative_euclidean": 0.5206268653535314
+          }
+        },
+        "accuracy": 0.8125,
+        "n_images": 512
+      },
+      "rpi": {
+        "metrics_by_layer": {
+          "4": {
+            "cosine": 0.3621676705334352,
+            "centered_cosine": 0.34237112665559577,
+            "negative_euclidean": 0.3438019559532836
+          },
+          "5": {
+            "cosine": 0.3529768545525438,
+            "centered_cosine": 0.4139285324658522,
+            "negative_euclidean": 0.40232818147372235
+          }
+        },
+        "accuracy": 0.2890625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L04",
+        "component": "mlp",
+        "layer": 4
+      }
+    }
+  }
+}

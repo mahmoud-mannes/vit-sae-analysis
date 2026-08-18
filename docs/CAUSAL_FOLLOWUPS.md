@@ -103,8 +103,18 @@ python experiments/metric_robustness_ablation.py \
   necessity test.
 - Do not interpret linear-probe decodability alone as causal evidence.
 
-Each runner writes one JSON file under `results/`. Generated outputs are not
-part of the source-code change.
+Each runner writes one JSON file under `results/`. The two-seed ImageNet runs
+used in the report are curated under
+`results/runs/imagenet1k_val/causal_followups/`; figures are in
+`results/figures/`, and the results are summarized in
+[`docs/CAUSAL_RESULTS.md`](CAUSAL_RESULTS.md).
+
+Regenerate all ten curated figures from those committed JSON runs with:
+
+```bash
+cd project_code/src
+python experiments/plot_causal_results.py
+```
 
 ## Tests
 
@@ -119,6 +129,7 @@ The focused follow-up suite is:
 
 ```bash
 for test in \
+  tests/test_causal_results.py \
   tests/test_experiment_common.py \
   tests/test_ssdc_accumulator.py \
   tests/test_coordinate_probes.py \

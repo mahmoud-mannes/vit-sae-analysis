@@ -1,0 +1,89 @@
+{
+  "study": "Causal localization of positional structure in pretrained ViTs",
+  "dataset": "ILSVRC/imagenet-1k validation",
+  "models": {
+    "ape": "google/vit-base-patch16-224",
+    "rope": "vit_base_patch16_rope_224.naver_in1k"
+  },
+  "hardware": "NVIDIA RTX A4000 16 GB",
+  "precision": "float16 inference",
+  "repeats": 2,
+  "groups": {
+    "final_layer_activation_patching": {
+      "images_per_run": 512,
+      "files": [
+        "final_layer_activation_patching_ape_seed0.json",
+        "final_layer_activation_patching_ape_seed1.json",
+        "final_layer_activation_patching_rope_seed0.json",
+        "final_layer_activation_patching_rope_seed1.json"
+      ]
+    },
+    "final_layer_zero_ablation": {
+      "images_per_run": 512,
+      "files": [
+        "final_layer_zero_ablation_ape_seed0.json",
+        "final_layer_zero_ablation_ape_seed1.json",
+        "final_layer_zero_ablation_rope_seed0.json",
+        "final_layer_zero_ablation_rope_seed1.json"
+      ]
+    },
+    "peak_layer_activation_patching": {
+      "images_per_run": 512,
+      "readout_layers": [4, 5],
+      "files": [
+        "peak_layer_activation_patching_ape_seed0.json",
+        "peak_layer_activation_patching_ape_seed1.json",
+        "peak_layer_activation_patching_rope_seed0.json",
+        "peak_layer_activation_patching_rope_seed1.json"
+      ]
+    },
+    "peak_layer_zero_ablation": {
+      "images_per_run": 512,
+      "readout_layers": [4, 5],
+      "files": [
+        "peak_layer_zero_ablation_ape_seed0.json",
+        "peak_layer_zero_ablation_ape_seed1.json",
+        "peak_layer_zero_ablation_rope_seed0.json",
+        "peak_layer_zero_ablation_rope_seed1.json"
+      ]
+    },
+    "position_alignment_controls": {
+      "images_per_run": 512,
+      "files": [
+        "position_alignment_ape_seed0.json",
+        "position_alignment_ape_seed1.json",
+        "position_alignment_rope_seed0.json",
+        "position_alignment_rope_seed1.json"
+      ]
+    },
+    "attention_outputs_and_coordinate_probes": {
+      "images_per_run": 256,
+      "files": [
+        "attention_output_and_probes_seed0.json",
+        "attention_output_and_probes_seed1.json"
+      ]
+    },
+    "ssdc_metric_robustness": {
+      "images_per_run": 512,
+      "readout_layers": [4, 5],
+      "files": [
+        "metric_robustness_ape_seed0.json",
+        "metric_robustness_ape_seed1.json",
+        "metric_robustness_rope_seed0.json",
+        "metric_robustness_rope_seed1.json"
+      ]
+    }
+  },
+  "figures": [
+    "causal_final_layer_baselines.png",
+    "causal_final_layer_patching.png",
+    "causal_final_layer_ablation.png",
+    "causal_peak_layer_patching.png",
+    "causal_peak_layer_ablation.png",
+    "causal_position_alignment.png",
+    "causal_attention_output_ssdc.png",
+    "causal_attention_position_probes.png",
+    "causal_metric_baselines.png",
+    "causal_metric_ablation.png"
+  ]
+}

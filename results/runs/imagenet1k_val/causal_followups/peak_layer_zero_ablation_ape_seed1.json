@@ -1,0 +1,350 @@
+{
+  "experiment": "independent_zero_ablation",
+  "model": "ape",
+  "source": "transformers",
+  "number_images": 512,
+  "batch_size": 32,
+  "components": [
+    "attn",
+    "mlp"
+  ],
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "shuffle": true,
+  "sample_seed": 1,
+  "buffer_size": 2000,
+  "permutation_seed": 1,
+  "ssdc_readout_layers": [
+    4,
+    5
+  ],
+  "replacement": "zero",
+  "baselines": {
+    "clean": {
+      "final": 0.5692693193875921,
+      "ssdc_by_layer": {
+        "4": 0.6800288653365656,
+        "5": 0.6307218439217228
+      },
+      "accuracy": 0.828125,
+      "n_images": 512
+    },
+    "rpi": {
+      "final": 0.027801953929368777,
+      "ssdc_by_layer": {
+        "4": 0.5147350841908861,
+        "5": 0.39624372136338826
+      },
+      "accuracy": 0.255859375,
+      "n_images": 512
+    }
+  },
+  "ablations": {
+    "attn_L00": {
+      "clean": {
+        "final": 0.4925277613548394,
+        "ssdc_by_layer": {
+          "4": 0.5895482650112099,
+          "5": 0.5645929750723759
+        },
+        "accuracy": 0.68359375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.10052701784786434,
+        "ssdc_by_layer": {
+          "4": 0.42838308969189254,
+          "5": 0.33331283820054114
+        },
+        "accuracy": 0.091796875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L00",
+        "component": "attn",
+        "layer": 0
+      }
+    },
+    "attn_L01": {
+      "clean": {
+        "final": 0.5863322409109977,
+        "ssdc_by_layer": {
+          "4": 0.6929702897736678,
+          "5": 0.6458333609326382
+        },
+        "accuracy": 0.80859375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.07034523153761969,
+        "ssdc_by_layer": {
+          "4": 0.4962709241229032,
+          "5": 0.3638709824379639
+        },
+        "accuracy": 0.287109375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L01",
+        "component": "attn",
+        "layer": 1
+      }
+    },
+    "attn_L02": {
+      "clean": {
+        "final": 0.6096548828557933,
+        "ssdc_by_layer": {
+          "4": 0.69489158429762,
+          "5": 0.6573719778791959
+        },
+        "accuracy": 0.775390625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.10845971557006578,
+        "ssdc_by_layer": {
+          "4": 0.4943399120869028,
+          "5": 0.3965101408200186
+        },
+        "accuracy": 0.236328125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L02",
+        "component": "attn",
+        "layer": 2
+      }
+    },
+    "attn_L03": {
+      "clean": {
+        "final": 0.5948418170123659,
+        "ssdc_by_layer": {
+          "4": 0.7401210275144787,
+          "5": 0.6815231534544687
+        },
+        "accuracy": 0.794921875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.13592452595101842,
+        "ssdc_by_layer": {
+          "4": 0.5428709852780673,
+          "5": 0.4561756586700104
+        },
+        "accuracy": 0.27734375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L03",
+        "component": "attn",
+        "layer": 3
+      }
+    },
+    "attn_L04": {
+      "clean": {
+        "final": 0.5907982635636764,
+        "ssdc_by_layer": {
+          "4": 0.7019371197534051,
+          "5": 0.6596818970101842
+        },
+        "accuracy": 0.783203125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.08927049985106338,
+        "ssdc_by_layer": {
+          "4": 0.5636720787741041,
+          "5": 0.466310669613903
+        },
+        "accuracy": 0.27734375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L04",
+        "component": "attn",
+        "layer": 4
+      }
+    },
+    "attn_L05": {
+      "clean": {
+        "final": 0.5741737138062626,
+        "ssdc_by_layer": {
+          "4": 0.6800288653365656,
+          "5": 0.6643330789846836
+        },
+        "accuracy": 0.796875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.052777947955641065,
+        "ssdc_by_layer": {
+          "4": 0.5147350841908861,
+          "5": 0.4833837710590726
+        },
+        "accuracy": 0.21875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L05",
+        "component": "attn",
+        "layer": 5
+      }
+    },
+    "mlp_L00": {
+      "clean": {
+        "final": 0.5423511998193937,
+        "ssdc_by_layer": {
+          "4": 0.6761665610042272,
+          "5": 0.635714701971919
+        },
+        "accuracy": 0.263671875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.16813926900664358,
+        "ssdc_by_layer": {
+          "4": 0.49618588082188947,
+          "5": 0.4106607819356592
+        },
+        "accuracy": 0.00390625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L00",
+        "component": "mlp",
+        "layer": 0
+      }
+    },
+    "mlp_L01": {
+      "clean": {
+        "final": 0.5503906810374098,
+        "ssdc_by_layer": {
+          "4": 0.6791597462150839,
+          "5": 0.6356162847160798
+        },
+        "accuracy": 0.765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.02212087805804151,
+        "ssdc_by_layer": {
+          "4": 0.4812611114905103,
+          "5": 0.34618770656719805
+        },
+        "accuracy": 0.083984375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L01",
+        "component": "mlp",
+        "layer": 1
+      }
+    },
+    "mlp_L02": {
+      "clean": {
+        "final": 0.5836841289668689,
+        "ssdc_by_layer": {
+          "4": 0.6696169549927362,
+          "5": 0.6281089558413125
+        },
+        "accuracy": 0.80078125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.07518100149544027,
+        "ssdc_by_layer": {
+          "4": 0.5189921062177976,
+          "5": 0.3732302886625844
+        },
+        "accuracy": 0.1640625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L02",
+        "component": "mlp",
+        "layer": 2
+      }
+    },
+    "mlp_L03": {
+      "clean": {
+        "final": 0.559143839652976,
+        "ssdc_by_layer": {
+          "4": 0.6777353868096346,
+          "5": 0.6229197079492816
+        },
+        "accuracy": 0.8125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.020661014849011776,
+        "ssdc_by_layer": {
+          "4": 0.5247611243870879,
+          "5": 0.3936176692060784
+        },
+        "accuracy": 0.193359375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L03",
+        "component": "mlp",
+        "layer": 3
+      }
+    },
+    "mlp_L04": {
+      "clean": {
+        "final": 0.5604323520530505,
+        "ssdc_by_layer": {
+          "4": 0.695445109153088,
+          "5": 0.6240299280626723
+        },
+        "accuracy": 0.806640625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.05103262451226666,
+        "ssdc_by_layer": {
+          "4": 0.5503633709961832,
+          "5": 0.41193666532711537
+        },
+        "accuracy": 0.1953125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L04",
+        "component": "mlp",
+        "layer": 4
+      }
+    },
+    "mlp_L05": {
+      "clean": {
+        "final": 0.5616525552364043,
+        "ssdc_by_layer": {
+          "4": 0.6800288653365656,
+          "5": 0.665520598418539
+        },
+        "accuracy": 0.806640625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.05216298521813939,
+        "ssdc_by_layer": {
+          "4": 0.5147350841908861,
+          "5": 0.45508671309718157
+        },
+        "accuracy": 0.212890625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L05",
+        "component": "mlp",
+        "layer": 5
+      }
+    }
+  }
+}
