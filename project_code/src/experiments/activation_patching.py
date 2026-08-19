@@ -264,7 +264,7 @@ def install_block_output_ssdc_hooks(model, source, accumulator):
 
 def block_output_ssdc_scores(accumulator):
     return [
-        accumulator.ssdc(layer, metric="cosine", remove_prefix=True)
+        accumulator.ssdc(layer, remove_prefix=True)
         for layer in sorted(accumulator.keys())
     ]
 

@@ -158,18 +158,15 @@ Net: attention builds the early recovery, and the middle MLPs drive its decay.
 
 ## Causal follow-up results
 
-Five follow-up experiments test the positional mechanism with activation
+Four follow-up experiments test the positional mechanism with activation
 patching, independent zero ablations, donor-alignment controls, direct
-attention-output measurements, held-out coordinate probes, and alternative
-SSDC geometries.
+attention-output measurements, and held-out coordinate probes.
 
 - APE spatial structure is controlled mainly by early computation.
 - RoPE peak-layer spatial structure depends selectively on attention layers
   2-4 while clean accuracy remains stable.
 - Correct donor-token alignment matters much more than donor image identity.
 - Coordinate information peaks early in APE and later in RoPE attention output.
-- The RoPE causal result survives cosine, centered-cosine, and Euclidean
-  readouts; the APE effect is specific to angular geometry.
 
 ![Peak-layer SSDC loss after independent zero ablation.](results/figures/causal_peak_layer_ablation.png)
 
@@ -246,7 +243,6 @@ project_code/src/
     ablation_sweep.py         independent per-layer attention/MLP ablation
     position_alignment_patching.py  aligned and misaligned donor controls
     attention_output_analysis.py   block-stage SSDC and coordinate probes
-    metric_robustness_ablation.py  cosine/centered/Euclidean SSDC controls
     plot_causal_results.py         regenerate all curated follow-up figures
   SAE/
     sae.py                  SAE model: b_dec, relu_l1/topk/batchtopk/jumprelu, AuxK

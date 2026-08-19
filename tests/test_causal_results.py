@@ -18,7 +18,7 @@ def test_manifest_references_valid_run_files():
             json.loads(path.read_text())
             referenced.append(filename)
 
-    assert len(referenced) == 26
+    assert len(referenced) == 22
     assert len(referenced) == len(set(referenced))
 
 
@@ -34,7 +34,7 @@ def test_manifest_references_renderable_figures():
 def test_results_document_links_to_existing_figures():
     document = (ROOT / "docs" / "CAUSAL_RESULTS.md").read_text()
     links = re.findall(r"\]\(\.\./results/figures/([^\)]+\.png)\)", document)
-    assert len(links) == 10
+    assert len(links) == 8
     assert len(links) == len(set(links))
     for filename in links:
         assert (FIGURES / filename).is_file(), filename

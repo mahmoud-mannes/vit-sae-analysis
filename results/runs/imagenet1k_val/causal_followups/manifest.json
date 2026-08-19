@@ -62,16 +62,6 @@
         "attention_output_and_probes_seed0.json",
         "attention_output_and_probes_seed1.json"
       ]
-    },
-    "ssdc_metric_robustness": {
-      "images_per_run": 512,
-      "readout_layers": [4, 5],
-      "files": [
-        "metric_robustness_ape_seed0.json",
-        "metric_robustness_ape_seed1.json",
-        "metric_robustness_rope_seed0.json",
-        "metric_robustness_rope_seed1.json"
-      ]
     }
   },
   "figures": [
@@ -82,8 +72,6 @@
     "causal_peak_layer_ablation.png",
     "causal_position_alignment.png",
     "causal_attention_output_ssdc.png",
-    "causal_attention_position_probes.png",
-    "causal_metric_baselines.png",
-    "causal_metric_ablation.png"
+    "causal_attention_position_probes.png"
   ]
 }

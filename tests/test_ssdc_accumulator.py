@@ -14,7 +14,7 @@ from metrics.ssdc import (
     SSDCAccumulator,
     _register_block_hooks,
     evaluate_ssdc,
-    pairwise_similarity_matrices,
+    pairwise_cosine_similarity,
     spatial_similarity_distance_correlation,
 )
 
@@ -49,33 +49,17 @@ class TinyTokenModel(nn.Module):
         return tokens
 
 
-def test_pairwise_metrics_translation_invariance():
+def test_pairwise_cosine_similarity_shape_and_diagonal():
     torch.manual_seed(101)
     tokens = torch.randn(3, 9, 5)
-    translated = tokens + torch.tensor([[[4.0, -7.0, 2.0, 5.0, -3.0]]])
+    matrices = pairwise_cosine_similarity(tokens)
 
-    original = pairwise_similarity_matrices(tokens)
-    shifted = pairwise_similarity_matrices(translated)
-
-    assert not torch.allclose(original["cosine"], shifted["cosine"], atol=1e-5)
-    assert torch.allclose(original["centered_cosine"], shifted["centered_cosine"], atol=2e-5)
+    assert matrices.shape == (3, 9, 9)
     assert torch.allclose(
-        original["negative_euclidean"], shifted["negative_euclidean"], atol=2e-5
+        matrices.diagonal(dim1=-2, dim2=-1),
+        torch.ones(3, 9),
+        atol=1e-6,
     )
-
-
-def test_pairwise_metric_validation():
-    tokens = torch.randn(1, 4, 3)
-    for build in (
-        lambda: pairwise_similarity_matrices(tokens, metrics=("bad_metric",)),
-        lambda: SSDCAccumulator(metrics=("bad_metric",)),
-    ):
-        try:
-            build()
-        except ValueError:
-            pass
-        else:
-            raise AssertionError("expected invalid metric name to raise ValueError")
 
 
 def test_ssdc_accumulator_averages_by_key():
@@ -85,18 +69,18 @@ def test_ssdc_accumulator_averages_by_key():
     other = torch.randn(3, 4, 3)
     key = ("layer0", "residual")
 
-    accumulator = SSDCAccumulator(metrics=("cosine", "centered_cosine"))
+    accumulator = SSDCAccumulator()
     accumulator.add(key, first)
     accumulator.add(key, second)
     accumulator.add(("layer1", "residual"), other)
 
-    first_cos = pairwise_similarity_matrices(first, metrics=("cosine",))["cosine"]
-    second_cos = pairwise_similarity_matrices(second, metrics=("cosine",))["cosine"]
+    first_cos = pairwise_cosine_similarity(first)
+    second_cos = pairwise_cosine_similarity(second)
     expected = torch.cat([first_cos, second_cos], dim=0).mean(dim=0).numpy()
 
-    actual = accumulator.mean_pairwise_matrix(key, metric="cosine")
+    actual = accumulator.mean_pairwise_matrix(key)
     assert np.allclose(actual, expected, atol=1e-6)
-    assert set(accumulator.mean_pairwise_matrices(metric="cosine")) == {
+    assert set(accumulator.mean_pairwise_matrices()) == {
         ("layer0", "residual"),
         ("layer1", "residual"),
     }
@@ -109,20 +93,18 @@ def test_ssdc_accumulator_prefix_removal_and_ssdc():
     )
     tokens = torch.cat([prefix, patches], dim=0).unsqueeze(0)
 
-    accumulator = SSDCAccumulator(metrics=("negative_euclidean",), n_prefix=1)
+    accumulator = SSDCAccumulator(n_prefix=1)
     accumulator.add("layer0", tokens)
 
-    full = accumulator.mean_pairwise_matrix("layer0", metric="negative_euclidean")
-    trimmed = accumulator.mean_pairwise_matrix(
-        "layer0", metric="negative_euclidean", remove_prefix=True
-    )
+    full = accumulator.mean_pairwise_matrix("layer0")
+    trimmed = accumulator.mean_pairwise_matrix("layer0", remove_prefix=True)
     assert full.shape == (10, 10)
     assert trimmed.shape == (9, 9)
     assert np.allclose(trimmed, full[1:, 1:], atol=1e-6)
 
     expected = spatial_similarity_distance_correlation(trimmed, 3)
     assert approx(
-        accumulator.ssdc("layer0", metric="negative_euclidean", remove_prefix=True),
+        accumulator.ssdc("layer0", remove_prefix=True),
         expected,
         1e-9,
     )

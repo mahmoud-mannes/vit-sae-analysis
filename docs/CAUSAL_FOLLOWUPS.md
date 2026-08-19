@@ -1,6 +1,6 @@
 # Causal position follow-up experiments
 
-This document covers five follow-up experiments that localize and test spatial
+This document covers four follow-up experiments that localize and test spatial
 position information in the pretrained APE and RoPE ViTs.
 
 ## Shared infrastructure
@@ -12,8 +12,8 @@ data boundaries:
   embeddings, and prefix-token counts.
 - `interventions.ablation.AblationController` performs reversible attention and
   MLP zero ablations.
-- `metrics.ssdc.SSDCAccumulator` is the single implementation for ordinary
-  cosine, token-mean-centered cosine, and negative-Euclidean SSDC readouts.
+- `metrics.ssdc.SSDCAccumulator` is the shared implementation for cosine SSDC
+  readouts.
 - `metrics.position_probe` contains both existing token-position classifiers
   and the held-out row/column ridge probes used by the attention-output study.
 - `experiments.common` handles ImageNet loading, reusable batches, deterministic
@@ -78,20 +78,6 @@ python experiments/attention_output_analysis.py \
   --model both --number-images 256 --batch-size 32 --half
 ```
 
-### SSDC metric robustness
-
-`experiments/metric_robustness_ablation.py` repeats selected ablations using
-ordinary cosine, centered cosine, and negative-Euclidean SSDC. Agreement across
-the three readouts tests whether a causal result depends on one representation
-geometry.
-
-```bash
-python experiments/metric_robustness_ablation.py \
-  --model rope --specs attn_L02 attn_L03 attn_L04 mlp_L02 mlp_L03 mlp_L04 \
-  --readout-layers 4 5 \
-  --number-images 512 --batch-size 32 --shuffle
-```
-
 ## Reproducibility rules
 
 - Use the official `ILSVRC/imagenet-1k` validation split and a Hugging Face read
@@ -109,7 +95,7 @@ used in the report are curated under
 `results/figures/`, and the results are summarized in
 [`docs/CAUSAL_RESULTS.md`](CAUSAL_RESULTS.md).
 
-Regenerate all ten curated figures from those committed JSON runs with:
+Regenerate all eight curated figures from those committed JSON runs with:
 
 ```bash
 cd project_code/src
@@ -136,8 +122,7 @@ for test in \
   tests/test_activation_patching.py \
   tests/test_ablation_readouts.py \
   tests/test_attention_output_analysis.py \
-  tests/test_position_alignment_patching.py \
-  tests/test_metric_robustness_ablation.py; do
+  tests/test_position_alignment_patching.py; do
   python "$test"
 done
 ```

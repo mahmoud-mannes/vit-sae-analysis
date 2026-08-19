@@ -18,8 +18,6 @@ with exact provenance in its `manifest.json`.
   separates spatial rescue from simply copying clean image content.
 - Row and column coordinates are linearly accessible in attention outputs. APE
   exposes them earlier; RoPE peaks later and across a broader middle-layer band.
-- The RoPE causal result survives three representation metrics. The APE result
-  is robust across angular metrics but reverses under Euclidean distance.
 
 ## 1. Final-layer localization
 
@@ -115,29 +113,6 @@ control.
   retained substantial SSDC. Late spatial structure is therefore not equivalent
   to a simple linearly accessible coordinate code.
 
-## 5. SSDC metric robustness
-
-The peak-layer ablations were repeated with ordinary cosine, per-image
-token-mean-centered cosine, and negative Euclidean distance.
-
-![Baseline RPI spatial correlation under three representation metrics.](../results/figures/causal_metric_baselines.png)
-
-At layer 4, APE baseline SSDC was **0.514** for cosine, **0.504** for centered
-cosine, and **-0.040** for negative Euclidean distance. RoPE produced positive
-structure under all three metrics: **0.304, 0.331, and 0.335**.
-
-![Layer-4 spatial-correlation loss under three metrics.](../results/figures/causal_metric_ablation.png)
-
-- RoPE attention layers 2-4 caused positive spatial-correlation loss under all
-  three metrics. Attention 4 produced losses of **0.082, 0.106, and 0.096**.
-- Matched RoPE MLP ablations did not show a consistent positive loss.
-- APE attention 0 caused losses of **0.092** under cosine and **0.083** under
-  centered cosine, but the Euclidean effect had the opposite sign.
-
-The RoPE localization result is metric-independent across the tested measures.
-The APE result should be described more narrowly as a causal effect on angular
-spatial geometry.
-
 ## Interpretation and limits
 
 Together, the experiments support a causal model in which APE exposes spatial
@@ -152,6 +127,5 @@ and two seeds do not provide narrow confidence intervals. Feature-level SAE
 interventions remain necessary to isolate the specific positional directions.
 
 All runs used the official ImageNet-1k validation split on one NVIDIA RTX A4000
-with 16 GB VRAM. Final-layer, peak-layer, donor-control, and metric-robustness
-runs used 512 images per seed. Attention-output and coordinate-probe runs used
-256 images per seed.
+with 16 GB VRAM. Final-layer, peak-layer, and donor-control runs used 512 images
+per seed. Attention-output and coordinate-probe runs used 256 images per seed.

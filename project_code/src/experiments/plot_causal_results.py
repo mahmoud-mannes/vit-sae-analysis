@@ -21,9 +21,6 @@ COLORS = {
     "attention": "#2878B5",
     "mlp": "#E07A35",
     "residual": "#4C78A8",
-    "cosine": "#0072B2",
-    "centered_cosine": "#009E73",
-    "negative_euclidean": "#E69F00",
 }
 
 
@@ -340,69 +337,6 @@ def plot_attention_probes(output_dir):
     save(figure, output_dir, "causal_attention_position_probes")
 
 
-METRICS = ("cosine", "centered_cosine", "negative_euclidean")
-METRIC_LABELS = ("Cosine", "Centered\ncosine", "Negative\nEuclidean")
-
-
-def metric_runs(model):
-    return load_model_pair("metric_robustness", model)
-
-
-def plot_metric_baselines(output_dir):
-    figure, axes = plt.subplots(1, 2, figsize=(8.8, 3.8), sharey=True)
-    for axis, model in zip(axes, ("ape", "rope")):
-        values = [
-            [run["baselines"]["rpi"]["metrics_by_layer"]["4"][metric] for metric in METRICS]
-            for run in metric_runs(model)
-        ]
-        mean, error = mean_and_range(values)
-        x = np.arange(3)
-        axis.bar(x, mean, color=[COLORS[metric] for metric in METRICS], width=0.66)
-        axis.errorbar(x, mean, yerr=error, fmt="none", ecolor="#222222", capsize=3)
-        axis.set_xticks(x, METRIC_LABELS)
-        axis.set_title(model.upper())
-        axis.set_ylabel("RPI spatial correlation at layer 4")
-        axis.set_ylim(-0.1, 0.6)
-        style_axis(axis)
-    save(figure, output_dir, "causal_metric_baselines")
-
-
-def metric_ablation_loss(run, spec, metric):
-    baseline = run["baselines"]["rpi"]["metrics_by_layer"]["4"][metric]
-    ablated = run["ablations"][spec]["rpi"]["metrics_by_layer"]["4"][metric]
-    return baseline - ablated
-
-
-def grouped_metric_bars(axis, runs, specs, labels, title, limits):
-    x = np.arange(len(specs))
-    width = 0.23
-    for index, (metric, metric_label) in enumerate(zip(METRICS, METRIC_LABELS)):
-        values = [[metric_ablation_loss(run, spec, metric) for spec in specs] for run in runs]
-        mean, error = mean_and_range(values)
-        positions = x + (index - 1) * width
-        axis.bar(positions, mean, width=width, color=COLORS[metric], label=metric_label.replace("\n", " "))
-        axis.errorbar(positions, mean, yerr=error, fmt="none", ecolor="#222222", capsize=2)
-    axis.set_xticks(x, labels)
-    axis.set_title(title)
-    axis.set_ylabel("RPI spatial-correlation loss")
-    axis.set_ylim(*limits)
-    style_axis(axis)
-
-
-def plot_metric_ablation(output_dir):
-    figure, axes = plt.subplots(1, 2, figsize=(11.2, 4.2))
-    grouped_metric_bars(
-        axes[0], metric_runs("ape"), ("attn_L00", "mlp_L00"),
-        ("Attention 0", "MLP 0"), "APE, layer-4 readout", (-0.14, 0.14),
-    )
-    grouped_metric_bars(
-        axes[1], metric_runs("rope"),
-        ("attn_L02", "attn_L03", "attn_L04", "mlp_L02", "mlp_L03", "mlp_L04"),
-        ("Attn 2", "Attn 3", "Attn 4", "MLP 2", "MLP 3", "MLP 4"),
-        "RoPE, layer-4 readout", (-0.08, 0.14),
-    )
-    axes[1].legend(frameon=False, fontsize=8, ncol=3, loc="upper right")
-    save(figure, output_dir, "causal_metric_ablation")
 
 
 def generate_all(output_dir):
@@ -414,8 +348,6 @@ def generate_all(output_dir):
     plot_position_alignment(output_dir)
     plot_attention_outputs(output_dir)
     plot_attention_probes(output_dir)
-    plot_metric_baselines(output_dir)
-    plot_metric_ablation(output_dir)
 
 
 def main():
