@@ -31,6 +31,19 @@ def load_ape(model_name="google/vit-base-patch16-224", device=None, half=False):
         model = model.half()
     return model, processor, "transformers"
 
+def load_ape_timm(model_name="vit_base_patch16_224.dino", device=None, half=False):
+    """Load the learned absolute position embedding ViT through timm."""
+    import timm
+
+    device = device or get_device()
+    model = timm.create_model(model_name, pretrained=True).to(device)
+    model.eval()
+    if half:
+        model = model.half()
+    data_config = timm.data.resolve_model_data_config(model)
+    processor = timm.data.create_transform(**data_config, is_training=False)
+    return model, processor, "timm"
+
 
 def load_rope(model_name="vit_base_patch16_rope_224.naver_in1k", device=None, half=False):
     """Load the rotary position embedding ViT through timm."""
@@ -53,6 +66,8 @@ def load_model(kind, device=None, half=False):
         return load_ape(device=device, half=half)
     if kind in ("rope", "timm", "naver"):
         return load_rope(device=device, half=half)
+    if kind in ("dino", "timm", "facebook"):
+        return load_ape_timm(device=device, half=half)
     raise ValueError(f"unknown model kind {kind!r}; use 'ape' or 'rope'")
 
 
