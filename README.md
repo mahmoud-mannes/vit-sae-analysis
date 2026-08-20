@@ -156,6 +156,25 @@ is in [docs/DISCUSSION.md](docs/DISCUSSION.md); the figures are in
 
 Net: attention builds the early recovery, and the middle MLPs drive its decay.
 
+## Causal follow-up results
+
+Four follow-up experiments test the positional mechanism with activation
+patching, independent zero ablations, donor-alignment controls, direct
+attention-output measurements, and held-out coordinate probes.
+
+- APE spatial structure is controlled mainly by early computation.
+- RoPE peak-layer spatial structure depends selectively on attention layers
+  2-4 while clean accuracy remains stable.
+- Correct donor-token alignment matters much more than donor image identity.
+- Coordinate information peaks early in APE and later in RoPE attention output.
+
+![Peak-layer SSDC loss after independent zero ablation.](results/figures/causal_peak_layer_ablation.png)
+
+The concise analysis is in
+[docs/CAUSAL_RESULTS.md](docs/CAUSAL_RESULTS.md). Curated two-seed JSON runs are
+under `results/runs/imagenet1k_val/causal_followups/` with a machine-readable
+manifest.
+
 ## Extensions
 
 **Effective rank and rank collapse.** Dong et al. (2021) show that attention
@@ -208,6 +227,7 @@ project_code/src/
     make_imagenet_c.py  full ImageNet-C corruption suite (heavy deps, optional)
   metrics/
     ssdc.py             SSDC metric and per layer evaluator
+    position_probe.py   token classifiers and held-out row/column ridge probes
     effective_rank.py   effective rank metric and evaluator (extension)
     robustness.py       fragility score
   interventions/
@@ -219,6 +239,11 @@ project_code/src/
     reproduce_robustness.py   fragility under Gaussian blur
     ablation_layerwise.py     the new windowed ablation experiment
     effective_rank_probe.py   effective rank under ablation (extension)
+    activation_patching.py    clean-to-RPI component patching
+    ablation_sweep.py         independent per-layer attention/MLP ablation
+    position_alignment_patching.py  aligned and misaligned donor controls
+    attention_output_analysis.py   block-stage SSDC and coordinate probes
+    plot_causal_results.py         regenerate all curated follow-up figures
   SAE/
     sae.py                  SAE model: b_dec, relu_l1/topk/batchtopk/jumprelu, AuxK
     activation_store.py     normalised, held out split, multi epoch iteration
@@ -236,6 +261,8 @@ results/
 docs/
   METHODS.md          metric and intervention details
   EXPERIMENTS.md      the ablation design, hypotheses, and future work
+  CAUSAL_FOLLOWUPS.md shared infrastructure and reproduction commands
+  CAUSAL_RESULTS.md   curated figures, results, and interpretation
 tests/
   test_core.py        unit tests for the metric and ablation logic
 ```

@@ -1,0 +1,452 @@
+{
+  "experiment": "independent_zero_ablation",
+  "model": "rope",
+  "source": "timm",
+  "number_images": 512,
+  "batch_size": 32,
+  "components": [
+    "attn",
+    "mlp"
+  ],
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "shuffle": false,
+  "sample_seed": 0,
+  "buffer_size": 2000,
+  "permutation_seed": 0,
+  "replacement": "zero",
+  "baselines": {
+    "clean": {
+      "final": 0.2964766779090527,
+      "accuracy": 0.84375,
+      "n_images": 512
+    },
+    "rpi": {
+      "final": 0.22601457427181537,
+      "accuracy": 0.34765625,
+      "n_images": 512
+    }
+  },
+  "ablations": {
+    "attn_L00": {
+      "clean": {
+        "final": 0.2974825648858871,
+        "accuracy": 0.849609375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22756467386199314,
+        "accuracy": 0.341796875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L00",
+        "component": "attn",
+        "layer": 0
+      }
+    },
+    "attn_L01": {
+      "clean": {
+        "final": 0.30193086813628084,
+        "accuracy": 0.8515625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2197992538807056,
+        "accuracy": 0.328125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L01",
+        "component": "attn",
+        "layer": 1
+      }
+    },
+    "attn_L02": {
+      "clean": {
+        "final": 0.30512199754936764,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2357012957860448,
+        "accuracy": 0.3359375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L02",
+        "component": "attn",
+        "layer": 2
+      }
+    },
+    "attn_L03": {
+      "clean": {
+        "final": 0.3034210703225352,
+        "accuracy": 0.8515625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22617294831191467,
+        "accuracy": 0.396484375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L03",
+        "component": "attn",
+        "layer": 3
+      }
+    },
+    "attn_L04": {
+      "clean": {
+        "final": 0.3047625031750573,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.20702647581485564,
+        "accuracy": 0.369140625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L04",
+        "component": "attn",
+        "layer": 4
+      }
+    },
+    "attn_L05": {
+      "clean": {
+        "final": 0.31029739225524866,
+        "accuracy": 0.8515625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.23727762197685626,
+        "accuracy": 0.416015625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L05",
+        "component": "attn",
+        "layer": 5
+      }
+    },
+    "attn_L06": {
+      "clean": {
+        "final": 0.2940344454190465,
+        "accuracy": 0.85546875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2381184131192256,
+        "accuracy": 0.412109375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L06",
+        "component": "attn",
+        "layer": 6
+      }
+    },
+    "attn_L07": {
+      "clean": {
+        "final": 0.2860199237423418,
+        "accuracy": 0.845703125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22522253225668243,
+        "accuracy": 0.345703125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L07",
+        "component": "attn",
+        "layer": 7
+      }
+    },
+    "attn_L08": {
+      "clean": {
+        "final": 0.31074728322104095,
+        "accuracy": 0.84375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2280634095547811,
+        "accuracy": 0.34375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L08",
+        "component": "attn",
+        "layer": 8
+      }
+    },
+    "attn_L09": {
+      "clean": {
+        "final": 0.3112609291652803,
+        "accuracy": 0.84375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22509193066176167,
+        "accuracy": 0.326171875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L09",
+        "component": "attn",
+        "layer": 9
+      }
+    },
+    "attn_L10": {
+      "clean": {
+        "final": 0.32948897684727796,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.19201447110161743,
+        "accuracy": 0.32421875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L10",
+        "component": "attn",
+        "layer": 10
+      }
+    },
+    "attn_L11": {
+      "clean": {
+        "final": 0.2802410670219225,
+        "accuracy": 0.83984375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.16221862556488115,
+        "accuracy": 0.330078125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "attn_L11",
+        "component": "attn",
+        "layer": 11
+      }
+    },
+    "mlp_L00": {
+      "clean": {
+        "final": 0.3027909790593611,
+        "accuracy": 0.845703125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.229707544861181,
+        "accuracy": 0.333984375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L00",
+        "component": "mlp",
+        "layer": 0
+      }
+    },
+    "mlp_L01": {
+      "clean": {
+        "final": 0.2971461204246293,
+        "accuracy": 0.849609375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22713221158180386,
+        "accuracy": 0.310546875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L01",
+        "component": "mlp",
+        "layer": 1
+      }
+    },
+    "mlp_L02": {
+      "clean": {
+        "final": 0.29624385515401436,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.22083070745800684,
+        "accuracy": 0.302734375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L02",
+        "component": "mlp",
+        "layer": 2
+      }
+    },
+    "mlp_L03": {
+      "clean": {
+        "final": 0.3030576935515815,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.21308891873624178,
+        "accuracy": 0.294921875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L03",
+        "component": "mlp",
+        "layer": 3
+      }
+    },
+    "mlp_L04": {
+      "clean": {
+        "final": 0.2972877771700328,
+        "accuracy": 0.837890625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.23271375721096146,
+        "accuracy": 0.345703125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L04",
+        "component": "mlp",
+        "layer": 4
+      }
+    },
+    "mlp_L05": {
+      "clean": {
+        "final": 0.29248120370304787,
+        "accuracy": 0.857421875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.21954653809017807,
+        "accuracy": 0.32421875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L05",
+        "component": "mlp",
+        "layer": 5
+      }
+    },
+    "mlp_L06": {
+      "clean": {
+        "final": 0.2939293036664847,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2522240745946556,
+        "accuracy": 0.32421875,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L06",
+        "component": "mlp",
+        "layer": 6
+      }
+    },
+    "mlp_L07": {
+      "clean": {
+        "final": 0.2886136408039343,
+        "accuracy": 0.841796875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.23119245428538776,
+        "accuracy": 0.337890625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L07",
+        "component": "mlp",
+        "layer": 7
+      }
+    },
+    "mlp_L08": {
+      "clean": {
+        "final": 0.3326028223911171,
+        "accuracy": 0.841796875,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.26806681829925666,
+        "accuracy": 0.33984375,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L08",
+        "component": "mlp",
+        "layer": 8
+      }
+    },
+    "mlp_L09": {
+      "clean": {
+        "final": 0.4150456123299192,
+        "accuracy": 0.845703125,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.3224515080801873,
+        "accuracy": 0.33203125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L09",
+        "component": "mlp",
+        "layer": 9
+      }
+    },
+    "mlp_L10": {
+      "clean": {
+        "final": 0.35525068461912124,
+        "accuracy": 0.84765625,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.2702676244297592,
+        "accuracy": 0.322265625,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L10",
+        "component": "mlp",
+        "layer": 10
+      }
+    },
+    "mlp_L11": {
+      "clean": {
+        "final": 0.4568912513350369,
+        "accuracy": 0.849609375,
+        "n_images": 512
+      },
+      "rpi": {
+        "final": 0.3506552270207525,
+        "accuracy": 0.33203125,
+        "n_images": 512
+      },
+      "spec": {
+        "name": "mlp_L11",
+        "component": "mlp",
+        "layer": 11
+      }
+    }
+  }
+}

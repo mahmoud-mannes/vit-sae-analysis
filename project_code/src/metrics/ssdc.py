@@ -67,6 +67,69 @@ def spatial_similarity_distance_correlation(S, grid_size, metric="manhattan"):
     return corr
 
 
+def pairwise_cosine_similarity(tokens):
+    """Return one cosine-similarity matrix per image."""
+    if tokens.ndim != 3:
+        raise ValueError("tokens must have shape [B, T, C]")
+    tokens = tokens.float()
+    normalized = tokens / tokens.norm(dim=-1, keepdim=True).clamp_min(1e-8)
+    return normalized @ normalized.transpose(-2, -1)
+
+
+class SSDCAccumulator:
+    """Accumulate average pairwise token-similarity matrices by arbitrary key."""
+
+    def __init__(self, n_prefix=0, spatial_metric="manhattan"):
+        self.n_prefix = int(n_prefix)
+        self.spatial_metric = spatial_metric
+        self._store = {}
+
+    def _entry(self, key):
+        if key not in self._store:
+            self._store[key] = {"sum": None, "count": 0}
+        return self._store[key]
+
+    def add(self, key, tokens):
+        summed = pairwise_cosine_similarity(tokens).detach().sum(dim=0).cpu()
+        entry = self._entry(key)
+        entry["sum"] = summed if entry["sum"] is None else entry["sum"] + summed
+        entry["count"] += int(tokens.shape[0])
+
+    def keys(self):
+        return self._store.keys()
+
+    def count(self, key):
+        return self._store[key]["count"]
+
+    def mean_pairwise_matrix(self, key, remove_prefix=False):
+        entry = self._store[key]
+        mean_matrix = (entry["sum"] / entry["count"]).numpy()
+        if remove_prefix:
+            mean_matrix = mean_matrix[self.n_prefix :, self.n_prefix :]
+        return mean_matrix
+
+    def mean_pairwise_matrices(self, remove_prefix=False):
+        return {
+            key: self.mean_pairwise_matrix(key, remove_prefix=remove_prefix)
+            for key in self._store
+        }
+
+    def ssdc(self, key, remove_prefix=True):
+        mean_matrix = self.mean_pairwise_matrix(key, remove_prefix=remove_prefix)
+        grid_size = int(round(mean_matrix.shape[0] ** 0.5))
+        return float(
+            spatial_similarity_distance_correlation(
+                mean_matrix, grid_size=grid_size, metric=self.spatial_metric
+            )
+        )
+
+    def ssdc_by_key(self, remove_prefix=True):
+        return {
+            key: self.ssdc(key, remove_prefix=remove_prefix)
+            for key in self._store
+        }
+
+
 def _make_accumulating_hook(store, layer_idx):
     """Return a forward hook that folds this batch's per token cosine similarity
     into a running sum, so we never hold every image's activations at once.
@@ -79,9 +142,7 @@ def _make_accumulating_hook(store, layer_idx):
 
     def hook(module, inputs, output):
         tok = inputs[0].detach().float()  # [B, T, C]
-        norm = tok / (tok.norm(dim=-1, keepdim=True) + 1e-8)
-        cos = norm @ norm.transpose(-2, -1)  # [B, T, T]
-        summed = cos.sum(0).cpu()  # [T, T]
+        summed = pairwise_cosine_similarity(tok).sum(0).cpu()
         if layer_idx in store["sum"]:
             store["sum"][layer_idx] += summed
             store["count"][layer_idx] += tok.shape[0]
@@ -102,6 +163,21 @@ def _register_block_hooks(model, source, store):
     for i, blk in enumerate(get_vit_blocks(model, source)):
         attn = get_block_attention(blk, source)
         handles.append(attn.register_forward_hook(_make_accumulating_hook(store, i)))
+    return handles
+
+
+def _make_ssdc_accumulator_hook(accumulator, key):
+    def hook(module, inputs, output):
+        accumulator.add(key, inputs[0].detach())
+
+    return hook
+
+
+def _register_ssdc_accumulator_hooks(model, source, accumulator):
+    handles = []
+    for i, blk in enumerate(get_vit_blocks(model, source)):
+        attn = get_block_attention(blk, source)
+        handles.append(attn.register_forward_hook(_make_ssdc_accumulator_hook(accumulator, i)))
     return handles
 
 
@@ -146,8 +222,8 @@ def evaluate_ssdc(
         batch_size=batch_size, half=half, num_workers=num_workers,
     )
 
-    store = {"sum": {}, "count": {}}
-    handles = _register_block_hooks(model, source, store)
+    accumulator = SSDCAccumulator(n_prefix=n_prefix, spatial_metric=metric)
+    handles = _register_ssdc_accumulator_hooks(model, source, accumulator)
     try:
         predict(model, dataloader, source, RPI, magnitude, half=half)
     finally:
@@ -156,13 +232,9 @@ def evaluate_ssdc(
 
     ssdc_scores = []
     cosine_maps = []
-    for i in sorted(store["sum"].keys()):
-        mean_cos = (store["sum"][i] / store["count"][i]).numpy()
+    for i in sorted(accumulator.keys()):
+        mean_cos = accumulator.mean_pairwise_matrix(i, remove_prefix=False)
         cosine_maps.append(mean_cos)
-
-        patch_cos = mean_cos[n_prefix:, n_prefix:]  # drop the class token(s)
-        grid_size = int(round(patch_cos.shape[0] ** 0.5))
-        ssdc = spatial_similarity_distance_correlation(patch_cos, grid_size=grid_size, metric=metric)
-        ssdc_scores.append(float(ssdc))
+        ssdc_scores.append(accumulator.ssdc(i, remove_prefix=True))
 
     return ssdc_scores, cosine_maps
