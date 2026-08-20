@@ -36,7 +36,7 @@ def load_ape_timm(model_name="vit_base_patch16_224.dino", device=None, half=Fals
     import timm
 
     device = device or get_device()
-    model = timm.create_model(model_name, pretrained=True).to(device)
+    model = timm.create_model(model_name, pretrained=True, dynamic_img_size=True).to(device)
     model.eval()
     if half:
         model = model.half()
@@ -50,7 +50,7 @@ def load_rope(model_name="vit_base_patch16_rope_224.naver_in1k", device=None, ha
     import timm
 
     device = device or get_device()
-    model = timm.create_model(model_name, pretrained=True).to(device)
+    model = timm.create_model(model_name, pretrained=True, dynamic_img_size=True).to(device)
     model.eval()
     if half:
         model = model.half()
