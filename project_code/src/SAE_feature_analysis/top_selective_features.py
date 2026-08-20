@@ -88,7 +88,7 @@ def top_selective_features(
     # ---------- 1. Group once ----------
     # Expected shape after grouping depends on your helper,
     # but we only need mean activation per (feature, position).
-    grouped = group_activations_by_position(latent_activations)
+    grouped = group_activations_by_position(latent_activations, num_tokens_per_image=num_tokens)
 
     # ---------- 2. Precompute mean maps for features we will need ----------
     # First collect the union of all candidate features across positions
@@ -98,6 +98,7 @@ def top_selective_features(
             latent_activations,
             target_position=i + num_prefix_tokens,
             k=k_candidates,
+            num_tokens_per_image=num_tokens,
         )
         candidate_sets.append(top.indices.tolist())
 
@@ -106,7 +107,7 @@ def top_selective_features(
     # mean_maps[feature] = [grid_size, grid_size]
     mean_maps = {}
     for f in unique_features:
-        feature_list = mean_feature_activation_by_position(grouped, feature=f)
+        feature_list = mean_feature_activation_by_position(grouped, feature=f, num_tokens_per_image=num_tokens)
         # drop prefix, reshape to grid
         arr = np.asarray(feature_list[num_prefix_tokens:], dtype=np.float32)
         mean_maps[f] = torch.from_numpy(arr.reshape(grid_size, grid_size))
