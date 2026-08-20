@@ -31,7 +31,7 @@ def load_ape(model_name="google/vit-base-patch16-224", device=None, half=False):
         model = model.half()
     return model, processor, "transformers"
 
-def load_ape_timm(model_name="vit_base_patch16_224.dino", device=None, half=False):
+def load_ape_timm(model_name="vit_base_patch16_224.dino", device=None, half=False, input_size=None):
     """Load the learned absolute position embedding ViT through timm."""
     import timm
 
@@ -41,11 +41,13 @@ def load_ape_timm(model_name="vit_base_patch16_224.dino", device=None, half=Fals
     if half:
         model = model.half()
     data_config = timm.data.resolve_model_data_config(model)
+    if input_size:
+        data_config["input_size"] = (3, input_size, input_size)
     processor = timm.data.create_transform(**data_config, is_training=False)
     return model, processor, "timm"
 
 
-def load_rope(model_name="vit_base_patch16_rope_224.naver_in1k", device=None, half=False):
+def load_rope(model_name="vit_base_patch16_rope_224.naver_in1k", device=None, half=False, input_size=None):
     """Load the rotary position embedding ViT through timm."""
     import timm
 
@@ -55,6 +57,8 @@ def load_rope(model_name="vit_base_patch16_rope_224.naver_in1k", device=None, ha
     if half:
         model = model.half()
     data_config = timm.data.resolve_model_data_config(model)
+    if input_size:
+        data_config["input_size"] = (3, input_size, input_size)
     processor = timm.data.create_transform(**data_config, is_training=False)
     return model, processor, "timm"
 
