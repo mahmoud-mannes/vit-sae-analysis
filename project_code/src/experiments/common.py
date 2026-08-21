@@ -10,6 +10,7 @@ import os
 import sys
 
 import numpy as np
+import torch
 
 # Make `main`, `metrics` and `interventions` importable no matter where a script
 # is launched from.
@@ -60,7 +61,6 @@ def load_imagenet(
     from datasets import load_dataset
 
     token = get_hf_token(token)
-
     def _load(ds_id):
         ds = load_dataset(ds_id, split=split, streaming=streaming, token=token)
         if shuffle:
@@ -137,6 +137,143 @@ def summarize_curve(scores):
         "final": float(s[-1]),
         "auc": float(s.mean()),
     }
+
+
+def summarize_ssdc(scores):
+    """Return the standard curve summary together with JSON-safe scores."""
+    summary = summarize_curve(scores)
+    summary["scores"] = [float(score) for score in scores]
+    return summary
+
+
+def as_tensor(output):
+    """Unwrap the primary tensor returned by a model component."""
+    return output[0] if isinstance(output, tuple) else output
+
+
+def forward_logits(model, source, pixel_values):
+    """Run either supported ViT and return its classification logits."""
+    if source == "transformers":
+        return model(pixel_values=pixel_values).logits
+    if source == "timm":
+        return model(pixel_values)
+    raise ValueError(f"unknown model source {source!r}")
+
+
+def accuracy_counts(logits, labels):
+    """Return integer correct and total counts for one batch."""
+    predictions = logits.argmax(dim=-1).detach().cpu()
+    labels = torch.as_tensor(labels).detach().cpu()
+    return int((predictions == labels).sum().item()), int(labels.numel())
+
+
+def model_device(model):
+    return next(model.parameters()).device
+
+
+def prepare_pixel_values(pixel_values, model, half=True):
+    """Move a batch to the model device and match the experiment precision."""
+    pixel_values = pixel_values.to(model_device(model))
+    if half and pixel_values.device.type == "cuda":
+        pixel_values = pixel_values.half()
+    return pixel_values
+
+
+def install_fixed_rpi_hook(model, source, permutation):
+    """Install a deterministic patch-token permutation at the patch embedding."""
+    from main.load_models import get_patch_embed_conv
+
+    convolution = get_patch_embed_conv(model, source)
+
+    def hook(module, inputs, output):
+        batch, channels, height, width = output.shape
+        flattened = output.reshape(batch, channels, -1).contiguous()
+        index = permutation.to(device=output.device, dtype=torch.long)
+        return flattened[:, :, index].reshape(batch, channels, height, width)
+
+    return convolution.register_forward_hook(hook)
+
+
+def patch_token_count(model, source, image_batch, half=True):
+    """Infer the number of patch tokens from one preprocessed image batch."""
+    from main.load_models import get_patch_embed_conv
+
+    pixel_values = prepare_pixel_values(image_batch[:1], model, half=half)
+    with torch.inference_mode():
+        patch_grid = get_patch_embed_conv(model, source)(pixel_values)
+    return int(patch_grid.shape[-2] * patch_grid.shape[-1])
+
+
+def seeded_patch_permutation(num_patches, seed):
+    generator = torch.Generator(device="cpu").manual_seed(int(seed))
+    return torch.randperm(int(num_patches), generator=generator)
+
+
+def validate_layer_indices(layers, num_layers, name="layers", default=None):
+    """Validate, deduplicate, and preserve the order of layer indices."""
+    if layers is None:
+        layers = default
+    resolved = [int(layer) for layer in layers]
+    if not resolved:
+        raise ValueError(f"{name} must not be empty")
+    unknown = [layer for layer in resolved if layer < 0 or layer >= num_layers]
+    if unknown:
+        raise ValueError(f"{name} {unknown} are out of range for a {num_layers}-layer model")
+    return list(dict.fromkeys(resolved))
+
+
+def collect_batches(
+    dataset,
+    processor,
+    source,
+    number_images,
+    batch_size,
+    corruption_type=None,
+    severity=5,
+):
+    """Materialize a reusable image sample as CPU tensors.
+
+    Causal interventions rerun the same images under several conditions. Keeping
+    the preprocessed sample in memory avoids repeated streaming and decoding.
+    """
+    from main.prep_data import apply_corruption, get_corruption_registry
+
+    corruption_fn = None
+    if corruption_type:
+        registry = get_corruption_registry()
+        if corruption_type not in registry:
+            raise ValueError(
+                f"unknown corruption {corruption_type!r}; choices: {sorted(registry)}"
+            )
+        corruption_fn = registry[corruption_type]
+
+    batches = []
+    images = []
+    labels = []
+    collected = 0
+    for item in dataset:
+        image = item["image"].convert("RGB")
+        if corruption_fn is not None:
+            image = apply_corruption(image, corruption_fn, severity)
+        if source == "transformers":
+            tensor = processor(images=image, return_tensors="pt")["pixel_values"].squeeze(0)
+        elif source == "timm":
+            tensor = processor(image)
+        else:
+            raise ValueError(f"unknown model source {source!r}")
+        images.append(tensor)
+        labels.append(int(item["label"]))
+        collected += 1
+
+        if len(images) == batch_size:
+            batches.append((torch.stack(images), torch.tensor(labels, dtype=torch.long)))
+            images, labels = [], []
+        if collected >= number_images:
+            break
+
+    if images:
+        batches.append((torch.stack(images), torch.tensor(labels, dtype=torch.long)))
+    return batches
 
 
 def plot_curves(curves, title, ylabel="SSDC", xlabel="Layer", save_path=None, ax=None, styles=None):
