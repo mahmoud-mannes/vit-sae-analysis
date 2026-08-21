@@ -100,28 +100,28 @@ def run_rank_condition(model, processor, dataset, source, spec, RPI, number_imag
         return evaluate_effective_rank(model, processor, dataset, source, **kwargs)
 
 
-def make_plots(rpi_curves, clean_baseline):
+def make_plots(rpi_curves, clean_baseline, model_kind='ape'):
     mlp_zero = ["baseline", "mlp_zero_early", "mlp_zero_late", "mlp_zero_all"]
     mlp_keep = ["baseline", "mlp_keep_early", "mlp_keep_mid", "mlp_keep_late"]
     attn_zero = ["baseline", "attn_zero_early", "attn_zero_late", "attn_zero_all"]
 
     common.plot_curves(
         {k: rpi_curves[k] for k in mlp_zero if k in rpi_curves},
-        title="APE SSDC under RPI: MLP ablation by window",
+        title=f"{model_kind.upper()} SSDC under RPI: MLP ablation by window",
         ylabel="SSDC under RPI",
-        save_path=os.path.join(common.FIGURES_DIR, "ablation_mlp_zero_rpi.png"),
+        save_path=os.path.join(common.FIGURES_DIR, f"ablation_mlp_zero_rpi_{model_kind}.png"),
     )
     common.plot_curves(
         {k: rpi_curves[k] for k in mlp_keep if k in rpi_curves},
-        title="APE SSDC under RPI: keep MLPs in one window only",
+        title=f"{model_kind.upper()} SSDC under RPI: keep MLPs in one window only",
         ylabel="SSDC under RPI",
-        save_path=os.path.join(common.FIGURES_DIR, "ablation_mlp_keep_rpi.png"),
+        save_path=os.path.join(common.FIGURES_DIR, f"ablation_mlp_keep_rpi_{model_kind}.png"),
     )
     common.plot_curves(
         {k: rpi_curves[k] for k in attn_zero if k in rpi_curves},
-        title="APE SSDC under RPI: attention ablation by window",
+        title=f"{model_kind.upper()} SSDC under RPI: attention ablation by window",
         ylabel="SSDC under RPI",
-        save_path=os.path.join(common.FIGURES_DIR, "ablation_attn_zero_rpi.png"),
+        save_path=os.path.join(common.FIGURES_DIR, f"ablation_attn_zero_rpi_{model_kind}.png"),
     )
 
 
@@ -202,7 +202,11 @@ def run_all(
 
     print_summary(rpi_curves)
     if do_plot:
-        make_plots(rpi_curves, clean_baseline)
+        if 'rope' in model_kind:
+            model_kind = 'rope'
+        elif 'ape' in model_kind:
+            model_kind = 'ape'
+        make_plots(rpi_curves, clean_baseline, model_kind=model_kind)
     return out
 
 

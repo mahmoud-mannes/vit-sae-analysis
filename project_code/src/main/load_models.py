@@ -74,7 +74,7 @@ def load_model(kind, device=None, half=False):
         return load_ape_timm(device=device, half=half)
     if kind in {"dinov3", "rope_second_seed"}:
         return load_rope(model_name="timm/vit_base_patch16_dinov3.lvd1689m", device=device, half=half)
-    raise ValueError(f"unknown model kind {kind!r}; use 'ape' or 'rope'")
+    raise ValueError(f"unknown model kind {kind!r}; use 'ape', 'rope', 'ape_second_seed', or 'rope_second_seed'")
 
 
 def num_prefix_tokens(model, source):
