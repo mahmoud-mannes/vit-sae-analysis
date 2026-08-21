@@ -400,7 +400,7 @@ def run_model_experiment(
 
 
 def run_experiment(
-    model="both",
+    model="all",
     number_images=1000,
     batch_size=128,
     sample_seed=0,
@@ -408,7 +408,14 @@ def run_experiment(
     half=False,
     hf_token=None,
 ):
-    kinds = ["ape", "rope"] if model == "both" else [model]
+    if model == "both":
+        kinds = ["ape", "rope"]
+    elif model == "both_second_seed":
+        kinds = ["ape_second_seed", "rope_second_seed"]
+    elif model != "all":
+        kinds = [model]
+    else:
+        kinds = ["ape", "rope", "ape_second_seed", "rope_second_seed"]
     results = {
         "metadata": {
             "experiment": "attention_output_analysis",
@@ -437,7 +444,7 @@ def run_experiment(
 
 def parse_args(argv=None):
     parser = argparse.ArgumentParser(description="Attention-output SSDC and RPI ridge probes.")
-    parser.add_argument("--model", choices=["ape", "rope", "both"], default="both")
+    parser.add_argument("--model", choices=["ape", "rope", "rope_second_seed", "ape_second_seed", "both", "both_second_seed"], default="both")
     parser.add_argument("--number-images", type=int, default=1000)
     parser.add_argument("--batch-size", type=int, default=128)
     parser.add_argument("--sample-seed", type=int, default=0)

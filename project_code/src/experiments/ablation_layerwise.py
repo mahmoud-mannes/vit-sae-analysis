@@ -212,7 +212,7 @@ def run_all(
 
 def main():
     parser = argparse.ArgumentParser(description="Layer windowed component ablation for the APE ViT.")
-    parser.add_argument("--model", choices=["ape", "rope"], default="ape",
+    parser.add_argument("--model", choices=["ape", "rope", "rope_second_seed", "ape_second_seed"], default="ape",
                         help="APE is the model the questions are about; rope is available for comparison.")
     parser.add_argument("--number-images", type=int, default=512)
     parser.add_argument("--batch-size", type=int, default=128)
