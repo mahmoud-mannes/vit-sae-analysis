@@ -70,8 +70,10 @@ def load_model(kind, device=None, half=False):
         return load_ape(device=device, half=half)
     if kind in ("rope", "timm", "naver"):
         return load_rope(device=device, half=half)
-    if kind in ("dino", "timm", "facebook"):
+    if kind in ("dinov1", "ape_timm", "ape_second_seed"):
         return load_ape_timm(device=device, half=half)
+    if kind in {"dinov3", "rope_second_seed"}:
+        return load_rope(model_name="timm/vit_base_patch16_dinov3.lvd1689m", device=device, half=half)
     raise ValueError(f"unknown model kind {kind!r}; use 'ape' or 'rope'")
 
 
