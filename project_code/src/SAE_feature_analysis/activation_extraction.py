@@ -1,12 +1,13 @@
 import os
 import sys
 import torch
+import numpy as np
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__) + "/.."))
 
 from experiments.common import load_imagenet
 from main.prep_data import prep_data
-from main.load_models import get_vit_blocks
+from main.load_models import get_vit_blocks, get_block_attention, get_block_mlp
 from main.model import predict    
 
 def activation_extraction(model, processor, source, layer, number_images, RPI = False, d_model=768, shuffle=False,  dataset=None):
@@ -40,3 +41,57 @@ def activation_extraction(model, processor, source, layer, number_images, RPI = 
     handle.remove()
 
     return torch.cat(activation_list, dim=0).reshape(-1, d_model).contiguous()
+
+def activation_extraction_memmap(model, processor, source, layer, number_images, RPI = False, d_model=768, shuffle=False,  dataset=None, block=None, path=None, verbose=False):
+    """ Activation extraction from desired block input, appending them to a memory-mapped file
+
+    layer: the layer from which input activations will be extracted 
+    RPI: whether Random Permutation at Inference will be applied at inference
+    block: the block from which input activations will be extracted (residual, attention, mlp) with None defaulting
+    to residual stream input
+
+    by running inference both ways (with RPI and without RPI), we can better isolate
+    the effect of the index of the image patch on the SAE feature activations.
+    """
+
+    assert block in [None, 'residual', 'attention', 'mlp'], "block must be one of None, 'residual', 'attention', or 'mlp'"
+
+    if not path:
+        path = f"residual_layer{layer}_inputs_test.bin"
+    binary_file = open(path, "wb")
+
+    # Define simple activation extraction hook
+    def register_activation(module, input, output):
+        activation = input[0].detach().cpu().numpy().reshape(-1, input[0].shape[-1])
+        binary_file.write(activation.tobytes())
+
+    # Extract model blocks and register hook
+    if not block or block == 'residual':
+        blocks = get_vit_blocks(model, source)
+    elif block == 'attention':
+        blocks = get_block_attention(model, source)
+    elif block == 'mlp':
+        blocks, _ = get_block_mlp(model, source)
+
+    handle = blocks[layer].register_forward_hook(register_activation)
+
+    # Load imagenet and get dataloader
+    if not dataset:
+        dataset = load_imagenet()
+    if shuffle:
+        dataset = dataset.shuffle(buffer_size = number_images)
+    
+    DL = prep_data(dataset, processor, source, number_images = number_images, batch_size = 500, half = False)
+
+
+    # Run inference
+    predict(model, DL, source, half = False, RPI = RPI, verbose = verbose)
+    handle.remove()
+    binary_file.close()
+
+    data = (np.memmap(path, dtype="float32", mode="r").reshape(-1, d_model))
+    data_to_store = torch.from_numpy(data)
+    if verbose:
+        print(f"Data shape: {data_to_store.shape}")
+
+    return data_to_store
