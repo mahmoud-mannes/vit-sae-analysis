@@ -10,7 +10,17 @@ from main.prep_data import prep_data
 from main.load_models import get_vit_blocks, get_block_attention, get_block_mlp
 from main.model import predict    
 
-def activation_extraction(model, processor, source, layer, number_images, RPI = False, d_model=768, shuffle=False,  dataset=None):
+def activation_extraction(
+    model, 
+    processor,
+    source: str, 
+    layer: int, 
+    number_images: int, 
+    RPI: bool = False, 
+    d_model: int = 768, 
+    shuffle: bool = False,  
+    dataset=None) -> torch.Tensor:
+
     """ Activation extraction from desired layer residual stream input
 
     layer: the layer from which input activations will be extracted 
@@ -42,7 +52,19 @@ def activation_extraction(model, processor, source, layer, number_images, RPI = 
 
     return torch.cat(activation_list, dim=0).reshape(-1, d_model).contiguous()
 
-def activation_extraction_memmap(model, processor, source, layer, number_images, RPI = False, d_model=768, shuffle=False,  dataset=None, block=None, path=None, verbose=False):
+def activation_extraction_memmap(
+        model,
+        processor,
+        source: str,
+        layer: int,
+        number_images: int,
+        RPI: bool = False,
+        d_model: int = 768,
+        shuffle: bool = False,
+        dataset=None, 
+        block: str = None, 
+        path: str = None, 
+        verbose: bool = False) -> np.memmap:
     """ Activation extraction from desired block input, appending them to a memory-mapped file
 
     layer: the layer from which input activations will be extracted 
@@ -60,9 +82,16 @@ def activation_extraction_memmap(model, processor, source, layer, number_images,
         path = f"residual_layer{layer}_inputs_test.bin"
     binary_file = open(path, "wb")
 
-    # Define simple activation extraction hook
+    # Define simple activation extraction hook for one of two cases, depending on whether we are extracting from the residual stream or from a specific block.
+    # For the residual stream, we extract the input to the block, for attention and mlp blocks, we extract the output of the block.
     def register_activation(module, input, output):
-        activation = input[0].detach().cpu().numpy().reshape(-1, input[0].shape[-1])
+        if block in [None, 'residual']:
+            activation = input[0].detach().cpu().numpy().reshape(-1, input[0].shape[-1])
+        else:
+            if isinstance(output, tuple):
+                activation = output[0].detach().cpu().numpy().reshape(-1, output[0].shape[-1])
+            else:
+                activation = output.detach().cpu().numpy().reshape(-1, output.shape[-1])
         binary_file.write(activation.tobytes())
 
     # Extract model blocks and register hook
