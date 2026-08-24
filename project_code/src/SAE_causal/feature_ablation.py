@@ -13,6 +13,7 @@ from SAE_causal.feature_ablation_hook import attach_feature_ablation_hook
 def ablate_features(
     model: nn.Module,
     source: str,
+    model_type: str,
     SAE: nn.Module,
     layer: int,
     block: str,
@@ -28,6 +29,7 @@ def ablate_features(
     Args:
         model (nn.Module): The model to which the hook will be attached.
         source (str): The source of the model ('timm' or 'transformers' usually).
+        model_type (str): The type of the model ('APE' or 'RoPE').
         SAE (nn.Module): The SAE model used for feature reconstruction.
         features_to_remove (list): List of feature indices to be removed.
         
@@ -58,6 +60,17 @@ def ablate_features(
         import json
         with open(selectivity_scores_path, "r") as f:
             selectivity_scores = json.load(f)
+        key = f"{model_type}_layer_{layer}"
+        TSFP = selectivity_scores[key] # Top Selective Features by Position
+
+        top_unique_positional_features_list = []
+        for i in TSFP.values():
+            for j in i:
+                if j not in top_unique_positional_features_list:
+                 top_unique_positional_features_list.append(j)
+
+        features_to_remove = top_unique_positional_features_list[:k]
+        
 
     # Attach the feature ablation hook
     handle = attach_feature_ablation_hook(
