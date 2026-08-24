@@ -14,6 +14,21 @@ def attach_feature_ablation_hook(
     features_to_remove: list,
     layer: int,
     block: str = None) -> RemovableHandle:
+
+  """
+  Attaches a feature ablation hook to the specified model. 
+
+  Args:
+      SAE (nn.Module): The SAE model used for feature reconstruction.
+      model (nn.Module): The model to which the hook will be attached.
+      source (str): The source of the model ('timm' or 'transformers' usually).
+      features_to_remove (list): List of feature indices to be removed.
+      layer (int): The layer of the model where the hook will be attached.
+      block (str): The block of the model where the hook will be attached. Can be one of None, 'residual', 'attention', or 'mlp'. Default is None.
+  
+  Returns:
+      RemovableHandle: A handle that can be used to remove the hook later.
+  """
   assert block in [None, "residual", "mlp", "attention"], "block must be one of None, 'residual', 'attention', or 'mlp'"
   if block in ['residual', None]:
     def intervention_hook(module, input):
