@@ -53,18 +53,18 @@ def activation_extraction(
     return torch.cat(activation_list, dim=0).reshape(-1, d_model).contiguous()
 
 def activation_extraction_memmap(
-        model,
-        processor,
-        source: str,
-        layer: int,
-        number_images: int,
-        RPI: bool = False,
-        d_model: int = 768,
-        shuffle: bool = False,
-        dataset=None, 
-        block: str = None, 
-        path: str = None, 
-        verbose: bool = False) -> np.memmap:
+    model,
+    processor,
+    source: str,
+    layer: int,
+    number_images: int,
+    RPI: bool = False,
+    d_model: int = 768,
+    shuffle: bool = False,
+    dataset=None, 
+    block: str = None, 
+    path: str = None, 
+    verbose: bool = False) -> np.memmap:
     """ Activation extraction from desired block input, appending them to a memory-mapped file
 
     layer: the layer from which input activations will be extracted 
@@ -95,14 +95,16 @@ def activation_extraction_memmap(
         binary_file.write(activation.tobytes())
 
     # Extract model blocks and register hook
-    if not block or block == 'residual':
-        blocks = get_vit_blocks(model, source)
-    elif block == 'attention':
-        blocks = get_block_attention(model, source)
+    blocks = get_vit_blocks(model, source) # The block variable is used as an input to determine which block to extract activations from. In contrast, blocks is either the list of all blocks, or the specific block from which we are extracting activations, depending on the value of block.
+    if block == 'attention':
+        blocks = get_block_attention(blocks[layer], source)
     elif block == 'mlp':
-        blocks, _ = get_block_mlp(model, source)
+        blocks, _ = get_block_mlp(blocks[layer], source)
 
-    handle = blocks[layer].register_forward_hook(register_activation)
+    if not block or block == 'residual':
+        handle = blocks[layer].register_forward_hook(register_activation)
+    else:
+        handle = blocks.register_forward_hook(register_activation)
 
     # Load imagenet and get dataloader
     if not dataset:
