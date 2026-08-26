@@ -1,0 +1,45 @@
+[
+    {
+        "config": {
+            "model_type": "APE",
+            "layer": 2,
+            "k": 64,
+            "expansion": 5,
+            "batch_size": 512,
+            "n_epochs": 2,
+            "lr": 0.0002
+        },
+        "final": {
+            "fvu": 0.19612074002205607,
+            "explained_variance": 0.803879259977944,
+            "l0": 64.0,
+            "dead_fraction": 0.0,
+            "cosine": 0.9006861632681135,
+            "n_tokens": 197000,
+            "step": 19000,
+            "loss": 157.47743225097656
+        }
+    },
+
+    {
+        "config": {
+            "model_type": "RoPE",
+            "layer": 4,
+            "k": 64,
+            "expansion": 5,
+            "batch_size": 512,
+            "n_epochs": 2,
+            "lr": 0.0004
+        },
+        "final": {
+            "fvu": 0.2470836725646463,
+            "explained_variance": 0.7529163274353536,
+            "l0": 64.0,
+            "dead_fraction": 0.0,
+            "cosine": 0.905949575511332,
+            "n_tokens": 197000,
+            "step": 19000,
+            "loss": 156.7167205810547
+        }
+    }
+]
