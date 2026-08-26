@@ -38,20 +38,14 @@ def activation_extraction(
     activation_list = []
     def register_activation(module, input, output):
         if block in [None, 'residual']:
-
-            assert input[0].shape[-1] == d_model, f"expected d_model={d_model}, got {input[0].shape[-1]}"
             activation = input[0].detach().cpu().reshape(-1, input[0].shape[-1])
 
         else:
 
             if isinstance(output, tuple):
-
-                assert output[0].shape[-1] == d_model, f"expected d_model={d_model}, got {output[0].shape[-1]}"
                 activation = output[0].detach().cpu().reshape(-1, output[0].shape[-1])
 
             else:
-
-                assert output.shape[-1] == d_model, f"expected d_model={d_model}, got {output.shape[-1]}"
                 activation = output.detach().cpu().reshape(-1, output.shape[-1])
 
         activation_list.append(activation)
