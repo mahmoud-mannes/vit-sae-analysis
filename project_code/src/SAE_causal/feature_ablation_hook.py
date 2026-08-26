@@ -72,6 +72,9 @@ def attach_feature_ablation_hook(
   elif block == 'mlp':
     blocks = get_block_mlp(model,source)
 
-  handle = blocks[layer].register_forward_pre_hook(intervention_hook)
+  if block in ['residual', None]:
+    handle = blocks[layer].register_forward_pre_hook(intervention_hook)
+  else:
+    handle = blocks.register_forward_hook(intervention_hook)
 
   return handle
