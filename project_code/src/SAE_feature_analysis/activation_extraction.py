@@ -19,25 +19,54 @@ def activation_extraction(
     RPI: bool = False, 
     d_model: int = 768, 
     shuffle: bool = False,  
-    dataset=None) -> torch.Tensor:
+    dataset=None,
+    block: str = None) -> torch.Tensor:
 
     """ Activation extraction from desired layer residual stream input
 
     layer: the layer from which input activations will be extracted 
     RPI: whether Random Permutation at Inference will be applied at inference
+    block: the block from which input activations will be extracted (residual, attention, mlp) with None defaulting
+    to residual stream input
 
     by running inference both ways (with RPI and without RPI), we can better isolate
     the effect of the index of the image patch on the SAE feature activations.
     """
+    assert block in [None, 'residual', 'attention', 'mlp'], "block must be one of None, 'residual', 'attention', or 'mlp'"
 
     # Define simple activation extraction hook
     activation_list = []
-    def activation_extraction_hook(module, inputs, output):
-        activation_list.append(inputs[0])
+    def register_activation(module, input, output):
+        if block in [None, 'residual']:
+
+            assert input[0].shape[-1] == d_model, f"expected d_model={d_model}, got {input[0].shape[-1]}"
+            activation = input[0].detach().cpu().reshape(-1, input[0].shape[-1])
+
+        else:
+
+            if isinstance(output, tuple):
+
+                assert output[0].shape[-1] == d_model, f"expected d_model={d_model}, got {output[0].shape[-1]}"
+                activation = output[0].detach().cpu().reshape(-1, output[0].shape[-1])
+
+            else:
+
+                assert output.shape[-1] == d_model, f"expected d_model={d_model}, got {output.shape[-1]}"
+                activation = output.detach().cpu().reshape(-1, output.shape[-1])
+
+        activation_list.append(activation)
 
     # Extract model blocks and register hook
     blocks = get_vit_blocks(model, source)
-    handle = blocks[layer].register_forward_hook(activation_extraction_hook)
+    if block == 'attention':
+        blocks = get_block_attention(blocks[layer], source)
+    elif block == 'mlp':    
+        blocks, _ = get_block_mlp(blocks[layer], source)
+
+    if not block or block == 'residual':
+        handle = blocks[layer].register_forward_hook(register_activation)
+    else:
+        handle = blocks.register_forward_hook(register_activation)
 
     # Load imagenet and get dataloader
     if not dataset:
