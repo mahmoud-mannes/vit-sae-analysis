@@ -24,7 +24,9 @@ def ablate_features(
     k: int = 0
 ) -> RemovableHandle:
     """
-    Attaches a feature ablation hook to the specified model.
+    Attaches a feature ablation hook to the specified model and handles random baselines + top positional feature candidate ablation.
+    For the residual stream, the feature ablation will happen before the block's forward pass. For the attention and MLP blocks, the feature ablation will happen after the block's forward pass.
+    This is mainly because our SAE work on attention focuses on the attention output, since that's what'll be injected into the residual stream.
 
     Args:
         model (nn.Module): The model to which the hook will be attached.
