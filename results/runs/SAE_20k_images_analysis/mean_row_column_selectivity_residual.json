@@ -1,35 +1,34 @@
 {
     "RoPE_layer_2": {
-        "mean_row_selectivity": 3.068000078201294,
-        "mean_column_selectivity": 2.171999931335449,
-        "mean_row_variance": 5.326000213623047,
-        "mean_column_variance": 3.013000011444092
-    },  
+        "mean_row_selectivity": 3.0799999237060547,
+        "mean_column_selectivity": 2.191999912261963,
+        "mean_row_variance": 5.270999908447266,
+        "mean_column_variance": 2.996999979019165
+    },
     "RoPE_layer_4": {
-        "mean_row_selectivity": 3.4860000610351562,
-        "mean_column_selectivity": 3.2209999561309814,
-        "mean_row_variance": 6.585000038146973,
-        "mean_column_variance": 6.635000228881836
+        "mean_row_selectivity": 3.4040000438690186,
+        "mean_column_selectivity": 3.260999917984009,
+        "mean_row_variance": 6.355000019073486,
+        "mean_column_variance": 6.6479997634887695
     },
     "RoPE_layer_6": {
-        "mean_row_selectivity": 2.9760000705718994,
-        "mean_column_selectivity": 3.0350000858306885,
-        "mean_row_variance": 2.6659998893737793,
-        "mean_column_variance": 2.861999988555908
+        "mean_row_selectivity": 2.986999988555908,
+        "mean_column_selectivity": 3.0179998874664307,
+        "mean_row_variance": 2.7170000076293945,
+        "mean_column_variance": 2.993000030517578
     },
     "RoPE_layer_8": {
-        "mean_row_selectivity": 3.255000114440918,
-        "mean_column_selectivity": 1.9110000133514404,
-        "mean_row_variance": 4.710999965667725,
-        "mean_column_variance": 1.9709999561309814
+        "mean_row_selectivity": 3.244999885559082,
+        "mean_column_selectivity": 1.944000005722046,
+        "mean_row_variance": 4.684000015258789,
+        "mean_column_variance": 1.809999942779541
     },
     "RoPE_layer_10": {
-        "mean_row_selectivity": 1.7869999408721924,
-        "mean_column_selectivity": 1.2289999723434448,
-        "mean_row_variance": 1.4950000047683716,
-        "mean_column_variance": 0.006000000052154064
+        "mean_row_selectivity": 1.7669999599456787,
+        "mean_column_selectivity": 1.281000018119812,
+        "mean_row_variance": 1.3860000371932983,
+        "mean_column_variance": 0.008999999612569809
     },
-
     "APE_layer_2": {
         "mean_row_selectivity": 7.22599983215332,
         "mean_column_selectivity": 7.936999797821045,

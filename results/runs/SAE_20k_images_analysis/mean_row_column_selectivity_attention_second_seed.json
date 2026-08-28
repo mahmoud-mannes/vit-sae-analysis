@@ -1,0 +1,14 @@
+{
+    "RoPE_layer_4": {
+        "mean_row_selectivity": 3.0360000133514404,
+        "mean_column_selectivity": 3.8970000743865967,
+        "mean_row_variance": 18.152000427246094,
+        "mean_column_variance": 8.560999870300293
+    },
+    "APE_layer_2": {
+        "mean_row_selectivity": 2.617000102996826,
+        "mean_column_selectivity": 2.2239999771118164,
+        "mean_row_variance": 6.0920000076293945,
+        "mean_column_variance": 10.692999839782715
+    }
+}
