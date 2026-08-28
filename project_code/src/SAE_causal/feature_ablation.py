@@ -55,7 +55,7 @@ def ablate_features(
 
     if random_features:
         # Randomly select features to remove
-        features_to_remove = [randint(0, SAE.W_enc.shape[-1]) for _ in range(k)]
+        features_to_remove = torch.randperm(SAE.W_enc.shape[-1])[:k].tolist()
 
     if top_features:
         # Load the selectivity scores from the JSON file
