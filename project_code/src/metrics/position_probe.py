@@ -77,7 +77,7 @@ def train_probe_chunk(
     batch_size: int = 1024,
     device: str = "cuda",
 ) -> nn.Module:
-    """One train-only epoch over this chunk. No val split inside."""
+    """One train-only epoch over a specific chunk. Returns the partially trained probe."""
     probe.train()
     _, T, _ = activations.shape
     DL = DataLoader(Data(activations), batch_size=batch_size, shuffle=True, num_workers=0)
@@ -104,6 +104,18 @@ def train_probe_streaming(
     val_fraction: float = 0.1,
     device: str = "cuda",
 ) -> tuple[nn.Module, dict]:
+    """
+    Utilizes the train_probe_chunk function to fully train the probe from start to finish, this is done by loading chunks of activations extracted
+    from the ViT and feeding them into the train_probe_chunk. This is done to avoid the massive memory demands of storing tens of thousands of activations,
+    and the storage demands of storing those activations to disk.
+    This function can be particularly slow, due to the fact that inference with a ViT is required at every pass.
+
+    Another important note is that this function does not fully separate the training and validation sets, it simply streams through the dataset and trains on all of the activations.
+    For a fully accurate reproduction of our results, we recommend using the train_probe_memmap function, which uses a memory map file to store the activations and then trains on them in a more traditional manner.
+    
+    probe_type: str, either "linear" or "nonlinear", determines the type of probe to be used. Linear probes are the default probes used in most of our experiments.
+    Non-linear probes are used to gauge whether positional information is available in the activations, but not linearly separable as is often the case in RoPE models. 
+    """
     assert probe_type in ["linear", "nonlinear"]
     assert num_images_per_chunk <= threshhold_number_images
     history = {"loss": [], "accuracy": []}
@@ -150,6 +162,14 @@ def train_probe_memmap(
     val_fraction: float = 0.1,
     device: str = "cuda",
 ) -> tuple[nn.Module, dict]:
+    """
+    Utilizes the train_probe_chunk function to fully train the probe from start to finish. This is done by loading chunks of activations from a memory
+    map file (in our case, created with numpy). This way, we avoid loading all of the activations into memory at once, and avoid the slowness that comes with streaming
+    the activations from a ViT running inference at each chunk.
+
+    probe_type: str, either "linear" or "nonlinear", determines the type of probe to be used. Linear probes are the default probes used in most of our experiments.
+    Non-linear probes are used to gauge whether positional information is available in the activations, but not linearly separable as is often the case in RoPE models. 
+    """
     assert probe_type in ["linear", "nonlinear"]
     history = {"loss": [], "accuracy": []}
 
