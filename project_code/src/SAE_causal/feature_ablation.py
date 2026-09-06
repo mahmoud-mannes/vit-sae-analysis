@@ -1,6 +1,7 @@
 from random import randint
 import sys
 import os
+import json
 
 import torch
 import torch.nn as nn
@@ -59,18 +60,12 @@ def ablate_features(
 
     if top_features:
         # Load the selectivity scores from the JSON file
-        import json
-        with open(selectivity_scores_path, "r") as f:
-            selectivity_scores = json.load(f)
-        key = f"{model_type}_layer_{layer}"
-        TSFP = selectivity_scores[key] # Top Selective Features by Position
-
-        top_unique_positional_features_list = []
-        for i in TSFP.values():
-            for j in i:
-                if j not in top_unique_positional_features_list:
-                 top_unique_positional_features_list.append(j)
-
+        top_unique_positional_features_list = load_selectivity_scores(
+            selectivity_scores_path,
+            model_type,
+            layer
+        )
+        # Select only K positional features
         features_to_remove = top_unique_positional_features_list[:k]
         
 
@@ -85,3 +80,35 @@ def ablate_features(
     )
 
     return handle
+
+
+def load_selectivity_scores(
+    selectivity_scores_path: str,
+    model_type: str,
+    layer: int
+) -> list:
+    with open(selectivity_scores_path, "r") as f:
+        selectivity_scores = json.load(f)
+    key = f"{model_type}_layer_{layer}"
+    TSFP = selectivity_scores[key] # Top Selective Features by Position
+
+    top_unique_positional_features_list = []
+    for i in TSFP.values():
+        for j in i:
+            if j not in top_unique_positional_features_list:
+                top_unique_positional_features_list.append(j)
+
+    return top_unique_positional_features_list
+
+def num_positional_features(
+    selectivity_scores_path: str,
+    model_type: str,
+    layer: int
+) -> int:
+    return len(
+            load_selectivity_scores(
+            selectivity_scores_path,
+            model_type,
+            layer
+        )
+    )
