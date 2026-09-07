@@ -177,7 +177,7 @@ def train_probe_memmap(
     n_val = int(N * val_fraction)
     n_train = N - n_val
     # fixed held-out tail; never trained on
-    val_acts = torch.from_numpy(np.array(acts[n_train:]))
+    val_acts = torch.as_tensor(np.array(acts[n_train:]))
 
     probe = (LinearProbe(D, T) if probe_type == "linear" else NonLinearProbe(D, T)).to(device)
     optimizer = torch.optim.AdamW(probe.parameters(), lr=lr, weight_decay=weight_decay)
@@ -186,7 +186,7 @@ def train_probe_memmap(
         # stream train portion in batch_size blocks to avoid RAM blowup
         idx = 0
         while idx < n_train:
-            chunk = torch.from_numpy(np.array(acts[idx: idx + batch_size]))
+            chunk = torch.as_tensor(np.array(acts[idx: idx + batch_size]))
             probe = train_probe_chunk(probe, optimizer, chunk, batch_size, device)
             idx += batch_size
         loss, acc = evaluate_probe(probe, val_acts, batch_size, device)
