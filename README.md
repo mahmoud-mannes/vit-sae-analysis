@@ -16,11 +16,15 @@ on the rotary basis itself once the SAE route hit a real instrument problem
 
 ## Team
 
-**Mahmoud Mannes** First-author, conducting mechanistic interpretability research for over a year, with a focus on the internal representations of Vision Transformers.
-**Aravind Kannappan:** Recently graduated from NYU with an MS. Previously a Research Fellow at EleutherAI and SPAR working on mechanistic interpretability.
-**Nikhil Maturi:** Working on mitigating AI x-risk through work on interpretability/alignment/control, and improving human health through research in BioML. Research Fellow at EleutherAI as of September 2026.
-**Jiwon Jeong:** M.S. in Artificial Intelligence, working mainly on NLP and LLMs. Previous research on LLM reasoning and commonsense QA, more recently on Transformer architecture and internals. Interested in APE vs. RoPE and how positional and spatial representations are formed inside ViTs.
-**Parva Mehta:** Working on mechanistic interpretability of transformer internals, with papers in the NeurIPS Workshop pipeline. Familiar with ViT internals, probing, and ablation style causal work. Also working on a computer vision patent related project and an upcoming paper on distilled ViTs.
+- **Mahmoud Mannes** First-author, conducting mechanistic interpretability research for over a year, with a focus on the internal representations of Vision Transformers.
+
+- **Aravind Kannappan:** Recently graduated from NYU with an MS. Previously a Research Fellow at EleutherAI and SPAR working on mechanistic interpretability.
+
+- **Nikhil Maturi:** Working on mitigating AI x-risk through work on interpretability/alignment/control, and improving human health through research in BioML. Research Fellow at EleutherAI as of September 2026.
+
+- **Jiwon Jeong:** M.S. in Artificial Intelligence, working mainly on NLP and LLMs. Previous research on LLM reasoning and commonsense QA, more recently on Transformer architecture and internals. Interested in APE vs. RoPE and how positional and spatial representations are formed inside ViTs.
+
+- **Parva Mehta:** Working on mechanistic interpretability of transformer internals, with papers in the NeurIPS Workshop pipeline. Familiar with ViT internals, probing, and ablation style causal work. Also working on a computer vision patent related project and an upcoming paper on distilled ViTs.
 
 ## Models and data
 
@@ -146,11 +150,160 @@ In-depth discussion of SAE implementation and results can be found in the docs d
 
 ## Repository layout
 
-`[TODO: regenerate this whole block from the actual current tree —
-research_notes/, CAUSAL_RESULTS.md, SAE_PLAN.md, activation_patching.py,
-position_alignment_patching.py, attention_output_analysis.py,
-ablation_sweep.py, position_probe.py all exist in your pasted version but
-not in what's currently live on main]`
+```
+├── CODEOWNERS
+├── README.md
+├── docs
+│   ├── CAUSAL_FOLLOWUPS.md
+│   ├── CAUSAL_RESULTS.md
+│   ├── DISCUSSION.md
+│   ├── EXPERIMENTS.md
+│   ├── LINEAR_PROBE.md
+│   ├── METHODS.md
+│   ├── SAE_PLAN.md
+│   └── SAE_RESULTS.md
+├── notebooks
+│   └── vit_ssdc_ablation_colab.ipynb
+├── project_code
+│   └── src
+│       ├── SAE
+│       │   ├── __init__.py
+│       │   ├── activation_store.py
+│       │   ├── activation_store_scaled.py
+│       │   ├── benchmark_synthetic.py
+│       │   ├── extract.py
+│       │   ├── metrics.py
+│       │   ├── run_real.py
+│       │   ├── sae.py
+│       │   └── train.py
+│       ├── SAE_causal
+│       │   ├── feature_ablation.py
+│       │   └── feature_ablation_hook.py
+│       ├── SAE_feature_analysis
+│       │   ├── activation_extraction.py
+│       │   ├── top_candidates.py
+│       │   ├── top_selective_features.py
+│       │   └── visualize_feature_activation.py
+│       ├── experiments
+│       │   ├── __init__.py
+│       │   ├── ablation_layerwise.py
+│       │   ├── ablation_sweep.py
+│       │   ├── activation_patching.py
+│       │   ├── attention_output_analysis.py
+│       │   ├── common.py
+│       │   ├── effective_rank_probe.py
+│       │   ├── plot_causal_results.py
+│       │   ├── position_alignment_patching.py
+│       │   ├── reproduce_robustness.py
+│       │   └── reproduce_ssdc.py
+│       ├── interventions
+│       │   ├── __init__.py
+│       │   ├── ablation.py
+│       │   └── corruptions.py
+│       ├── main
+│       │   ├── load_models.py
+│       │   ├── make_imagenet_c.py
+│       │   ├── model.py
+│       │   └── prep_data.py
+│       └── metrics
+│           ├── effective_rank.py
+│           ├── position_probe.py
+│           ├── robustness.py
+│           └── ssdc.py
+├── requirements.txt
+├── results
+│   ├── figures
+│   │   ├── APE_MLP_ablation_dinov1.png
+│   │   ├── APE_attention_ablation_dinov1.png
+│   │   ├── ROPE_MLP_ablation_dinov3.png
+│   │   ├── RoPE_attention_ablation_dinov3.png
+│   │   ├── ablation_attn_zero_rpi.png
+│   │   ├── ablation_mlp_keep_rpi.png
+│   │   ├── ablation_mlp_zero_rpi.png
+│   │   ├── causal_attention_output_ssdc.png
+│   │   ├── causal_attention_position_probes.png
+│   │   ├── causal_final_layer_ablation.png
+│   │   ├── causal_final_layer_baselines.png
+│   │   ├── causal_final_layer_patching.png
+│   │   ├── causal_peak_layer_ablation.png
+│   │   ├── causal_peak_layer_patching.png
+│   │   ├── causal_position_alignment.png
+│   │   ├── effective_rank_ape.png
+│   │   ├── robustness_fragility.png
+│   │   ├── sae_real_frontier.png
+│   │   ├── sae_synthetic_frontier.png
+│   │   ├── ssdc_ape.png
+│   │   └── ssdc_rope.png
+│   ├── reference
+│   │   ├── robustness_reference.json
+│   │   └── ssdc_reference.json
+│   └── runs
+│       ├── SAE_20k_images_analysis
+│       │   ├── original_results
+│       │   │   ├── feature_ablation_residual.json
+│       │   │   ├── mean_row_column_selectivity_attention.json
+│       │   │   ├── mean_row_column_selectivity_residual.json
+│       │   │   ├── top_selective_features_per_position_attention.json
+│       │   │   └── top_selective_features_per_position_residual.json
+│       │   └── second_seed
+│       │       ├── feature_ablation_second_seed_residual.json
+│       │       ├── mean_row_column_selectivity_attention_second_seed.json
+│       │       ├── mean_row_column_selectivity_residual_second_seed.json
+│       │       ├── top_selective_features_per_position_attention_second_seed.json
+│       │       └── top_selective_features_per_position_residual_second_seed.json
+│       ├── imagenet1k_test
+│       │   ├── sae_scaled_runs_20k_images.json
+│       │   ├── sae_scaled_runs_20k_images_attention.json
+│       │   ├── sae_scaled_runs_20k_images_attention_second_seed.json
+│       │   └── sae_scaled_runs_20k_images_second_seed,json
+│       ├── imagenet1k_val
+│       │   ├── ablation_ape.json
+│       │   ├── ablation_layerwise_ape_second_seed.json
+│       │   ├── ablation_layerwise_rope_second_seed.json
+│       │   ├── causal_followups
+│       │   │   ├── attention_output_and_probes_seed0.json
+│       │   │   ├── attention_output_and_probes_seed1.json
+│       │   │   ├── final_layer_activation_patching_ape_seed0.json
+│       │   │   ├── final_layer_activation_patching_ape_seed1.json
+│       │   │   ├── final_layer_activation_patching_rope_seed0.json
+│       │   │   ├── final_layer_activation_patching_rope_seed1.json
+│       │   │   ├── final_layer_zero_ablation_ape_seed0.json
+│       │   │   ├── final_layer_zero_ablation_ape_seed1.json
+│       │   │   ├── final_layer_zero_ablation_rope_seed0.json
+│       │   │   ├── final_layer_zero_ablation_rope_seed1.json
+│       │   │   ├── manifest.json
+│       │   │   ├── peak_layer_activation_patching_ape_seed0.json
+│       │   │   ├── peak_layer_activation_patching_ape_seed1.json
+│       │   │   ├── peak_layer_activation_patching_rope_seed0.json
+│       │   │   ├── peak_layer_activation_patching_rope_seed1.json
+│       │   │   ├── peak_layer_zero_ablation_ape_seed0.json
+│       │   │   ├── peak_layer_zero_ablation_ape_seed1.json
+│       │   │   ├── peak_layer_zero_ablation_rope_seed0.json
+│       │   │   ├── peak_layer_zero_ablation_rope_seed1.json
+│       │   │   ├── position_alignment_ape_seed0.json
+│       │   │   ├── position_alignment_ape_seed1.json
+│       │   │   ├── position_alignment_rope_seed0.json
+│       │   │   └── position_alignment_rope_seed1.json
+│       │   ├── effective_rank_ape.json
+│       │   ├── robustness.json
+│       │   ├── sae_real_benchmark.json
+│       │   └── ssdc.json
+│       └── synthetic
+│           └── sae_benchmark.json
+└── tests
+    ├── e2e_smoke.py
+    ├── fake_vit.py
+    ├── test_ablation_readouts.py
+    ├── test_activation_patching.py
+    ├── test_attention_output_analysis.py
+    ├── test_causal_results.py
+    ├── test_coordinate_probes.py
+    ├── test_core.py
+    ├── test_experiment_common.py
+    ├── test_position_alignment_patching.py
+    ├── test_sae.py
+    └── test_ssdc_accumulator.py
+```
 
 ## References
 
