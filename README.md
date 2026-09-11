@@ -16,11 +16,11 @@ on the rotary basis itself once the SAE route hit a real instrument problem
 
 ## Team
 
-**Mahmoud Mannes**
-**Aravind Kannappan**
-**Nikhil Maturi**
-**Jiwon Jeong**
-**Parva Mehta**
+**Mahmoud Mannes** First-author, conducting mechanistic interpretability research for over a year, with a focus on the internal representations of Vision Transformers.
+**Aravind Kannappan:** Recently graduated from NYU with an MS. Previously a Research Fellow at EleutherAI and SPAR working on mechanistic interpretability.
+**Nikhil Maturi:** Working on mitigating AI x-risk through work on interpretability/alignment/control, and improving human health through research in BioML. Research Fellow at EleutherAI as of September 2026.
+**Jiwon Jeong:** M.S. in Artificial Intelligence, working mainly on NLP and LLMs. Previous research on LLM reasoning and commonsense QA, more recently on Transformer architecture and internals. Interested in APE vs. RoPE and how positional and spatial representations are formed inside ViTs.
+**Parva Mehta:** Working on mechanistic interpretability of transformer internals, with papers in the NeurIPS Workshop pipeline. Familiar with ViT internals, probing, and ablation style causal work. Also working on a computer vision patent related project and an upcoming paper on distilled ViTs.
 
 ## Models and data
 
