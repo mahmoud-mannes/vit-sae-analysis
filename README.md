@@ -1,15 +1,26 @@
 # vit-sae-analysis
 
-A mechanistic study of how position encodings shape spatial structure inside
-pretrained Vision Transformers, and a new layer windowed ablation experiment that
-localizes where that structure is built and where it decays.
+A mechanistic study of how absolute and rotary positional encodings shape
+spatial structure inside pretrained Vision Transformers; what carries the
+positional signal, where it lives, how causally load-bearing it is, and why
+the two encoding schemes turn out to require different instruments to study
+at all.
 
-This repository is a more causal, SAE flavored take on the ideas in Mannes,
-*Positional Encodings Anchor Spatial Structure in Vision Transformers: A
-Geometric Perspective on Robustness* (arXiv 2606.00124). That paper is used only
-as guidance. The runs here use two off the shelf pretrained ViT-Base models
-rather than the from scratch ViT-S setup in the paper, and the ablation study
-below is our own.
+This repository extends Mannes, *Positional Encodings Anchor Spatial
+Structure in Vision Transformers: A Geometric Perspective on Robustness*
+(arXiv 2606.00124), moving from a from-scratch ViT-S study to real pretrained
+ViT-Base checkpoints, and from representational geometry to direct causal
+intervention: first via sparse autoencoders, then via an exact intervention
+on the rotary basis itself once the SAE route hit a real instrument problem
+(see "The reconstruction confound," below).
+
+## Team
+
+**Mahmoud Mannes**
+**Aravind Kannappan**
+**Nikhil Maturi**
+**Jiwon Jeong**
+**Parva Mehta**
 
 ## Models and data
 
@@ -17,299 +28,141 @@ below is our own.
 | --- | --- | --- | --- |
 | APE | `google/vit-base-patch16-224` | learned absolute | transformers |
 | RoPE | `vit_base_patch16_rope_224.naver_in1k` | rotary | timm |
+| APE (replication) | DINOv1 ViT-B/16 | learned absolute | timm |
+| RoPE (replication) | DINOv3 ViT-B/16 | rotary | timm |
 
-Both are ViT-Base/16 at 224 resolution with 12 blocks, trained on ImageNet-1k, so
-their heads output ImageNet-1k logits directly. The dataset is the ImageNet-1k
-validation split, streamed from the Hugging Face Hub. Streaming is why the
-`Data` class in `project_code/src/main/prep_data.py` is an `IterableDataset`.
+All ImageNet-1k, streamed from the Hugging Face Hub.
 
-## Core ideas
+## Core methodology
 
-**SSDC (Spatial Similarity Distance Correlation).** For a layer, take the token
-representations, build the token by token cosine similarity matrix `S`, build the
-spatial distance matrix `D` from the tokens' grid coordinates (L1 distance), and
-report the Spearman rank correlation between similarity and negative distance
-over all token pairs:
+**SSDC (Spatial Similarity Distance Correlation).** Spearman rank correlation
+between token-pair cosine similarity and negative spatial distance. High SSDC
+= spatially near tokens are represented similarly.
 
-```
-SSDC = spearman( { S_ij }_{i<j}, { -D_ij }_{i<j} )
-```
+**RPI (Random Permutation at Inference).** Shuffle token order immediately after image patching while pinning
+positional signal to sequence index, to isolate index-anchored structure from
+content-driven structure.
 
-High SSDC means spatially near tokens are represented similarly.
+**RPI for linear probes — a separate justification from RPI for SSDC.**
+SSDC is a relational metric, so RPI's job there is to decorrelate
+content-adjacency from index-adjacency across the whole similarity matrix.
+For a per-example linear probe, RPI does something related but distinct: it
+puts genuinely novel content–position pairings in front of the model, which
+is exactly what's needed to test whether decodable position is caused by the
+positional-encoding mechanism itself rather than by natural image priors
+(sky-is-up-style shortcuts).
 
-**RPI (Random Permutation at Inference).** Shuffle the patch tokens before the
-transformer while pinning the positional signal to the sequence index. Content
-driven structure is destroyed by the shuffle. Structure anchored to token index
-survives. SSDC under RPI is therefore a probe of index anchored spatial
-organization. See `project_code/src/main/model.py` for the permutation hook.
+**Fragility.** `fragility = 1 - shifted_acc / baseline_acc` under distribution
+shift (currently unused in main paper)
 
-**Fragility.** `fragility = 1 - shifted_accuracy / baseline_accuracy` under a
-distribution shift. Here the shift is ImageNet-C Gaussian blur at severity 5.
-Higher fragility means more sensitive to the shift.
+## Part 1 — APE: a sparse, causal, permanently destructible code
 
-## Reference results
+- SAE feature analysis: explicit row/column features, high
+  row/column selectivity.
+- Dose-response ablation (linear decodability):
 
-These are the numbers from the original run that this code reproduces. They live
-in `results/reference/` as JSON. Rerunning the notebook regenerates them, with
-small variation from image sampling. A full fresh run on the official ImageNet-1k
-validation split, with all figures, is saved under `results/runs/imagenet1k_val/`
-and `results/figures/`, and is discussed in [docs/DISCUSSION.md](docs/DISCUSSION.md).
+  | Features ablated | Peak top-1 accuracy |
+  | --- | --- |
+  | 0 (baseline, no reconstruction) | 100% |
+  | 0 (SAE reconstruction) | ~100% |
+  | 0 (20 random features) | ~100% |
+  | 4 | 95.93% |
+  | 8 | 60.5% |
+  | 12 | 44% |
+  | 16 | 33.2% |
+  | 20 | 22.9% |
 
-**SSDC under RPI across the 12 blocks.**
+- Component localization (windowed ablation): attention builds the early
+  peak (survives all MLP ablation, only moves under attention ablation);
+  middle MLPs drive the later decay; late attention only
+  softens, doesn't flatten, the decay.
+- Rank dissociation: `mlp_zero_all` collapses effective rank 154→43 while
+  SSDC-under-RPI stays highest — the two probes measure different things.
+- DINOv1 replication: main SAE story replicated.
 
-| Model | Behavior | Peak block | Peak SSDC | Final SSDC |
-| --- | --- | --- | --- | --- |
-| APE | peaks early then decays | 2 to 3 | 0.66 | 0.13 |
-| RoPE | accumulates gradually | 5 | 0.39 | 0.23 |
+## Part 2 — RoPE: where the SAE route broke, and why that's informative
 
-The APE model builds index anchored structure fast and loses it over the later
-blocks. The RoPE model injects position multiplicatively inside attention, so its
-recovery accumulates with depth and peaks later.
+**First pass, SAE-based.** positional features identified via
+selectivity scoring, visually messier than APE's row/column structure, no
+clean geometric form. Ablating them: SSDC drops `0.421 → 0.096` at the
+intervention layer, and appeared to recover within a few blocks.
 
-**Robustness under Gaussian blur (severity 5).**
+## The reconstruction confound
 
-| Model | Baseline acc | Shifted acc | Fragility |
-| --- | --- | --- | --- |
-| APE | 0.802 | 0.541 | 0.326 |
-| RoPE | 0.836 | 0.586 | 0.299 |
+The apparent RoPE "recovery" was largely an artifact of comparing against the
+SAE's own reconstructed baseline rather than the untouched model — the
+reconstruction step inflates late-layer SSDC by up to `+0.21`, enough that
+the *ablated* model reads as having more structure than a model that was
+never touched past a certain layer.
 
-RoPE is the more robust of the two.
+The same confound showed up independently in linear-decodability space: the
+SAE-reconstruction baseline alone (zero features ablated) collapsed RoPE
+decodability from `38.7%` to `26.4%`, before any causal
+claim about specific features. It is important to note this is still significantly
+above random chance, as there are `197-201` possibilities (varies between models). This means
+the probability of a random chance prediction is roughly equal to `0.5%`
 
-## The new experiment: layer windowed ablation
+**What this motivated:** moving the causal claims off SAE-based ablation
+entirely for RoPE, onto an intervention with zero reconstruction error.
 
-Two working claims motivate this study:
+## Part 3 — The rotary-basis intervention
 
-1. Ablating MLPs destroys SSDC recovery under RPI.
-2. Ablating attention destroys the SSDC decay that happens in later layers.
+RoPE's positional vocabulary is architecturally exhaustive and directly
+addressable: `[TODO: N axes × N frequency bands]` = `[TODO: N]` rotation
+planes, shared across all heads and layers on the Axial checkpoint (verified
+against the installed timm source — see `[TODO: file]`). Setting a plane's
+sine to 0 and cosine to 1 is an exact identity; nothing is reconstructed.
 
-Both are stated for whole model ablations. We tighten them by zero ablating a
-component only inside an early, middle, or late window, and by the reverse
-"keep only" probe that leaves a component alive in a single window. A ViT block
-computes `x = x + attn(norm1(x))` then `x = x + mlp(norm2(x))`. Zero ablating a
-sublayer forces its output to zero so the residual passes through untouched.
-Ablating at block `i` changes the residual from block `i` onward, so the effect
-shows up at block `i+1` and beyond. Implementation is in
-`project_code/src/interventions/ablation.py` and works for both the transformers
-and timm layouts.
+| Workstream | Establishes | Status |
+| --- | --- | --- |
+| W1 | Correction + reconstruction-artifact diagnostic + normalization protocol | `done` |
+| W2 | Necessity — dose-response over axis/frequency/per-head (per-head moved to RoPE-Mixed) | `in progress` |
+| W3 | Necessity via persistent vs. single-layer ablation; suffix sweep is the primary measurement | `in progress` |
+| W4 | Sufficiency — does restoring the attention output alone restore structure | `in progress` |
 
-```mermaid
-flowchart LR
-    subgraph Block i
-      A[residual x] --> B[norm1] --> C[attn]
-      C -->|"zero here to ablate attention"| D((+))
-      A --> D
-      D --> E[norm2] --> F[mlp]
-      F -->|"zero here to ablate MLP"| G((+))
-      D --> G
-      G --> H[residual to block i+1]
-    end
-```
 
-The point is to separate two explanations for the APE model's early SSDC peak.
+## Independent evidence for redundancy, at the attention-block level
 
-- **Early layers are special.** The early MLP blocks specifically build the index
-  anchored structure.
-- **First blocks encountered.** Any first surviving MLP blocks would build it,
-  wherever they sit in the stack.
+- Ablating RoPE's identified positional features directly at the attention
+  block output has a real, modest effect on downstream spatial structure
+  (attenuated by redundancy); the equivalent APE intervention has almost
+  none.
+- Layer-count-dependent feature survival: ablating any single layer, or
+  layers `[0,1,2]`, leaves `9/11` features intact; only ablating all of
+  `[0,1,2,3,4]` collapses this to `2/11`. `[TODO: run the missing
+  intermediate conditions (3 and 4 layers) before treating this as a
+  clean threshold rather than a two-tier robustness structure. Better to rerun this whole experiment once again]`
 
-Conditions (windows are early `[0,1,2,3]`, mid `[4,5,6,7]`, late `[8,9,10,11]`):
+## Cross-model replication and the open discrepancy
 
-| Condition | What it tests |
-| --- | --- |
-| `mlp_zero_all` | does removing every MLP crush SSDC recovery under RPI |
-| `mlp_zero_early` vs `mlp_zero_late` | is the early peak tied to the early MLPs |
-| `mlp_keep_early` / `mlp_keep_mid` / `mlp_keep_late` | does the peak follow the first surviving MLPs (first blocks encountered) |
-| `attn_zero_all` | does removing every attention flatten the later layer decay |
-| `attn_zero_late` | does removing attention only late still flatten the decay |
-| `attn_zero_early` / `attn_zero_mid` | where does attention shape the peak |
-
-How to read the output (the script prints a per condition table of peak,
-peak_layer, delta, decay, final, auc):
-
-- If `mlp_zero_all` sends SSDC under RPI toward zero everywhere, MLPs carry the
-  index anchored recovery.
-- If `mlp_zero_early` removes the early peak but `mlp_zero_late` leaves it, the
-  peak is an early MLP phenomenon.
-- If `mlp_keep_mid` or `mlp_keep_late` shift the peak to follow the kept window,
-  the peak tracks the first surviving MLPs rather than absolute depth.
-- If `attn_zero_late` alone flattens the decay, the later layer decay is an
-  attention driven, late block effect.
-
-### Findings (real ImageNet run)
-
-The run reversed the two starting claims. The full write up with the summary table
-is in [docs/DISCUSSION.md](docs/DISCUSSION.md); the figures are in
-`results/figures/` and the numbers in `results/runs/imagenet1k_val/`.
-
-- **The early peak is attention, not MLPs.** It survives every MLP ablation
-  (`mlp_zero_all` still peaks at 0.79 near block 3) and only moves under attention
-  ablation (`attn_zero_all` peak drops to 0.62 at block 6). So it is neither an
-  early MLP effect nor a first MLPs encountered effect. It is not an MLP effect.
-- **The later decay is the middle MLPs.** `mlp_zero_mid` and `mlp_zero_all` remove
-  most of it (the final block rises from 0.20 to 0.48 and 0.68), `mlp_zero_late`
-  does nothing, and the keep only probe agrees.
-- **Late attention only softens the decay.** `attn_zero_late` lifts the final block
-  to 0.34 but does not flatten the decay. The dominant decay driver is the middle
-  MLPs.
-- **Rank dissociates from SSDC.** `mlp_zero_all` collapses effective rank (154 to
-  43) yet keeps SSDC under RPI highest, so the two probes measure different things.
-
-Net: attention builds the early recovery, and the middle MLPs drive its decay.
-
-## Causal follow-up results
-
-Four follow-up experiments test the positional mechanism with activation
-patching, independent zero ablations, donor-alignment controls, direct
-attention-output measurements, and held-out coordinate probes.
-
-- APE spatial structure is controlled mainly by early computation.
-- RoPE peak-layer spatial structure depends selectively on attention layers
-  2-4 while clean accuracy remains stable.
-- Correct donor-token alignment matters much more than donor image identity.
-- Coordinate information peaks early in APE and later in RoPE attention output.
-
-![Peak-layer SSDC loss after independent zero ablation.](results/figures/causal_peak_layer_ablation.png)
-
-The concise analysis is in
-[docs/CAUSAL_RESULTS.md](docs/CAUSAL_RESULTS.md). Curated two-seed JSON runs are
-under `results/runs/imagenet1k_val/causal_followups/` with a machine-readable
-manifest.
-
-## Extensions
-
-**Effective rank and rank collapse.** Dong et al. (2021) show that attention
-without MLPs and skip connections drives token representations toward rank one
-with depth. `project_code/src/metrics/effective_rank.py` measures effective rank
-across the residual stream, and `effective_rank_probe.py` compares baseline,
-`mlp_zero_all`, and `attn_zero_all`. If MLP ablation collapses effective rank
-where it also collapses SSDC recovery, a representational capacity failure and the
-spatial structure failure line up, which is a mechanistic account rather than a
-correlation.
-
-**Patch shuffle corruption.** `interventions/corruptions.py` adds a grid patch
-shuffle shift. It scrambles where local content sits while keeping the global
-palette, so it is an input level analogue of RPI and an extra probe of reliance
-on local content.
+DINOv1/DINOv3 replication: qualitative pattern holds, but DINOv3's
+near-ceiling baseline SSDC (`0.92-0.96`) leaves little room to show a drop,
+and the feature-ablation effect size is significantly more modest compared to the original
+naver/timm RoPE model, but still real. **Explanation currently under progress**
 
 ## Sparse autoencoders
 
-The original `SAE/train_SAE.py` is a ReLU plus L1 dictionary with dead feature
-resampling (the 2023 recipe). `project_code/src/SAE/` is a modern replacement:
-one `SAE` class with a selectable sparsity mechanism (`relu_l1`, `topk`,
-`batchtopk`, `jumprelu`), a pre-encoder bias so the residual stream mean does not
-leak into every feature, an AuxK auxiliary loss in place of resampling, an
-activation store with normalisation and a held out split, and honest metrics
-(held out FVU, L0, dead fraction, ground truth recovery, and a downstream
-reconstruction splice). On the measured runs, TopK and BatchTopK both dominate
-the L1 baseline; TopK is the cleanest choice at low L0 and BatchTopK at a larger
-budget (see [docs/SAE_RESULTS.md](docs/SAE_RESULTS.md)).
-
-Two benchmarks establish that the new recipe is better:
-
-```bash
-cd project_code/src
-python -m SAE.benchmark_synthetic                 # ground truth recovery, offline
-python -m SAE.run_real --images 512 --layer 6     # real ViT residual stream (needs HF_TOKEN)
-```
-
-The design, the reasoning, and the research directions that follow are in
-[docs/SAE_PLAN.md](docs/SAE_PLAN.md); the measured results are in
-[docs/SAE_RESULTS.md](docs/SAE_RESULTS.md).
+In-depth discussion of SAE implementation and results can be found in the docs directory.
 
 ## Repository layout
 
-```
-project_code/src/
-  main/
-    load_models.py      load APE (transformers) and RoPE (timm) with one interface
-    prep_data.py        streaming IterableDataset, lazy ImageNet-C or light corruptions
-    model.py            predict(), plus the RPI permutation and PE scaling hooks
-    make_imagenet_c.py  full ImageNet-C corruption suite (heavy deps, optional)
-  metrics/
-    ssdc.py             SSDC metric and per layer evaluator
-    position_probe.py   token classifiers and held-out row/column ridge probes
-    effective_rank.py   effective rank metric and evaluator (extension)
-    robustness.py       fragility score
-  interventions/
-    ablation.py         AblationController: windowed MLP or attention ablation
-    corruptions.py      light Gaussian blur, JPEG, pixelate, patch shuffle
-  experiments/
-    common.py           dataset streaming, curve summaries, plotting
-    reproduce_ssdc.py   SSDC and SSDC under RPI for both models
-    reproduce_robustness.py   fragility under Gaussian blur
-    ablation_layerwise.py     the new windowed ablation experiment
-    effective_rank_probe.py   effective rank under ablation (extension)
-    activation_patching.py    clean-to-RPI component patching
-    ablation_sweep.py         independent per-layer attention/MLP ablation
-    position_alignment_patching.py  aligned and misaligned donor controls
-    attention_output_analysis.py   block-stage SSDC and coordinate probes
-    plot_causal_results.py         regenerate all curated follow-up figures
-  SAE/
-    sae.py                  SAE model: b_dec, relu_l1/topk/batchtopk/jumprelu, AuxK
-    activation_store.py     normalised, held out split, multi epoch iteration
-    train.py                one trainer for every variant
-    metrics.py              FVU, L0, dead fraction, recovery, downstream splice
-    benchmark_synthetic.py  ground truth recovery benchmark (offline)
-    run_real.py             real ViT residual stream benchmark
-    extract.py              build an activation store from a real ViT
-    train_SAE.py, resample.py   the original 2023 recipe, kept for the notebook
-notebooks/
-  vit_ssdc_ablation_colab.ipynb   end to end, runnable on Colab
-results/
-  reference/          the original run numbers, as JSON
-  figures/            output figures land here
-docs/
-  METHODS.md          metric and intervention details
-  EXPERIMENTS.md      the ablation design, hypotheses, and future work
-  CAUSAL_FOLLOWUPS.md shared infrastructure and reproduction commands
-  CAUSAL_RESULTS.md   curated figures, results, and interpretation
-tests/
-  test_core.py        unit tests for the metric and ablation logic
-```
-
-## Running it
-
-The fastest path is the Colab notebook `notebooks/vit_ssdc_ablation_colab.ipynb`.
-It installs dependencies, clones this repo, asks for a Hugging Face token (the
-ImageNet-1k split is gated), streams the data, and runs every experiment with
-plots.
-
-From the command line:
-
-```bash
-pip install -r requirements.txt
-export HF_TOKEN=...   # read access to ILSVRC/imagenet-1k
-cd project_code/src
-
-python experiments/reproduce_ssdc.py --model both --plot --number-images 1000
-python experiments/reproduce_robustness.py --model both --number-images 1000
-python experiments/ablation_layerwise.py --model ape --number-images 512 --plot
-python experiments/effective_rank_probe.py --model ape --plot
-```
-
-Run the unit tests (no GPU, no ImageNet, no weights needed):
-
-```bash
-python tests/test_core.py
-```
-
-## Notes on scope
-
-The code in this repository is written and unit tested. The full model runs need
-a GPU and the gated ImageNet-1k stream, so they are meant to be run in the Colab
-notebook. The reference numbers in `results/reference/` are from the original run
-and are what the code reproduces. The ablated (trained without PE) and RPT
-conditions from the guidance paper require training from scratch and are out of
-scope for this pretrained model study.
+`[TODO: regenerate this whole block from the actual current tree —
+research_notes/, CAUSAL_RESULTS.md, SAE_PLAN.md, activation_patching.py,
+position_alignment_patching.py, attention_output_analysis.py,
+ablation_sweep.py, position_probe.py all exist in your pasted version but
+not in what's currently live on main]`
 
 ## References
 
-- Mannes. Positional Encodings Anchor Spatial Structure in Vision Transformers.
-  arXiv 2606.00124.
+- SAE-related references: BatchTopK (arXiv:2412.06410), TopK / Scaling SAEs (arXiv:2406.04093), JumpReLU
+(arXiv:2407.14435), Gated SAEs (arXiv:2404.16014), Matryoshka SAEs
+(arXiv:2503.17547), SAEBench (arXiv:2503.09532), Prisma (arXiv:2504.19475),
+transcoders (arXiv:2406.11944), end to end SAEs (arXiv:2405.12241),
+crosscoders (transformer-circuits.pub, 2024).
+
+- Mannes. Positional Encodings Anchor Spatial Structure in Vision Transformers. arXiv 2606.00124.
 - Dosovitskiy et al. An Image is Worth 16x16 Words. ICLR 2021.
 - Heo et al. Rotary Position Embedding for Vision Transformer. ECCV 2024.
-- Dong, Cordonnier, Loukas. Attention is not all you need: pure attention loses
-  rank doubly exponentially with depth. ICML 2021.
-- Hendrycks, Dietterich. Benchmarking Neural Network Robustness to Common
-  Corruptions and Perturbations. ICLR 2019.
+- Dong, Cordonnier, Loukas. Attention is not all you need: pure attention loses rank doubly exponentially with depth. ICML 2021.
+- Hendrycks, Dietterich. Benchmarking Neural Network Robustness to Common Corruptions and Perturbations. ICLR 2019.
 - Roy, Vetterli. The effective rank: a measure of effective dimensionality. 2007.
