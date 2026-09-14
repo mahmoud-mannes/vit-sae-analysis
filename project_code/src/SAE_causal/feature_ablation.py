@@ -141,12 +141,22 @@ def load_top_features(
 def num_positional_features(
     selectivity_scores_path: str,
     model_type: str,
-    layer: int
+    layer: int,
+    axis="both"
 ) -> int:
+    """
+    Get the number of positional features from a JSON file. Parameters:
+    - selectivity_scores_path: Path to the JSON file containing selectivity scores.
+    - model_type: Type of the model (e.g., 'APE', 'RoPE').
+    - layer: Layer number for which to load selectivity scores.
+    - axis: Axis along which to load selectivity scores ('both', 'row', or 'column'). Default is 'both'.
+    """
+    
     return len(
             load_top_features(
             selectivity_scores_path,
             model_type,
-            layer
+            layer,
+            axis=axis
         )
     )
