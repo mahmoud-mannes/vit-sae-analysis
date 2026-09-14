@@ -22,7 +22,8 @@ def ablate_features(
     top_features: bool = True,
     selectivity_scores_path: str = None,
     random_features: bool = False,
-    k: int = 0
+    k: int = 0,
+    axis: str = "both"
 ) -> RemovableHandle:
     """
     Attaches a feature ablation hook to the specified model and handles random baselines + top positional feature candidate ablation.
@@ -63,7 +64,8 @@ def ablate_features(
         top_unique_positional_features_list = load_top_features(
             selectivity_scores_path,
             model_type,
-            layer
+            layer,
+            axis=axis
         )
         # Select only K positional features
         features_to_remove = top_unique_positional_features_list[:k]
