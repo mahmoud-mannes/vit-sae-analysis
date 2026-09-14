@@ -112,9 +112,9 @@ entirely for RoPE, onto an intervention with zero reconstruction error.
 ## Part 3 — The rotary-basis intervention
 
 RoPE's positional vocabulary is architecturally exhaustive and directly
-addressable: `[TODO: N axes × N frequency bands]` = `[TODO: N]` rotation
+addressable: `2 axes x 16 frequency bands = 32` rotation
 planes, shared across all heads and layers on the Axial checkpoint (verified
-against the installed timm source — see `[TODO: file]`). Setting a plane's
+against the installed timm source). Setting a plane's
 sine to 0 and cosine to 1 is an exact identity; nothing is reconstructed.
 
 | Workstream | Establishes | Status |

@@ -59,8 +59,8 @@ def ablate_features(
         features_to_remove = torch.randperm(SAE.W_enc.shape[-1])[:k].tolist()
 
     if top_features:
-        # Load the selectivity scores from the JSON file
-        top_unique_positional_features_list = load_selectivity_scores(
+        # Load the top features from the JSON file
+        top_unique_positional_features_list = load_top_features(
             selectivity_scores_path,
             model_type,
             layer
@@ -82,22 +82,60 @@ def ablate_features(
     return handle
 
 
-def load_selectivity_scores(
+def load_top_selective_features_dictionary(
     selectivity_scores_path: str,
     model_type: str,
     layer: int
 ) -> list:
+    """
+    Load the top selective features dictionary from a JSON file. Parameters:
+    - selectivity_scores_path: Path to the JSON file containing selectivity scores.
+    - model_type: Type of the model (e.g., 'APE', 'RoPE').
+    - layer: Layer number for which to load selectivity scores.
+    """
+    
     with open(selectivity_scores_path, "r") as f:
         selectivity_scores = json.load(f)
+
     key = f"{model_type}_layer_{layer}"
     TSFP = selectivity_scores[key] # Top Selective Features by Position
 
+    return TSFP
+
+
+def load_top_features(
+    selectivity_scores_path: str,
+    model_type: str,
+    layer: int,
+    axis="both"
+) -> list:
+    """
+    Load top features from a JSON file. Parameters:
+    - selectivity_scores_path: Path to the JSON file containing selectivity scores.
+    - model_type: Type of the model (e.g., 'APE', 'RoPE').
+    - layer: Layer number for which to load selectivity scores.
+    - axis: Axis along which to load selectivity scores ('both', 'row', or 'column'). Default is 'both'.
+    """
+    assert axis in ["both", "row", "column"], "axis must be 'both', or 'row', or 'column'"
+
+    TSFP = load_top_selective_features_dictionary(
+        selectivity_scores_path,
+        model_type,
+        layer
+    )
+
     top_unique_positional_features_list = []
     for i in TSFP.values():
-        for j in i:
-            if j not in top_unique_positional_features_list:
-                top_unique_positional_features_list.append(j)
-
+        if axis == "both":
+            for j in i:
+                if j not in top_unique_positional_features_list:
+                    top_unique_positional_features_list.append(j)
+        elif axis == "row":
+            if i[0] not in top_unique_positional_features_list:
+                top_unique_positional_features_list.append(i[0])
+        elif axis == "column":
+            if i[1] not in top_unique_positional_features_list:
+                top_unique_positional_features_list.append(i[1])
     return top_unique_positional_features_list
 
 def num_positional_features(
@@ -106,7 +144,7 @@ def num_positional_features(
     layer: int
 ) -> int:
     return len(
-            load_selectivity_scores(
+            load_top_features(
             selectivity_scores_path,
             model_type,
             layer
