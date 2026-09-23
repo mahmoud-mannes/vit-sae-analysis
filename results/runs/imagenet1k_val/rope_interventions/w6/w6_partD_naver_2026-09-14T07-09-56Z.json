@@ -1,0 +1,95 @@
+{
+  "rows": [
+    {
+      "k": 2,
+      "arm": "top",
+      "heads": [
+        2,
+        9
+      ],
+      "overlap": 2,
+      "retention": 0.36730696865154033
+    },
+    {
+      "k": 2,
+      "arm": "random_0",
+      "heads": [
+        2,
+        6
+      ],
+      "overlap": 1,
+      "retention": 0.6820014065476803
+    },
+    {
+      "k": 2,
+      "arm": "random_1",
+      "heads": [
+        5,
+        8
+      ],
+      "overlap": 0,
+      "retention": 0.8209360166413109
+    },
+    {
+      "k": 2,
+      "arm": "random_2",
+      "heads": [
+        3,
+        7
+      ],
+      "overlap": 0,
+      "retention": 0.8136187112827235
+    },
+    {
+      "k": 4,
+      "arm": "top",
+      "heads": [
+        2,
+        9,
+        11,
+        10
+      ],
+      "overlap": 4,
+      "retention": 0.17823605756035482
+    },
+    {
+      "k": 4,
+      "arm": "random_0",
+      "heads": [
+        0,
+        2,
+        8,
+        10
+      ],
+      "overlap": 2,
+      "retention": 0.3957318305700058
+    },
+    {
+      "k": 4,
+      "arm": "random_1",
+      "heads": [
+        4,
+        6,
+        7,
+        10
+      ],
+      "overlap": 1,
+      "retention": 0.8659406682669745
+    },
+    {
+      "k": 4,
+      "arm": "random_2",
+      "heads": [
+        2,
+        6,
+        10,
+        11
+      ],
+      "overlap": 3,
+      "retention": 0.3844650134008852
+    }
+  ],
+  "baseline": 0.469422489792919,
+  "floor": 0.01286503293016077,
+  "runtime_s": 97.1
+}

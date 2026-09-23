@@ -1,0 +1,94 @@
+gate,scope,status,detail
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005
+empty plane mask bit-identical [interleaved],algebra,PASS,
+full plane mask equals identity [interleaved],algebra,PASS,
+plane 3 touches only its own columns [interleaved],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]"
+mask NO heads equals unmodified rope [interleaved],per-head,PASS,
+mask ALL heads equals global identity [interleaved],per-head,PASS,
+mask head 3 leaves others untouched [interleaved],per-head,PASS,
+mask head 3 changes head 3 [interleaved],per-head,PASS,
+empty plane mask bit-identical [rotate_half],algebra,PASS,
+full plane mask equals identity [rotate_half],algebra,PASS,
+plane 3 touches only its own columns [rotate_half],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]"
+mask NO heads equals unmodified rope [rotate_half],per-head,PASS,
+mask ALL heads equals global identity [rotate_half],per-head,PASS,
+mask head 3 leaves others untouched [rotate_half],per-head,PASS,
+mask head 3 changes head 3 [rotate_half],per-head,PASS,
+composite REJECTS overlapping segments,composite,PASS,
+composite ACCEPTS disjoint segments,composite,PASS,
+forward grid is 14x14,RoPE · naver,PASS,14x14
+rope rows equal patch tokens,RoPE · naver,PASS,196 vs 196
+every plane classifies decisively,RoPE · naver,PASS,max ratio 8.6e-07
+axis split is balanced,RoPE · naver,PASS,16/16
+baseline hits its W3/W4 anchor,RoPE · naver,PASS,+0.469422 vs 0.469422
+floor hits its W3/W4 anchor,RoPE · naver,PASS,+0.012865 vs 0.012865
+floor is below baseline,RoPE · naver,PASS,
+floor equals baseline at block 0,RoPE · naver,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · naver,PASS,0.00e+00
+Cref_prefix5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · naver,PASS,0.329663 vs 0.329663  delta 1.01e-07
+Dref_axisrow5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · naver,PASS,0.382360 vs 0.38236  delta 3.22e-07
+Dref_axiscol5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · naver,PASS,0.419516 vs 0.419516  delta 1.33e-07
+every intervening condition registered a hook,RoPE · naver,PASS,
+forward grid is 14x14,RoPE · DINOv3,PASS,14x14
+rope rows equal patch tokens,RoPE · DINOv3,PASS,196 vs 196
+every plane classifies decisively,RoPE · DINOv3,PASS,max ratio 1.4e-06
+axis split is balanced,RoPE · DINOv3,PASS,16/16
+baseline hits its W3/W4 anchor,RoPE · DINOv3,PASS,+0.948654 vs 0.948654
+floor hits its W3/W4 anchor,RoPE · DINOv3,PASS,+0.017712 vs 0.017712
+floor is below baseline,RoPE · DINOv3,PASS,
+floor equals baseline at block 0,RoPE · DINOv3,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · DINOv3,PASS,0.00e+00
+Cref_prefix5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · DINOv3,PASS,0.442640 vs 0.44264  delta 4.26e-07
+Dref_axisrow5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · DINOv3,PASS,0.627570 vs 0.62757  delta 1.44e-07
+Dref_axiscol5 REPRODUCES W3 at block 11 (tol 1e-06),RoPE · DINOv3,PASS,0.652320 vs 0.65232  delta 4.43e-07
+every intervening condition registered a hook,RoPE · DINOv3,PASS,
+forward grid is 14x14,RoPE · small,PASS,14x14
+rope rows equal patch tokens,RoPE · small,PASS,196 vs 196
+every plane classifies decisively,RoPE · small,PASS,max ratio 8.6e-07
+axis split is balanced,RoPE · small,PASS,16/16
+floor is below baseline,RoPE · small,PASS,
+floor equals baseline at block 0,RoPE · small,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · small,PASS,0.00e+00
+every intervening condition registered a hook,RoPE · small,PASS,
+forward grid is 14x14,RoPE · rope_ape,PASS,14x14
+rope rows equal patch tokens,RoPE · rope_ape,PASS,196 vs 196
+every plane classifies decisively,RoPE · rope_ape,PASS,max ratio 8.6e-07
+axis split is balanced,RoPE · rope_ape,PASS,16/16
+floor is below baseline,RoPE · rope_ape,FAIL,
+floor equals baseline at block 0,RoPE · rope_ape,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · rope_ape,PASS,0.00e+00
+every intervening condition registered a hook,RoPE · rope_ape,PASS,
+forward grid is 14x14,RoPE · reg1_gap,PASS,14x14
+rope rows equal patch tokens,RoPE · reg1_gap,PASS,196 vs 196
+every plane classifies decisively,RoPE · reg1_gap,PASS,max ratio 6.0e-05
+axis split is balanced,RoPE · reg1_gap,PASS,16/16
+floor is below baseline,RoPE · reg1_gap,PASS,
+floor equals baseline at block 0,RoPE · reg1_gap,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · reg1_gap,PASS,0.00e+00
+every intervening condition registered a hook,RoPE · reg1_gap,PASS,
+grid matches resolution 224,RoPE · naver,PASS,14x14
+floor below baseline at 224,RoPE · naver,PASS,
+grid matches resolution 320,RoPE · naver,PASS,20x20
+floor below baseline at 320,RoPE · naver,PASS,
+grid matches resolution 224,RoPE · rope_ape,PASS,14x14
+floor below baseline at 224,RoPE · rope_ape,FAIL,
+grid matches resolution 320,RoPE · rope_ape,PASS,20x20
+floor below baseline at 320,RoPE · rope_ape,FAIL,
+grid matches resolution 224,RoPE · reg1_gap,PASS,14x14
+floor below baseline at 224,RoPE · reg1_gap,PASS,
+grid matches resolution 320,RoPE · reg1_gap,PASS,20x20
+floor below baseline at 320,RoPE · reg1_gap,PASS,
+grid matches resolution 224,RoPE · small,PASS,14x14
+floor below baseline at 224,RoPE · small,PASS,
+grid matches resolution 320,RoPE · small,PASS,20x20
+floor below baseline at 320,RoPE · small,PASS,
+part E: every block exposes a fused qkv,RoPE · naver,PASS,12/12
+part E: rebuilt q/k/v reproduce the module output through its own fused path,RoPE · naver,PASS,max |delta| over 12 blocks = 0.00e+00
+part E: every block exposes a fused qkv,RoPE · DINOv3,PASS,12/12
+part E: rebuilt q/k/v reproduce the module output through its own fused path,RoPE · DINOv3,PASS,max |delta| over 12 blocks = 0.00e+00
+part E: every block exposes a fused qkv,RoPE · small,PASS,12/12
+part E: rebuilt q/k/v reproduce the module output through its own fused path,RoPE · small,PASS,max |delta| over 12 blocks = 0.00e+00
+part E: every block exposes a fused qkv,RoPE · rope_ape,PASS,12/12
+part E: rebuilt q/k/v reproduce the module output through its own fused path,RoPE · rope_ape,PASS,max |delta| over 12 blocks = 0.00e+00
+part E: every block exposes a fused qkv,RoPE · reg1_gap,PASS,12/12
+part E: rebuilt q/k/v reproduce the module output through its own fused path,RoPE · reg1_gap,PASS,max |delta| over 12 blocks = 0.00e+00

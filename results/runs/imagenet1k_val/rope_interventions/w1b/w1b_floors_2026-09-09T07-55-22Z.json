@@ -1,0 +1,471 @@
+{
+ "notebook": "W1-B",
+ "generated_utc": "2026-09-09T07:55:22Z",
+ "environment": {
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "device": "cuda",
+  "half": true,
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "repo_path": "project_code/src"
+ },
+ "measurement": {
+  "implementation": "repo metrics/ssdc.py evaluate_ssdc + main/model.py predict",
+  "RPI": true,
+  "number_images": 1000,
+  "batch_size": 256,
+  "metric": "manhattan",
+  "num_workers": 0,
+  "torch_seed": 20260908,
+  "dataset_loader": "see console output for which loader was used \u2014 repo-specific if found under main/, else the unconfirmed imagenet-1k fallback"
+ },
+ "calibration_tolerance": 0.05,
+ "results": {
+  "APE \u00b7 google ViT": {
+   "status": "ok",
+   "kind": "ape",
+   "source": "transformers",
+   "family": "APE",
+   "role": "primary",
+   "probe_layer": 2,
+   "n_blocks": 12,
+   "num_prefix_tokens": -1,
+   "baseline_ssdc": [
+    0.42880807486078704,
+    0.5159081298195641,
+    0.7406007746678711,
+    0.7932725993795173,
+    0.796976049213852,
+    0.721958156626155,
+    0.5956845418298347,
+    0.4873786825357643,
+    0.418367551350413,
+    0.378744786585079,
+    0.3385263649478641,
+    0.20303455572859705
+   ],
+   "baseline_acc": {
+    "clean": 0.7750201970338821,
+    "rpi": 0.2578125
+   },
+   "floor_ssdc": [
+    0.016497489219883782,
+    0.015524184957884487,
+    0.015130408568443748,
+    0.016689661121372604,
+    0.016919172435579395,
+    0.016273333859965915,
+    0.01670126343390594,
+    0.01776450048273194,
+    0.01756325230421698,
+    0.015528340788607015,
+    0.013780133031188547,
+    0.00699530243363864
+   ],
+   "floor_acc": {
+    "clean": 0.25047144293785095,
+    "rpi": 0.24939385801553726
+   },
+   "achievable_range": 0.7254703660994274,
+   "w1a_reference": 0.7303107851,
+   "calibration_delta": 0.010289989567871083,
+   "runtime_s": 55.0
+  },
+  "RoPE \u00b7 naver": {
+   "status": "ok",
+   "kind": "rope",
+   "source": "timm",
+   "family": "RoPE",
+   "role": "primary",
+   "probe_layer": 4,
+   "n_blocks": 12,
+   "num_prefix_tokens": 1,
+   "baseline_ssdc": [
+    0.026534246825920874,
+    0.04370788593712482,
+    0.10918180070833022,
+    0.2679055766426121,
+    0.46944229117812386,
+    0.5712931111442615,
+    0.5371325487040899,
+    0.5339067842457559,
+    0.5747319719595411,
+    0.5434289933444753,
+    0.4822358951626089,
+    0.45516458632194634
+   ],
+   "baseline_acc": {
+    "clean": 0.8125673532485962,
+    "rpi": 0.28576239198446274
+   },
+   "rope_modules": [
+    "rope"
+   ],
+   "n_planes": 32,
+   "empty_mask_ssdc": [
+    0.026534246825920874,
+    0.04370788593712482,
+    0.10918180070833022,
+    0.2679055766426121,
+    0.46944229117812386,
+    0.5712931111442615,
+    0.5371325487040899,
+    0.5339067842457559,
+    0.5747319719595411,
+    0.5434289933444753,
+    0.4822358951626089,
+    0.45516458632194634
+   ],
+   "floor_ssdc": [
+    0.026534246825920874,
+    0.013622129470504141,
+    0.010840327666803606,
+    0.011856112358011475,
+    0.012867060830928199,
+    0.015186297858558328,
+    0.017498830808027364,
+    0.016000941814075832,
+    0.018000710873254937,
+    0.019099123714137314,
+    0.021167917516739413,
+    0.022410541554162073
+   ],
+   "floor_acc": {
+    "clean": 0.3448949381709099,
+    "rpi": 0.3458715006709099
+   },
+   "achievable_range": 0.45657523034719566,
+   "w1a_reference": 0.4632136707,
+   "calibration_delta": 0.006228620478123836,
+   "runtime_s": 74.0
+  },
+  "APE \u00b7 DINOv1": {
+   "status": "ok",
+   "kind": "dinov1",
+   "source": "timm",
+   "family": "APE",
+   "role": "second_seed",
+   "probe_layer": 2,
+   "n_blocks": 12,
+   "num_prefix_tokens": 1,
+   "baseline_ssdc": [
+    0.740074876706556,
+    0.40950667738357877,
+    0.47008326938403827,
+    0.6564013318248404,
+    0.7654691230967922,
+    0.8719032765175329,
+    0.8555213598315454,
+    0.8204637520667694,
+    0.672154676490664,
+    0.6067721551408761,
+    0.5446414292619,
+    0.5241912844873393
+   ],
+   "baseline_acc": {
+    "clean": 0.0009765625,
+    "rpi": 0.0
+   },
+   "floor_ssdc": [
+    0.020155572773399324,
+    0.015348195666142796,
+    0.011378495102671091,
+    0.012512333452148723,
+    0.01414340314978637,
+    0.014829916001589016,
+    0.016040480486324414,
+    0.016460626594203713,
+    0.018298374030101473,
+    0.019727116303634943,
+    0.02132716387467505,
+    0.022183507382610466
+   ],
+   "floor_acc": {
+    "clean": 0.0,
+    "rpi": 0.0
+   },
+   "achievable_range": 0.4587047742813672,
+   "w1a_reference": 0.4668140425,
+   "calibration_delta": 0.0032692268840382455,
+   "runtime_s": 57.0
+  },
+  "RoPE \u00b7 DINOv3": {
+   "status": "ok",
+   "kind": "dinov3",
+   "source": "timm",
+   "family": "RoPE",
+   "role": "second_seed",
+   "probe_layer": 4,
+   "n_blocks": 12,
+   "num_prefix_tokens": 5,
+   "grid_size": [
+    14,
+    14
+   ],
+   "note": "measured with load_rope(input_size=224), matching how the committed ablation runs were produced. The native-256 measurement is kept as a supplementary entry.",
+   "baseline_ssdc": [
+    0.028054900172719294,
+    0.03719212674606719,
+    0.8418389805375636,
+    0.9360396687231205,
+    0.9486326357594822,
+    0.9315188181796419,
+    0.9404882468331446,
+    0.9414840471667602,
+    0.9325114937110522,
+    0.9299538943880494,
+    0.9305398401847893,
+    0.8519926598043558
+   ],
+   "baseline_acc": {
+    "clean": 0.0,
+    "rpi": 0.0009765625
+   },
+   "rope_modules": [
+    "rope"
+   ],
+   "n_planes": 32,
+   "empty_mask_ssdc": [
+    0.0030203809808384287,
+    0.019915711339754106,
+    0.7744110739668787,
+    0.929531115908869,
+    0.9462358996579546,
+    0.9300872618429321,
+    0.9416957473179716,
+    0.94262162018436,
+    0.9372239052953166,
+    0.9349346436742534,
+    0.9380488870528249,
+    0.895635957349794
+   ],
+   "floor_ssdc": [
+    0.028054900172719294,
+    0.021442021940101457,
+    0.02377257694139997,
+    0.01942841199238121,
+    0.01779465229965707,
+    0.015365663204588579,
+    0.015591515713361983,
+    0.014630790519467212,
+    0.016467573126715068,
+    0.018892157114124647,
+    0.02004202878535469,
+    0.02536071863114491
+   ],
+   "floor_acc": {
+    "clean": 0.0,
+    "rpi": 0.0
+   },
+   "achievable_range": 0.9308379834598252,
+   "w1a_reference": 0.9482,
+   "calibration_delta": 0.0004326357594821584,
+   "runtime_s": 62.2,
+   "patch_tokens": 196,
+   "input_size": 224
+  },
+  "RoPE \u00b7 DINOv3 (native 256, supplementary)": {
+   "status": "ok",
+   "kind": "dinov3",
+   "source": "timm",
+   "family": "RoPE",
+   "role": "second_seed",
+   "probe_layer": 4,
+   "n_blocks": 12,
+   "num_prefix_tokens": 5,
+   "grid_size": [
+    16,
+    16
+   ],
+   "note": "native 256 grid, 16x16 = 256 patches. NOT the grid the committed ablation runs used.",
+   "baseline_ssdc": [
+    0.0030203809808384287,
+    0.019915711339754106,
+    0.7744110739668787,
+    0.929531115908869,
+    0.9462358996579546,
+    0.9300872618429321,
+    0.9416957473179716,
+    0.94262162018436,
+    0.9372239052953166,
+    0.9349346436742534,
+    0.9380488870528249,
+    0.895635957349794
+   ],
+   "baseline_acc": {
+    "clean": 0.0,
+    "rpi": 0.0009765625
+   },
+   "rope_modules": [
+    "rope"
+   ],
+   "n_planes": 32,
+   "empty_mask_ssdc": [
+    0.0030203809808384287,
+    0.019915711339754106,
+    0.7744110739668787,
+    0.929531115908869,
+    0.9462358996579546,
+    0.9300872618429321,
+    0.9416957473179716,
+    0.94262162018436,
+    0.9372239052953166,
+    0.9349346436742534,
+    0.9380488870528249,
+    0.895635957349794
+   ],
+   "floor_ssdc": [
+    0.0030203809808384287,
+    0.00949153174364701,
+    0.004704864206264094,
+    0.004969106055935408,
+    0.004585942036395313,
+    0.003959775135607954,
+    0.0025182829610080177,
+    0.002163918542034717,
+    0.00013586241086048116,
+    -0.0013745923155185353,
+    -0.0013201263347274506,
+    0.00038107440788192064
+   ],
+   "floor_acc": {
+    "clean": 0.0,
+    "rpi": 0.0
+   },
+   "achievable_range": 0.9416499576215593,
+   "w1a_reference": 0.9481541615,
+   "calibration_delta": 0.0019182618420453545,
+   "runtime_s": 62.2
+  }
+ },
+ "gates": [
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000 / -1.000 / -0.005"
+  },
+  {
+   "gate": "empty mask is bit-identical",
+   "scope": "rope-algebra",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "gate": "full mask equals identity",
+   "scope": "rope-algebra",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "gate": "identity embedding is a no-op on tokens",
+   "scope": "rope-algebra",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "gate": "a real embedding does change tokens",
+   "scope": "rope-algebra",
+   "status": "PASS",
+   "detail": ""
+  },
+  {
+   "gate": "floor is below baseline",
+   "scope": "APE \u00b7 google ViT",
+   "status": "PASS",
+   "detail": "baseline +0.7406 -> floor +0.0151 (range +0.7255)"
+  },
+  {
+   "gate": "baseline matches W1-A",
+   "scope": "APE \u00b7 google ViT",
+   "status": "PASS",
+   "detail": "computed +0.7406 vs W1-A +0.7303 (delta 0.0103, tol 0.05)"
+  },
+  {
+   "gate": "empty-mask reproduces baseline (E2.0)",
+   "scope": "RoPE \u00b7 naver",
+   "status": "PASS",
+   "detail": "max delta 0.00e+00"
+  },
+  {
+   "gate": "floor is below baseline",
+   "scope": "RoPE \u00b7 naver",
+   "status": "PASS",
+   "detail": "baseline +0.4694 -> floor +0.0129 (range +0.4566)"
+  },
+  {
+   "gate": "baseline matches W1-A",
+   "scope": "RoPE \u00b7 naver",
+   "status": "PASS",
+   "detail": "computed +0.4694 vs W1-A +0.4632 (delta 0.0062, tol 0.05)"
+  },
+  {
+   "gate": "floor is below baseline",
+   "scope": "APE \u00b7 DINOv1",
+   "status": "PASS",
+   "detail": "baseline +0.4701 -> floor +0.0114 (range +0.4587)"
+  },
+  {
+   "gate": "baseline matches W1-A",
+   "scope": "APE \u00b7 DINOv1",
+   "status": "PASS",
+   "detail": "computed +0.4701 vs W1-A +0.4668 (delta 0.0033, tol 0.05)"
+  },
+  {
+   "gate": "model loads",
+   "scope": "RoPE \u00b7 DINOv3",
+   "status": "SUPERSEDED",
+   "detail": "ValueError: Model name 'timm/vit_base_patch16_dinov3.lvd1689m' has no source prefix but looks like a Hugging Face Hub repo id or a local path. Use 'hf-hub:timm/vit_base_patch16_dinov3.lvd1689m' to load from the Hub or 'local-dir:timm/vit_base_patch16_dinov3.lvd1689m' to load from a local folder.  [superseded: reran via load_rope with the plain registry name; see dinov3_rerun_note]"
+  },
+  {
+   "gate": "model loads (registry name, no timm/ prefix)",
+   "scope": "RoPE \u00b7 DINOv3",
+   "status": "PASS",
+   "detail": "vit_base_patch16_dinov3.lvd1689m"
+  },
+  {
+   "gate": "empty-mask reproduces baseline (E2.0)",
+   "scope": "RoPE \u00b7 DINOv3",
+   "status": "PASS",
+   "detail": "max delta 0.00e+00"
+  },
+  {
+   "gate": "floor is below baseline",
+   "scope": "RoPE \u00b7 DINOv3",
+   "status": "PASS",
+   "detail": "baseline +0.9462 -> floor +0.0046 (range +0.9416)"
+  },
+  {
+   "gate": "baseline matches W1-A",
+   "scope": "RoPE \u00b7 DINOv3",
+   "status": "PASS",
+   "detail": "computed +0.9462 vs W1-A +0.9482 (delta 0.0019, tol 0.05)"
+  }
+ ],
+ "all_gates_passed": true,
+ "normalisation_protocol": {
+  "formula": "(observed - floor) / (baseline - floor)",
+  "floors": {
+   "APE \u00b7 google ViT": 0.015130408568443748,
+   "RoPE \u00b7 naver": 0.012867060830928199,
+   "APE \u00b7 DINOv1": 0.011378495102671091,
+   "RoPE \u00b7 DINOv3": 0.01779465229965707
+  },
+  "achievable_ranges": {
+   "APE \u00b7 google ViT": 0.7254703660994274,
+   "RoPE \u00b7 naver": 0.45657523034719566,
+   "APE \u00b7 DINOv1": 0.4587047742813672,
+   "RoPE \u00b7 DINOv3": 0.9308379834598252
+  }
+ },
+ "dinov3_rerun_note": "loaded with the timm registry name; the repo's load_model() hardcodes 'timm/...' which current timm rejects",
+ "gate_summary": {
+  "total": 17,
+  "pass": 16,
+  "superseded": 1,
+  "fail": 0
+ },
+ "grid_note": "All four primary entries are on a 14x14 / 196-patch grid. DINOv3 requires load_rope(input_size=224); load_model('dinov3') gives 16x16 / 256 patches. model.patch_embed.grid_size reports (16,16) in both cases and must not be trusted.",
+ "version": "v2 (2026-09-10)",
+ "supersedes": "v1, sent 2026-09-10 as w1b_output.zip. In v1 the DINOv3 entry was measured on the native 256 grid (16x16, 256 patches) via load_model('dinov3'). the committed ablation runs used load_rope(input_size=224), so v2 replaces it with the 224 measurement (14x14, 196 patches) and keeps the 256 one as a supplementary entry. DINOv3 floor 0.0046 -> 0.0178. Every other model is unchanged."
+}

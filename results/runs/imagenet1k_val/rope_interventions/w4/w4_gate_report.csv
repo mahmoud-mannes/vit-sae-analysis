@@ -1,0 +1,48 @@
+gate,scope,status,detail
+imported metric satisfies its unit test,repo-metric,PASS,+1.000 / -1.000 / -0.005
+empty plane mask is bit-identical [interleaved (naver)],algebra,PASS,
+full plane mask equals identity [interleaved (naver)],algebra,PASS,
+masking plane 3 touches only its own columns [interleaved (naver)],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]"
+"per-head tensor has shape (H,N,2D) [interleaved (naver)]",per-head,PASS,"(12, 196, 128)"
+masking NO heads equals unmodified rope [interleaved (naver)],per-head,PASS,
+masking ALL heads equals global identity [interleaved (naver)],per-head,PASS,
+masking head 3 leaves other heads untouched [interleaved (naver)],per-head,PASS,
+masking head 3 actually changes head 3 [interleaved (naver)],per-head,PASS,
+empty plane mask is bit-identical [rotate_half (DINOv3)],algebra,PASS,
+full plane mask equals identity [rotate_half (DINOv3)],algebra,PASS,
+masking plane 3 touches only its own columns [rotate_half (DINOv3)],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]"
+"per-head tensor has shape (H,N,2D) [rotate_half (DINOv3)]",per-head,PASS,"(12, 196, 128)"
+masking NO heads equals unmodified rope [rotate_half (DINOv3)],per-head,PASS,
+masking ALL heads equals global identity [rotate_half (DINOv3)],per-head,PASS,
+masking head 3 leaves other heads untouched [rotate_half (DINOv3)],per-head,PASS,
+masking head 3 actually changes head 3 [rotate_half (DINOv3)],per-head,PASS,
+composite REJECTS overlapping segments,composite,PASS,constructing 0-5 with 5-11 must raise
+composite ACCEPTS disjoint segments,composite,PASS,0-5 with 6-11 must construct
+forward grid is 14x14,RoPE · naver,PASS,14x14
+rope rows equal patch tokens,RoPE · naver,PASS,196 vs 196
+num_heads matches the anchor,RoPE · naver,PASS,12 vs 12
+every plane classifies decisively,RoPE · naver,PASS,max ratio 8.6e-07
+axis split is balanced,RoPE · naver,PASS,16/16
+baseline hits its W3 anchor,RoPE · naver,PASS,+0.469422 vs 0.469422
+floor hits its W3 anchor,RoPE · naver,PASS,+0.012865 vs 0.012865
+floor equals baseline at block 0,RoPE · naver,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · naver,PASS,max |delta| over 12 blocks = 0.00e+00
+stage A ranking is a permutation of all heads,RoPE · naver,PASS,"top: [2, 9, 11, 10]"
+Cref reproduces W3 prefix_5 at block 11,RoPE · naver,PASS,+0.329663 vs W3 0.329663
+Dref axisrow reproduces W3 at block 11,RoPE · naver,PASS,+0.382360 vs W3 0.38236
+Dref axiscol reproduces W3 at block 11,RoPE · naver,PASS,+0.419516 vs W3 0.419516
+every intervening condition registered at least one hook,RoPE · naver,PASS,
+forward grid is 14x14,RoPE · DINOv3,PASS,14x14
+rope rows equal patch tokens,RoPE · DINOv3,PASS,196 vs 196
+num_heads matches the anchor,RoPE · DINOv3,PASS,12 vs 12
+every plane classifies decisively,RoPE · DINOv3,PASS,max ratio 1.4e-06
+axis split is balanced,RoPE · DINOv3,PASS,16/16
+baseline hits its W3 anchor,RoPE · DINOv3,PASS,+0.948654 vs 0.948654
+floor hits its W3 anchor,RoPE · DINOv3,PASS,+0.017712 vs 0.017712
+floor equals baseline at block 0,RoPE · DINOv3,PASS,delta 0.00e+00
+per-head mask of ALL heads reproduces the global floor,RoPE · DINOv3,PASS,max |delta| over 12 blocks = 0.00e+00
+stage A ranking is a permutation of all heads,RoPE · DINOv3,PASS,"top: [2, 6, 5, 7]"
+Cref reproduces W3 prefix_5 at block 11,RoPE · DINOv3,PASS,+0.442640 vs W3 0.44264
+Dref axisrow reproduces W3 at block 11,RoPE · DINOv3,PASS,+0.627570 vs W3 0.62757
+Dref axiscol reproduces W3 at block 11,RoPE · DINOv3,PASS,+0.652320 vs W3 0.65232
+every intervening condition registered at least one hook,RoPE · DINOv3,PASS,

@@ -1,0 +1,43 @@
+run,condition,kind,dose,denominator,damage@site,drop_over_noise,reportable,suppressed_because,half_recovery_blocks,retention_final,overshoot,nan_blocks
+APE · google ViT,SAE_4_features_ablated,ablation,4,vs_SAE,0.18615131337217883,7.180158861054054,False,damage 18.6% < 30% gate,,0.9446659460799295,False,0
+APE · google ViT,SAE_4_features_ablated,ablation,4,vs_untouched,0.18598701787246352,7.172373795302913,False,damage 18.6% < 30% gate,,1.2105029772034377,True,0
+APE · google ViT,SAE_8_features_ablated,ablation,8,vs_SAE,0.1867620693047125,7.203716710534036,False,damage 18.7% < 30% gate,,1.0324585910557393,False,0
+APE · google ViT,SAE_8_features_ablated,ablation,8,vs_untouched,0.186597897101198,7.1959316447828945,False,damage 18.7% < 30% gate,,1.323001219106603,True,0
+APE · google ViT,SAE_12_features_ablated,ablation,12,vs_SAE,0.36954785942846813,14.254061867153272,True,,6.657968256083134,0.9297619277027316,False,0
+APE · google ViT,SAE_12_features_ablated,ablation,12,vs_untouched,0.3694205870605406,14.24627680140213,True,,3.3662237745342214,1.1914048413039076,True,0
+APE · google ViT,SAE_16_features_ablated,ablation,16,vs_SAE,0.3249947556020303,12.535576203894614,True,,8.036602634728078,0.945619527909091,False,0
+APE · google ViT,SAE_16_features_ablated,ablation,16,vs_untouched,0.32485848908743,12.527791138143472,True,,4.8669809894679785,1.2117249050690468,True,0
+APE · google ViT,SAE_20_features_ablated,ablation,20,vs_SAE,0.7706097255936626,29.72367021968439,True,,,-0.12016760558389673,False,0
+APE · google ViT,SAE_20_features_ablated,ablation,20,vs_untouched,0.7705634174894872,29.715885153933247,True,,,-0.15398379175870874,False,0
+APE · google ViT,20_random_features_ablated,random_control,20,vs_SAE,-0.0018160245878826586,0.07004702142771392,False,damage -0.2% < 30% gate; drop 0.1x noise < 3.0x,,1.0265199221856913,False,0
+APE · google ViT,20_random_features_ablated,random_control,20,vs_untouched,-0.00201826594685639,0.07783208717885576,False,damage -0.2% < 30% gate; drop 0.1x noise < 3.0x,,1.3153913583112078,True,0
+RoPE · naver,SAE_4_features_ablated,ablation,4,vs_SAE,0.4594620452574759,7.623702005388536,True,,2.070127674393707,0.9754231474749706,False,0
+RoPE · naver,SAE_4_features_ablated,ablation,4,vs_untouched,0.5084711465299403,9.278115228877583,True,,1.5888931421436099,1.5195923226357047,True,0
+RoPE · naver,SAE_8_features_ablated,ablation,8,vs_SAE,0.48489858006801534,8.045762028510955,True,,1.8376841564242512,0.9816321484803429,False,0
+RoPE · naver,SAE_8_features_ablated,ablation,8,vs_untouched,0.5316014201434394,9.700175252000003,True,,1.5191750294403663,1.5292652018199082,True,0
+RoPE · naver,SAE_11_features_ablated,ablation,11,vs_SAE,0.7723302830038611,12.81502136712788,True,,2.040226009631803,1.0581166883576614,False,0
+RoPE · naver,SAE_11_features_ablated,ablation,11,vs_untouched,0.7929724749517918,14.469434590616927,True,,1.7904238630275202,1.6484189454016187,True,0
+RoPE · naver,11_random_features_ablated,random_control,11,vs_SAE,0.012184778937563312,0.20217801357120005,False,damage 1.2% < 30% gate; drop 0.2x noise < 3.0x,,0.9708737050475506,False,0
+RoPE · naver,11_random_features_ablated,random_control,11,vs_untouched,0.10174728936403465,1.856591237060247,False,damage 10.2% < 30% gate; drop 1.9x noise < 3.0x,,1.5125048367554723,True,0
+APE · DINOv1,SAE_4_features_ablated,ablation,4,vs_SAE,0.3781751893638081,18.33134270574074,True,,5.242724939987024,0.9568780001186796,False,0
+APE · DINOv1,SAE_4_features_ablated,ablation,4,vs_untouched,0.4178470156004913,21.634629707861013,True,,4.265615863161416,0.9535312213582943,False,0
+APE · DINOv1,SAE_8_features_ablated,ablation,8,vs_SAE,0.430198659860506,20.853084198146078,True,,5.502745685177727,0.9371527297555343,False,0
+APE · DINOv1,SAE_8_features_ablated,ablation,8,vs_untouched,0.4665514385994499,24.15637120026635,True,,5.037767599291979,0.933874942147507,False,0
+APE · DINOv1,SAE_12_features_ablated,ablation,12,vs_SAE,0.6810891995035727,33.01453897671658,True,,,0.4724837778757027,False,0
+APE · DINOv1,SAE_12_features_ablated,ablation,12,vs_untouched,0.7014354025593044,36.31782597883686,True,,,0.47083121749472945,False,0
+APE · DINOv1,SAE_16_features_ablated,ablation,16,vs_SAE,0.6935172936975863,33.616967851632864,True,,,0.46119121444581695,False,0
+APE · DINOv1,SAE_16_features_ablated,ablation,16,vs_untouched,0.7130705962693156,36.920254853753136,True,,,0.459578150961452,False,0
+APE · DINOv1,SAE_18_features_ablated,ablation,18,vs_SAE,1.0673399879771905,51.73733140999004,True,,,-0.030909937754948474,False,0
+APE · DINOv1,SAE_18_features_ablated,ablation,18,vs_untouched,1.0630437613614043,55.040618412110305,True,,,-0.03080182708342058,False,0
+APE · DINOv1,18_random_features_ablated,random_control,18,vs_SAE,-0.0002849199997261298,0.013810969903886182,False,damage -0.0% < 30% gate; drop 0.0x noise < 3.0x,,1.0313681044856955,False,0
+APE · DINOv1,18_random_features_ablated,random_control,18,vs_untouched,0.06353229805692184,3.2894760322163843,False,damage 6.4% < 30% gate,,1.0277607889597837,False,0
+RoPE · DINOv3,SAE_4_features_ablated,ablation,4,vs_SAE,0.006449927135583566,0.4652887450881074,False,damage 0.6% < 30% gate; drop 0.5x noise < 3.0x,,1.0147754839942986,False,0
+RoPE · DINOv3,SAE_4_features_ablated,ablation,4,vs_untouched,0.03295326538894594,2.442353324931373,False,damage 3.3% < 30% gate; drop 2.4x noise < 3.0x,,1.061315182276245,False,0
+RoPE · DINOv3,SAE_10_features_ablated,ablation,10,vs_SAE,0.024061067841620654,1.7357318658289924,False,damage 2.4% < 30% gate; drop 1.7x noise < 3.0x,,0.9752257623140431,False,0
+RoPE · DINOv3,SAE_10_features_ablated,ablation,10,vs_untouched,0.05009462200265835,3.712796445672258,False,damage 5.0% < 30% gate,,1.0199516287256243,False,0
+RoPE · DINOv3,SAE_16_features_ablated,ablation,16,vs_SAE,0.02737434136753958,1.9747467955486586,False,damage 2.7% < 30% gate; drop 2.0x noise < 3.0x,,0.9555935139057968,False,0
+RoPE · DINOv3,SAE_16_features_ablated,ablation,16,vs_untouched,0.05331951265650903,3.9518113753919244,False,damage 5.3% < 30% gate,,0.9994190048826862,False,0
+RoPE · DINOv3,SAE_22_features_ablated,ablation,22,vs_SAE,0.06488847450784974,4.680964023279231,False,damage 6.5% < 30% gate,,0.9509050164658474,False,0
+RoPE · DINOv3,SAE_22_features_ablated,ablation,22,vs_untouched,0.08983294156755695,6.658028603122498,False,damage 9.0% < 30% gate,,0.994515483272669,False,0
+RoPE · DINOv3,SAE_22_random_features_ablated,random_control,22,vs_SAE,-0.0038898718538713517,0.2806099286697721,False,damage -0.4% < 30% gate; drop 0.3x noise < 3.0x,,1.0203505172324023,False,0
+RoPE · DINOv3,SAE_22_random_features_ablated,random_control,22,vs_untouched,0.02288928459685602,1.696454651173494,False,damage 2.3% < 30% gate; drop 1.7x noise < 3.0x,,1.0671458980460078,False,0
