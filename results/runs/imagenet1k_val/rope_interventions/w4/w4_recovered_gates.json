@@ -1,0 +1,158 @@
+[
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Cref_prefix5 reproduces W3 prefix_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Dref_axisrow5 reproduces W3 axisrow_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Dref_axiscol5 reproduces W3 axiscol_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "baseline reproduces W3 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "floor reproduces W3 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "baseline exact probe hits its W3 anchor (block 4)",
+  "detail": "32.97% vs anchor 32.97%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "baseline row probe hits its W3 anchor (block 4)",
+  "detail": "65.20% vs anchor 65.20%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "baseline col probe hits its W3 anchor (block 4)",
+  "detail": "62.83% vs anchor 62.83%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "baseline: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "floor: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Cref_prefix5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Dref_axisrow5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks differ, max |delta| 0.0029"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 naver",
+  "gate": "Dref_axiscol5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks differ, max |delta| 0.0035"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Cref_prefix5 reproduces W3 prefix_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Dref_axisrow5 reproduces W3 axisrow_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Dref_axiscol5 reproduces W3 axiscol_5 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00 vs tol 1e-06"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "baseline reproduces W3 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "floor reproduces W3 over all 12 blocks",
+  "detail": "max |delta| 0.00e+00"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "baseline exact probe hits its W3 anchor (block 4)",
+  "detail": "39.60% vs anchor 39.60%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "baseline row probe hits its W3 anchor (block 4)",
+  "detail": "75.60% vs anchor 75.60%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "baseline col probe hits its W3 anchor (block 4)",
+  "detail": "76.43% vs anchor 76.43%"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "baseline: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "floor: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Cref_prefix5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks match, max |delta| 0.0000"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Dref_axisrow5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks differ, max |delta| 0.0037"
+ },
+ {
+  "status": "PASS",
+  "scope": "RoPE \u00b7 DINOv3",
+  "gate": "Dref_axiscol5: probes reproduce W3 exactly when probe_blocks match",
+  "detail": "probe_blocks differ, max |delta| 0.0075"
+ }
+]

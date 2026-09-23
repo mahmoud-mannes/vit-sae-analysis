@@ -1,0 +1,53 @@
+{
+  "ranking": [
+    {
+      "head": 2,
+      "ssdc_retention_at_probe": 0.6858859385188243
+    },
+    {
+      "head": 9,
+      "ssdc_retention_at_probe": 0.7339733889816427
+    },
+    {
+      "head": 11,
+      "ssdc_retention_at_probe": 0.8364771008057985
+    },
+    {
+      "head": 10,
+      "ssdc_retention_at_probe": 0.8632039710523496
+    },
+    {
+      "head": 5,
+      "ssdc_retention_at_probe": 0.876964373790221
+    },
+    {
+      "head": 0,
+      "ssdc_retention_at_probe": 0.8896192708530579
+    },
+    {
+      "head": 3,
+      "ssdc_retention_at_probe": 0.909519149434272
+    },
+    {
+      "head": 7,
+      "ssdc_retention_at_probe": 0.9104154796835147
+    },
+    {
+      "head": 8,
+      "ssdc_retention_at_probe": 0.9318502078184427
+    },
+    {
+      "head": 1,
+      "ssdc_retention_at_probe": 0.9801049902243518
+    },
+    {
+      "head": 6,
+      "ssdc_retention_at_probe": 0.9964521433949256
+    },
+    {
+      "head": 4,
+      "ssdc_retention_at_probe": 1.1116079937319387
+    }
+  ],
+  "rule": "lowest SSDC retention at the probe layer (all-blocks single-head mask); ties by head index"
+}

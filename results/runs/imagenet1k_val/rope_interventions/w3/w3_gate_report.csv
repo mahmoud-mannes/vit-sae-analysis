@@ -1,0 +1,90 @@
+gate,scope,status,detail
+imported metric satisfies its unit test,repo-metric,PASS,+1.000 / -1.000 / -0.005
+empty mask is bit-identical [interleaved (naver)],rope-algebra,PASS,
+full mask equals identity [interleaved (naver)],rope-algebra,PASS,
+masking plane 3 touches only its own columns [interleaved (naver)],rope-algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]"
+empty mask is bit-identical [rotate_half (DINOv3)],rope-algebra,PASS,
+full mask equals identity [rotate_half (DINOv3)],rope-algebra,PASS,
+masking plane 3 touches only its own columns [rotate_half (DINOv3)],rope-algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]"
+identity embedding is a no-op on tokens,rope-algebra,PASS,
+a real embedding does change tokens,rope-algebra,PASS,
+frequency-matched control is axis-balanced,control,PASS,"8/8 from bands [4, 5, 9, 10, 12, 13, 14, 15]"
+frequency-matched control removes identical bands from both axes,control,PASS,
+forward grid is 14x14,APE · google ViT,PASS,14x14
+forward grid is 14x14,RoPE · naver,PASS,14x14
+rope tensor row count equals patch-token count,RoPE · naver,PASS,196 vs 196
+every plane classifies decisively as row or col,RoPE · naver,PASS,max ratio 8.60e-07
+axis split is balanced,RoPE · naver,PASS,16/16
+control removes the SAME frequency bands from both axes,RoPE · naver,PASS,"row bands [4, 5, 9, 10, 12, 13, 14, 15] vs col bands [4, 5, 9, 10, 12, 13, 14, 15]"
+control global-rank skew is small (W2 unstratified was 2.4),RoPE · naver,PASS,"mean global rank row 21.4 vs col 20.6, skew 0.75"
+global override hits its W2 anchor,RoPE · naver,PASS,+0.012865 vs anchor 0.0129
+per-block over all blocks equals the global override,RoPE · naver,PASS,max |delta| over 12 blocks = 0.00e+00
+baseline hits its W2 anchor,RoPE · naver,PASS,+0.469422 vs anchor 0.4694
+floor hits its W2 anchor,RoPE · naver,PASS,+0.012865 vs anchor 0.0129
+floor is below baseline,RoPE · naver,PASS,+0.4694 -> +0.0129
+floor equals baseline at block 0,RoPE · naver,PASS,delta 0.00e+00
+baseline exact-probe hits its W2 anchor,RoPE · naver,PASS,32.97% vs anchor 32.65%
+prefix_0: window sits at the floor (block 1),RoPE · naver,PASS,+0.013625 vs floor +0.013625
+prefix_1: window sits at the floor (block 2),RoPE · naver,PASS,+0.010840 vs floor +0.010840
+prefix_2: window sits at the floor (block 3),RoPE · naver,PASS,+0.011854 vs floor +0.011854
+prefix_3: window sits at the floor (block 4),RoPE · naver,PASS,+0.012865 vs floor +0.012865
+prefix_4: window sits at the floor (block 5),RoPE · naver,PASS,+0.015183 vs floor +0.015183
+prefix_5: window sits at the floor (block 6),RoPE · naver,PASS,+0.017491 vs floor +0.017491
+prefix_6: window sits at the floor (block 7),RoPE · naver,PASS,+0.015990 vs floor +0.015990
+prefix_7: window sits at the floor (block 8),RoPE · naver,PASS,+0.017997 vs floor +0.017997
+prefix_8: window sits at the floor (block 9),RoPE · naver,PASS,+0.019098 vs floor +0.019098
+prefix_9: window sits at the floor (block 10),RoPE · naver,PASS,+0.021162 vs floor +0.021162
+axisrow_2: masked row probe at chance in-window (block 3),RoPE · naver,PASS,7.8% vs chance 7.1%
+axisrow_2: surviving col probe near baseline in-window (block 3),RoPE · naver,PASS,54.6% vs baseline 60.1%
+axisrow_2: masked axis stays at chance across the whole window,RoPE · naver,PASS,
+axisrow_5: masked row probe at chance in-window (block 6),RoPE · naver,PASS,7.8% vs chance 7.1%
+axisrow_5: surviving col probe near baseline in-window (block 6),RoPE · naver,PASS,63.0% vs baseline 60.4%
+axisrow_5: masked axis stays at chance across the whole window,RoPE · naver,PASS,
+axisrow_8: masked row probe at chance in-window (block 9),RoPE · naver,PASS,7.8% vs chance 7.1%
+axisrow_8: surviving col probe near baseline in-window (block 9),RoPE · naver,PASS,38.2% vs baseline 34.7%
+axisrow_8: masked axis stays at chance across the whole window,RoPE · naver,PASS,
+axiscol_5: masked col probe at chance in-window (block 6),RoPE · naver,PASS,7.8% vs chance 7.1%
+axiscol_5: surviving row probe near baseline in-window (block 6),RoPE · naver,PASS,72.2% vs baseline 68.6%
+axiscol_5: masked axis stays at chance across the whole window,RoPE · naver,PASS,
+rand16_5: probes between chance and baseline in-window,RoPE · naver,PASS,row 59.1% col 57.4% vs baseline 68.6/60.4%
+forward grid is 14x14,APE · DINOv1,PASS,14x14
+forward grid is 14x14,RoPE · DINOv3,PASS,14x14
+rope tensor row count equals patch-token count,RoPE · DINOv3,PASS,196 vs 196
+every plane classifies decisively as row or col,RoPE · DINOv3,PASS,max ratio 1.43e-06
+axis split is balanced,RoPE · DINOv3,PASS,16/16
+control removes the SAME frequency bands from both axes,RoPE · DINOv3,PASS,"row bands [4, 5, 9, 10, 12, 13, 14, 15] vs col bands [4, 5, 9, 10, 12, 13, 14, 15]"
+control global-rank skew is small (W2 unstratified was 2.4),RoPE · DINOv3,PASS,"mean global rank row 20.6 vs col 21.4, skew 0.75"
+global override hits its W2 anchor,RoPE · DINOv3,PASS,+0.017712 vs anchor 0.0177
+per-block over all blocks equals the global override,RoPE · DINOv3,PASS,max |delta| over 12 blocks = 0.00e+00
+baseline hits its W2 anchor,RoPE · DINOv3,PASS,+0.948654 vs anchor 0.9487
+floor hits its W2 anchor,RoPE · DINOv3,PASS,+0.017712 vs anchor 0.0177
+floor is below baseline,RoPE · DINOv3,PASS,+0.9487 -> +0.0177
+floor equals baseline at block 0,RoPE · DINOv3,PASS,delta 0.00e+00
+baseline exact-probe hits its W2 anchor,RoPE · DINOv3,PASS,39.60% vs anchor 39.59%
+prefix_0: window sits at the floor (block 1),RoPE · DINOv3,PASS,+0.021472 vs floor +0.021472
+prefix_1: window sits at the floor (block 2),RoPE · DINOv3,PASS,+0.023721 vs floor +0.023721
+prefix_2: window sits at the floor (block 3),RoPE · DINOv3,PASS,+0.019373 vs floor +0.019373
+prefix_3: window sits at the floor (block 4),RoPE · DINOv3,PASS,+0.017712 vs floor +0.017712
+prefix_4: window sits at the floor (block 5),RoPE · DINOv3,PASS,+0.015313 vs floor +0.015313
+prefix_5: window sits at the floor (block 6),RoPE · DINOv3,PASS,+0.015526 vs floor +0.015526
+prefix_6: window sits at the floor (block 7),RoPE · DINOv3,PASS,+0.014516 vs floor +0.014516
+prefix_7: window sits at the floor (block 8),RoPE · DINOv3,PASS,+0.016406 vs floor +0.016406
+prefix_8: window sits at the floor (block 9),RoPE · DINOv3,PASS,+0.018910 vs floor +0.018910
+prefix_9: window sits at the floor (block 10),RoPE · DINOv3,PASS,+0.019979 vs floor +0.019979
+axisrow_2: masked row probe at chance in-window (block 3),RoPE · DINOv3,PASS,8.6% vs chance 7.1%
+axisrow_2: surviving col probe near baseline in-window (block 3),RoPE · DINOv3,PASS,75.2% vs baseline 79.5%
+axisrow_2: masked axis stays at chance across the whole window,RoPE · DINOv3,PASS,
+axisrow_5: masked row probe at chance in-window (block 6),RoPE · DINOv3,PASS,8.1% vs chance 7.1%
+axisrow_5: surviving col probe near baseline in-window (block 6),RoPE · DINOv3,FAIL,64.7% vs baseline 83.9%
+axisrow_5: masked axis stays at chance across the whole window,RoPE · DINOv3,PASS,
+axisrow_8: masked row probe at chance in-window (block 9),RoPE · DINOv3,PASS,7.9% vs chance 7.1%
+axisrow_8: surviving col probe near baseline in-window (block 9),RoPE · DINOv3,FAIL,65.1% vs baseline 78.7%
+axisrow_8: masked axis stays at chance across the whole window,RoPE · DINOv3,PASS,
+axiscol_5: masked col probe at chance in-window (block 6),RoPE · DINOv3,PASS,8.0% vs chance 7.1%
+axiscol_5: surviving row probe near baseline in-window (block 6),RoPE · DINOv3,PASS,85.8% vs baseline 77.1%
+axiscol_5: masked axis stays at chance across the whole window,RoPE · DINOv3,PASS,
+rand16_5: probes between chance and baseline in-window,RoPE · DINOv3,PASS,row 69.8% col 76.0% vs baseline 77.1/83.9%
+floor hits its W1-B anchor,APE · google ViT,PASS,+0.015127 vs anchor 0.0151
+floor is below baseline,APE · google ViT,PASS,+0.7406 -> +0.0151
+floor hits its W1-B anchor,APE · DINOv1,PASS,+0.011371 vs anchor 0.0114
+floor is below baseline,APE · DINOv1,PASS,+0.4700 -> +0.0114

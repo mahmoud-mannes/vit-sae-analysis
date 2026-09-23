@@ -1,0 +1,18 @@
+gate,scope,status,detail
+imported metric satisfies its unit test,repo-metric,PASS,+1.000 / -1.000 / -0.005
+empty mask is bit-identical,rope-algebra,PASS,
+full mask equals identity,rope-algebra,PASS,
+identity embedding is a no-op on tokens,rope-algebra,PASS,
+a real embedding does change tokens,rope-algebra,PASS,
+floor is below baseline,APE · google ViT,PASS,baseline +0.7406 -> floor +0.0151 (range +0.7255)
+baseline matches W1-A,APE · google ViT,PASS,"computed +0.7406 vs W1-A +0.7303 (delta 0.0103, tol 0.05)"
+empty-mask reproduces baseline (E2.0),RoPE · naver,PASS,max delta 0.00e+00
+floor is below baseline,RoPE · naver,PASS,baseline +0.4694 -> floor +0.0129 (range +0.4566)
+baseline matches W1-A,RoPE · naver,PASS,"computed +0.4694 vs W1-A +0.4632 (delta 0.0062, tol 0.05)"
+floor is below baseline,APE · DINOv1,PASS,baseline +0.4701 -> floor +0.0114 (range +0.4587)
+baseline matches W1-A,APE · DINOv1,PASS,"computed +0.4701 vs W1-A +0.4668 (delta 0.0033, tol 0.05)"
+model loads,RoPE · DINOv3,SUPERSEDED,ValueError: Model name 'timm/vit_base_patch16_dinov3.lvd1689m' has no source prefix but looks like a Hugging Face Hub repo id or a local path. Use 'hf-hub:timm/vit_base_patch16_dinov3.lvd1689m' to load from the Hub or 'local-dir:timm/vit_base_patch16_dinov3.lvd1689m' to load from a local folder.  [superseded: reran via load_rope with the plain registry name; see dinov3_rerun_note]
+"model loads (registry name, no timm/ prefix)",RoPE · DINOv3,PASS,vit_base_patch16_dinov3.lvd1689m
+empty-mask reproduces baseline (E2.0),RoPE · DINOv3,PASS,max delta 0.00e+00
+floor is below baseline,RoPE · DINOv3,PASS,baseline +0.9462 -> floor +0.0046 (range +0.9416)
+baseline matches W1-A,RoPE · DINOv3,PASS,"computed +0.9462 vs W1-A +0.9482 (delta 0.0019, tol 0.05)"

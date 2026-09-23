@@ -1,0 +1,32 @@
+gate,scope,status,detail
+imported metric satisfies its unit test,repo-metric,PASS,+1.000 / -1.000 / -0.005
+empty mask is bit-identical [interleaved (naver)],rope-algebra,PASS,
+full mask equals identity [interleaved (naver)],rope-algebra,PASS,
+masking plane 3 touches only its own columns [interleaved (naver)],rope-algebra,PASS,"touched [6, 7, 70, 71], expected [6, 7, 70, 71]"
+empty mask is bit-identical [rotate_half (DINOv3)],rope-algebra,PASS,
+full mask equals identity [rotate_half (DINOv3)],rope-algebra,PASS,
+masking plane 3 touches only its own columns [rotate_half (DINOv3)],rope-algebra,PASS,"touched [3, 35, 67, 99], expected [3, 35, 67, 99]"
+identity embedding is a no-op on tokens,rope-algebra,PASS,
+a real embedding does change tokens,rope-algebra,PASS,
+forward grid is 14x14 (196 tokens),APE · google ViT,PASS,14x14
+floor is below baseline,APE · google ViT,PASS,+0.7406 -> +0.0151
+fp32 baseline matches W1-B fp16,APE · google ViT,PASS,+0.7406 vs +0.7406 (delta 0.0000)
+forward grid is 14x14 (196 tokens),RoPE · naver,PASS,14x14
+rope tensor row count equals patch-token count,RoPE · naver,PASS,rope 196 vs tokens 196
+every plane classifies decisively as row or col,RoPE · naver,PASS,max ratio 0.000
+axis split is balanced,RoPE · naver,PASS,16/16
+global override yields the identity embedding,RoPE · naver,PASS,
+floor is below baseline,RoPE · naver,PASS,+0.4694 -> +0.0129
+floor equals baseline at block 0 (rope acts inside attention),RoPE · naver,PASS,delta 0.00e+00
+fp32 baseline matches W1-B fp16,RoPE · naver,PASS,+0.4694 vs +0.4694 (delta 0.0000)
+forward grid is 14x14 (196 tokens),APE · DINOv1,PASS,14x14
+floor is below baseline,APE · DINOv1,PASS,+0.4700 -> +0.0114
+fp32 baseline matches W1-B fp16,APE · DINOv1,PASS,+0.4700 vs +0.4701 (delta 0.0001)
+forward grid is 14x14 (196 tokens),RoPE · DINOv3,PASS,14x14
+rope tensor row count equals patch-token count,RoPE · DINOv3,PASS,rope 196 vs tokens 196
+every plane classifies decisively as row or col,RoPE · DINOv3,PASS,max ratio 0.000
+axis split is balanced,RoPE · DINOv3,PASS,16/16
+global override yields the identity embedding,RoPE · DINOv3,PASS,
+floor is below baseline,RoPE · DINOv3,PASS,+0.9487 -> +0.0177
+floor equals baseline at block 0 (rope acts inside attention),RoPE · DINOv3,PASS,delta 0.00e+00
+fp32 baseline matches W1-B fp16,RoPE · DINOv3,PASS,+0.9487 vs +0.9486 (delta 0.0000)

@@ -1,0 +1,2427 @@
+{
+  "notebook": "W1-A",
+  "generated_utc": "2026-09-22T23:34:51Z",
+  "config": {
+    "N_BLOCKS": 12,
+    "DAMAGE_GATE": 0.3,
+    "MIN_BASELINE": 0.05,
+    "NOISE_SIGMA_K": 3.0,
+    "OVERSHOOT_TOL": 1.1
+  },
+  "runs": {
+    "APE \u00b7 google ViT": {
+      "seed": "seed1",
+      "family": "APE",
+      "intervention_layer": 2,
+      "source_file": "feature_ablation_residual.json",
+      "noise_median": 0.01893770861953914,
+      "noise_max": 0.0303841398746858
+    },
+    "RoPE \u00b7 naver": {
+      "seed": "seed1",
+      "family": "RoPE",
+      "intervention_layer": 4,
+      "source_file": "feature_ablation_residual.json",
+      "noise_median": 0.025385628484466086,
+      "noise_max": 0.02857253556286978
+    },
+    "APE \u00b7 DINOv1": {
+      "seed": "seed2",
+      "family": "APE",
+      "intervention_layer": 2,
+      "source_file": "feature_ablation_residual_second_seed.json",
+      "noise_median": 0.009015955304828377,
+      "noise_max": 0.014613076061956498
+    },
+    "RoPE \u00b7 DINOv3": {
+      "seed": "seed2",
+      "family": "RoPE",
+      "intervention_layer": 4,
+      "source_file": "feature_ablation_residual_second_seed.json",
+      "noise_median": 0.012792897487779765,
+      "noise_max": 0.03812224771936541
+    }
+  },
+  "inventory": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "no_SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4.0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8.0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12.0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16.0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_20_features_ablated",
+      "kind": "ablation",
+      "dose": 20.0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "20_random_features_ablated",
+      "kind": "random_control",
+      "dose": 20.0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "no_SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4.0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8.0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_11_features_ablated",
+      "kind": "ablation",
+      "dose": 11.0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "11_random_features_ablated",
+      "kind": "random_control",
+      "dose": 11.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "no_SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_18_features_ablated",
+      "kind": "ablation",
+      "dose": 18.0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "18_random_features_ablated",
+      "kind": "random_control",
+      "dose": 18.0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "no_SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_baseline",
+      "kind": "baseline",
+      "dose": null
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4.0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_10_features_ablated",
+      "kind": "ablation",
+      "dose": 10.0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16.0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_features_ablated",
+      "kind": "ablation",
+      "dose": 22.0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_random_features_ablated",
+      "kind": "random_control",
+      "dose": 22.0
+    }
+  ],
+  "noise_detail": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 0,
+      "spread": 0.0303841399,
+      "min": 0.3936079111,
+      "max": 0.4239920509,
+      "mean_abs_level": 0.4070064093
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 1,
+      "spread": 0.0074912774,
+      "min": 0.5093728645,
+      "max": 0.5168641419,
+      "mean_abs_level": 0.5121705373
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 0,
+      "spread": 0.0285725356,
+      "min": -0.0152903693,
+      "max": 0.0132821662,
+      "mean_abs_level": 0.0070523163
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 1,
+      "spread": 0.0229594323,
+      "min": 0.019698459,
+      "max": 0.0426578913,
+      "mean_abs_level": 0.031247602
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 2,
+      "spread": 0.0255834139,
+      "min": 0.0891420278,
+      "max": 0.1147254417,
+      "mean_abs_level": 0.0981852719
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 3,
+      "spread": 0.0251878431,
+      "min": 0.2517165117,
+      "max": 0.2769043548,
+      "mean_abs_level": 0.2610158275
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 0,
+      "spread": 0.0146130761,
+      "min": 0.7345609307,
+      "max": 0.7491740068,
+      "mean_abs_level": 0.740223185
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 1,
+      "spread": 0.0034188345,
+      "min": 0.4035516322,
+      "max": 0.4069704667,
+      "mean_abs_level": 0.4051564229
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 0,
+      "spread": 0.0143309511,
+      "min": -0.0050744429,
+      "max": 0.0092565082,
+      "mean_abs_level": 0.0055473285
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 1,
+      "spread": 0.0381222477,
+      "min": -0.0061334933,
+      "max": 0.0319887544,
+      "mean_abs_level": 0.0185456221
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 2,
+      "spread": 0.0112548439,
+      "min": 0.8357007556,
+      "max": 0.8469555995,
+      "mean_abs_level": 0.842844856
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 3,
+      "spread": 0.0028994048,
+      "min": 0.9354517587,
+      "max": 0.9383511636,
+      "mean_abs_level": 0.9371160714
+    }
+  ],
+  "immediate_drop": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "layer": 2,
+      "value@site": 0.5944824601,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 0.8138486866,
+      "damage_vs_SAE": 0.1861513134,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 0.8140129821,
+      "damage_vs_untouched": 0.1859870179,
+      "raw_drop": 0.1359757564,
+      "drop_over_noise": 7.1801588611,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "layer": 2,
+      "value@site": 0.5940363284,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 0.8132379307,
+      "damage_vs_SAE": 0.1867620693,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 0.8134021029,
+      "damage_vs_untouched": 0.1865978971,
+      "raw_drop": 0.136421888,
+      "drop_over_noise": 7.2037167105,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "layer": 2,
+      "value@site": 0.4605189461,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 0.6304521406,
+      "damage_vs_SAE": 0.3695478594,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 0.6305794129,
+      "damage_vs_untouched": 0.3694205871,
+      "raw_drop": 0.2699392703,
+      "drop_over_noise": 14.2540618672,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "layer": 2,
+      "value@site": 0.4930631269,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 0.6750052444,
+      "damage_vs_SAE": 0.3249947556,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 0.6751415109,
+      "damage_vs_untouched": 0.3248584891,
+      "raw_drop": 0.2373950895,
+      "drop_over_noise": 12.5355762039,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_20_features_ablated",
+      "kind": "ablation",
+      "dose": 20,
+      "layer": 2,
+      "value@site": 0.1675600107,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 0.2293902744,
+      "damage_vs_SAE": 0.7706097256,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 0.2294365825,
+      "damage_vs_untouched": 0.7705634175,
+      "raw_drop": 0.5628982057,
+      "drop_over_noise": 29.7236702197,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "20_random_features_ablated",
+      "kind": "random_control",
+      "dose": 20,
+      "layer": 2,
+      "value@site": 0.7317847465,
+      "baseline_vs_SAE": 0.7304582164,
+      "retained_vs_SAE": 1.0018160246,
+      "damage_vs_SAE": -0.0018160246,
+      "baseline_vs_untouched": 0.7303107851,
+      "retained_vs_untouched": 1.0020182659,
+      "damage_vs_untouched": -0.0020182659,
+      "raw_drop": 0.0013265301,
+      "drop_over_noise": 0.0700470214,
+      "above_noise": false
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "layer": 4,
+      "value@site": 0.2276828845,
+      "baseline_vs_SAE": 0.4212153513,
+      "retained_vs_SAE": 0.5405379547,
+      "damage_vs_SAE": 0.4594620453,
+      "baseline_vs_untouched": 0.4632136707,
+      "retained_vs_untouched": 0.4915288535,
+      "damage_vs_untouched": 0.5084711465,
+      "raw_drop": 0.1935324668,
+      "drop_over_noise": 7.6237020054,
+      "above_noise": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "layer": 4,
+      "value@site": 0.2169686255,
+      "baseline_vs_SAE": 0.4212153513,
+      "retained_vs_SAE": 0.5151014199,
+      "damage_vs_SAE": 0.4848985801,
+      "baseline_vs_untouched": 0.4632136707,
+      "retained_vs_untouched": 0.4683985799,
+      "damage_vs_untouched": 0.5316014201,
+      "raw_drop": 0.2042467257,
+      "drop_over_noise": 8.0457620285,
+      "above_noise": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_11_features_ablated",
+      "kind": "ablation",
+      "dose": 11,
+      "layer": 4,
+      "value@site": 0.0958979798,
+      "baseline_vs_SAE": 0.4212153513,
+      "retained_vs_SAE": 0.227669717,
+      "damage_vs_SAE": 0.772330283,
+      "baseline_vs_untouched": 0.4632136707,
+      "retained_vs_untouched": 0.207027525,
+      "damage_vs_untouched": 0.792972475,
+      "raw_drop": 0.3253173714,
+      "drop_over_noise": 12.8150213671,
+      "above_noise": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "11_random_features_ablated",
+      "kind": "random_control",
+      "dose": 11,
+      "layer": 4,
+      "value@site": 0.4160829353,
+      "baseline_vs_SAE": 0.4212153513,
+      "retained_vs_SAE": 0.9878152211,
+      "damage_vs_SAE": 0.0121847789,
+      "baseline_vs_untouched": 0.4632136707,
+      "retained_vs_untouched": 0.8982527106,
+      "damage_vs_untouched": 0.1017472894,
+      "raw_drop": 0.0051324159,
+      "drop_over_noise": 0.2021780136,
+      "above_noise": false
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "layer": 2,
+      "value@site": 0.271757188,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": 0.6218248106,
+      "damage_vs_SAE": 0.3781751894,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": 0.5821529844,
+      "damage_vs_untouched": 0.4178470156,
+      "raw_drop": 0.1652745665,
+      "drop_over_noise": 18.3313427057,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "layer": 2,
+      "value@site": 0.2490212794,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": 0.5698013401,
+      "damage_vs_SAE": 0.4301986599,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": 0.5334485614,
+      "damage_vs_untouched": 0.4665514386,
+      "raw_drop": 0.1880104751,
+      "drop_over_noise": 20.8530841981,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "layer": 2,
+      "value@site": 0.1393741467,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": 0.3189108005,
+      "damage_vs_SAE": 0.6810891995,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": 0.2985645974,
+      "damage_vs_untouched": 0.7014354026,
+      "raw_drop": 0.2976576078,
+      "drop_over_noise": 33.0145389767,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "layer": 2,
+      "value@site": 0.1339426749,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": 0.3064827063,
+      "damage_vs_SAE": 0.6935172937,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": 0.2869294037,
+      "damage_vs_untouched": 0.7130705963,
+      "raw_drop": 0.3030890796,
+      "drop_over_noise": 33.6169678516,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_18_features_ablated",
+      "kind": "ablation",
+      "dose": 18,
+      "layer": 2,
+      "value@site": -0.0294297131,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": -0.067339988,
+      "damage_vs_SAE": 1.067339988,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": -0.0630437614,
+      "damage_vs_untouched": 1.0630437614,
+      "raw_drop": 0.4664614676,
+      "drop_over_noise": 51.73733141,
+      "above_noise": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "18_random_features_ablated",
+      "kind": "random_control",
+      "dose": 18,
+      "layer": 2,
+      "value@site": 0.4371562736,
+      "baseline_vs_SAE": 0.4370317545,
+      "retained_vs_SAE": 1.00028492,
+      "damage_vs_SAE": -0.00028492,
+      "baseline_vs_untouched": 0.4668140425,
+      "retained_vs_untouched": 0.9364677019,
+      "damage_vs_untouched": 0.0635322981,
+      "raw_drop": 0.0001245191,
+      "drop_over_noise": 0.0138109699,
+      "above_noise": false
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "layer": 4,
+      "value@site": 0.9169093858,
+      "baseline_vs_SAE": 0.922861777,
+      "retained_vs_SAE": 0.9935500729,
+      "damage_vs_SAE": 0.0064499271,
+      "baseline_vs_untouched": 0.9481541615,
+      "retained_vs_untouched": 0.9670467346,
+      "damage_vs_untouched": 0.0329532654,
+      "raw_drop": 0.0059523912,
+      "drop_over_noise": 0.4652887451,
+      "above_noise": false
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_10_features_ablated",
+      "kind": "ablation",
+      "dose": 10,
+      "layer": 4,
+      "value@site": 0.9006567372,
+      "baseline_vs_SAE": 0.922861777,
+      "retained_vs_SAE": 0.9759389322,
+      "damage_vs_SAE": 0.0240610678,
+      "baseline_vs_untouched": 0.9481541615,
+      "retained_vs_untouched": 0.949905378,
+      "damage_vs_untouched": 0.050094622,
+      "raw_drop": 0.0222050398,
+      "drop_over_noise": 1.7357318658,
+      "above_noise": false
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "layer": 4,
+      "value@site": 0.8975990437,
+      "baseline_vs_SAE": 0.922861777,
+      "retained_vs_SAE": 0.9726256586,
+      "damage_vs_SAE": 0.0273743414,
+      "baseline_vs_untouched": 0.9481541615,
+      "retained_vs_untouched": 0.9466804873,
+      "damage_vs_untouched": 0.0533195127,
+      "raw_drop": 0.0252627333,
+      "drop_over_noise": 1.9747467955,
+      "above_noise": false
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_features_ablated",
+      "kind": "ablation",
+      "dose": 22,
+      "layer": 4,
+      "value@site": 0.8629786841,
+      "baseline_vs_SAE": 0.922861777,
+      "retained_vs_SAE": 0.9351115255,
+      "damage_vs_SAE": 0.0648884745,
+      "baseline_vs_untouched": 0.9481541615,
+      "retained_vs_untouched": 0.9101670584,
+      "damage_vs_untouched": 0.0898329416,
+      "raw_drop": 0.0598830929,
+      "drop_over_noise": 4.6809640233,
+      "above_noise": true
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_random_features_ablated",
+      "kind": "random_control",
+      "dose": 22,
+      "layer": 4,
+      "value@site": 0.9264515911,
+      "baseline_vs_SAE": 0.922861777,
+      "retained_vs_SAE": 1.0038898719,
+      "damage_vs_SAE": -0.0038898719,
+      "baseline_vs_untouched": 0.9481541615,
+      "retained_vs_untouched": 0.9771107154,
+      "damage_vs_untouched": 0.0228892846,
+      "raw_drop": 0.0035898141,
+      "drop_over_noise": 0.2806099287,
+      "above_noise": false
+    }
+  ],
+  "denominator_agreement": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "dose": 4,
+      "damage_vs_SAE": 0.1861513134,
+      "damage_vs_untouched": 0.1859870179,
+      "abs_gap": 0.0001642955,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "dose": 8,
+      "damage_vs_SAE": 0.1867620693,
+      "damage_vs_untouched": 0.1865978971,
+      "abs_gap": 0.0001641722,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "dose": 12,
+      "damage_vs_SAE": 0.3695478594,
+      "damage_vs_untouched": 0.3694205871,
+      "abs_gap": 0.0001272724,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "dose": 16,
+      "damage_vs_SAE": 0.3249947556,
+      "damage_vs_untouched": 0.3248584891,
+      "abs_gap": 0.0001362665,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "dose": 20,
+      "damage_vs_SAE": 0.7706097256,
+      "damage_vs_untouched": 0.7705634175,
+      "abs_gap": 4.63081e-05,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "dose": 4,
+      "damage_vs_SAE": 0.4594620453,
+      "damage_vs_untouched": 0.5084711465,
+      "abs_gap": 0.0490091013,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "dose": 8,
+      "damage_vs_SAE": 0.4848985801,
+      "damage_vs_untouched": 0.5316014201,
+      "abs_gap": 0.0467028401,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "dose": 11,
+      "damage_vs_SAE": 0.772330283,
+      "damage_vs_untouched": 0.792972475,
+      "abs_gap": 0.0206421919,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "dose": 4,
+      "damage_vs_SAE": 0.3781751894,
+      "damage_vs_untouched": 0.4178470156,
+      "abs_gap": 0.0396718262,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "dose": 8,
+      "damage_vs_SAE": 0.4301986599,
+      "damage_vs_untouched": 0.4665514386,
+      "abs_gap": 0.0363527787,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "dose": 12,
+      "damage_vs_SAE": 0.6810891995,
+      "damage_vs_untouched": 0.7014354026,
+      "abs_gap": 0.0203462031,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "dose": 16,
+      "damage_vs_SAE": 0.6935172937,
+      "damage_vs_untouched": 0.7130705963,
+      "abs_gap": 0.0195533026,
+      "robust": true
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "dose": 18,
+      "damage_vs_SAE": 1.067339988,
+      "damage_vs_untouched": 1.0630437614,
+      "abs_gap": 0.0042962266,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "dose": 4,
+      "damage_vs_SAE": 0.0064499271,
+      "damage_vs_untouched": 0.0329532654,
+      "abs_gap": 0.0265033383,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "dose": 10,
+      "damage_vs_SAE": 0.0240610678,
+      "damage_vs_untouched": 0.050094622,
+      "abs_gap": 0.0260335542,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "dose": 16,
+      "damage_vs_SAE": 0.0273743414,
+      "damage_vs_untouched": 0.0533195127,
+      "abs_gap": 0.0259451713,
+      "robust": true
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "dose": 22,
+      "damage_vs_SAE": 0.0648884745,
+      "damage_vs_untouched": 0.0898329416,
+      "abs_gap": 0.0249444671,
+      "robust": true
+    }
+  ],
+  "artifact_diagnostic": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 0,
+      "post_intervention": false,
+      "untouched": 0.3936079111,
+      "SAE_baseline": 0.4053156123,
+      "difference": 0.0117077013
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 1,
+      "post_intervention": false,
+      "untouched": 0.5097049357,
+      "SAE_baseline": 0.5113375835,
+      "difference": 0.0016326478
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 2,
+      "post_intervention": true,
+      "untouched": 0.7303107851,
+      "SAE_baseline": 0.7304582164,
+      "difference": 0.0001474313
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 3,
+      "post_intervention": true,
+      "untouched": 0.7742410937,
+      "SAE_baseline": 0.7611448205,
+      "difference": -0.0130962732
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 4,
+      "post_intervention": true,
+      "untouched": 0.7723400542,
+      "SAE_baseline": 0.7816242792,
+      "difference": 0.0092842249
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 5,
+      "post_intervention": true,
+      "untouched": 0.6942157692,
+      "SAE_baseline": 0.720692525,
+      "difference": 0.0264767558
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 6,
+      "post_intervention": true,
+      "untouched": 0.5699265629,
+      "SAE_baseline": 0.6280120718,
+      "difference": 0.0580855089
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 7,
+      "post_intervention": true,
+      "untouched": 0.4608725935,
+      "SAE_baseline": 0.5229635185,
+      "difference": 0.062090925
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 8,
+      "post_intervention": true,
+      "untouched": 0.3935288837,
+      "SAE_baseline": 0.4544688464,
+      "difference": 0.0609399627
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 9,
+      "post_intervention": true,
+      "untouched": 0.3524666598,
+      "SAE_baseline": 0.4143973422,
+      "difference": 0.0619306824
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 10,
+      "post_intervention": true,
+      "untouched": 0.3120531234,
+      "SAE_baseline": 0.3710875194,
+      "difference": 0.0590343961
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "block": 11,
+      "post_intervention": true,
+      "untouched": 0.192385042,
+      "SAE_baseline": 0.246523829,
+      "difference": 0.054138787
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 0,
+      "post_intervention": false,
+      "untouched": -0.0152903693,
+      "SAE_baseline": 0.0002762097,
+      "difference": 0.015566579
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 1,
+      "post_intervention": false,
+      "untouched": 0.019698459,
+      "SAE_baseline": 0.0361808415,
+      "difference": 0.0164823825
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 2,
+      "post_intervention": false,
+      "untouched": 0.0891420278,
+      "SAE_baseline": 0.1018564522,
+      "difference": 0.0127144244
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 3,
+      "post_intervention": false,
+      "untouched": 0.2535091271,
+      "SAE_baseline": 0.263254286,
+      "difference": 0.0097451588
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 4,
+      "post_intervention": true,
+      "untouched": 0.4632136707,
+      "SAE_baseline": 0.4212153513,
+      "difference": -0.0419983195
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 5,
+      "post_intervention": true,
+      "untouched": 0.5538447896,
+      "SAE_baseline": 0.4821791006,
+      "difference": -0.071665689
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 6,
+      "post_intervention": true,
+      "untouched": 0.5036022659,
+      "SAE_baseline": 0.5827980864,
+      "difference": 0.0791958206
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 7,
+      "post_intervention": true,
+      "untouched": 0.491427551,
+      "SAE_baseline": 0.6241964659,
+      "difference": 0.1327689149
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 8,
+      "post_intervention": true,
+      "untouched": 0.5199253916,
+      "SAE_baseline": 0.6563725771,
+      "difference": 0.1364471855
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 9,
+      "post_intervention": true,
+      "untouched": 0.4889149326,
+      "SAE_baseline": 0.6374766389,
+      "difference": 0.1485617062
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 10,
+      "post_intervention": true,
+      "untouched": 0.4176105882,
+      "SAE_baseline": 0.6163574241,
+      "difference": 0.1987468359
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "block": 11,
+      "post_intervention": true,
+      "untouched": 0.3843248801,
+      "SAE_baseline": 0.5987320874,
+      "difference": 0.2144072073
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 0,
+      "post_intervention": false,
+      "untouched": 0.7391173956,
+      "SAE_baseline": 0.7380240559,
+      "difference": -0.0010933396
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 1,
+      "post_intervention": false,
+      "untouched": 0.4058597018,
+      "SAE_baseline": 0.4069704667,
+      "difference": 0.0011107649
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 2,
+      "post_intervention": true,
+      "untouched": 0.4668140425,
+      "SAE_baseline": 0.4370317545,
+      "difference": -0.029782288
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 3,
+      "post_intervention": true,
+      "untouched": 0.6504927974,
+      "SAE_baseline": 0.5593901827,
+      "difference": -0.0911026147
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 4,
+      "post_intervention": true,
+      "untouched": 0.7564636381,
+      "SAE_baseline": 0.6907524121,
+      "difference": -0.0657112259
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 5,
+      "post_intervention": true,
+      "untouched": 0.8619142073,
+      "SAE_baseline": 0.8737259908,
+      "difference": 0.0118117835
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 6,
+      "post_intervention": true,
+      "untouched": 0.8468026005,
+      "SAE_baseline": 0.8802391339,
+      "difference": 0.0334365334
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 7,
+      "post_intervention": true,
+      "untouched": 0.8060016735,
+      "SAE_baseline": 0.8297913651,
+      "difference": 0.0237896916
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 8,
+      "post_intervention": true,
+      "untouched": 0.6434847654,
+      "SAE_baseline": 0.6999839353,
+      "difference": 0.05649917
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 9,
+      "post_intervention": true,
+      "untouched": 0.5665353714,
+      "SAE_baseline": 0.631505983,
+      "difference": 0.0649706117
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 10,
+      "post_intervention": true,
+      "untouched": 0.4899530638,
+      "SAE_baseline": 0.5199321438,
+      "difference": 0.02997908
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "block": 11,
+      "post_intervention": true,
+      "untouched": 0.4653160251,
+      "SAE_baseline": 0.4636885346,
+      "difference": -0.0016274904
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 0,
+      "post_intervention": false,
+      "untouched": 0.0092565082,
+      "SAE_baseline": -0.0015899276,
+      "difference": -0.0108464358
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 1,
+      "post_intervention": false,
+      "untouched": 0.027844477,
+      "SAE_baseline": 0.0063449299,
+      "difference": -0.0214995471
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 2,
+      "post_intervention": false,
+      "untouched": 0.8440536163,
+      "SAE_baseline": 0.8357007556,
+      "difference": -0.0083528607
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 3,
+      "post_intervention": false,
+      "untouched": 0.9374777878,
+      "SAE_baseline": 0.9354517587,
+      "difference": -0.002026029
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 4,
+      "post_intervention": true,
+      "untouched": 0.9481541615,
+      "SAE_baseline": 0.922861777,
+      "difference": -0.0252923845
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 5,
+      "post_intervention": true,
+      "untouched": 0.9315369984,
+      "SAE_baseline": 0.917053493,
+      "difference": -0.0144835054
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 6,
+      "post_intervention": true,
+      "untouched": 0.9412266523,
+      "SAE_baseline": 0.941037279,
+      "difference": -0.0001893733
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 7,
+      "post_intervention": true,
+      "untouched": 0.9410365264,
+      "SAE_baseline": 0.9598154145,
+      "difference": 0.0187788881
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 8,
+      "post_intervention": true,
+      "untouched": 0.9368728164,
+      "SAE_baseline": 0.9564987446,
+      "difference": 0.0196259283
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 9,
+      "post_intervention": true,
+      "untouched": 0.9359764223,
+      "SAE_baseline": 0.9413063007,
+      "difference": 0.0053298784
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 10,
+      "post_intervention": true,
+      "untouched": 0.937799007,
+      "SAE_baseline": 0.9351331622,
+      "difference": -0.0026658449
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "block": 11,
+      "post_intervention": true,
+      "untouched": 0.8868003177,
+      "SAE_baseline": 0.9274708107,
+      "difference": 0.040670493
+    }
+  ],
+  "retention_master": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_SAE",
+      "damage@site": 0.1861513134,
+      "drop_over_noise": 7.1801588611,
+      "reportable": false,
+      "suppressed_because": "damage 18.6% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9446659461,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_untouched",
+      "damage@site": 0.1859870179,
+      "drop_over_noise": 7.1723737953,
+      "reportable": false,
+      "suppressed_because": "damage 18.6% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 1.2105029772,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_SAE",
+      "damage@site": 0.1867620693,
+      "drop_over_noise": 7.2037167105,
+      "reportable": false,
+      "suppressed_because": "damage 18.7% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0324585911,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_untouched",
+      "damage@site": 0.1865978971,
+      "drop_over_noise": 7.1959316448,
+      "reportable": false,
+      "suppressed_because": "damage 18.7% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 1.3230012191,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "denominator": "vs_SAE",
+      "damage@site": 0.3695478594,
+      "drop_over_noise": 14.2540618672,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 6.6579682561,
+      "retention_final": 0.9297619277,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "denominator": "vs_untouched",
+      "damage@site": 0.3694205871,
+      "drop_over_noise": 14.2462768014,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 3.3662237745,
+      "retention_final": 1.1914048413,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_SAE",
+      "damage@site": 0.3249947556,
+      "drop_over_noise": 12.5355762039,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 8.0366026347,
+      "retention_final": 0.9456195279,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_untouched",
+      "damage@site": 0.3248584891,
+      "drop_over_noise": 12.5277911381,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 4.8669809895,
+      "retention_final": 1.2117249051,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_20_features_ablated",
+      "kind": "ablation",
+      "dose": 20,
+      "denominator": "vs_SAE",
+      "damage@site": 0.7706097256,
+      "drop_over_noise": 29.7236702197,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": -0.1201676056,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "SAE_20_features_ablated",
+      "kind": "ablation",
+      "dose": 20,
+      "denominator": "vs_untouched",
+      "damage@site": 0.7705634175,
+      "drop_over_noise": 29.7158851539,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": -0.1539837918,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "20_random_features_ablated",
+      "kind": "random_control",
+      "dose": 20,
+      "denominator": "vs_SAE",
+      "damage@site": -0.0018160246,
+      "drop_over_noise": 0.0700470214,
+      "reportable": false,
+      "suppressed_because": "damage -0.2% < 30% gate; drop 0.1x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0265199222,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "condition": "20_random_features_ablated",
+      "kind": "random_control",
+      "dose": 20,
+      "denominator": "vs_untouched",
+      "damage@site": -0.0020182659,
+      "drop_over_noise": 0.0778320872,
+      "reportable": false,
+      "suppressed_because": "damage -0.2% < 30% gate; drop 0.1x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.3153913583,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_SAE",
+      "damage@site": 0.4594620453,
+      "drop_over_noise": 7.6237020054,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 2.0701276744,
+      "retention_final": 0.9754231475,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_untouched",
+      "damage@site": 0.5084711465,
+      "drop_over_noise": 9.2781152289,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 1.5888931421,
+      "retention_final": 1.5195923226,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_SAE",
+      "damage@site": 0.4848985801,
+      "drop_over_noise": 8.0457620285,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 1.8376841564,
+      "retention_final": 0.9816321485,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_untouched",
+      "damage@site": 0.5316014201,
+      "drop_over_noise": 9.700175252,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 1.5191750294,
+      "retention_final": 1.5292652018,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_11_features_ablated",
+      "kind": "ablation",
+      "dose": 11,
+      "denominator": "vs_SAE",
+      "damage@site": 0.772330283,
+      "drop_over_noise": 12.8150213671,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 2.0402260096,
+      "retention_final": 1.0581166884,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "SAE_11_features_ablated",
+      "kind": "ablation",
+      "dose": 11,
+      "denominator": "vs_untouched",
+      "damage@site": 0.792972475,
+      "drop_over_noise": 14.4694345906,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 1.790423863,
+      "retention_final": 1.6484189454,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "11_random_features_ablated",
+      "kind": "random_control",
+      "dose": 11,
+      "denominator": "vs_SAE",
+      "damage@site": 0.0121847789,
+      "drop_over_noise": 0.2021780136,
+      "reportable": false,
+      "suppressed_because": "damage 1.2% < 30% gate; drop 0.2x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 0.970873705,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "condition": "11_random_features_ablated",
+      "kind": "random_control",
+      "dose": 11,
+      "denominator": "vs_untouched",
+      "damage@site": 0.1017472894,
+      "drop_over_noise": 1.8565912371,
+      "reportable": false,
+      "suppressed_because": "damage 10.2% < 30% gate; drop 1.9x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.5125048368,
+      "overshoot": true,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_SAE",
+      "damage@site": 0.3781751894,
+      "drop_over_noise": 18.3313427057,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 5.24272494,
+      "retention_final": 0.9568780001,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_untouched",
+      "damage@site": 0.4178470156,
+      "drop_over_noise": 21.6346297079,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 4.2656158632,
+      "retention_final": 0.9535312214,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_SAE",
+      "damage@site": 0.4301986599,
+      "drop_over_noise": 20.8530841981,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 5.5027456852,
+      "retention_final": 0.9371527298,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_8_features_ablated",
+      "kind": "ablation",
+      "dose": 8,
+      "denominator": "vs_untouched",
+      "damage@site": 0.4665514386,
+      "drop_over_noise": 24.1563712003,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": 5.0377675993,
+      "retention_final": 0.9338749421,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "denominator": "vs_SAE",
+      "damage@site": 0.6810891995,
+      "drop_over_noise": 33.0145389767,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": 0.4724837779,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_12_features_ablated",
+      "kind": "ablation",
+      "dose": 12,
+      "denominator": "vs_untouched",
+      "damage@site": 0.7014354026,
+      "drop_over_noise": 36.3178259788,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": 0.4708312175,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_SAE",
+      "damage@site": 0.6935172937,
+      "drop_over_noise": 33.6169678516,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": 0.4611912144,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_untouched",
+      "damage@site": 0.7130705963,
+      "drop_over_noise": 36.9202548538,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": 0.459578151,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_18_features_ablated",
+      "kind": "ablation",
+      "dose": 18,
+      "denominator": "vs_SAE",
+      "damage@site": 1.067339988,
+      "drop_over_noise": 51.73733141,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": -0.0309099378,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "SAE_18_features_ablated",
+      "kind": "ablation",
+      "dose": 18,
+      "denominator": "vs_untouched",
+      "damage@site": 1.0630437614,
+      "drop_over_noise": 55.0406184121,
+      "reportable": true,
+      "suppressed_because": "",
+      "half_recovery_blocks": null,
+      "retention_final": -0.0308018271,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "18_random_features_ablated",
+      "kind": "random_control",
+      "dose": 18,
+      "denominator": "vs_SAE",
+      "damage@site": -0.00028492,
+      "drop_over_noise": 0.0138109699,
+      "reportable": false,
+      "suppressed_because": "damage -0.0% < 30% gate; drop 0.0x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0313681045,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "condition": "18_random_features_ablated",
+      "kind": "random_control",
+      "dose": 18,
+      "denominator": "vs_untouched",
+      "damage@site": 0.0635322981,
+      "drop_over_noise": 3.2894760322,
+      "reportable": false,
+      "suppressed_because": "damage 6.4% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 1.027760789,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_SAE",
+      "damage@site": 0.0064499271,
+      "drop_over_noise": 0.4652887451,
+      "reportable": false,
+      "suppressed_because": "damage 0.6% < 30% gate; drop 0.5x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.014775484,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_4_features_ablated",
+      "kind": "ablation",
+      "dose": 4,
+      "denominator": "vs_untouched",
+      "damage@site": 0.0329532654,
+      "drop_over_noise": 2.4423533249,
+      "reportable": false,
+      "suppressed_because": "damage 3.3% < 30% gate; drop 2.4x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0613151823,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_10_features_ablated",
+      "kind": "ablation",
+      "dose": 10,
+      "denominator": "vs_SAE",
+      "damage@site": 0.0240610678,
+      "drop_over_noise": 1.7357318658,
+      "reportable": false,
+      "suppressed_because": "damage 2.4% < 30% gate; drop 1.7x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9752257623,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_10_features_ablated",
+      "kind": "ablation",
+      "dose": 10,
+      "denominator": "vs_untouched",
+      "damage@site": 0.050094622,
+      "drop_over_noise": 3.7127964457,
+      "reportable": false,
+      "suppressed_because": "damage 5.0% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0199516287,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_SAE",
+      "damage@site": 0.0273743414,
+      "drop_over_noise": 1.9747467955,
+      "reportable": false,
+      "suppressed_because": "damage 2.7% < 30% gate; drop 2.0x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9555935139,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_16_features_ablated",
+      "kind": "ablation",
+      "dose": 16,
+      "denominator": "vs_untouched",
+      "damage@site": 0.0533195127,
+      "drop_over_noise": 3.9518113754,
+      "reportable": false,
+      "suppressed_because": "damage 5.3% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9994190049,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_features_ablated",
+      "kind": "ablation",
+      "dose": 22,
+      "denominator": "vs_SAE",
+      "damage@site": 0.0648884745,
+      "drop_over_noise": 4.6809640233,
+      "reportable": false,
+      "suppressed_because": "damage 6.5% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9509050165,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_features_ablated",
+      "kind": "ablation",
+      "dose": 22,
+      "denominator": "vs_untouched",
+      "damage@site": 0.0898329416,
+      "drop_over_noise": 6.6580286031,
+      "reportable": false,
+      "suppressed_because": "damage 9.0% < 30% gate",
+      "half_recovery_blocks": null,
+      "retention_final": 0.9945154833,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_random_features_ablated",
+      "kind": "random_control",
+      "dose": 22,
+      "denominator": "vs_SAE",
+      "damage@site": -0.0038898719,
+      "drop_over_noise": 0.2806099287,
+      "reportable": false,
+      "suppressed_because": "damage -0.4% < 30% gate; drop 0.3x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.0203505172,
+      "overshoot": false,
+      "nan_blocks": 0
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "condition": "SAE_22_random_features_ablated",
+      "kind": "random_control",
+      "dose": 22,
+      "denominator": "vs_untouched",
+      "damage@site": 0.0228892846,
+      "drop_over_noise": 1.6964546512,
+      "reportable": false,
+      "suppressed_because": "damage 2.3% < 30% gate; drop 1.7x noise < 3.0x",
+      "half_recovery_blocks": null,
+      "retention_final": 1.067145898,
+      "overshoot": false,
+      "nan_blocks": 0
+    }
+  ],
+  "dose_invariance": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "denominator": "vs_SAE",
+      "n_measurable": 2,
+      "spread_blocks": 1.3786343786,
+      "min": 6.6579682561,
+      "max": 8.0366026347
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "denominator": "vs_SAE",
+      "n_measurable": 3,
+      "spread_blocks": 0.232443518,
+      "min": 1.8376841564,
+      "max": 2.0701276744
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "denominator": "vs_SAE",
+      "n_measurable": 2,
+      "spread_blocks": 0.2600207452,
+      "min": 5.24272494,
+      "max": 5.5027456852
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "denominator": "vs_SAE",
+      "n_measurable": 0,
+      "spread_blocks": null,
+      "min": null,
+      "max": null
+    },
+    {
+      "run": "APE \u00b7 google ViT",
+      "denominator": "vs_untouched",
+      "n_measurable": 2,
+      "spread_blocks": 1.5007572149,
+      "min": 3.3662237745,
+      "max": 4.8669809895
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "denominator": "vs_untouched",
+      "n_measurable": 3,
+      "spread_blocks": 0.2712488336,
+      "min": 1.5191750294,
+      "max": 1.790423863
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "denominator": "vs_untouched",
+      "n_measurable": 2,
+      "spread_blocks": 0.7721517361,
+      "min": 4.2656158632,
+      "max": 5.0377675993
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "denominator": "vs_untouched",
+      "n_measurable": 0,
+      "spread_blocks": null,
+      "min": null,
+      "max": null
+    }
+  ],
+  "verdicts": [
+    {
+      "run": "APE \u00b7 google ViT",
+      "max_damage@site": 0.7706097256,
+      "max_drop_over_noise": 29.7236702197,
+      "reportable_rows": 6,
+      "verdict": "USABLE: 6 measurable condition-rows"
+    },
+    {
+      "run": "RoPE \u00b7 naver",
+      "max_damage@site": 0.792972475,
+      "max_drop_over_noise": 14.4694345906,
+      "reportable_rows": 6,
+      "verdict": "USABLE: 6 measurable condition-rows"
+    },
+    {
+      "run": "APE \u00b7 DINOv1",
+      "max_damage@site": 1.067339988,
+      "max_drop_over_noise": 55.0406184121,
+      "reportable_rows": 10,
+      "verdict": "USABLE: 10 measurable condition-rows"
+    },
+    {
+      "run": "RoPE \u00b7 DINOv3",
+      "max_damage@site": 0.0898329416,
+      "max_drop_over_noise": 6.6580286031,
+      "reportable_rows": 0,
+      "verdict": "NOT USABLE for recovery: no dose clears the guards"
+    }
+  ],
+  "flags": [
+    {
+      "severity": "WARN",
+      "scope": "RoPE \u00b7 naver",
+      "message": "SAE reconstruction inflates SSDC by up to +0.214 post-intervention: recovery measured against this baseline is not trustworthy"
+    },
+    {
+      "severity": "NOTE",
+      "scope": "RoPE \u00b7 DINOv3",
+      "message": "only 0 measurable dose(s) under vs_SAE: dose-invariance cannot be assessed"
+    },
+    {
+      "severity": "NOTE",
+      "scope": "RoPE \u00b7 DINOv3",
+      "message": "only 0 measurable dose(s) under vs_untouched: dose-invariance cannot be assessed"
+    }
+  ],
+  "normalisation_protocol": {
+    "formula": "(observed - floor) / (baseline - floor)",
+    "floor_source": "W1-B (GPU): not yet available",
+    "floors": {
+      "APE \u00b7 google ViT": null,
+      "RoPE \u00b7 naver": null,
+      "APE \u00b7 DINOv1": null,
+      "RoPE \u00b7 DINOv3": null
+    }
+  },
+  "retention_curves": {
+    "APE \u00b7 google ViT||SAE_4_features_ablated||vs_SAE": [
+      0.8138486866278212,
+      0.8457548104063044,
+      0.8512137846514948,
+      0.8752768641515953,
+      0.8655886267317303,
+      0.8478300286692698,
+      0.854540092127199,
+      0.871099917107283,
+      0.8813657456689189,
+      0.9446659460799295
+    ],
+    "APE \u00b7 google ViT||SAE_4_features_ablated||vs_untouched": [
+      0.8140129821275365,
+      0.8314488840550569,
+      0.8614461430695737,
+      0.9086591248817826,
+      0.9538072835554009,
+      0.9620536805854184,
+      0.9868700010515419,
+      1.024157832867282,
+      1.0481030432800706,
+      1.2105029772034377
+    ],
+    "APE \u00b7 google ViT||SAE_8_features_ablated||vs_SAE": [
+      0.8132379306952875,
+      0.8649501065082406,
+      0.8692851247061262,
+      0.9108196544191192,
+      0.9289609200401798,
+      0.9380260957913569,
+      0.9490273304471111,
+      0.9724283246503078,
+      0.9826528740072563,
+      1.0324585910557393
+    ],
+    "APE \u00b7 google ViT||SAE_8_features_ablated||vs_untouched": [
+      0.813402102898802,
+      0.8503194920926204,
+      0.8797347169517913,
+      0.9455574847300685,
+      1.023638324614056,
+      1.0644013863930677,
+      1.0959890720456376,
+      1.1432903000379524,
+      1.1685517309879645,
+      1.323001219106603
+    ],
+    "APE \u00b7 google ViT||SAE_12_features_ablated||vs_SAE": [
+      0.6304521405715319,
+      0.6983153415763282,
+      0.723223183775716,
+      0.7620354019683083,
+      0.7778748144999367,
+      0.7853218370598215,
+      0.7971164643335624,
+      0.8246399896477006,
+      0.8384679667924658,
+      0.9297619277027316
+    ],
+    "APE \u00b7 google ViT||SAE_12_features_ablated||vs_untouched": [
+      0.6305794129394594,
+      0.6865033510045715,
+      0.7319169795836482,
+      0.7910987366867422,
+      0.8571538960322943,
+      0.8911240911970874,
+      0.9205540304573219,
+      0.9695345942608699,
+      0.9970898370018505,
+      1.1914048413039076
+    ],
+    "APE \u00b7 google ViT||SAE_16_features_ablated||vs_SAE": [
+      0.6750052443979697,
+      0.6257310123278684,
+      0.6265971966040647,
+      0.6689124653583898,
+      0.7073133979619706,
+      0.7459920494556334,
+      0.7762364882216458,
+      0.8047366287053818,
+      0.8333949053312725,
+      0.945619527909091
+    ],
+    "APE \u00b7 google ViT||SAE_16_features_ablated||vs_untouched": [
+      0.67514151091257,
+      0.6151467842893029,
+      0.6341294607837868,
+      0.6944241762681832,
+      0.7794010340451678,
+      0.8464956094946399,
+      0.8964406831289017,
+      0.946134083470843,
+      0.9910570507467095,
+      1.2117249050690468
+    ],
+    "APE \u00b7 google ViT||SAE_20_features_ablated||vs_SAE": [
+      0.22939027440633736,
+      0.16564927778290092,
+      0.14040948740291237,
+      0.12360098754858505,
+      0.09822909899156441,
+      0.07896153308555448,
+      0.06346250417046294,
+      0.04908778666077673,
+      0.034151865155415496,
+      -0.12016760558389673
+    ],
+    "APE \u00b7 google ViT||SAE_20_features_ablated||vs_untouched": [
+      0.22943658251051283,
+      0.16284732343520875,
+      0.1420973362445445,
+      0.12831501640259216,
+      0.10824036636086282,
+      0.08959960246850171,
+      0.0732899978999649,
+      0.05771282974483508,
+      0.040612735381399416,
+      -0.15398379175870874
+    ],
+    "APE \u00b7 google ViT||20_random_features_ablated||vs_SAE": [
+      1.0018160245878827,
+      1.010826986841928,
+      1.0113427890670341,
+      1.015005642231496,
+      1.0186185956692022,
+      1.0312475720630312,
+      1.0335651342258891,
+      1.0354023713478546,
+      1.0291194116607316,
+      1.0265199221856913
+    ],
+    "APE \u00b7 google ViT||20_random_features_ablated||vs_untouched": [
+      1.0020182659468564,
+      0.9937288678011778,
+      1.023500042729826,
+      1.0537170310266581,
+      1.1224336892949658,
+      1.170182098710531,
+      1.1936179876139892,
+      1.2173292959396127,
+      1.2238088359578574,
+      1.3153913583112078
+    ],
+    "RoPE \u00b7 naver||SAE_4_features_ablated||vs_SAE": [
+      0.5405379547425241,
+      0.6328465294865463,
+      0.7619375081583614,
+      0.8807418073873172,
+      0.9327436901121938,
+      0.9706487369410386,
+      0.9810588535809086,
+      0.9754231474749706
+    ],
+    "RoPE \u00b7 naver||SAE_4_features_ablated||vs_untouched": [
+      0.49152885347005965,
+      0.5509582759277687,
+      0.8817587843156809,
+      1.118691702307231,
+      1.1775292946118097,
+      1.2655900914972797,
+      1.4479587560819898,
+      1.5195923226357047
+    ],
+    "RoPE \u00b7 naver||SAE_8_features_ablated||vs_SAE": [
+      0.5151014199319847,
+      0.6315736705826738,
+      0.7819609477171319,
+      0.889993779509727,
+      0.9555409415543341,
+      0.9807204376098229,
+      0.9770107390427745,
+      0.9816321484803429
+    ],
+    "RoPE \u00b7 naver||SAE_8_features_ablated||vs_untouched": [
+      0.46839857985656064,
+      0.5498501207677081,
+      0.9049310832694822,
+      1.1304432784859761,
+      1.2063093675239327,
+      1.278722179435817,
+      1.4419840860917854,
+      1.5292652018199082
+    ],
+    "RoPE \u00b7 naver||SAE_11_features_ablated||vs_SAE": [
+      0.22766971699613894,
+      0.28893445795417133,
+      0.6021433041141622,
+      0.8927899402315049,
+      0.9756590872381964,
+      1.0068151481578453,
+      1.0371399762626334,
+      1.0581166883576614
+    ],
+    "RoPE \u00b7 naver||SAE_11_features_ablated||vs_untouched": [
+      0.20702752504820818,
+      0.25154729210526366,
+      0.6968355568986887,
+      1.1339948775715805,
+      1.2317072406450753,
+      1.3127460295199829,
+      1.5307296850038545,
+      1.6484189454016187
+    ],
+    "RoPE \u00b7 naver||11_random_features_ablated||vs_SAE": [
+      0.9878152210624367,
+      0.9942393512202079,
+      0.988337368629099,
+      0.9978475280027205,
+      0.9975148461913034,
+      0.9923534658282872,
+      0.9750358739585554,
+      0.9708737050475506
+    ],
+    "RoPE \u00b7 naver||11_random_features_ablated||vs_untouched": [
+      0.8982527106359653,
+      0.8655880585333515,
+      1.1437619848411842,
+      1.26743585961456,
+      1.2592987394631077,
+      1.2938900199604897,
+      1.4390693545439908,
+      1.5125048367554723
+    ],
+    "APE \u00b7 DINOv1||SAE_4_features_ablated||vs_SAE": [
+      0.6218248106361919,
+      0.6457846812060507,
+      0.6819120881907418,
+      0.7081773781910198,
+      0.753858549202078,
+      0.7884078878673151,
+      0.8811240193533666,
+      0.8960573085244687,
+      0.9257944109817142,
+      0.9568780001186796
+    ],
+    "APE \u00b7 DINOv1||SAE_4_features_ablated||vs_untouched": [
+      0.5821529843995087,
+      0.5553414461476053,
+      0.6226768823656551,
+      0.7178823323241569,
+      0.783625128270035,
+      0.8116782868466037,
+      0.9584883617530351,
+      0.9988176909833018,
+      0.9824416017721237,
+      0.9535312213582943
+    ],
+    "APE \u00b7 DINOv1||SAE_8_features_ablated||vs_SAE": [
+      0.569801340139494,
+      0.6540671608557885,
+      0.654971877037202,
+      0.6605097003714816,
+      0.7074406821331396,
+      0.7395625999963193,
+      0.8297435232943483,
+      0.8438972067260221,
+      0.8863928855136104,
+      0.9371527297555343
+    ],
+    "APE \u00b7 DINOv1||SAE_8_features_ablated||vs_untouched": [
+      0.5334485614005501,
+      0.5624639505368135,
+      0.5980768686954673,
+      0.669561410499489,
+      0.735374422518381,
+      0.7613912968382904,
+      0.9025965617203812,
+      0.9406758378404838,
+      0.940629189281859,
+      0.933874942147507
+    ],
+    "APE \u00b7 DINOv1||SAE_12_features_ablated||vs_SAE": [
+      0.3189108004964273,
+      0.3006793353730362,
+      0.3638097852627087,
+      0.38534598829111294,
+      0.4364589194701645,
+      0.458776778681249,
+      0.48292126162491467,
+      0.47411972396751656,
+      0.47082564012667444,
+      0.4724837778757027
+    ],
+    "APE \u00b7 DINOv1||SAE_12_features_ablated||vs_untouched": [
+      0.2985645974406957,
+      0.25856868673458744,
+      0.33220696154917867,
+      0.39062681941749905,
+      0.4536927744819237,
+      0.4723178896298271,
+      0.5253226546363639,
+      0.528492054512319,
+      0.49963435786022664,
+      0.47083121749472945
+    ],
+    "APE \u00b7 DINOv1||SAE_16_features_ablated||vs_SAE": [
+      0.3064827063024137,
+      0.35568052295232755,
+      0.340227209463133,
+      0.2965953216878197,
+      0.3072469648554197,
+      0.3174376323441411,
+      0.35721246661903255,
+      0.3831958498943586,
+      0.4374801815467261,
+      0.46119121444581695
+    ],
+    "APE \u00b7 DINOv1||SAE_16_features_ablated||vs_untouched": [
+      0.2869294037306844,
+      0.3058668651197968,
+      0.31067291774597794,
+      0.3006599022318016,
+      0.3193788045519237,
+      0.32680702155163727,
+      0.38857639152625045,
+      0.42714097674860446,
+      0.4642485688011074,
+      0.459578150961452
+    ],
+    "APE \u00b7 DINOv1||SAE_18_features_ablated||vs_SAE": [
+      -0.06733998797719046,
+      -0.0594855778630603,
+      -0.03937781359563825,
+      -0.009961057431679769,
+      0.001971568881849802,
+      0.0018383048190975658,
+      -0.005228744491648801,
+      -0.012417524182043524,
+      -0.02202381918821669,
+      -0.030909937754948474
+    ],
+    "APE \u00b7 DINOv1||SAE_18_features_ablated||vs_untouched": [
+      -0.06304376136140423,
+      -0.05115452223750947,
+      -0.03595720713672022,
+      -0.010097565047524456,
+      0.0020494175194644085,
+      0.0018925636453273065,
+      -0.0056878380701772405,
+      -0.013841573204354196,
+      -0.023371405080602287,
+      -0.03080182708342058
+    ],
+    "APE \u00b7 DINOv1||18_random_features_ablated||vs_SAE": [
+      1.0002849199997261,
+      1.0044380684705814,
+      1.0096100088524276,
+      1.0038850018831804,
+      1.0093001928115921,
+      1.0099515405461361,
+      0.9998779740799905,
+      1.0028535969740218,
+      1.0148056604845541,
+      1.0313681044856955
+    ],
+    "APE \u00b7 DINOv1||18_random_features_ablated||vs_untouched": [
+      0.9364677019430782,
+      0.8637648209127783,
+      0.9219088847440178,
+      1.0176423714324696,
+      1.0491530458759104,
+      1.0397609522224067,
+      1.0876691365560516,
+      1.1178614409979322,
+      1.0768992410708724,
+      1.0277607889597837
+    ],
+    "RoPE \u00b7 DINOv3||SAE_4_features_ablated||vs_SAE": [
+      0.9935500728644164,
+      1.0114091548178739,
+      0.9987483723276968,
+      0.9942862767095294,
+      0.9872066556583085,
+      1.002422423774097,
+      1.0053530142391605,
+      1.0147754839942986
+    ],
+    "RoPE \u00b7 DINOv3||SAE_4_features_ablated||vs_untouched": [
+      0.9670467346110541,
+      0.9956837998475477,
+      0.9985474256970635,
+      1.0141277921259724,
+      1.007886994183322,
+      1.0081306761528925,
+      1.0024951362300392,
+      1.061315182276245
+    ],
+    "RoPE \u00b7 DINOv3||SAE_10_features_ablated||vs_SAE": [
+      0.9759389321583793,
+      0.975755134764291,
+      0.9630461364566978,
+      0.9796464149976797,
+      0.9552740938832218,
+      0.9495134552554901,
+      0.9596570103985348,
+      0.9752257623140431
+    ],
+    "RoPE \u00b7 DINOv3||SAE_10_features_ablated||vs_untouched": [
+      0.9499053779973416,
+      0.9605841272791453,
+      0.9628523730608043,
+      0.9991957841292403,
+      0.9752854983165791,
+      0.9549204197358476,
+      0.9569290306466737,
+      1.0199516287256243
+    ],
+    "RoPE \u00b7 DINOv3||SAE_16_features_ablated||vs_SAE": [
+      0.9726256586324604,
+      0.9539838179397989,
+      0.9828198558179316,
+      0.9688842227106357,
+      0.9299746198354673,
+      0.9244069689612874,
+      0.9569820850670235,
+      0.9555935139057968
+    ],
+    "RoPE \u00b7 DINOv3||SAE_16_features_ablated||vs_untouched": [
+      0.946680487343491,
+      0.9391513101445222,
+      0.9826221139802295,
+      0.9882188265284431,
+      0.9494560423396979,
+      0.9296709656102067,
+      0.9542617092216239,
+      0.9994190048826862
+    ],
+    "RoPE \u00b7 DINOv3||SAE_22_features_ablated||vs_SAE": [
+      0.9351115254921503,
+      0.9172762178846715,
+      0.9493691271049471,
+      0.9485498355836135,
+      0.9419125886430406,
+      0.9514264432568238,
+      0.9665689799089222,
+      0.9509050164658474
+    ],
+    "RoPE \u00b7 DINOv3||SAE_22_features_ablated||vs_untouched": [
+      0.910167058432443,
+      0.9030144386004292,
+      0.9491781155022204,
+      0.9674786558106023,
+      0.9616440917507869,
+      0.9568443011669873,
+      0.9638213517694961,
+      0.994515483272669
+    ],
+    "RoPE \u00b7 DINOv3||SAE_22_random_features_ablated||vs_SAE": [
+      1.0038898718538714,
+      1.004703775718313,
+      1.002000521935434,
+      0.9986694898618373,
+      0.9992462748725094,
+      1.0001251641243967,
+      1.0008557863767804,
+      1.0203505172324023
+    ],
+    "RoPE \u00b7 DINOv3||SAE_22_random_features_ablated||vs_untouched": [
+      0.977110715403144,
+      0.989082675753045,
+      1.0017989209773204,
+      1.0185984746453753,
+      1.0201788234080964,
+      1.0058203348546286,
+      0.9980106924628257,
+      1.0671458980460078
+    ]
+  }
+}

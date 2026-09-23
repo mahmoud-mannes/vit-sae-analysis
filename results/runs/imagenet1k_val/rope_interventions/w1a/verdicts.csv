@@ -1,0 +1,5 @@
+run,max_damage@site,max_drop_over_noise,reportable_rows,verdict
+APE · google ViT,0.7706097255936626,29.72367021968439,6,USABLE: 6 measurable condition-rows
+RoPE · naver,0.7929724749517918,14.469434590616927,6,USABLE: 6 measurable condition-rows
+APE · DINOv1,1.0673399879771905,55.040618412110305,10,USABLE: 10 measurable condition-rows
+RoPE · DINOv3,0.08983294156755695,6.658028603122498,0,NOT USABLE for recovery: no dose clears the guards
