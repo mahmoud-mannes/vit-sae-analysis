@@ -1,0 +1,47 @@
+# Implementation checks run at the start of each W7 RoPE run.
+run,gate,scope,status,detail
+w7rope_gates_2026-09-24T22-49-53Z.json,imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005
+w7rope_gates_2026-09-24T22-49-53Z.json,empty plane mask bit-identical [interleaved],algebra,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,full plane mask equals identity [interleaved],algebra,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask NO heads equals unmodified rope [interleaved],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask ALL heads equals global identity [interleaved],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask head 3 leaves others untouched [interleaved],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,empty plane mask bit-identical [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,full plane mask equals identity [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask NO heads equals unmodified rope [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask ALL heads equals global identity [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,mask head 3 leaves others untouched [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,composite REJECTS overlapping segments,composite,PASS,
+w7rope_gates_2026-09-24T22-49-53Z.json,naver: random heads are outside the stage C top-4,draw,PASS,"heads [0, 4, 10]"
+w7rope_gates_2026-09-24T22-49-53Z.json,reg1_gap: random heads are outside the stage C top-4,draw,PASS,"heads [1, 4, 8]"
+w7rope_gates_2026-09-24T22-49-53Z.json,small: random heads are outside the stage C top-3,draw,PASS,"heads [1, 3, 5]"
+w7rope_gates_2026-09-25T01-38-38Z.json,imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005
+w7rope_gates_2026-09-25T01-38-38Z.json,empty plane mask bit-identical [interleaved],algebra,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,full plane mask equals identity [interleaved],algebra,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask NO heads equals unmodified rope [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask ALL heads equals global identity [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask head 3 leaves others untouched [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,empty plane mask bit-identical [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,full plane mask equals identity [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask NO heads equals unmodified rope [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask ALL heads equals global identity [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,mask head 3 leaves others untouched [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,composite REJECTS overlapping segments,composite,PASS,
+w7rope_gates_2026-09-25T01-38-38Z.json,naver: random heads are outside the stage C top-4,draw,PASS,"heads [0, 4, 10]"
+w7rope_gates_2026-09-25T01-38-38Z.json,reg1_gap: random heads are outside the stage C top-4,draw,PASS,"heads [1, 4, 8]"
+w7rope_gates_2026-09-25T01-38-38Z.json,small: random heads are outside the stage C top-3,draw,PASS,"heads [1, 3, 5]"
+w7rope_gates_2026-09-25T04-06-12Z.json,imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005
+w7rope_gates_2026-09-25T04-06-12Z.json,empty plane mask bit-identical [interleaved],algebra,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,full plane mask equals identity [interleaved],algebra,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask NO heads equals unmodified rope [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask ALL heads equals global identity [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask head 3 leaves others untouched [interleaved],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,empty plane mask bit-identical [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,full plane mask equals identity [rotate_half],algebra,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask NO heads equals unmodified rope [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask ALL heads equals global identity [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,mask head 3 leaves others untouched [rotate_half],per-head,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,composite REJECTS overlapping segments,composite,PASS,
+w7rope_gates_2026-09-25T04-06-12Z.json,naver: random heads are outside the stage C top-4,draw,PASS,"heads [0, 4, 10]"
+w7rope_gates_2026-09-25T04-06-12Z.json,reg1_gap: random heads are outside the stage C top-4,draw,PASS,"heads [1, 4, 8]"
+w7rope_gates_2026-09-25T04-06-12Z.json,small: random heads are outside the stage C top-3,draw,PASS,"heads [1, 3, 5]"

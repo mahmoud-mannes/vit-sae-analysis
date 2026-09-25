@@ -1,0 +1,30 @@
+# W7 C3 summary; top-1 (5,000 images) and SSDC (1,000 images) under prefix blocking.
+model,condition,block,exact_pct,row_pct,col_pct
+naver ViT-B,intact,4,28.3903,64.0179,60.8036
+naver ViT-B,intact,11,7.5332,34.4235,23.5434
+naver ViT-B,prefix_block,4,11.5434,43.4184,31.1199
+naver ViT-B,prefix_block,11,3.4745,24.0102,15.7321
+naver ViT-B,prefix_block_top1,,82.8,,
+naver ViT-B,prefix_block_ssdc_b0_to_b11,,0.017 0.029 0.015 0.155 0.259 0.351 0.353 0.412 0.455 0.441 0.415 0.382,,
+naver ViT-B,num_prefix_tokens,,1,,
+naver ViT-S,intact,4,15.625,35.2679,48.8214
+naver ViT-S,intact,11,2.6403,21.1964,13.5893
+naver ViT-S,prefix_block,4,7.1658,18.8852,38.8673
+naver ViT-S,prefix_block,11,2.2602,16.9643,14.5128
+naver ViT-S,prefix_block_top1,,73.34,,
+naver ViT-S,prefix_block_ssdc_b0_to_b11,,0.013 0.003 0.024 0.116 0.247 0.308 0.485 0.447 0.400 0.405 0.469 0.416,,
+naver ViT-S,num_prefix_tokens,,1,,
+reg1-gap ViT-B,intact,4,31.648,67.0536,67.0
+reg1-gap ViT-B,intact,11,10.9158,40.2143,31.4056
+reg1-gap ViT-B,prefix_block,4,13.5485,45.0663,37.9388
+reg1-gap ViT-B,prefix_block,11,8.6301,37.7092,25.6735
+reg1-gap ViT-B,prefix_block_top1,,74.42,,
+reg1-gap ViT-B,prefix_block_ssdc_b0_to_b11,,0.024 -0.008 0.054 0.202 0.403 0.607 0.723 0.607 0.503 0.489 0.481 0.456,,
+reg1-gap ViT-B,num_prefix_tokens,,1,,
+DINOv3 ViT-B,intact,4,31.8597,72.5995,73.7653
+DINOv3 ViT-B,intact,11,42.6939,80.25,88.7551
+DINOv3 ViT-B,prefix_block,4,5.4949,24.9617,22.8648
+DINOv3 ViT-B,prefix_block,11,21.4923,56.7372,46.5153
+DINOv3 ViT-B,prefix_block_top1,,,,
+DINOv3 ViT-B,prefix_block_ssdc_b0_to_b11,,0.021 0.024 -0.008 -0.006 0.188 0.387 0.429 0.482 0.530 0.557 0.570 0.540,,
+DINOv3 ViT-B,num_prefix_tokens,,5,,

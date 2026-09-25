@@ -1,0 +1,32 @@
+# W7 all-heads test (5,000 images, 224px). window = rotations identity in blocks 0-5; cost = top-1 of that window minus top-1 with head h's rotations also identity in blocks 6-11. intact = head h's rotations identity in blocks 6-11 of the unmodified model. Paired SE over images; reg1-gap per-image data lost (overwritten in a rerun) so SE is blank. earlier_run = W6 run (3 random + 2 ranked heads only).
+model,head,is_top_rebuilder,rank_by_window_top1_cost,window_top1_cost_pp,window_cost_paired_se_pp,intact_top1_cost_pp,window_ssdc_b11_cost,intact_ssdc_b11_cost,earlier_run_window_top1_cost_pp
+naver ViT-B,0,0,8,1.34,0.2639,0.12,0.0018,-0.0124,1.74
+naver ViT-B,1,0,2,3.38,0.3107,0.44,0.0432,0.0363,
+naver ViT-B,2,0,7,1.64,0.2805,0.3,0.0443,0.0252,2.46
+naver ViT-B,3,0,11,-0.14,0.3561,0.52,-0.0552,-0.0866,
+naver ViT-B,4,0,5,2.18,0.2718,0.54,-0.0005,-0.0072,2.46
+naver ViT-B,5,0,3,2.36,0.2837,0.14,0.0271,0.0204,
+naver ViT-B,6,1,1,4.3,0.3417,0.5,0.0466,0.0452,4.4
+naver ViT-B,7,0,10,-0.1,0.22,0.12,0.0146,-0.0392,
+naver ViT-B,8,0,9,0.36,0.2019,0.36,0.007,-0.003,
+naver ViT-B,9,0,6,1.82,0.2556,0.42,0.01,-0.0116,
+naver ViT-B,10,0,12,-1.66,0.2896,0.36,-0.0275,-0.0344,-1.28
+naver ViT-B,11,0,4,2.3,0.2656,0.44,0.0371,0.0069,
+naver ViT-S,0,0,4,3.7,0.3667,0.5,0.0247,0.0198,
+naver ViT-S,1,0,5,1.0,0.375,0.96,-0.0268,-0.0418,3.08
+naver ViT-S,2,1,1,7.62,0.4596,1.18,0.0785,0.0429,8.76
+naver ViT-S,3,0,3,4.88,0.4623,1.4,-0.0477,-0.106,6.6
+naver ViT-S,4,0,2,6.48,0.4396,1.08,0.0564,0.027,7.5
+naver ViT-S,5,0,6,0.34,0.4592,1.78,-0.0129,-0.0682,1.58
+reg1-gap ViT-B,0,0,7,0.7,,0.2,0.0117,0.0209,
+reg1-gap ViT-B,1,0,8,0.24,,0.24,0.0051,-0.007,0.04
+reg1-gap ViT-B,2,0,4,3.94,,0.22,0.0229,-0.0101,
+reg1-gap ViT-B,3,0,3,4.16,,0.28,0.0205,-0.0046,
+reg1-gap ViT-B,4,0,12,-1.56,,0.18,-0.0286,-0.0293,-2.5
+reg1-gap ViT-B,5,0,6,0.98,,0.16,0.0111,-0.004,
+reg1-gap ViT-B,6,0,5,1.52,,0.24,0.0324,-0.0561,0.52
+reg1-gap ViT-B,7,1,1,5.74,,0.42,0.0465,0.0263,5.82
+reg1-gap ViT-B,8,0,10,-0.92,,-0.04,-0.0063,0.0197,-0.96
+reg1-gap ViT-B,9,0,2,4.9,,0.2,0.0241,-0.0073,
+reg1-gap ViT-B,10,0,11,-1.24,,0.78,-0.0705,-0.079,
+reg1-gap ViT-B,11,0,9,-0.46,,0.1,0.0188,-0.0455,
