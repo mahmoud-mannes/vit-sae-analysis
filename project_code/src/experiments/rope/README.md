@@ -44,6 +44,11 @@ and one head's rotations held off in blocks 6-11, against the same window with a
 
 ## Notes
 
+- Images come from `experiments.common.load_imagenet`, which tries the gated `ILSVRC/imagenet-1k`
+  split and falls back to the `benjamin-paine/imagenet-1k-256x256` repack. Every committed output
+  was produced from the repack. The repack is stored at 256×256, so the gated split gives slightly
+  different numbers; to match the committed outputs, pass
+  `dataset_id="benjamin-paine/imagenet-1k-256x256"` to `load_imagenet`.
 - W1-A reads `results/runs/SAE_20k_images_analysis/original_results/feature_ablation_residual.json`
   and `second_seed/feature_ablation_residual_second_seed.json`. Its committed output was regenerated
   with this script and matches the original run in every number.
