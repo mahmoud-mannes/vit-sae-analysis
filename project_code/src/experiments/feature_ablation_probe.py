@@ -177,15 +177,7 @@ def fit_regression_probe(train_acts, eval_acts, split_seed, shuffle_seed, alpha_
 
 
 def measure_layer(exp, probe_layer, probe_block, cfg):
-    """Probe one layer under the currently attached ablation. Returns a detail dict.
-
-    Classification: {"layer", "peak_accuracy", "final_accuracy", "history", "chance"}.
-    Regression: {"layer", "row": {...}, "column": {...}, "negative_control": {...},
-    "mean_test_r2", ...}, i.e. the full evaluate_coordinate_probe output. Row and
-    column come out of the *same* ridge fit (one shared feature decomposition, see
-    metrics.position_probe.fit_shared_ridge_probes), so both are always available
-    at no extra cost, whichever axis of SAE features was ablated.
-    """
+    """Probe one layer under the currently attached ablation. Returns (score, detail)."""
     if cfg["mode"] == "classification":
         acts = capture_activations(
             exp.model, exp.source, exp.batches, probe_layer, probe_block, exp.n_prefix,
@@ -195,7 +187,8 @@ def measure_layer(exp, probe_layer, probe_block, cfg):
             acts, cfg["lr"], cfg["passes"], cfg["batch_size"], cfg["weight_decay"],
             cfg["val_fraction"], cfg["probe_seed"], cfg["device"],
         )
-        return {"layer": probe_layer, **detail}
+        detail = {"layer": probe_layer, **detail}
+        return detail["peak_accuracy"], detail
 
     train_acts = capture_activations(
         exp.model, exp.source, exp.batches, probe_layer, probe_block, exp.n_prefix,
@@ -213,44 +206,8 @@ def measure_layer(exp, probe_layer, probe_block, cfg):
         train_acts, eval_acts, cfg["split_seed"],
         shuffle_seed=cfg["rpi_seed"] + 1009 * (probe_layer + 1), alpha_grid=cfg["alpha_grid"],
     )
-    return {"layer": probe_layer, **detail}
-
-
-def format_layer_line(probe_mode, detail):
-    """One console line for a probed layer; regression always shows both axes."""
-    if probe_mode == "classification":
-        return f"acc={detail['peak_accuracy']:.4f} (chance={detail['chance']:.4f})"
-    return (
-        f"row_r2={detail['row']['r2']:.4f}  column_r2={detail['column']['r2']:.4f}  "
-        f"(mean={detail['mean_test_r2']:.4f}, "
-        f"null row={detail['negative_control']['row']['r2']:.4f} "
-        f"col={detail['negative_control']['column']['r2']:.4f})"
-    )
-
-
-def scores_for_axis(probe_mode, layer_details, axis="combined"):
-    """Per-layer scalar curve for one axis. axis: "combined" (classification's only
-    axis, or regression's mean_test_r2), "row", or "column" (regression only)."""
-    if probe_mode == "classification":
-        if axis != "combined":
-            raise ValueError("classification probes have no row/column split")
-        return [float(d["peak_accuracy"]) for d in layer_details]
-    if axis == "combined":
-        return [float(d["mean_test_r2"]) for d in layer_details]
-    if axis in ("row", "column"):
-        return [float(d[axis]["r2"]) for d in layer_details]
-    raise ValueError(f"axis must be 'combined', 'row' or 'column', got {axis!r}")
-
-
-def curves_for_condition(probe_mode, layer_details):
-    """All axes for one condition: a scalar list for classification, or
-    {"row": [...], "column": [...], "combined": [...]} for regression."""
-    if probe_mode == "classification":
-        return scores_for_axis(probe_mode, layer_details, "combined")
-    return {
-        axis: scores_for_axis(probe_mode, layer_details, axis)
-        for axis in ("row", "column", "combined")
-    }
+    detail = {"layer": probe_layer, **detail}
+    return detail["mean_test_r2"], detail
 
 
 def summarize_probe(scores, layers):
@@ -262,13 +219,6 @@ def summarize_probe(scores, layers):
         "final": float(scores[-1]),
         "mean": float(scores.mean()),
     }
-
-
-def summarize_condition(probe_mode, curve, layers):
-    """summarize_probe applied per axis; a nested dict for regression, flat for classification."""
-    if probe_mode == "classification":
-        return summarize_probe(curve, layers)
-    return {axis: summarize_probe(curve[axis], layers) for axis in ("row", "column", "combined")}
 
 
 # --------------------------------------------------------------------------- #
