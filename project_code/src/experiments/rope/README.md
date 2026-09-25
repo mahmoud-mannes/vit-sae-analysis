@@ -73,6 +73,11 @@ and one head's rotations held off in blocks 6-11, against the same window with a
   `*_MERGED.json` files, and one file per model for everything else. Both W7 scripts save after every
   condition, and `W7_ONLY=<cond,...>` reruns named conditions. For reg1-gap and SAM a rerun overwrote the
   per-image files of the earlier arms, so paired errors exist only for the rerun conditions.
+- SAM was later re-screened with a retrained SAE, which leaves 24 positional features instead of 33.
+  `w7ape_sam_2026-09-25T18-42-10Z.json` is the W7 APE run with that set and is the SAM file the paper
+  uses; `perimage/ape_sam_correct.npz` now holds its per-image correctness for every arm. The earlier
+  SAM files (`w7ape_sam_2026-09-24*`, `2026-09-25T01*`, `T04*` and `w7ape_sam_MERGED.json`) used the
+  33-feature set and are kept for the record.
 - `w7_controls_ape.py` needs the SAE weights, which are not in the repository: set `W7_SAE_DIR` to the
   directory with `SAE_residual_APE_2_TOP64*.pt`. The positional feature lists are read from
   `results/runs/SAE_20k_images_analysis/`.
