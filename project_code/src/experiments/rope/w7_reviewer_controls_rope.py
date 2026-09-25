@@ -402,7 +402,7 @@ def part_R12(nm):
         except Exception as ex:
             out["conditions"][cname]={"error":repr(ex)}; print("  ERROR",cname,repr(ex)); traceback.print_exc()
         save(f"R12_{nm}",out)
-    if corr_store: np.savez_compressed(PERIMG_DIR/f"R12_{nm}_correct.npz",**corr_store)
+        if corr_store: np.savez_compressed(PERIMG_DIR/f"R12_{nm}_correct.npz",**corr_store)
     out["n_heads"]=nh; out["top_rebuilder"]=r1; out["runtime_s"]=round(time.time()-t0,1)
     save(f"R12_{nm}",out)
     del model; torch.cuda.empty_cache()

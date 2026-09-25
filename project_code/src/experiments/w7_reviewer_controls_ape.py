@@ -265,7 +265,7 @@ def run_model(m):
         rec["runtime_s"] = round(time.time() - t, 1); res["conditions"][name] = rec
         print(f"  {m} {name:26s} ssdc2={rec.get('ssdc',[None]*12)[2]} acc={rec.get('acc')} {rec['runtime_s']}s", flush=True)
         save(m, res)
-    if perimg: np.savez_compressed(PER / f"ape_{m}_correct.npz", **perimg)
+        if perimg: np.savez_compressed(PER / f"ape_{m}_correct.npz", **perimg)
     res["runtime_s"] = round(time.time() - t0, 1); save(m, res)
     del model; torch.cuda.empty_cache()
 
