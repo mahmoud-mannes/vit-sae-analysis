@@ -1,0 +1,20 @@
+# W7 reference conditions. floor_shuffled = every rotation replaced by the rotation of a fixed random permutation of patch positions (two seeds); window_shuffled = the same in blocks 0-5 only.
+model,condition,top1_pct,ssdc_b4,ssdc_b11
+naver ViT-B,baseline,84.64,0.4714,0.3993
+naver ViT-B,floor_identity,38.84,0.0116,0.0137
+naver ViT-B,floor_shuffled_s0,34.2,0.009,0.0153
+naver ViT-B,floor_shuffled_s1,33.4,-0.0022,0.0149
+naver ViT-B,window_identity,70.52,0.0116,0.306
+naver ViT-B,window_shuffled,67.16,0.009,0.2628
+naver ViT-S,baseline,81.32,0.3675,0.362
+naver ViT-S,floor_identity,24.04,0.013,0.0152
+naver ViT-S,floor_shuffled_s0,20.78,0.0033,0.0196
+naver ViT-S,floor_shuffled_s1,20.72,0.0004,0.0201
+naver ViT-S,window_identity,48.68,0.013,0.2211
+naver ViT-S,window_shuffled,53.38,0.0033,0.2419
+reg1-gap ViT-B,baseline,83.88,0.69,0.4343
+reg1-gap ViT-B,floor_identity,29.5,0.0135,0.0127
+reg1-gap ViT-B,floor_shuffled_s0,22.58,0.0017,0.0124
+reg1-gap ViT-B,floor_shuffled_s1,22.74,0.0052,0.0256
+reg1-gap ViT-B,window_identity,56.28,0.0135,0.2542
+reg1-gap ViT-B,window_shuffled,57.36,0.0017,0.1371
