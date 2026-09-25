@@ -1,0 +1,45 @@
+loaded ILSVRC/imagenet-1k [validation]
+
+=== APE sam ===
+  sam intact                     ssdc2=0.5506866229710872 acc=0.8100000023841858 240.6s
+  sam embed_zero                 ssdc2=0.006228353682840833 acc=0.4000000059604645 335.1s
+  sam embed_perm                 ssdc2=0.0047445133909825065 acc=0.23100000619888306 306.3s
+  sam recon                      ssdc2=0.5324476893155 acc=0.8080000281333923 276.4s
+  sam pos_zero                   ssdc2=0.014729361988103887 acc=0.4580000042915344 171.1s
+  sam rand_uniform               ssdc2=0.5322058300688969 acc=0.8080000281333923 279.7s
+  sam recon_err                  ssdc2=0.5506866229710872 acc=0.8100000023841858 172.6s
+  sam pos_zero_err               ssdc2=0.061424130828114744 acc=0.5339999794960022 204.0s
+  sam pos_mean_err               ssdc2=0.05530435161801714 acc=0.5360000133514404 159.2s
+  sam pos_resample_samepos_err   ssdc2=0.5518987046255601 acc=0.7879999876022339 182.0s
+  sam pos_resample_diffpos_err   ssdc2=0.015254841292596941 acc=0.3869999945163727 199.5s
+  sam rand_matched_0             ssdc2=0.5314276137230007 acc=0.7839999794960022 140.3s
+  sam rand_matched_1             ssdc2=0.5272725394152843 acc=0.777999997138977 50.8s
+  sam rand_matched_2             ssdc2=0.5291526897767032 acc=0.7710000276565552 49.4s
+  sam rand_matched_3             ssdc2=0.5256012045805493 acc=0.765999972820282 46.3s
+  sam rand_matched_4             ssdc2=0.5248711513181894 acc=0.781000018119812 54.1s
+  sam rand_matched_0_err         ssdc2=0.5504012252595621 acc=0.7879999876022339 46.0s
+
+=== APE dino ===
+  dino intact                     ssdc2=0.47312237500732673 acc=None 80.0s
+  dino embed_zero                 ssdc2=0.00725874392142665 acc=None 85.0s
+  dino embed_perm                 ssdc2=0.012584098413584521 acc=None 84.9s
+  dino recon                      ssdc2=0.44320871637562403 acc=None 84.4s
+  dino pos_zero                   ssdc2=-0.013220190141251942 acc=None 88.5s
+  dino rand_uniform               ssdc2=0.4443757878280364 acc=None 81.8s
+  dino recon_err                  ssdc2=0.47312237500732673 acc=None 26.9s
+  dino pos_zero_err               ssdc2=0.06785748660421397 acc=None 87.1s
+  dino pos_mean_err               ssdc2=0.09227796351540919 acc=None 26.9s
+  dino pos_resample_samepos_err   ssdc2=0.48245599532578654 acc=None 87.0s
+  dino pos_resample_diffpos_err   ssdc2=0.05578079770560963 acc=None 92.2s
+  dino rand_matched_0             ssdc2=0.45456244030331994 acc=None 92.5s
+  dino rand_matched_1             ssdc2=0.45499290815904236 acc=None 33.3s
+  dino rand_matched_2             ssdc2=0.4503294019459037 acc=None 31.2s
+  dino rand_matched_3             ssdc2=0.45290981161557897 acc=None 36.0s
+  dino rand_matched_4             ssdc2=0.4616207793928201 acc=None 23.9s
+  dino rand_matched_0_err         ssdc2=0.4806407327275463 acc=None 34.1s
+
+=== APE deit3 ===
+  deit3 intact                     ssdc2=0.44610331062154734 acc=0.84579998254776 220.1s
+  deit3 embed_zero                 ssdc2=0.00971282303612587 acc=0.23520000278949738 259.7s
+  deit3 embed_perm                 ssdc2=0.006471408000224865 acc=0.32120001316070557 184.3s
+W7 APE DONE

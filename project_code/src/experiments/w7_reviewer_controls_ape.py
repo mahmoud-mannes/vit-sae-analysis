@@ -251,6 +251,8 @@ def run_model(m):
             conds.append((f"rand_matched_{i}", E("zero", d)))
         conds.append(("rand_matched_0_err", E("zero", draws[0], True)))
         probe_set |= {"recon", "pos_zero", "rand_uniform", "rand_matched_0", "pos_zero_err", "pos_resample_diffpos_err", "pos_resample_samepos_err"}
+    only = [c for c in os.environ.get("W7_ONLY", "").split(",") if c]
+    if only: conds = [c for c in conds if c[0] in only]
     has_head = cfg["n_acc"] > 0; perimg = {}
     for name, cf in conds:
         t = time.time(); rec = {}

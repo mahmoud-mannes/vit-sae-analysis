@@ -390,6 +390,8 @@ def part_R12(nm):
         conds.append((f"int_h{h}",(lambda h=h:RopeComposite(model,source,[(POST,per_head([h],IDEN,nh))]))))
     conds.append((f"win_h{r1}_shuffled",lambda:RopeComposite(model,source,[(WINDOW,IDEN),(POST,per_head([r1],shuffled_like(perms[0]),nh))])))
     conds.append((f"int_h{r1}_shuffled",lambda:RopeComposite(model,source,[(POST,per_head([r1],shuffled_like(perms[0]),nh))])))
+    only=[c for c in os.environ.get("W7_ONLY","").split(",") if c]
+    if only: conds=[c for c in conds if c[0] in only]
     corr_store={}
     for cname,cf in conds:
         t=time.time()

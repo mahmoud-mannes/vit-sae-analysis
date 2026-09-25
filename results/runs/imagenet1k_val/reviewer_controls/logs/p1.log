@@ -1,0 +1,10 @@
+loaded ILSVRC/imagenet-1k [validation]
+
+=== APE sam ===
+  sam rand_matched_0             ssdc2=0.5314276137230007 acc=0.7839999794960022 435.3s
+  sam rand_matched_1             ssdc2=0.5272725394152843 acc=0.777999997138977 233.4s
+  sam rand_matched_2             ssdc2=0.5291526897767032 acc=0.7710000276565552 137.9s
+  sam rand_matched_3             ssdc2=0.5256012045805493 acc=0.765999972820282 80.5s
+  sam rand_matched_4             ssdc2=0.5248711513181894 acc=0.781000018119812 177.7s
+  sam rand_matched_0_err         ssdc2=0.5504012252595621 acc=0.7879999876022339 173.2s
+W7 APE DONE

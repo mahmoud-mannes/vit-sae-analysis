@@ -1,0 +1,60 @@
+environment ready
+torch 2.14.0+cu130 | timm 1.0.29 | cuda True
+device: NVIDIA H100 80GB HBM3
+memory: 84.5 / 85.0 GB free
+device cuda | parts [] | acc orders ['clean']
+accuracy at 5000 images, everything else at 1000
+run 2026-09-25T04:06:12Z
+repo: /root/vit/project_code/src
+  [PASS] repo-metric: imported metric satisfies its unit test: +1.000/-1.000/-0.005
+loaded ILSVRC/imagenet-1k [validation]
+dataset ready: IterableDataset
+  [PASS] algebra: empty plane mask bit-identical [interleaved]
+  [PASS] algebra: full plane mask equals identity [interleaved]
+  [PASS] per-head: mask NO heads equals unmodified rope [interleaved]
+  [PASS] per-head: mask ALL heads equals global identity [interleaved]
+  [PASS] per-head: mask head 3 leaves others untouched [interleaved]
+  [PASS] algebra: empty plane mask bit-identical [rotate_half]
+  [PASS] algebra: full plane mask equals identity [rotate_half]
+  [PASS] per-head: mask NO heads equals unmodified rope [rotate_half]
+  [PASS] per-head: mask ALL heads equals global identity [rotate_half]
+  [PASS] per-head: mask head 3 leaves others untouched [rotate_half]
+  [PASS] composite: composite REJECTS overlapping segments
+naver      regen r1=h6 (A rank 11)  r2=h2 (A rank 1)
+           random [0, 4, 10] -> ranks {0: (6, 9), 4: (12, 10), 10: (4, 11)}   pool 8
+  [PASS] draw: naver: random heads are outside the stage C top-4: heads [0, 4, 10]
+reg1_gap   regen r1=h7 (A rank 7)  r2=h6 (A rank 5)
+           random [1, 4, 8] -> ranks {1: (4, 9), 4: (3, 11), 8: (6, 10)}   pool 8
+  [PASS] draw: reg1_gap: random heads are outside the stage C top-4: heads [1, 4, 8]
+small      regen r1=h2 (A rank 5)  r2=h4 (A rank 1)
+           random [1, 3, 5] -> ranks {1: (6, 4), 3: (2, 6), 5: (4, 5)}   pool 3  (exhaustive)
+  [PASS] draw: small: random heads are outside the stage C top-3: heads [1, 3, 5]
+    saved -> w7rope_draws_2026-09-25T04-06-12Z.json
+
+=== R12 reg1_gap ===
+  reg1_gap win_h10                ssdc4=+0.0135 b11=+0.3247 acc=57.52  428.1s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+  reg1_gap int_h10                ssdc4=+0.6900 b11=+0.5132 acc=83.10  416.9s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+  reg1_gap win_h11                ssdc4=+0.0135 b11=+0.2354 acc=56.74  318.3s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+  reg1_gap int_h11                ssdc4=+0.6900 b11=+0.4798 acc=83.78  184.5s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+  reg1_gap win_h7_shuffled        ssdc4=+0.0135 b11=+0.2059 acc=50.42  107.6s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+  reg1_gap int_h7_shuffled        ssdc4=+0.6900 b11=+0.3960 acc=83.48  126.8s
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+    saved -> w7rope_R12_reg1_gap_2026-09-25T04-06-12Z.json
+
+=== C3 none ===
+C3 FAILED none KeyError('none')
+Traceback (most recent call last):
+  File "/root/vit/project_code/src/experiments/rope/w7_reviewer_controls_rope.py", line 522, in <module>
+    try: part_C3(nm)
+         ^^^^^^^^^^^
+  File "/root/vit/project_code/src/experiments/rope/w7_reviewer_controls_rope.py", line 499, in part_C3
+    w=W5[nm]; out={"model":nm}; t0=time.time()
+      ~~^^^^
+KeyError: 'none'
+    saved -> w7rope_gates_2026-09-25T04-06-12Z.json
+W7 ROPE DONE

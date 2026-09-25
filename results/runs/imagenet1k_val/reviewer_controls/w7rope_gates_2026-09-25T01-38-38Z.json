@@ -1,0 +1,92 @@
+[
+  {
+    "gate": "imported metric satisfies its unit test",
+    "scope": "repo-metric",
+    "status": "PASS",
+    "detail": "+1.000/-1.000/-0.005"
+  },
+  {
+    "gate": "empty plane mask bit-identical [interleaved]",
+    "scope": "algebra",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "full plane mask equals identity [interleaved]",
+    "scope": "algebra",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask NO heads equals unmodified rope [interleaved]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask ALL heads equals global identity [interleaved]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask head 3 leaves others untouched [interleaved]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "empty plane mask bit-identical [rotate_half]",
+    "scope": "algebra",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "full plane mask equals identity [rotate_half]",
+    "scope": "algebra",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask NO heads equals unmodified rope [rotate_half]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask ALL heads equals global identity [rotate_half]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "mask head 3 leaves others untouched [rotate_half]",
+    "scope": "per-head",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "composite REJECTS overlapping segments",
+    "scope": "composite",
+    "status": "PASS",
+    "detail": ""
+  },
+  {
+    "gate": "naver: random heads are outside the stage C top-4",
+    "scope": "draw",
+    "status": "PASS",
+    "detail": "heads [0, 4, 10]"
+  },
+  {
+    "gate": "reg1_gap: random heads are outside the stage C top-4",
+    "scope": "draw",
+    "status": "PASS",
+    "detail": "heads [1, 4, 8]"
+  },
+  {
+    "gate": "small: random heads are outside the stage C top-3",
+    "scope": "draw",
+    "status": "PASS",
+    "detail": "heads [1, 3, 5]"
+  }
+]

@@ -1,0 +1,53 @@
+loaded ILSVRC/imagenet-1k [validation]
+
+=== APE supervised ===
+Loading weights:   0%|          | 0/200 [00:00<?, ?it/s]Loading weights: 100%|██████████| 200/200 [00:00<00:00, 4759.95it/s]
+  supervised intact                     ssdc2=0.7559740716325181 acc=0.8116000294685364 293.6s
+  supervised embed_zero                 ssdc2=0.014024676192062532 acc=0.24879999458789825 423.5s
+  supervised embed_perm                 ssdc2=0.01403791902284338 acc=0.2849999964237213 413.0s
+  supervised recon                      ssdc2=0.7494390926023735 acc=0.79339998960495 393.4s
+  supervised pos_zero                   ssdc2=0.21762200751197863 acc=0.5031999945640564 438.7s
+  supervised rand_uniform               ssdc2=0.7511418753974984 acc=0.7893999814987183 368.7s
+  supervised recon_err                  ssdc2=0.7559740716325181 acc=0.8116000294685364 214.6s
+  supervised pos_zero_err               ssdc2=0.25014180772655753 acc=0.6151999831199646 293.3s
+  supervised pos_mean_err               ssdc2=0.2385267206540783 acc=0.6277999877929688 183.3s
+  supervised pos_resample_samepos_err   ssdc2=0.7559088392258048 acc=0.8083999752998352 262.8s
+  supervised pos_resample_diffpos_err   ssdc2=0.13962011055438078 acc=0.5604000091552734 266.3s
+  supervised rand_matched_0             ssdc2=0.7554473872206886 acc=0.7328000068664551 243.1s
+  supervised rand_matched_1             ssdc2=0.7604473921576361 acc=0.7300000190734863 170.4s
+  supervised rand_matched_2             ssdc2=0.7625050763416273 acc=0.7396000027656555 189.7s
+  supervised rand_matched_3             ssdc2=0.7557187818256589 acc=0.7462000250816345 152.4s
+  supervised rand_matched_4             ssdc2=0.7589623511170507 acc=0.746399998664856 178.1s
+  supervised rand_matched_0_err         ssdc2=0.7617123336549517 acc=0.765999972820282 179.5s
+
+=== APE augreg ===
+  augreg intact                     ssdc2=0.7471053438240682 acc=0.7860000133514404 222.2s
+  augreg embed_zero                 ssdc2=0.009319087854595485 acc=0.28299999237060547 219.8s
+  augreg embed_perm                 ssdc2=0.008258514687710179 acc=0.296999990940094 292.8s
+  augreg recon                      ssdc2=0.7431624104215349 acc=0.7829999923706055 282.3s
+  augreg pos_zero                   ssdc2=0.04427759561236018 acc=0.5090000033378601 258.5s
+  augreg rand_uniform               ssdc2=0.7451393534694292 acc=0.7739999890327454 285.9s
+  augreg recon_err                  ssdc2=0.7471053438240682 acc=0.7860000133514404 129.8s
+  augreg pos_zero_err               ssdc2=0.08760423682512433 acc=0.5659999847412109 204.4s
+  augreg pos_mean_err               ssdc2=0.10309082677786191 acc=0.5979999899864197 158.1s
+  augreg pos_resample_samepos_err   ssdc2=0.7482752839719424 acc=0.7789999842643738 276.2s
+  augreg pos_resample_diffpos_err   ssdc2=0.05307276330325977 acc=0.5370000004768372 232.6s
+  augreg rand_matched_0             ssdc2=0.7490445107647693 acc=0.7409999966621399 279.4s
+  augreg rand_matched_1             ssdc2=0.7483571965086825 acc=0.734000027179718 142.6s
+  augreg rand_matched_2             ssdc2=0.7487565943753185 acc=0.7409999966621399 118.9s
+  augreg rand_matched_3             ssdc2=0.7498044960971576 acc=0.734000027179718 100.1s
+  augreg rand_matched_4             ssdc2=0.7484255408829575 acc=0.7379999756813049 102.1s
+  augreg rand_matched_0_err         ssdc2=0.7539547426172163 acc=0.753000020980835 141.2s
+
+=== APE sam ===
+  sam intact                     ssdc2=0.5506866229710872 acc=0.8100000023841858 210.5s
+  sam embed_zero                 ssdc2=0.006228353682840833 acc=0.4000000059604645 273.9s
+  sam embed_perm                 ssdc2=0.0047445133909825065 acc=0.23100000619888306 277.9s
+  sam recon                      ssdc2=0.5324476893155 acc=0.8080000281333923 241.4s
+  sam pos_zero                   ssdc2=0.014729361988103887 acc=0.4580000042915344 236.6s
+  sam rand_uniform               ssdc2=0.5322058300688969 acc=0.8080000281333923 222.8s
+  sam recon_err                  ssdc2=0.5506866229710872 acc=0.8100000023841858 171.2s
+  sam pos_zero_err               ssdc2=0.061424130828114744 acc=0.5339999794960022 224.1s
+  sam pos_mean_err               ssdc2=0.05530435161801714 acc=0.5360000133514404 148.6s
+  sam pos_resample_samepos_err   ssdc2=0.5518987046255601 acc=0.7879999876022339 258.2s
+  sam pos_resample_diffpos_err   ssdc2=0.015254841292596941 acc=0.3869999945163727 202.3s
