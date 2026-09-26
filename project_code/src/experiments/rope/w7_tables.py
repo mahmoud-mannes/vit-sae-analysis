@@ -34,7 +34,7 @@ def write(name, header, rows, comment):
 # ------------------------------------------------------------------ APE controls
 APE = {"Supervised ViT-B": "w7ape_supervised_2026-09-24T18-12-56Z.json",
        "AugReg ViT-B": "w7ape_augreg_2026-09-24T18-12-56Z.json",
-       "SAM ViT-B": "w7ape_sam_MERGED.json",
+       "SAM ViT-B": "w7ape_sam_2026-09-25T18-42-10Z.json",  # rerun with SAM's final 24-feature set
        "DINO ViT-B": "w7ape_dino_2026-09-25T01-02-08Z.json",
        "DeiT-III ViT-B": "w7ape_deit3_2026-09-25T01-02-08Z.json"}
 LABEL = {"intact": "intact", "embed_zero": "embedding zeroed", "embed_perm": "embedding permuted",
