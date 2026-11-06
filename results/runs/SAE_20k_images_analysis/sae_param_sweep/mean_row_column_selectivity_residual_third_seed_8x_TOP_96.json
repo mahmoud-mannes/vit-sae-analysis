@@ -1,0 +1,8 @@
+{
+    "APE_layer_2": {
+        "mean_row_selectivity": 6.184999942779541,
+        "mean_column_selectivity": 6.767000198364258,
+        "mean_row_variance": 11.600000381469727,
+        "mean_column_variance": 12.746000289916992
+    }
+}
