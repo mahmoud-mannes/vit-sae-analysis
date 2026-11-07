@@ -669,6 +669,7 @@ def run_all(
     hf_token=None,
     # outputs
     output_dir=None,
+    output_filename=None,
     tag="",
     save=True,
     do_plot=False,
@@ -732,8 +733,10 @@ def run_all(
             results_path("feature_ablation_ssdc", exp.model_type, exp.seed, exp.block, exp.layer, output_dir, tag=tag),
         )
     if do_plot:
+        if not output_filename:
+            output_filename = "feature_ablation_ssdc"
         figure = results_path(
-            "feature_ablation_ssdc", exp.model_type, exp.seed, exp.block, exp.layer,
+            output_filename, exp.model_type, exp.seed, exp.block, exp.layer,
             output_dir=common.FIGURES_DIR, ext=".png", tag=tag,
         )
         make_plots(out, save_path=figure)
