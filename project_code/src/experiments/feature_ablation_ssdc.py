@@ -122,7 +122,7 @@ SAE_DIR_ENV_VAR = "SAE_MODELS_DIR"
 @dataclass(frozen=True)
 class ModelSpec:
     model_type: str      # "APE" | "RoPE"
-    seed: int            # internal model label (1..4)
+    seed: int            # internal model label (1..5)
     loader: str          # function name in main.load_models
     loader_kwargs: dict  # forwarded to that loader
     checkpoint: str      # human readable name, stored in the results
