@@ -268,6 +268,7 @@ def run_all(
     split_seed=0,
     # outputs
     output_dir=None,
+    output_filename=None,
     tag="",
     save=True,
     do_plot=False,
@@ -363,14 +364,16 @@ def run_all(
     }
     print_summary(out)
 
-    prefix = f"feature_ablation_probe_{probe_mode}"
+    if not output_filename:
+        output_filename = f"feature_ablation_probe_{probe_mode}"
+
     if save:
         write_results(
-            out, results_path(prefix, exp.model_type, exp.seed, exp.block, exp.layer, output_dir, tag=tag)
+            out, results_path(output_filename, exp.model_type, exp.seed, exp.block, exp.layer, output_dir, tag=tag)
         )
     if do_plot:
         figure = results_path(
-            prefix, exp.model_type, exp.seed, exp.block, exp.layer,
+            output_filename, exp.model_type, exp.seed, exp.block, exp.layer,
             output_dir=common.FIGURES_DIR, ext=".png", tag=tag,
         )
         make_plots(out, save_path=figure)
