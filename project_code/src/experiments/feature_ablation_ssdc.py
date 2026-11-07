@@ -103,12 +103,13 @@ AXES = ("both", "row", "column")
 ANALYSIS_DIR = Path(common.RESULTS_DIR) / "runs" / "SAE_20k_images_analysis"
 
 # Internal model label -> file-name suffix / results sub-folder.
-SEED_SUFFIX = {1: "", 2: "_second_seed", 3: "_third_seed", 4: "_fourth_seed"}
+SEED_SUFFIX = {1: "", 2: "_second_seed", 3: "_third_seed", 4: "_fourth_seed", 5: "_fifth_seed"}
 SEED_RESULTS_SUBDIR = {
     1: "original_results",
     2: "second_seed",
     3: "third_seed",
     4: "fourth_seed",
+    5: "fifth_seed",
 }
 
 # Layer the SAEs / feature ablations were done at, per model family.
@@ -142,6 +143,10 @@ MODEL_SPECS = {
     ("APE", 4): ModelSpec(
         "APE", 4, "load_ape_timm",
         {"model_name": "vit_base_patch16_224.sam_in1k"}, "vit_base_patch16_224.sam_in1k",
+    ),
+    ("APE", 5): ModelSpec(
+        "APE", 5, "load_ape_timm",
+        {"model_name": "deit3_base_patch16_224.fb_in1k"}, "deit3_base_patch16_224.fb_in1k",
     ),
     ("RoPE", 1): ModelSpec(
         "RoPE", 1, "load_rope",
