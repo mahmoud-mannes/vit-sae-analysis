@@ -1,8 +1,9 @@
 """W7 controls, APE side: matched and resampled feature edits, the SAE error term, probes
 through depth, and a DeiT-III baseline.
 
-For each APE model, at the residual stream entering block 2, with the published SAE and
-the published positional feature set (full set: 20 / 18 / 20 / 33 latents):
+For each APE model, at the residual stream entering block 2, with a published SAE and
+its positional feature set, for EVERY (top-k, expansion) pair in SAE_CONFIGS
+(default: top64_5x, top64_8x, top96_5x, top96_8x):
   recon             SAE reconstruction, nothing removed (published baseline)
   pos_zero          positional latents zeroed (published intervention)
   rand_uniform      same number of latents drawn uniformly from the dictionary (published control)
@@ -12,11 +13,34 @@ the published positional feature set (full set: 20 / 18 / 20 / 33 latents):
   pos_resample_samepos_err   positional latents taken from another image, same position
   pos_resample_diffpos_err   positional latents taken from another position, same image
   embed_zero / embed_perm    no SAE: learned position embedding zeroed / permuted over positions
+  intact                     no SAE, nothing changed
+The three no-SAE conditions do not depend on the SAE, so they run once per model.
 Readouts: top-1 with per-image correctness (models with a head), SSDC per block under RPI,
 exact/row/col probes at blocks 2, 6, 11 with a train/val/test split (epoch chosen on val).
-DeiT-III (same training recipe as the naver RoPE ViTs) gets the no-SAE conditions only.
-SAE weights are not in the repository: point W7_SAE_DIR at the directory that holds
-SAE_residual_APE_2_TOP64*.pt. Outputs go to $W7_OUT (default ./w7_output).
+
+Usage (notebook):
+    from experiments.rope.w7_controls_ape import run_model
+    run_model("sam")                       # every SAE in SAE_CONFIGS
+    run_model("sam", sae_configs=[(64, 8)])  # just one
+From a shell:  python w7_controls_ape.py     (models from $W7_APE_MODELS, default all five)
+
+Models -> internal seed (decides SAE checkpoint suffix and selectivity folder):
+    supervised 1 | dino 2 | augreg 3 | sam 4 | deit3 5
+
+File names follow the notebook:
+  SAE checkpoint   $W7_SAE_DIR/SAE_residual_APE_2_TOP{k}_{expansion}x{seed_suffix}.pt
+                   e.g. SAE_residual_APE_2_TOP96_8x_third_seed.pt
+  selectivity      <SEL_DIR>/<original_results|second_seed|...>/top_selective_features_per_position_residual{suffix}.json
+                   for top64_5x, and <SEL_DIR>/sae_param_sweep/..._residual{suffix}_{expansion}x_TOP_{k}.json for the rest
+A config whose checkpoint or selectivity file is missing is skipped (and listed under
+"skipped_saes" in the output) instead of stopping the run.
+
+Output: one JSON per model, $W7_OUT/w7ape_{model}_{timestamp}.json (default ./w7_output), rewritten
+after every condition. Condition names for top64_5x are the plain names above ("recon", "pos_zero", ...),
+exactly as before. Every other SAE config gets its tag appended, e.g. "recon_top96_8x",
+"rand_matched_2_top96_8x". Per-SAE details (positional features, latent stats, draws, file paths)
+are under res["saes"][tag]; for top64_5x they are also kept at the top level as before.
+SAE weights are not in the repository: point W7_SAE_DIR at the directory that holds the checkpoints.
 """
 import os, sys, json, time, math, traceback
 from pathlib import Path
@@ -46,22 +70,62 @@ SAE_DIR = Path(os.environ.get("W7_SAE_DIR", "sae"))
 SEL_DIR = Path(os.environ.get("W7_SEL_DIR", str(SRC.parents[1] / "results/runs/SAE_20k_images_analysis")))
 TORCH_SEED = 20260908
 
+# --- SAEs: (top-k, expansion) pairs run for every model; the SAE site is fixed to block 2 / residual ---
+SAE_CONFIGS = [(64, 5), (64, 8), (96, 5), (96, 8)]
+DEFAULT_SAE = (64, 5)          # published SAE: files without a "_{e}x_TOP_{k}" suffix, plain condition names
+SAE_LAYER = 2
+D_MODEL = 768
+SEED_SUFFIX = {1: "", 2: "_second_seed", 3: "_third_seed", 4: "_fourth_seed", 5: "_fifth_seed"}
+SEED_RESULTS_DIR = {1: "original_results", 2: "second_seed", 3: "third_seed", 4: "fourth_seed", 5: "fifth_seed"}
+
 MODELS = {
-  "supervised": dict(loader="hf", name="google/vit-base-patch16-224", sae="SAE_residual_APE_2_TOP64.pt",
-                     sel="original_results/top_selective_features_per_position_residual.json", n_acc=5000),
-  "augreg": dict(loader="timm", name="vit_base_patch16_224.augreg_in1k", sae="SAE_residual_APE_2_TOP64_third_seed.pt",
-                 sel="third_seed/top_selective_features_per_position_residual_third_seed.json", n_acc=1000),
-  "sam": dict(loader="timm", name="vit_base_patch16_224.sam_in1k", sae="SAE_residual_APE_2_TOP64_fourth_seed.pt",
-              sel="fourth_seed/top_selective_features_per_position_residual_fourth_seed.json", n_acc=1000),
-  "dino": dict(loader="timm", name="vit_base_patch16_224.dino", sae="SAE_residual_APE_2_TOP64_second_seed.pt",
-               sel="second_seed/top_selective_features_per_position_residual_second_seed.json", n_acc=0),
-  "deit3": dict(loader="timm", name="deit3_base_patch16_224.fb_in1k", sae=None, sel=None, n_acc=5000),
+  "supervised": dict(loader="hf", name="google/vit-base-patch16-224", seed=1, n_acc=5000),
+  "dino": dict(loader="timm", name="vit_base_patch16_224.dino", seed=2, n_acc=0),
+  "augreg": dict(loader="timm", name="vit_base_patch16_224.augreg_in1k", seed=3, n_acc=1000),
+  "sam": dict(loader="timm", name="vit_base_patch16_224.sam_in1k", seed=4, n_acc=1000),
+  "deit3": dict(loader="timm", name="deit3_base_patch16_224.fb_in1k", seed=5, n_acc=5000),
 }
 RUN = os.environ.get("W7_APE_MODELS", "supervised,augreg,sam,dino,deit3").split(",")
 DATASET = load_imagenet(split="validation", streaming=True)
 
 def save(tag, obj):
     (OUT / f"w7ape_{tag}_{STAMP}.json").write_text(json.dumps(obj, indent=2))
+
+# ----------------------------------------------------------------- SAE / selectivity file names
+def sae_tag(k, e):
+    return f"top{k}_{e}x"
+
+def sae_checkpoint_file(seed, k, e):
+    return SAE_DIR / f"SAE_residual_APE_{SAE_LAYER}_TOP{k}_{e}x{SEED_SUFFIX[seed]}.pt"
+
+def selectivity_file(seed, k, e, kind="top_selective_features_per_position"):
+    """Same rules as the notebook's selectivity_path(): the default SAE lives in the seed's own folder,
+    every other (k, expansion) in sae_param_sweep/ (file names end in _{e}x_TOP_{k})."""
+    ind = SEED_SUFFIX[seed]
+    if (k, e) == DEFAULT_SAE:
+        folder = SEL_DIR / SEED_RESULTS_DIR[seed]
+        names = [f"{kind}_residual{ind}.json", f"{kind}_residual{ind}_{e}x_TOP_{k}.json"]  # fifth_seed uses the 2nd form
+    else:
+        folder = SEL_DIR / "sae_param_sweep"
+        names = [f"{kind}_residual{ind}_{e}x_TOP_{k}.json"]
+    for name in names:
+        if (folder / name).exists():
+            return folder / name
+    raise FileNotFoundError("no selectivity file; tried " + ", ".join(str(folder / n) for n in names))
+
+def load_sae_and_features(seed, k, e):
+    """Load the SAE for (k, e) and its positional features. Raises FileNotFoundError if either file is missing."""
+    ckpt = sae_checkpoint_file(seed, k, e)
+    if not ckpt.exists():
+        raise FileNotFoundError(f"missing SAE checkpoint {ckpt}")
+    sel = selectivity_file(seed, k, e)
+    sd = torch.load(ckpt, map_location="cpu")
+    d_hidden = sd["W_dec"].shape[0]
+    if d_hidden != D_MODEL * e:
+        raise ValueError(f"{ckpt.name}: dictionary has {d_hidden} latents but expansion {e}x means {D_MODEL * e}")
+    sae = SAE(D_MODEL, d_hidden, architecture="topk", k=k).to(DEV); sae.load_state_dict(sd); sae.eval()
+    pos = load_top_features(str(sel), "APE", SAE_LAYER, axis="both")
+    return sae, pos, ckpt, sel
 
 def load(m):
     cfg = MODELS[m]
@@ -223,37 +287,63 @@ def matched_draws(pos, fire, mass, n_draws=5, k_near=10, seed=0):
         for p in pos:
             dist = np.linalg.norm(feat[cand] - feat[p], axis=1); order = cand[np.argsort(dist)]
             pool = [c for c in order[:k_near * 3] if c not in used][:k_near]
+            if not pool:  # every close neighbour already taken (many clustered positional latents): widen the search
+                pool = [c for c in order if c not in used][:k_near]
             c = int(rng.choice(pool)); used.add(c); d.append(c)
         draws.append(d)
     return draws
 
 # ----------------------------------------------------------------- main loop
-def run_model(m):
-    cfg = MODELS[m]; t0 = time.time(); res = {"model": m, "checkpoint": cfg["name"], "conditions": {}}
+def sae_conditions(model, src, npt, sae, pos, k, e, proc):
+    """All SAE conditions for ONE SAE. Built inside a function so each SAE's lambdas keep their own sae/meanz.
+    Returns (conditions, probe_names, info) where info holds the per-SAE metadata for the results JSON."""
+    tag = sae_tag(k, e)
+    nm = (lambda base: base) if (k, e) == DEFAULT_SAE else (lambda base: f"{base}_{tag}")
+    fire, meanz, mass = latent_stats(model, proc, src, sae, npt)
+    g = torch.Generator().manual_seed(0); uni = torch.randperm(sae.d_hidden, generator=g)[:len(pos)].tolist()
+    draws = matched_draws(pos, fire, mass)
+    info = {"positional_features": pos,
+            "latent_stats": {"fire_pos": fire[pos].tolist(), "mass_pos": mass[pos].tolist(),
+                             "fire_all_median": float(fire.median()), "fire_all_mean": float(fire.mean()),
+                             "fire_uniform": fire[uni].tolist(), "fire_matched0": fire[draws[0]].tolist()},
+            "uniform_draw": uni, "matched_draws": draws}
+    E = lambda mode, feats=None, err=False, seed=0: (lambda: SAEEdit(model, src, sae, mode, feats, err, meanz.to(DEV), npt, seed))
+    conds = [(nm("recon"), E("recon")), (nm("pos_zero"), E("zero", pos)), (nm("rand_uniform"), E("zero", uni)),
+             (nm("recon_err"), E("recon", None, True)), (nm("pos_zero_err"), E("zero", pos, True)),
+             (nm("pos_mean_err"), E("mean", pos, True)),
+             (nm("pos_resample_samepos_err"), E("samepos", pos, True)),
+             (nm("pos_resample_diffpos_err"), E("diffpos", pos, True))]
+    for i, d in enumerate(draws):
+        conds.append((nm(f"rand_matched_{i}"), E("zero", d)))
+    conds.append((nm("rand_matched_0_err"), E("zero", draws[0], True)))
+    probe_names = {nm(b) for b in ("recon", "pos_zero", "rand_uniform", "rand_matched_0", "pos_zero_err",
+                                   "pos_resample_diffpos_err", "pos_resample_samepos_err")}
+    return conds, probe_names, info
+
+def run_model(m, sae_configs=None):
+    """Run every condition on model `m` (a key of MODELS) for every (top-k, expansion) in sae_configs
+    (default SAE_CONFIGS). One results JSON per model."""
+    cfg = MODELS[m]; t0 = time.time()
+    sae_configs = [tuple(c) for c in (SAE_CONFIGS if sae_configs is None else sae_configs)]
+    res = {"model": m, "checkpoint": cfg["name"], "seed": cfg["seed"], "sae_configs": [list(c) for c in sae_configs],
+           "saes": {}, "skipped_saes": {}, "conditions": {}}
     model, proc, src = load(m); npt = npt_of(model, src); res["num_prefix_tokens"] = npt
     conds = [("intact", lambda: Null()), ("embed_zero", lambda: EmbedEdit(model, src, "zero")),
              ("embed_perm", lambda: EmbedEdit(model, src, "perm"))]
     probe_set = {"intact", "embed_zero", "embed_perm"}
-    if cfg["sae"]:
-        sd = torch.load(SAE_DIR / cfg["sae"], map_location="cpu")
-        sae = SAE(768, sd["W_dec"].shape[0], architecture="topk", k=64).to(DEV); sae.load_state_dict(sd); sae.eval()
-        pos = load_top_features(str(SEL_DIR / cfg["sel"]), "APE", 2, axis="both"); res["positional_features"] = pos
-        fire, meanz, mass = latent_stats(model, proc, src, sae, npt)
-        res["latent_stats"] = {"fire_pos": fire[pos].tolist(), "mass_pos": mass[pos].tolist(),
-                               "fire_all_median": float(fire.median()), "fire_all_mean": float(fire.mean())}
-        g = torch.Generator().manual_seed(0); uni = torch.randperm(sae.d_hidden, generator=g)[:len(pos)].tolist()
-        draws = matched_draws(pos, fire, mass); res["uniform_draw"] = uni; res["matched_draws"] = draws
-        res["latent_stats"]["fire_uniform"] = fire[uni].tolist(); res["latent_stats"]["fire_matched0"] = fire[draws[0]].tolist()
-        E = lambda mode, feats=None, err=False, seed=0: (lambda: SAEEdit(model, src, sae, mode, feats, err, meanz.to(DEV), npt, seed))
-        conds += [("recon", E("recon")), ("pos_zero", E("zero", pos)), ("rand_uniform", E("zero", uni)),
-                  ("recon_err", E("recon", None, True)), ("pos_zero_err", E("zero", pos, True)),
-                  ("pos_mean_err", E("mean", pos, True)),
-                  ("pos_resample_samepos_err", E("samepos", pos, True)),
-                  ("pos_resample_diffpos_err", E("diffpos", pos, True))]
-        for i, d in enumerate(draws):
-            conds.append((f"rand_matched_{i}", E("zero", d)))
-        conds.append(("rand_matched_0_err", E("zero", draws[0], True)))
-        probe_set |= {"recon", "pos_zero", "rand_uniform", "rand_matched_0", "pos_zero_err", "pos_resample_diffpos_err", "pos_resample_samepos_err"}
+    for k, e in sae_configs:
+        tag = sae_tag(k, e)
+        try:
+            sae, pos, ckpt, sel = load_sae_and_features(cfg["seed"], k, e)
+            new_conds, new_probes, info = sae_conditions(model, src, npt, sae, pos, k, e, proc)
+        except Exception as ex:
+            print(f"  [skip SAE {tag}] {ex}", flush=True)
+            res["skipped_saes"][tag] = repr(ex); continue
+        info.update({"checkpoint": str(ckpt), "selectivity_path": str(sel), "k": k, "expansion": e})
+        res["saes"][tag] = info
+        if (k, e) == DEFAULT_SAE:  # keep the original top-level keys for the published SAE
+            res.update({key: info[key] for key in ("positional_features", "latent_stats", "uniform_draw", "matched_draws")})
+        conds += new_conds; probe_set |= new_probes
     only = [c for c in os.environ.get("W7_ONLY", "").split(",") if c]
     if only: conds = [c for c in conds if c[0] in only]
     has_head = cfg["n_acc"] > 0; perimg = {}
@@ -268,14 +358,15 @@ def run_model(m):
         except Exception as ex:
             rec["error"] = repr(ex); traceback.print_exc()
         rec["runtime_s"] = round(time.time() - t, 1); res["conditions"][name] = rec
-        print(f"  {m} {name:26s} ssdc2={rec.get('ssdc',[None]*12)[2]} acc={rec.get('acc')} {rec['runtime_s']}s", flush=True)
+        print(f"  {m} {name:34s} ssdc2={rec.get('ssdc',[None]*12)[2]} acc={rec.get('acc')} {rec['runtime_s']}s", flush=True)
         save(m, res)
         if perimg: np.savez_compressed(PER / f"ape_{m}_correct.npz", **perimg)
     res["runtime_s"] = round(time.time() - t0, 1); save(m, res)
     del model; torch.cuda.empty_cache()
 
-for m in RUN:
-    print(f"\n=== APE {m} ===", flush=True)
-    try: run_model(m)
-    except Exception as ex: print("FAILED", m, repr(ex)); traceback.print_exc()
-print("W7 APE DONE", flush=True)
+if __name__ == "__main__":
+    for m in RUN:
+        print(f"\n=== APE {m} ===", flush=True)
+        try: run_model(m)
+        except Exception as ex: print("FAILED", m, repr(ex)); traceback.print_exc()
+    print("W7 APE DONE", flush=True)
