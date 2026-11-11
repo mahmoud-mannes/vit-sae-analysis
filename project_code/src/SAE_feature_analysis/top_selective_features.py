@@ -40,10 +40,10 @@ def top_selective_features(
     num_prefix_tokens: int = 1,
     k_candidates: int = 3,
     verbose: bool = False,
+    axis_selectivity: bool = True,
 ):
     """
-    Return the most row-selective and column-selective SAE features for every
-    patch position in the grid.
+    Return the most selective SAE features for every patch position in the grid.
 
     Parameters
     ----------
@@ -57,10 +57,19 @@ def top_selective_features(
         How many top position-selective candidates to consider per grid cell.
     verbose : bool
         If True, print the chosen features and their scores.
+    axis_selectivity : bool
+        If True (default), behaves exactly as before: among the top candidates
+        from get_top_candidates, picks the best row-selective and
+        column-selective feature for each grid cell.
+        If False, skips all row/column selectivity computation and simply
+        returns the top two features from get_top_candidates for each
+        grid cell (as a tuple), along with their position-selectivity
+        scores (also a tuple). k_candidates is ignored in this mode.
 
     Notes
     -----
-    This implementation is a more memory-efficient version of the previous one. It:
+    When axis_selectivity is True, this implementation is a more
+    memory-efficient version of the previous one. It:
 
     1. Groups activations by position once.
     2. Collects the union of top position-selective candidate features across
@@ -76,22 +85,55 @@ def top_selective_features(
 
     Returns
     -------
-    dict[tuple[int, int], tuple[int, int]]
-        Mapping (row, col) -> (best_row_feature, best_column_feature).
-    dict[tuple[int, int], tuple[float, float]]
-        Mapping (row, col) -> (best_row_score, best_column_score).
+    If axis_selectivity is True:
+        dict[tuple[int, int], tuple[int, int]]
+            Mapping (row, col) -> (best_row_feature, best_column_feature).
+        dict[tuple[int, int], tuple[float, float]]
+            Mapping (row, col) -> (best_row_score, best_column_score).
+
+    If axis_selectivity is False:
+        dict[tuple[int, int], tuple[int, int]]
+            Mapping (row, col) -> (top_feature, second_top_feature) from
+            get_top_candidates.
+        dict[tuple[int, int], tuple[float, float]]
+            Mapping (row, col) -> (top_score, second_top_score), the
+            position-selectivity scores from get_top_candidates.
+
+    Both modes return the same structure: a pair of features and a pair of
+    scores per cell.
     """
     n_patch = num_tokens - num_prefix_tokens
     grid_size = int(n_patch ** 0.5)
     assert grid_size * grid_size == n_patch, "num_tokens - prefix must be a square"
 
-    # ---------- 1. Group once ----------
-    # Expected shape after grouping depends on your helper,
-    # but we only need mean activation per (feature, position).
-    grouped = group_activations_by_position(latent_activations, num_tokens_per_image=num_tokens)
+    # ---------- Fast path: no row/column selectivity ----------
+    if not axis_selectivity:
+        TSFPD = {}   # (row, col) -> (top feature, second-top feature)
+        TSFPSD = {}  # (row, col) -> their position-selectivity scores
+        for i in range(n_patch):
+            row = i // grid_size
+            col = i % grid_size
 
-    # ---------- 2. Precompute mean maps for features we will need ----------
-    # First collect the union of all candidate features across positions
+            top = get_top_candidates(
+                latent_activations,
+                target_position=i + num_prefix_tokens,
+                k=2,
+                num_tokens_per_image=num_tokens,
+            )
+            feat_1, feat_2 = top.indices[0].item(), top.indices[1].item()
+            score_1, score_2 = top.values[0].item(), top.values[1].item()
+
+            TSFPD[(row, col)] = (feat_1, feat_2)
+            TSFPSD[(row, col)] = (score_1, score_2)
+
+            if verbose:
+                print(f"----- ROW {row} COLUMN {col} -----")
+                print(f"Feature {feat_1}, Position selectivity {score_1:.3f}")
+                print(f"Feature {feat_2}, Position selectivity {score_2:.3f}")
+
+        return TSFPD, TSFPSD
+
+    # ---------- 1. Collect top candidates per position ----------
     candidate_sets = []
     for i in range(n_patch):
         top = get_top_candidates(
@@ -102,6 +144,12 @@ def top_selective_features(
         )
         candidate_sets.append(top.indices.tolist())
 
+    # ---------- 2. Group once ----------
+    # Expected shape after grouping depends on your helper,
+    # but we only need mean activation per (feature, position).
+    grouped = group_activations_by_position(latent_activations, num_tokens_per_image=num_tokens)
+
+    # ---------- 3. Precompute mean maps for features we will need ----------
     unique_features = sorted(set(f for subset in candidate_sets for f in subset))
 
     # mean_maps[feature] = [grid_size, grid_size]
@@ -112,7 +160,7 @@ def top_selective_features(
         arr = np.asarray(feature_list[num_prefix_tokens:], dtype=np.float32)
         mean_maps[f] = torch.from_numpy(arr.reshape(grid_size, grid_size))
 
-    # ---------- 3. Score only the precomputed maps ----------
+    # ---------- 4. Score only the precomputed maps ----------
     TSFPD = {} # Top Selective Feature Position Dictionary
     TSFPSD = {} # Top Selective Feature Position Score Dictionary
     for i, candidates in enumerate(candidate_sets):
