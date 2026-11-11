@@ -1,0 +1,169 @@
+gate,scope,status,detail,session
+CUDA available,env,PASS,,2026-11-05T04-31-07Z
+torch is 2.10.0+cu128,env,PASS,2.10.0+cu128,2026-11-05T04-31-07Z
+PyTorch reports cuDNN 91002 (9.10.2),env,PASS,91002,2026-11-05T04-31-07Z
+every loaded libcudnn file comes from this environment's nvidia/cudnn folder,env,PASS,libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910),2026-11-05T04-31-07Z
+the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13),env,PASS,{'nvidia-cudnn-cu12': '9.10.2.21'},2026-11-05T04-31-07Z
+TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0),env,PASS,"{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",2026-11-05T04-31-07Z
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-05T04-31-07Z
+w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 f50b694d24279ce6... (expected f50b694d24279ce6...),2026-11-05T04-31-07Z
+w8_partB_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 410d21697751cd8e... (expected 410d21697751cd8e...),2026-11-05T04-31-07Z
+w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 c983414404ca645b... (expected c983414404ca645b...),2026-11-05T04-31-07Z
+w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...),2026-11-05T04-31-07Z
+w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 f1d963652ac3867c... (expected f1d963652ac3867c...),2026-11-05T04-31-07Z
+w8_partB_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 ffb5b84f0b7c5a62... (expected ffb5b84f0b7c5a62...),2026-11-05T04-31-07Z
+w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 be01ed6297ef819a... (expected be01ed6297ef819a...),2026-11-05T04-31-07Z
+w8_partB_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 411cc73401b18db8... (expected 411cc73401b18db8...),2026-11-05T04-31-07Z
+w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 bf895274486dfaa9... (expected bf895274486dfaa9...),2026-11-05T04-31-07Z
+w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 b9f6a3833766b736... (expected b9f6a3833766b736...),2026-11-05T04-31-07Z
+w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...),2026-11-05T04-31-07Z
+w8_partB_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 a7a6481ff165c1c1... (expected a7a6481ff165c1c1...),2026-11-05T04-31-07Z
+w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...),2026-11-05T04-31-07Z
+w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...),2026-11-05T04-31-07Z
+RB-0 parts A/B (and C) are complete,naver,PASS,"A=complete, B=complete, C=complete",2026-11-05T04-31-07Z
+RB-0 parts A/B (and C) are complete,DINOv3,PASS,"A=complete, B=complete, C=missing",2026-11-05T04-31-07Z
+RB-0 parts A/B (and C) are complete,small,PASS,"A=complete, B=complete, C=complete",2026-11-05T04-31-07Z
+RB-0 parts A/B (and C) are complete,reg1_gap,PASS,"A=complete, B=complete, C=complete",2026-11-05T04-31-07Z
+committed W5 file matches its headline values,naver,PASS,w5_partA_naver_2026-09-13T10-16-41Z.json,2026-11-05T04-31-07Z
+committed W5 file matches its headline values,DINOv3,PASS,w5_partA_DINOv3_2026-09-13T10-16-41Z.json,2026-11-05T04-31-07Z
+committed W5 file matches its headline values,small,PASS,w5_partA_small_2026-09-13T10-16-41Z.json,2026-11-05T04-31-07Z
+committed W5 file matches its headline values,reg1_gap,PASS,w5_partA_reg1_gap_2026-09-13T10-16-41Z.json,2026-11-05T04-31-07Z
+SSDC dataset is the repack every W2-W6 and RB-0 SSDC/probe number used,data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-05T04-31-07Z
+empty plane mask bit-identical [interleaved],algebra,PASS,,2026-11-05T04-31-07Z
+full plane mask equals identity [interleaved],algebra,PASS,,2026-11-05T04-31-07Z
+plane 3 touches only its own columns [interleaved],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]",2026-11-05T04-31-07Z
+mask NO heads equals unmodified rope [interleaved],per-head,PASS,,2026-11-05T04-31-07Z
+mask head 3 leaves others untouched [interleaved],per-head,PASS,,2026-11-05T04-31-07Z
+mask head 3 changes head 3 [interleaved],per-head,PASS,,2026-11-05T04-31-07Z
+one-axis window leaves the other axis's planes bit-identical [interleaved],algebra,PASS,,2026-11-05T04-31-07Z
+empty plane mask bit-identical [rotate_half],algebra,PASS,,2026-11-05T04-31-07Z
+full plane mask equals identity [rotate_half],algebra,PASS,,2026-11-05T04-31-07Z
+plane 3 touches only its own columns [rotate_half],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]",2026-11-05T04-31-07Z
+mask NO heads equals unmodified rope [rotate_half],per-head,PASS,,2026-11-05T04-31-07Z
+mask head 3 leaves others untouched [rotate_half],per-head,PASS,,2026-11-05T04-31-07Z
+mask head 3 changes head 3 [rotate_half],per-head,PASS,,2026-11-05T04-31-07Z
+one-axis window leaves the other axis's planes bit-identical [rotate_half],algebra,PASS,,2026-11-05T04-31-07Z
+win_plus builds the window plus one segment for the single head's block,composite,PASS,,2026-11-05T04-31-07Z
+win_plus REJECTS a single head inside the window,composite,PASS,,2026-11-05T04-31-07Z
+forward grid is 14x14,naver,PASS,14x14,2026-11-05T04-31-07Z
+num_heads matches W5,naver,PASS,12 vs 12,2026-11-05T04-31-07Z
+num_heads matches RB-0,naver,PASS,12 vs 12,2026-11-05T04-31-07Z
+rope rows equal patch tokens,naver,PASS,196 vs 196,2026-11-05T04-31-07Z
+rotary table has no head dimension (every head in a block uses the same frequencies),naver,PASS,"shape (196, 128); 32 planes per head",2026-11-05T04-31-07Z
+every plane classifies decisively,naver,PASS,max ratio 8.6e-07,2026-11-05T04-31-07Z
+axis split is balanced,naver,PASS,16/16,2026-11-05T04-31-07Z
+row/col planes equal W5's runtime derivation,naver,PASS,"row [16, 17, 18]..",2026-11-05T04-31-07Z
+FINAL readout equals model.norm's own output,naver,PASS,,2026-11-05T04-31-07Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",naver,PASS,4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256),2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],naver,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [Cref],naver,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+references registered the expected hooks and saw every image,naver,PASS,"baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",2026-11-05T04-31-07Z
+"reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",naver,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col),naver,PASS,max |delta| 0.00 pts over 40,2026-11-05T04-31-07Z
+"probe noise equals W5 bit for bit where W5 measured it (Dref, block 11)",naver,PASS,12 values,2026-11-05T04-31-07Z
+Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11),naver,PASS,max |delta| 0.0e+00 over 36 probes + 39 SSDC,2026-11-05T04-31-07Z
+Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11),naver,PASS,,2026-11-05T04-31-07Z
+Cref probe noise measured (new in RB-2) and finite,naver,PASS,"combined SD (pts): 0.25, 0.17, 0.26, 0.21",2026-11-05T04-31-07Z
+"[cref window] masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",naver,PASS,,2026-11-05T04-31-07Z
+"[row window] masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",naver,PASS,,2026-11-05T04-31-07Z
+windows with every single head measured,naver,PASS,"done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",2026-11-05T04-31-07Z
+every single-head condition registered window + 1 hooks and saw every image,naver,PASS,,2026-11-05T04-31-07Z
+single-head masks leave every readout at or before their block bit-identical to the window reference,naver,PASS,max |delta| 0.0e+00 over 216 conditions,2026-11-05T04-31-07Z
+every single-head mask changes the SSDC at the output of block 11 (no inert mask),naver,PASS,,2026-11-05T04-31-07Z
+single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11),naver,PASS,,2026-11-05T04-31-07Z
+every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0,2026-11-05T04-31-07Z
+row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes),naver,PASS,max |delta| 0.0e+00 over 22 conditions (76 probes),2026-11-05T04-31-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,naver,PASS,1 session(s): 2026-11-05T04-31-07Z:91002,2026-11-05T04-31-07Z
+model finished,naver,PASS,"220 new conditions this session, 52.2 min; all three windows complete: True",2026-11-05T04-31-07Z
+forward grid is 14x14,DINOv3,PASS,14x14,2026-11-05T04-31-07Z
+num_heads matches W5,DINOv3,PASS,12 vs 12,2026-11-05T04-31-07Z
+num_heads matches RB-0,DINOv3,PASS,12 vs 12,2026-11-05T04-31-07Z
+rope rows equal patch tokens,DINOv3,PASS,196 vs 196,2026-11-05T04-31-07Z
+rotary table has no head dimension (every head in a block uses the same frequencies),DINOv3,PASS,"shape (196, 128); 32 planes per head",2026-11-05T04-31-07Z
+every plane classifies decisively,DINOv3,PASS,max ratio 1.4e-06,2026-11-05T04-31-07Z
+axis split is balanced,DINOv3,PASS,16/16,2026-11-05T04-31-07Z
+row/col planes equal W5's runtime derivation,DINOv3,PASS,"row [0, 1, 2]..",2026-11-05T04-31-07Z
+FINAL readout equals model.norm's own output,DINOv3,PASS,,2026-11-05T04-31-07Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",DINOv3,PASS,4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256),2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],DINOv3,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [Cref],DINOv3,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+references registered the expected hooks and saw every image,DINOv3,PASS,"baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",2026-11-05T04-31-07Z
+"reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",DINOv3,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col),DINOv3,PASS,max |delta| 0.00 pts over 40,2026-11-05T04-31-07Z
+"probe noise equals W5 bit for bit where W5 measured it (Dref, block 11)",DINOv3,PASS,12 values,2026-11-05T04-31-07Z
+Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11),DINOv3,PASS,max |delta| 0.0e+00 over 36 probes + 39 SSDC,2026-11-05T04-31-07Z
+Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11),DINOv3,PASS,,2026-11-05T04-31-07Z
+Cref probe noise measured (new in RB-2) and finite,DINOv3,PASS,"combined SD (pts): 0.46, 0.51, 0.60, 0.67",2026-11-05T04-31-07Z
+"[cref window] masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",DINOv3,PASS,,2026-11-05T04-31-07Z
+"[row window] masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",DINOv3,PASS,,2026-11-05T04-31-07Z
+windows with every single head measured,DINOv3,PASS,"done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",2026-11-05T04-31-07Z
+every single-head condition registered window + 1 hooks and saw every image,DINOv3,PASS,,2026-11-05T04-31-07Z
+single-head masks leave every readout at or before their block bit-identical to the window reference,DINOv3,PASS,max |delta| 0.0e+00 over 216 conditions,2026-11-05T04-31-07Z
+every single-head mask changes the SSDC at the output of block 11 (no inert mask),DINOv3,PASS,,2026-11-05T04-31-07Z
+single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11),DINOv3,PASS,,2026-11-05T04-31-07Z
+every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0,2026-11-05T04-31-07Z
+row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes),DINOv3,PASS,max |delta| 0.0e+00 over 46 conditions (160 probes),2026-11-05T04-31-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,DINOv3,PASS,1 session(s): 2026-11-05T04-31-07Z:91002,2026-11-05T04-31-07Z
+model finished,DINOv3,PASS,"220 new conditions this session, 52.1 min; all three windows complete: True",2026-11-05T04-31-07Z
+forward grid is 14x14,small,PASS,14x14,2026-11-05T04-31-07Z
+num_heads matches W5,small,PASS,6 vs 6,2026-11-05T04-31-07Z
+num_heads matches RB-0,small,PASS,6 vs 6,2026-11-05T04-31-07Z
+rope rows equal patch tokens,small,PASS,196 vs 196,2026-11-05T04-31-07Z
+rotary table has no head dimension (every head in a block uses the same frequencies),small,PASS,"shape (196, 128); 32 planes per head",2026-11-05T04-31-07Z
+every plane classifies decisively,small,PASS,max ratio 8.6e-07,2026-11-05T04-31-07Z
+axis split is balanced,small,PASS,16/16,2026-11-05T04-31-07Z
+row/col planes equal W5's runtime derivation,small,PASS,"row [16, 17, 18]..",2026-11-05T04-31-07Z
+FINAL readout equals model.norm's own output,small,PASS,,2026-11-05T04-31-07Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",small,PASS,5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256),2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],small,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [Cref],small,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+references registered the expected hooks and saw every image,small,PASS,"baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",2026-11-05T04-31-07Z
+"reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",small,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col),small,PASS,max |delta| 0.00 pts over 40,2026-11-05T04-31-07Z
+Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11),small,PASS,max |delta| 0.0e+00 over 36 probes + 39 SSDC,2026-11-05T04-31-07Z
+Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11),small,PASS,,2026-11-05T04-31-07Z
+Cref probe noise measured (new in RB-2) and finite,small,PASS,"combined SD (pts): 0.19, 0.17, 0.24, 0.20",2026-11-05T04-31-07Z
+"[cref window] masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",small,PASS,,2026-11-05T04-31-07Z
+"[row window] masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",small,PASS,,2026-11-05T04-31-07Z
+windows with every single head measured,small,PASS,"done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 108 single-head conditions",2026-11-05T04-31-07Z
+every single-head condition registered window + 1 hooks and saw every image,small,PASS,,2026-11-05T04-31-07Z
+single-head masks leave every readout at or before their block bit-identical to the window reference,small,PASS,max |delta| 0.0e+00 over 108 conditions,2026-11-05T04-31-07Z
+every single-head mask changes the SSDC at the output of block 11 (no inert mask),small,PASS,,2026-11-05T04-31-07Z
+single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11),small,PASS,,2026-11-05T04-31-07Z
+every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00 over 36 heads; 0 missing in RB-0,2026-11-05T04-31-07Z
+row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes),small,PASS,max |delta| 0.0e+00 over 32 conditions (116 probes),2026-11-05T04-31-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,small,PASS,1 session(s): 2026-11-05T04-31-07Z:91002,2026-11-05T04-31-07Z
+model finished,small,PASS,"112 new conditions this session, 26.2 min; all three windows complete: True",2026-11-05T04-31-07Z
+forward grid is 14x14,reg1_gap,PASS,14x14,2026-11-05T04-31-07Z
+num_heads matches W5,reg1_gap,PASS,12 vs 12,2026-11-05T04-31-07Z
+num_heads matches RB-0,reg1_gap,PASS,12 vs 12,2026-11-05T04-31-07Z
+rope rows equal patch tokens,reg1_gap,PASS,196 vs 196,2026-11-05T04-31-07Z
+rotary table has no head dimension (every head in a block uses the same frequencies),reg1_gap,PASS,"shape (196, 128); 32 planes per head",2026-11-05T04-31-07Z
+every plane classifies decisively,reg1_gap,PASS,max ratio 6.0e-05,2026-11-05T04-31-07Z
+axis split is balanced,reg1_gap,PASS,16/16,2026-11-05T04-31-07Z
+row/col planes equal W5's runtime derivation,reg1_gap,PASS,"row [0, 1, 2]..",2026-11-05T04-31-07Z
+FINAL readout uses fc_norm per token (pooled model),reg1_gap,PASS,fc_norm,2026-11-05T04-31-07Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",reg1_gap,PASS,2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256),2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+cached replay reproduces streamed evaluate_ssdc [Cref],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-05T04-31-07Z
+references registered the expected hooks and saw every image,reg1_gap,PASS,"baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",2026-11-05T04-31-07Z
+"reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",reg1_gap,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col),reg1_gap,PASS,max |delta| 0.00 pts over 40,2026-11-05T04-31-07Z
+Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-05T04-31-07Z
+baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11),reg1_gap,PASS,max |delta| 0.0e+00 over 36 probes + 39 SSDC,2026-11-05T04-31-07Z
+Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11),reg1_gap,PASS,,2026-11-05T04-31-07Z
+Cref probe noise measured (new in RB-2) and finite,reg1_gap,PASS,"combined SD (pts): 0.23, 0.22, 0.19, 0.15",2026-11-05T04-31-07Z
+"[cref window] masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",reg1_gap,PASS,,2026-11-05T04-31-07Z
+"[row window] masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",reg1_gap,PASS,,2026-11-05T04-31-07Z
+windows with every single head measured,reg1_gap,PASS,"done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",2026-11-05T04-31-07Z
+every single-head condition registered window + 1 hooks and saw every image,reg1_gap,PASS,,2026-11-05T04-31-07Z
+single-head masks leave every readout at or before their block bit-identical to the window reference,reg1_gap,PASS,max |delta| 0.0e+00 over 216 conditions,2026-11-05T04-31-07Z
+every single-head mask changes the SSDC at the output of block 11 (no inert mask),reg1_gap,PASS,,2026-11-05T04-31-07Z
+single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11),reg1_gap,PASS,,2026-11-05T04-31-07Z
+every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0,2026-11-05T04-31-07Z
+row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes),reg1_gap,PASS,max |delta| 0.0e+00 over 32 conditions (120 probes),2026-11-05T04-31-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,reg1_gap,PASS,1 session(s): 2026-11-05T04-31-07Z:91002,2026-11-05T04-31-07Z
+model finished,reg1_gap,PASS,"220 new conditions this session, 52.5 min; all three windows complete: True",2026-11-05T04-31-07Z

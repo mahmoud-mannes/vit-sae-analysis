@@ -1,0 +1,2907 @@
+{
+ "notebook": "RB-2",
+ "generated_utc": "2026-11-05T04-31-07Z",
+ "test_mode": false,
+ "environment": {
+  "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+  "prefix": "/workspace/NRDL/env_paper5_cudnn910",
+  "host": "gpu-pod",
+  "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "numpy": "2.4.6",
+  "cudnn_reported": 91002,
+  "libcudnn_loaded": [
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+  ],
+  "cudnn_packages": {
+   "nvidia-cudnn-cu12": "9.10.2.21"
+  },
+  "flags": {
+   "matmul_allow_tf32": false,
+   "cudnn_allow_tf32": true,
+   "cudnn_benchmark": false,
+   "cudnn_deterministic": false,
+   "float32_matmul_precision": "highest"
+  },
+  "cuda_visible_devices": null,
+  "gpu": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 543 MiB, 81559 MiB"
+ },
+ "repo": "/workspace/NRDL/clone/vit-sae-analysis/project_code/src",
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "rb0_dir": "/workspace/NRDL/experiments/rb0_cudnn910/w8_output",
+ "config": {
+  "n_images": 1000,
+  "batch": 256,
+  "seed": 20260908,
+  "dataset": "benjamin-paine/imagenet-1k-256x256",
+  "metric": "manhattan",
+  "window": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "post": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "p_ref": [
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "p_single": [
+   11,
+   12
+  ],
+  "noise_at": [
+   11,
+   12
+  ],
+  "probe": [
+   0.005,
+   20,
+   512,
+   0.8
+  ],
+  "noise": [
+   [
+    0,
+    1,
+    2
+   ],
+   200
+  ],
+  "test_mode": false,
+  "models": [
+   "naver",
+   "DINOv3",
+   "small",
+   "reg1_gap"
+  ],
+  "windows": [
+   "cref",
+   "row",
+   "col"
+  ],
+  "strict": true
+ },
+ "rules": {
+  "bar": "noise bar = 3 x the larger combined probe SD (seed + image bootstrap, the W5 recipe) at that readout: row/col windows use Dref_row's row probe and Dref_col's column probe (RB-0's bar); the cref window uses Cref's row and column probes",
+  "label": "a single head 'favours' rows if its row cost (row window, row probe) is above the bar AND exceeds its column cost (col window, column probe) by more than the bar; columns likewise; 'mixed' if a cost is above the bar but neither gap is; 'none' if both costs are within the bar (the grey of Figure 4d)",
+  "readout": "primary readout: entering block 11 for heads in blocks 6-10; output of block 11 for block-11 heads",
+  "scores": {
+   "ssdc_b11": "SSDC lost entering block 11 vs Cref (the paper's rebuilding score applied to one head)",
+   "probe_b11": "row + column probe points lost entering block 11 vs Cref, in the cref window (primary probe score)",
+   "axis_b11": "row cost (row window) + column cost (col window) entering block 11 (Figure 4d's two axes, summed)"
+  },
+  "next": "Later runs that pick 'top' single heads (RB-3 onward) rank heads in blocks 6-10 by probe_b11 if, on at least two of naver ViT-B, naver ViT-S and reg1-gap, the 95% bootstrap interval (2,000 resamples of the heads) of rho(probe_b11, top-1 cost) - rho(ssdc_b11, top-1 cost) lies above zero; otherwise by ssdc_b11. Block-11 heads are ranked separately, at the output of block 11. Top-1 cost = RB-0 part C."
+ },
+ "decision": {
+  "rule": "Later runs that pick 'top' single heads (RB-3 onward) rank heads in blocks 6-10 by probe_b11 if, on at least two of naver ViT-B, naver ViT-S and reg1-gap, the 95% bootstrap interval (2,000 resamples of the heads) of rho(probe_b11, top-1 cost) - rho(ssdc_b11, top-1 cost) lies above zero; otherwise by ssdc_b11. Block-11 heads are ranked separately, at the output of block 11. Top-1 cost = RB-0 part C.",
+  "models_evaluated": [
+   "naver",
+   "small",
+   "reg1_gap"
+  ],
+  "models_where_probe_beats_ssdc": [],
+  "ranking_for_later_runs": "ssdc_b11"
+ },
+ "anchors_used": {
+  "W5": {
+   "naver": "w5_partA_naver_2026-09-13T10-16-41Z.json",
+   "DINOv3": "w5_partA_DINOv3_2026-09-13T10-16-41Z.json",
+   "small": "w5_partA_small_2026-09-13T10-16-41Z.json",
+   "reg1_gap": "w5_partA_reg1_gap_2026-09-13T10-16-41Z.json"
+  },
+  "RB0_sha256": {
+   "w8_partA_naver.json": "f50b694d24279ce63b8dac8da1906b7e60ab6522ce8de4c992b1c87ceed10914",
+   "w8_partA_DINOv3.json": "f1d963652ac3867c79bb170da2b2dd86ff8e978008f5ff59304a69947bb909b5",
+   "w8_partA_small.json": "be01ed6297ef819a8fc219853c07fc9a81a76d2c6ffbe9da8501379fdf6acbbb",
+   "w8_partA_reg1_gap.json": "da5ae49a2abc21aa0df8f4c43b249727a7edfe444254e239e637ed96a312fefb",
+   "w8_partB_naver.json": "410d21697751cd8eba338e593153f5b92acb0c421940a1580f96325e1d1dbd9a",
+   "w8_partB_DINOv3.json": "ffb5b84f0b7c5a6208d6b2f7a9132393b601076bb0f7748f9b66b9ba56a470bb",
+   "w8_partB_small.json": "411cc73401b18db8b9a884271dcb0768aae4e47a183326fdff1102f21e7f627a",
+   "w8_partB_reg1_gap.json": "a7a6481ff165c1c1d30e75458655511285b1262727db0d77905d6e7d69268ba5",
+   "w8_partC_naver.json": "c983414404ca645bc8144a2bd4ec76bfb583f4c5c9588ec8faffe853e5c3b985",
+   "w8_partC_small.json": "bf895274486dfaa9ab042118e15bb7c9863a5f6201ab27ec11fb539ecf7126f6",
+   "w8_partC_reg1_gap.json": "8b5641235e05b20bfdc597032097b2f85878c228bdc32ec8b63888227e393698",
+   "w8_perimage_naver.npz": "5fe4a53ecbf99bc583c56ef6ec9f774c5bd6027e1734dce16fe0c230c36358c6",
+   "w8_perimage_small.npz": "b9f6a3833766b73618c82b3e5ecbb81af672b11eaa49fab503e27bb8734cf40b",
+   "w8_perimage_reg1_gap.npz": "10310f0c0109d65f0b594f7774006ddd2c69f5fc74438b13d32956d39738643e"
+  }
+ },
+ "analysis": {
+  "naver": {
+   "windows_done": [
+    "cref",
+    "row",
+    "col"
+   ],
+   "bars_pts": {
+    "axis_b11": 0.79349973036536,
+    "cref_b11": 0.7450275422372798,
+    "axis_out11": 0.799853850009992,
+    "cref_out11": 0.7705559656996075
+   },
+   "favours_counts": {
+    "blocks 6-10 (b11)": {
+     "row": 4,
+     "col": 1,
+     "mixed": 0,
+     "none": 55
+    },
+    "block 11 (out11)": {
+     "row": 0,
+     "col": 0,
+     "mixed": 0,
+     "none": 12
+    },
+    "all heads at out11": {
+     "row": 4,
+     "col": 0,
+     "mixed": 0,
+     "none": 68
+    }
+   },
+   "specialists": [
+    {
+     "block": 6,
+     "head": 6,
+     "primary": "b11",
+     "row_cost": 2.982,
+     "col_cost": -0.054,
+     "favours": "row",
+     "top1_cost": 3.04
+    },
+    {
+     "block": 6,
+     "head": 1,
+     "primary": "b11",
+     "row_cost": 1.921,
+     "col_cost": -0.023,
+     "favours": "row",
+     "top1_cost": 2.92
+    },
+    {
+     "block": 7,
+     "head": 2,
+     "primary": "b11",
+     "row_cost": 1.559,
+     "col_cost": -0.033,
+     "favours": "row",
+     "top1_cost": 0.42
+    },
+    {
+     "block": 6,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": -0.048,
+     "col_cost": 0.972,
+     "favours": "col",
+     "top1_cost": 2.14
+    },
+    {
+     "block": 6,
+     "head": 3,
+     "primary": "b11",
+     "row_cost": 0.811,
+     "col_cost": -0.054,
+     "favours": "row",
+     "top1_cost": -0.9
+    }
+   ],
+   "index_groups": {
+    "1": {
+     "model": "naver",
+     "head": 1,
+     "source": "W5 stage D",
+     "table14_row": 3.777551020408164,
+     "table14_col": 0.24897959183673463,
+     "row_group_b11": 2.084183673469389,
+     "row_sum_singles_6_10": 1.9311224489795968,
+     "row_best_block": 6,
+     "row_best_cost": 1.920918367346941,
+     "row_best_share": 0.921664626682987,
+     "row_best_favours": "row",
+     "col_group_b11": 0.30102040816326614,
+     "col_sum_singles_6_10": 0.15306122448979914,
+     "col_best_block": 8,
+     "col_best_cost": 0.2729591836734699,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       1.92,
+       -0.02,
+       "row"
+      ],
+      "7": [
+       -0.03,
+       -0.06,
+       "none"
+      ],
+      "8": [
+       0.01,
+       0.27,
+       "none"
+      ],
+      "9": [
+       0.04,
+       -0.06,
+       "none"
+      ],
+      "10": [
+       -0.01,
+       0.03,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.08,
+      0.05,
+      "none"
+     ]
+    },
+    "2": {
+     "model": "naver",
+     "head": 2,
+     "source": "W5 stage D",
+     "table14_row": 1.8561224489795922,
+     "table14_col": 0.18316326530612273,
+     "row_group_b11": 1.8010204081632675,
+     "row_sum_singles_6_10": 1.7193877551020473,
+     "row_best_block": 7,
+     "row_best_cost": 1.5586734693877558,
+     "row_best_share": 0.8654390934844186,
+     "row_best_favours": "row",
+     "col_group_b11": 0.28316326530612307,
+     "col_sum_singles_6_10": 0.20918367346939026,
+     "col_best_block": 10,
+     "col_best_cost": 0.09693877551020386,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       -0.05,
+       0.09,
+       "none"
+      ],
+      "7": [
+       1.56,
+       -0.03,
+       "row"
+      ],
+      "8": [
+       0.17,
+       0.06,
+       "none"
+      ],
+      "9": [
+       -0.01,
+       -0.0,
+       "none"
+      ],
+      "10": [
+       0.05,
+       0.1,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.11,
+      -0.02,
+      "none"
+     ]
+    },
+    "6": {
+     "model": "naver",
+     "head": 6,
+     "source": "W5 stage D",
+     "table14_row": 5.193367346938775,
+     "table14_col": 0.08571428571428646,
+     "row_group_b11": 3.3061224489795924,
+     "row_sum_singles_6_10": 3.28316326530613,
+     "row_best_block": 6,
+     "row_best_cost": 2.982142857142858,
+     "row_best_share": 0.9020061728395063,
+     "row_best_favours": "row",
+     "col_group_b11": 0.022959183673469663,
+     "col_sum_singles_6_10": 0.035714285714290306,
+     "col_best_block": 9,
+     "col_best_cost": 0.08418367346938876,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       2.98,
+       -0.05,
+       "row"
+      ],
+      "7": [
+       0.19,
+       0.07,
+       "none"
+      ],
+      "8": [
+       0.08,
+       -0.02,
+       "none"
+      ],
+      "9": [
+       0.03,
+       0.08,
+       "none"
+      ],
+      "10": [
+       -0.0,
+       -0.04,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.44,
+      0.11,
+      "none"
+     ]
+    },
+    "11": {
+     "model": "naver",
+     "head": 11,
+     "source": "W5 stage D",
+     "table14_row": 0.4749999999999998,
+     "table14_col": 0.07551020408163273,
+     "row_group_b11": 0.6607142857142867,
+     "row_sum_singles_6_10": 0.579081632653064,
+     "row_best_block": 9,
+     "row_best_cost": 0.36224489795918524,
+     "row_best_share": NaN,
+     "row_best_favours": "none",
+     "col_group_b11": 0.11224489795918363,
+     "col_sum_singles_6_10": -0.2066326530612228,
+     "col_best_block": 8,
+     "col_best_cost": 0.0,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       -0.02,
+       -0.09,
+       "none"
+      ],
+      "7": [
+       0.11,
+       -0.05,
+       "none"
+      ],
+      "8": [
+       0.12,
+       0.0,
+       "none"
+      ],
+      "9": [
+       0.36,
+       -0.05,
+       "none"
+      ],
+      "10": [
+       0.01,
+       -0.02,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.09,
+      -0.04,
+      "none"
+     ]
+    }
+   },
+   "scores_vs_top1": {
+    "n_heads": 60,
+    "ssdc_b11": [
+     0.5501211126910336,
+     9.999000099990002e-05
+    ],
+    "probe_b11": [
+     0.19122844432725247,
+     0.1421857814218578
+    ],
+    "axis_b11": [
+     0.35169978265892177,
+     0.0059994000599940004
+    ],
+    "delta_probe_minus_ssdc": [
+     -0.3588926683637811,
+     -0.7203581790631116,
+     -0.008489312380558016
+    ],
+    "delta_boot_valid": 2000,
+    "block11_out11": {
+     "ssdc": -0.01413506985480439,
+     "probe": 0.0938089831161345,
+     "n": 12
+    },
+    "costliest_head_top1": [
+     6,
+     6,
+     3.040003776550293,
+     0.28942776937733067
+    ],
+    "top5_by_ssdc_b11": [
+     [
+      6,
+      6
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      6,
+      2
+     ],
+     [
+      8,
+      10
+     ]
+    ],
+    "top5_by_probe_b11": [
+     [
+      6,
+      6
+     ],
+     [
+      6,
+      1
+     ],
+     [
+      7,
+      2
+     ],
+     [
+      7,
+      10
+     ],
+     [
+      6,
+      3
+     ]
+    ]
+   },
+   "top_two_by_ssdc": [
+    {
+     "model": "naver",
+     "block": 6,
+     "head": 6,
+     "ssdc_cost_b11": 0.042226844174443834,
+     "probe_score_b11": 2.9540816326530606,
+     "cref_row_cost_b11": 2.933673469387754,
+     "cref_col_cost_b11": 0.020408163265306367,
+     "row_cost_b11": 2.982142857142858,
+     "col_cost_b11": -0.053571428571427826,
+     "favours_b11": "row",
+     "top1_cost": 3.040003776550293,
+     "top1_se": 0.28942776937733067,
+     "top1_cost_minus_second": [
+      2.62,
+      0.28256519357083515
+     ]
+    },
+    {
+     "model": "naver",
+     "block": 7,
+     "head": 2,
+     "ssdc_cost_b11": 0.02932710576892328,
+     "probe_score_b11": 1.724489795918366,
+     "cref_row_cost_b11": 1.7193877551020393,
+     "cref_col_cost_b11": 0.005102040816326592,
+     "row_cost_b11": 1.5586734693877558,
+     "col_cost_b11": -0.03316326530612146,
+     "favours_b11": "row",
+     "top1_cost": 0.42000412940979004,
+     "top1_se": 0.21254118365848582
+    }
+   ]
+  },
+  "DINOv3": {
+   "windows_done": [
+    "cref",
+    "row",
+    "col"
+   ],
+   "bars_pts": {
+    "axis_b11": 1.2733934672538816,
+    "cref_b11": 1.5443570187180895,
+    "axis_out11": 1.787579045748978,
+    "cref_out11": 2.0050379168205414
+   },
+   "favours_counts": {
+    "blocks 6-10 (b11)": {
+     "row": 6,
+     "col": 9,
+     "mixed": 0,
+     "none": 45
+    },
+    "block 11 (out11)": {
+     "row": 3,
+     "col": 1,
+     "mixed": 0,
+     "none": 8
+    },
+    "all heads at out11": {
+     "row": 7,
+     "col": 6,
+     "mixed": 0,
+     "none": 59
+    }
+   },
+   "specialists": [
+    {
+     "block": 10,
+     "head": 1,
+     "primary": "b11",
+     "row_cost": -0.337,
+     "col_cost": 7.036,
+     "favours": "col"
+    },
+    {
+     "block": 6,
+     "head": 5,
+     "primary": "b11",
+     "row_cost": 0.707,
+     "col_cost": 6.278,
+     "favours": "col"
+    },
+    {
+     "block": 6,
+     "head": 2,
+     "primary": "b11",
+     "row_cost": 0.189,
+     "col_cost": 5.684,
+     "favours": "col"
+    },
+    {
+     "block": 7,
+     "head": 9,
+     "primary": "b11",
+     "row_cost": -0.097,
+     "col_cost": 4.849,
+     "favours": "col"
+    },
+    {
+     "block": 11,
+     "head": 5,
+     "primary": "out11",
+     "row_cost": -0.367,
+     "col_cost": 4.168,
+     "favours": "col"
+    },
+    {
+     "block": 8,
+     "head": 10,
+     "primary": "b11",
+     "row_cost": -0.102,
+     "col_cost": 3.566,
+     "favours": "col"
+    },
+    {
+     "block": 9,
+     "head": 10,
+     "primary": "b11",
+     "row_cost": 3.503,
+     "col_cost": 0.051,
+     "favours": "row"
+    },
+    {
+     "block": 10,
+     "head": 0,
+     "primary": "b11",
+     "row_cost": 3.003,
+     "col_cost": 0.018,
+     "favours": "row"
+    },
+    {
+     "block": 11,
+     "head": 4,
+     "primary": "out11",
+     "row_cost": 2.865,
+     "col_cost": 0.02,
+     "favours": "row"
+    },
+    {
+     "block": 7,
+     "head": 1,
+     "primary": "b11",
+     "row_cost": 2.638,
+     "col_cost": 0.115,
+     "favours": "row"
+    },
+    {
+     "block": 9,
+     "head": 5,
+     "primary": "b11",
+     "row_cost": 0.041,
+     "col_cost": 2.375,
+     "favours": "col"
+    },
+    {
+     "block": 11,
+     "head": 7,
+     "primary": "out11",
+     "row_cost": 2.041,
+     "col_cost": 0.166,
+     "favours": "row"
+    },
+    {
+     "block": 11,
+     "head": 11,
+     "primary": "out11",
+     "row_cost": 1.908,
+     "col_cost": -0.026,
+     "favours": "row"
+    },
+    {
+     "block": 8,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": 1.651,
+     "col_cost": 0.02,
+     "favours": "row"
+    },
+    {
+     "block": 9,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": 1.651,
+     "col_cost": 0.342,
+     "favours": "row"
+    },
+    {
+     "block": 10,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": 1.633,
+     "col_cost": -0.097,
+     "favours": "row"
+    },
+    {
+     "block": 6,
+     "head": 1,
+     "primary": "b11",
+     "row_cost": -0.245,
+     "col_cost": 1.571,
+     "favours": "col"
+    },
+    {
+     "block": 9,
+     "head": 7,
+     "primary": "b11",
+     "row_cost": 0.099,
+     "col_cost": 1.556,
+     "favours": "col"
+    },
+    {
+     "block": 7,
+     "head": 6,
+     "primary": "b11",
+     "row_cost": -0.27,
+     "col_cost": 1.281,
+     "favours": "col"
+    }
+   ],
+   "index_groups": {
+    "1": {
+     "model": "DINOv3",
+     "head": 1,
+     "source": "W5 stage D",
+     "table14_row": 3.833673469387757,
+     "table14_col": 3.393367346938774,
+     "row_group_b11": 2.1632653061224527,
+     "row_sum_singles_6_10": 2.1938775510204125,
+     "row_best_block": 7,
+     "row_best_cost": 2.6377551020408174,
+     "row_best_share": 1.2193396226415079,
+     "row_best_favours": "row",
+     "col_group_b11": 8.614795918367351,
+     "col_sum_singles_6_10": 8.591836734693887,
+     "col_best_block": 10,
+     "col_best_cost": 7.03571428571429,
+     "col_best_share": 0.816701214095351,
+     "col_best_favours": "col",
+     "per_block_b11": {
+      "6": [
+       -0.24,
+       1.57,
+       "col"
+      ],
+      "7": [
+       2.64,
+       0.11,
+       "row"
+      ],
+      "8": [
+       0.08,
+       -0.22,
+       "none"
+      ],
+      "9": [
+       0.06,
+       0.09,
+       "none"
+      ],
+      "10": [
+       -0.34,
+       7.04,
+       "col"
+      ]
+     },
+     "block11_head_out11": [
+      -0.04,
+      0.03,
+      "none"
+     ]
+    },
+    "2": {
+     "model": "DINOv3",
+     "head": 2,
+     "source": "W5 stage D",
+     "table14_row": 0.927551020408165,
+     "table14_col": 9.257142857142858,
+     "row_group_b11": 0.9158163265306163,
+     "row_sum_singles_6_10": 0.8086734693877606,
+     "row_best_block": 7,
+     "row_best_cost": 0.5918367346938791,
+     "row_best_share": NaN,
+     "row_best_favours": "none",
+     "col_group_b11": 5.948979591836739,
+     "col_sum_singles_6_10": 6.056122448979606,
+     "col_best_block": 6,
+     "col_best_cost": 5.683673469387757,
+     "col_best_share": 0.9554030874785587,
+     "col_best_favours": "col",
+     "per_block_b11": {
+      "6": [
+       0.19,
+       5.68,
+       "col"
+      ],
+      "7": [
+       0.59,
+       0.15,
+       "none"
+      ],
+      "8": [
+       -0.03,
+       -0.08,
+       "none"
+      ],
+      "9": [
+       0.0,
+       0.22,
+       "none"
+      ],
+      "10": [
+       0.06,
+       0.08,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.02,
+      -0.09,
+      "none"
+     ]
+    },
+    "9": {
+     "model": "DINOv3",
+     "head": 9,
+     "source": "W5 stage D",
+     "table14_row": 0.9933673469387767,
+     "table14_col": 5.198469387755101,
+     "row_group_b11": 1.7117346938775535,
+     "row_sum_singles_6_10": 1.6173469387755213,
+     "row_best_block": 10,
+     "row_best_cost": 1.2219387755102062,
+     "row_best_share": 0.7138599105812223,
+     "row_best_favours": "none",
+     "col_group_b11": 5.073979591836736,
+     "col_sum_singles_6_10": 4.887755102040824,
+     "col_best_block": 7,
+     "col_best_cost": 4.849489795918371,
+     "col_best_share": 0.9557566616390152,
+     "col_best_favours": "col",
+     "per_block_b11": {
+      "6": [
+       -0.4,
+       -0.35,
+       "none"
+      ],
+      "7": [
+       -0.1,
+       4.85,
+       "col"
+      ],
+      "8": [
+       0.86,
+       0.18,
+       "none"
+      ],
+      "9": [
+       0.04,
+       0.13,
+       "none"
+      ],
+      "10": [
+       1.22,
+       0.08,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      -0.04,
+      0.03,
+      "none"
+     ]
+    },
+    "10": {
+     "model": "DINOv3",
+     "head": 10,
+     "source": "W5 stage D",
+     "table14_row": 1.8515306122448976,
+     "table14_col": 2.763265306122448,
+     "row_group_b11": 4.094387755102042,
+     "row_sum_singles_6_10": 4.163265306122466,
+     "row_best_block": 9,
+     "row_best_cost": 3.502551020408168,
+     "row_best_share": 0.8554517133956396,
+     "row_best_favours": "row",
+     "col_group_b11": 4.357142857142859,
+     "col_sum_singles_6_10": 4.545918367346951,
+     "col_best_block": 8,
+     "col_best_cost": 3.566326530612246,
+     "col_best_share": 0.8185011709601872,
+     "col_best_favours": "col",
+     "per_block_b11": {
+      "6": [
+       0.04,
+       0.16,
+       "none"
+      ],
+      "7": [
+       0.66,
+       0.72,
+       "none"
+      ],
+      "8": [
+       -0.1,
+       3.57,
+       "col"
+      ],
+      "9": [
+       3.5,
+       0.05,
+       "row"
+      ],
+      "10": [
+       0.06,
+       0.05,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      -0.02,
+      -0.04,
+      "none"
+     ]
+    }
+   },
+   "top_two_by_ssdc": [
+    {
+     "model": "DINOv3",
+     "block": 6,
+     "head": 2,
+     "ssdc_cost_b11": 0.05223897025982044,
+     "probe_score_b11": 7.8367346938775455,
+     "cref_row_cost_b11": -0.5943877551020438,
+     "cref_col_cost_b11": 8.43112244897959,
+     "row_cost_b11": 0.18877551020408112,
+     "col_cost_b11": 5.683673469387757,
+     "favours_b11": "col"
+    },
+    {
+     "model": "DINOv3",
+     "block": 9,
+     "head": 10,
+     "ssdc_cost_b11": 0.03891384996651892,
+     "probe_score_b11": 3.76275510204081,
+     "cref_row_cost_b11": 3.8801020408163245,
+     "cref_col_cost_b11": -0.11734693877551439,
+     "row_cost_b11": 3.502551020408168,
+     "col_cost_b11": 0.05102040816326592,
+     "favours_b11": "row"
+    }
+   ]
+  },
+  "small": {
+   "windows_done": [
+    "cref",
+    "row",
+    "col"
+   ],
+   "bars_pts": {
+    "axis_b11": 0.6717415137077544,
+    "cref_b11": 0.5685529066601174,
+    "axis_out11": 0.8027866780770481,
+    "cref_out11": 0.7320389362683702
+   },
+   "favours_counts": {
+    "blocks 6-10 (b11)": {
+     "row": 3,
+     "col": 0,
+     "mixed": 0,
+     "none": 27
+    },
+    "block 11 (out11)": {
+     "row": 1,
+     "col": 0,
+     "mixed": 0,
+     "none": 5
+    },
+    "all heads at out11": {
+     "row": 3,
+     "col": 0,
+     "mixed": 0,
+     "none": 33
+    }
+   },
+   "specialists": [
+    {
+     "block": 11,
+     "head": 3,
+     "primary": "out11",
+     "row_cost": 3.026,
+     "col_cost": 0.054,
+     "favours": "row",
+     "top1_cost": 0.08
+    },
+    {
+     "block": 7,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": 1.63,
+     "col_cost": 0.043,
+     "favours": "row",
+     "top1_cost": 6.08
+    },
+    {
+     "block": 6,
+     "head": 0,
+     "primary": "b11",
+     "row_cost": 1.0,
+     "col_cost": 0.153,
+     "favours": "row",
+     "top1_cost": 3.6
+    },
+    {
+     "block": 8,
+     "head": 2,
+     "primary": "b11",
+     "row_cost": 0.87,
+     "col_cost": -0.077,
+     "favours": "row",
+     "top1_cost": 2.82
+    }
+   ],
+   "index_groups": {
+    "0": {
+     "model": "small",
+     "head": 0,
+     "source": "W5 stage D",
+     "table14_row": 3.0336734693877547,
+     "table14_col": 0.7755102040816323,
+     "row_group_b11": 1.4107142857142847,
+     "row_sum_singles_6_10": 1.5204081632652993,
+     "row_best_block": 6,
+     "row_best_cost": 0.9999999999999981,
+     "row_best_share": 0.7088607594936701,
+     "row_best_favours": "row",
+     "col_group_b11": 0.12499999999999872,
+     "col_sum_singles_6_10": 0.030612244897956775,
+     "col_best_block": 6,
+     "col_best_cost": 0.15306122448979498,
+     "col_best_share": NaN,
+     "col_best_favours": "row",
+     "per_block_b11": {
+      "6": [
+       1.0,
+       0.15,
+       "row"
+      ],
+      "7": [
+       0.03,
+       -0.04,
+       "none"
+      ],
+      "8": [
+       0.23,
+       -0.06,
+       "none"
+      ],
+      "9": [
+       0.06,
+       -0.01,
+       "none"
+      ],
+      "10": [
+       0.19,
+       -0.02,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.03,
+      0.32,
+      "none"
+     ]
+    },
+    "2": {
+     "model": "small",
+     "head": 2,
+     "source": "W5 stage D",
+     "table14_row": 0.7321428571428568,
+     "table14_col": 0.6841836734693876,
+     "row_group_b11": 1.1173469387755097,
+     "row_sum_singles_6_10": 1.1683673469387699,
+     "row_best_block": 8,
+     "row_best_cost": 0.8698979591836742,
+     "row_best_share": 0.7785388127853891,
+     "row_best_favours": "row",
+     "col_group_b11": 0.35969387755101917,
+     "col_sum_singles_6_10": -0.007653061224494051,
+     "col_best_block": 6,
+     "col_best_cost": 0.12499999999999872,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       0.12,
+       0.12,
+       "none"
+      ],
+      "7": [
+       0.04,
+       0.0,
+       "none"
+      ],
+      "8": [
+       0.87,
+       -0.08,
+       "row"
+      ],
+      "9": [
+       0.18,
+       0.01,
+       "none"
+      ],
+      "10": [
+       -0.04,
+       -0.06,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.07,
+      -0.04,
+      "none"
+     ]
+    },
+    "4": {
+     "model": "small",
+     "head": 4,
+     "source": "W5 stage D",
+     "table14_row": 2.0188775510204073,
+     "table14_col": 0.27755102040816354,
+     "row_group_b11": 1.7372448979591837,
+     "row_sum_singles_6_10": 1.954081632653057,
+     "row_best_block": 7,
+     "row_best_cost": 1.6301020408163254,
+     "row_best_share": 0.9383259911894266,
+     "row_best_favours": "row",
+     "col_group_b11": -0.01275510204081648,
+     "col_sum_singles_6_10": -0.4285714285714323,
+     "col_best_block": 7,
+     "col_best_cost": 0.04336734693877464,
+     "col_best_share": NaN,
+     "col_best_favours": "row",
+     "per_block_b11": {
+      "6": [
+       0.1,
+       -0.24,
+       "none"
+      ],
+      "7": [
+       1.63,
+       0.04,
+       "row"
+      ],
+      "8": [
+       0.09,
+       -0.1,
+       "none"
+      ],
+      "9": [
+       0.04,
+       -0.02,
+       "none"
+      ],
+      "10": [
+       0.09,
+       -0.1,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.07,
+      0.06,
+      "none"
+     ]
+    }
+   },
+   "scores_vs_top1": {
+    "n_heads": 30,
+    "ssdc_b11": [
+     0.5462839476589355,
+     0.001999800019998
+    ],
+    "probe_b11": [
+     0.3253226604795779,
+     0.07829217078292171
+    ],
+    "axis_b11": [
+     0.40068988787056314,
+     0.032396760323967606
+    ],
+    "delta_probe_minus_ssdc": [
+     -0.2209612871793576,
+     -0.679358549582638,
+     0.22113057218333473
+    ],
+    "delta_boot_valid": 2000,
+    "block11_out11": {
+     "ssdc": 0.2571428571428572,
+     "probe": 0.3142857142857143,
+     "n": 6
+    },
+    "costliest_head_top1": [
+     7,
+     4,
+     6.080001592636108,
+     0.40278923500208735
+    ],
+    "top5_by_ssdc_b11": [
+     [
+      7,
+      2
+     ],
+     [
+      7,
+      4
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      7,
+      3
+     ],
+     [
+      8,
+      4
+     ]
+    ],
+    "top5_by_probe_b11": [
+     [
+      6,
+      1
+     ],
+     [
+      7,
+      4
+     ],
+     [
+      6,
+      0
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      7,
+      5
+     ]
+    ]
+   },
+   "top_two_by_ssdc": [
+    {
+     "model": "small",
+     "block": 7,
+     "head": 2,
+     "ssdc_cost_b11": 0.044767713310969376,
+     "probe_score_b11": 0.04336734693877603,
+     "cref_row_cost_b11": 0.005102040816326592,
+     "cref_col_cost_b11": 0.03826530612244944,
+     "row_cost_b11": 0.03826530612244805,
+     "col_cost_b11": 0.002551020408163296,
+     "favours_b11": "none",
+     "top1_cost": -0.3600001335144043,
+     "top1_se": 0.20194612263494796,
+     "top1_cost_minus_second": [
+      -6.4399999999999995,
+      0.40661818413535555
+     ]
+    },
+    {
+     "model": "small",
+     "block": 7,
+     "head": 4,
+     "ssdc_cost_b11": 0.044471033572707735,
+     "probe_score_b11": 1.8010204081632633,
+     "cref_row_cost_b11": 1.5994897959183656,
+     "cref_col_cost_b11": 0.2015306122448976,
+     "row_cost_b11": 1.6301020408163254,
+     "col_cost_b11": 0.04336734693877464,
+     "favours_b11": "row",
+     "top1_cost": 6.080001592636108,
+     "top1_se": 0.40278923500208735
+    }
+   ]
+  },
+  "reg1_gap": {
+   "windows_done": [
+    "cref",
+    "row",
+    "col"
+   ],
+   "bars_pts": {
+    "axis_b11": 0.6479305679600665,
+    "cref_b11": 0.6758068447660818,
+    "axis_out11": 0.5082536070002771,
+    "cref_out11": 0.5642668025240368
+   },
+   "favours_counts": {
+    "blocks 6-10 (b11)": {
+     "row": 3,
+     "col": 3,
+     "mixed": 1,
+     "none": 53
+    },
+    "block 11 (out11)": {
+     "row": 0,
+     "col": 0,
+     "mixed": 0,
+     "none": 12
+    },
+    "all heads at out11": {
+     "row": 2,
+     "col": 1,
+     "mixed": 1,
+     "none": 68
+    }
+   },
+   "specialists": [
+    {
+     "block": 6,
+     "head": 2,
+     "primary": "b11",
+     "row_cost": -0.005,
+     "col_cost": 2.046,
+     "favours": "col",
+     "top1_cost": 3.16
+    },
+    {
+     "block": 6,
+     "head": 9,
+     "primary": "b11",
+     "row_cost": 1.997,
+     "col_cost": 0.013,
+     "favours": "row",
+     "top1_cost": 4.52
+    },
+    {
+     "block": 6,
+     "head": 7,
+     "primary": "b11",
+     "row_cost": 1.658,
+     "col_cost": -0.13,
+     "favours": "row",
+     "top1_cost": 4.26
+    },
+    {
+     "block": 6,
+     "head": 3,
+     "primary": "b11",
+     "row_cost": 0.018,
+     "col_cost": 1.036,
+     "favours": "col",
+     "top1_cost": 2.68
+    },
+    {
+     "block": 7,
+     "head": 7,
+     "primary": "b11",
+     "row_cost": 0.872,
+     "col_cost": 0.0,
+     "favours": "row",
+     "top1_cost": 1.3
+    },
+    {
+     "block": 7,
+     "head": 10,
+     "primary": "b11",
+     "row_cost": 0.801,
+     "col_cost": 0.202,
+     "favours": "mixed",
+     "top1_cost": 0.84
+    },
+    {
+     "block": 6,
+     "head": 10,
+     "primary": "b11",
+     "row_cost": -0.827,
+     "col_cost": 0.773,
+     "favours": "col",
+     "top1_cost": -3.3
+    }
+   ],
+   "index_groups": {
+    "3": {
+     "model": "reg1_gap",
+     "head": 3,
+     "source": "W5 stage D",
+     "table14_row": 0.30051020408163265,
+     "table14_col": 2.7030612244897956,
+     "row_group_b11": 0.4005102040816333,
+     "row_sum_singles_6_10": 0.0994897959183727,
+     "row_best_block": 8,
+     "row_best_cost": 0.22193877551020535,
+     "row_best_share": NaN,
+     "row_best_favours": "none",
+     "col_group_b11": 1.0535714285714273,
+     "col_sum_singles_6_10": 1.0739795918367268,
+     "col_best_block": 6,
+     "col_best_cost": 1.0357142857142843,
+     "col_best_share": 0.9830508474576269,
+     "col_best_favours": "col",
+     "per_block_b11": {
+      "6": [
+       0.02,
+       1.04,
+       "col"
+      ],
+      "7": [
+       -0.1,
+       -0.03,
+       "none"
+      ],
+      "8": [
+       0.22,
+       0.04,
+       "none"
+      ],
+      "9": [
+       -0.02,
+       0.02,
+       "none"
+      ],
+      "10": [
+       -0.02,
+       0.01,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      -0.01,
+      -0.0,
+      "none"
+     ]
+    },
+    "6": {
+     "model": "reg1_gap",
+     "head": 6,
+     "source": "W5 stage D",
+     "table14_row": 0.048469387755102344,
+     "table14_col": -0.002040816326531747,
+     "row_group_b11": -0.022959183673468275,
+     "row_sum_singles_6_10": -0.16836734693877198,
+     "row_best_block": 7,
+     "row_best_cost": -0.015306122448979775,
+     "row_best_share": NaN,
+     "row_best_favours": "none",
+     "col_group_b11": -0.09438775510204334,
+     "col_sum_singles_6_10": -0.26785714285715023,
+     "col_best_block": 9,
+     "col_best_cost": 0.02040816326530359,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       -0.03,
+       -0.11,
+       "none"
+      ],
+      "7": [
+       -0.02,
+       -0.11,
+       "none"
+      ],
+      "8": [
+       -0.06,
+       0.01,
+       "none"
+      ],
+      "9": [
+       -0.03,
+       0.02,
+       "none"
+      ],
+      "10": [
+       -0.03,
+       -0.07,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.37,
+      0.06,
+      "none"
+     ]
+    },
+    "7": {
+     "model": "reg1_gap",
+     "head": 7,
+     "source": "W5 stage D",
+     "table14_row": 3.839795918367347,
+     "table14_col": 5.551115123125783e-16,
+     "row_group_b11": 2.7576530612244907,
+     "row_sum_singles_6_10": 2.653061224489797,
+     "row_best_block": 6,
+     "row_best_cost": 1.658163265306123,
+     "row_best_share": 0.6012950971322849,
+     "row_best_favours": "row",
+     "col_group_b11": 0.11479591836734693,
+     "col_sum_singles_6_10": -0.19132653061225136,
+     "col_best_block": 9,
+     "col_best_cost": 0.030612244897956775,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       1.66,
+       -0.13,
+       "row"
+      ],
+      "7": [
+       0.87,
+       0.0,
+       "row"
+      ],
+      "8": [
+       0.01,
+       -0.11,
+       "none"
+      ],
+      "9": [
+       0.14,
+       0.03,
+       "none"
+      ],
+      "10": [
+       -0.02,
+       0.02,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.14,
+      0.08,
+      "none"
+     ]
+    },
+    "9": {
+     "model": "reg1_gap",
+     "head": 9,
+     "source": "W5 stage D",
+     "table14_row": 3.080612244897959,
+     "table14_col": 0.18673469387755104,
+     "row_group_b11": 1.9311224489795915,
+     "row_sum_singles_6_10": 1.790816326530614,
+     "row_best_block": 6,
+     "row_best_cost": 1.997448979591837,
+     "row_best_share": 1.0343461030383094,
+     "row_best_favours": "row",
+     "col_group_b11": 0.06377551020408101,
+     "col_sum_singles_6_10": 0.18367346938774898,
+     "col_best_block": 7,
+     "col_best_cost": 0.16326530612244816,
+     "col_best_share": NaN,
+     "col_best_favours": "none",
+     "per_block_b11": {
+      "6": [
+       2.0,
+       0.01,
+       "row"
+      ],
+      "7": [
+       -0.09,
+       0.16,
+       "none"
+      ],
+      "8": [
+       -0.04,
+       -0.07,
+       "none"
+      ],
+      "9": [
+       -0.12,
+       0.05,
+       "none"
+      ],
+      "10": [
+       0.05,
+       0.03,
+       "none"
+      ]
+     },
+     "block11_head_out11": [
+      0.02,
+      -0.04,
+      "none"
+     ]
+    }
+   },
+   "scores_vs_top1": {
+    "n_heads": 60,
+    "ssdc_b11": [
+     0.6746369569146535,
+     9.999000099990002e-05
+    ],
+    "probe_b11": [
+     0.25188031506824077,
+     0.054594540545945404
+    ],
+    "axis_b11": [
+     0.07931653975312879,
+     0.5396460353964604
+    ],
+    "delta_probe_minus_ssdc": [
+     -0.42275664184641276,
+     -0.7570586990520901,
+     -0.10175562437042016
+    ],
+    "delta_boot_valid": 2000,
+    "block11_out11": {
+     "ssdc": 0.5604211746706771,
+     "probe": -0.7285475270718802,
+     "n": 12
+    },
+    "costliest_head_top1": [
+     6,
+     9,
+     4.519999027252197,
+     0.34166835887083646
+    ],
+    "top5_by_ssdc_b11": [
+     [
+      6,
+      9
+     ],
+     [
+      7,
+      7
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      6,
+      4
+     ],
+     [
+      7,
+      6
+     ]
+    ],
+    "top5_by_probe_b11": [
+     [
+      6,
+      9
+     ],
+     [
+      6,
+      7
+     ],
+     [
+      10,
+      8
+     ],
+     [
+      7,
+      10
+     ],
+     [
+      6,
+      2
+     ]
+    ]
+   },
+   "top_two_by_ssdc": [
+    {
+     "model": "reg1_gap",
+     "block": 6,
+     "head": 9,
+     "ssdc_cost_b11": 0.024000003781087603,
+     "probe_score_b11": 1.6530612244897949,
+     "cref_row_cost_b11": 1.7499999999999987,
+     "cref_col_cost_b11": -0.09693877551020386,
+     "row_cost_b11": 1.997448979591837,
+     "col_cost_b11": 0.012755102040815092,
+     "favours_b11": "row",
+     "top1_cost": 4.519999027252197,
+     "top1_se": 0.34166835887083646,
+     "top1_cost_minus_second": [
+      3.2199999999999998,
+      0.3174058431942594
+     ]
+    },
+    {
+     "model": "reg1_gap",
+     "block": 7,
+     "head": 7,
+     "ssdc_cost_b11": 0.022916119276949448,
+     "probe_score_b11": 0.9081632653061223,
+     "cref_row_cost_b11": 1.0331632653061225,
+     "cref_col_cost_b11": -0.1250000000000001,
+     "row_cost_b11": 0.8724489795918361,
+     "col_cost_b11": 0.0,
+     "favours_b11": "row",
+     "top1_cost": 1.3000011444091797,
+     "top1_se": 0.229940371650789
+    }
+   ]
+  }
+ },
+ "gates": [
+  {
+   "gate": "CUDA available",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "torch is 2.10.0+cu128",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "2.10.0+cu128",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000/-0.005",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partB_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 410d21697751cd8e... (expected 410d21697751cd8e...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partB_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "sha256 ffb5b84f0b7c5a62... (expected ffb5b84f0b7c5a62...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partB_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 411cc73401b18db8... (expected 411cc73401b18db8...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partB_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 a7a6481ff165c1c1... (expected a7a6481ff165c1c1...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "RB-0 parts A/B (and C) are complete",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "A=complete, B=complete, C=complete",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "RB-0 parts A/B (and C) are complete",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "A=complete, B=complete, C=missing",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "RB-0 parts A/B (and C) are complete",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "A=complete, B=complete, C=complete",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "RB-0 parts A/B (and C) are complete",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "A=complete, B=complete, C=complete",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "w5_partA_naver_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "w5_partA_DINOv3_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "w5_partA_small_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "w5_partA_reg1_gap_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "SSDC dataset is the repack every W2-W6 and RB-0 SSDC/probe number used",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "benjamin-paine/imagenet-1k-256x256",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "full plane mask equals identity [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "full plane mask equals identity [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "win_plus builds the window plus one segment for the single head's block",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "win_plus REJECTS a single head inside the window",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rotary table has no head dimension (every head in a block uses the same frequencies)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max ratio 8.6e-07",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "references registered the expected hooks and saw every image",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 40",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "probe noise equals W5 bit for bit where W5 measured it (Dref, block 11)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 values",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 36 probes + 39 SSDC",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref probe noise measured (new in RB-2) and finite",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "combined SD (pts): 0.25, 0.17, 0.26, 0.21",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[cref window] masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[row window] masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "windows with every single head measured",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head condition registered window + 1 hooks and saw every image",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to the window reference",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 216 conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 22 conditions (76 probes)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "1 session(s): 2026-11-05T04-31-07Z:91002",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "220 new conditions this session, 52.2 min; all three windows complete: True",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rotary table has no head dimension (every head in a block uses the same frequencies)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max ratio 1.4e-06",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "references registered the expected hooks and saw every image",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 40",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "probe noise equals W5 bit for bit where W5 measured it (Dref, block 11)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 values",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 36 probes + 39 SSDC",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref probe noise measured (new in RB-2) and finite",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "combined SD (pts): 0.46, 0.51, 0.60, 0.67",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[cref window] masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[row window] masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "windows with every single head measured",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head condition registered window + 1 hooks and saw every image",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to the window reference",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 216 conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 46 conditions (160 probes)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "1 session(s): 2026-11-05T04-31-07Z:91002",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "220 new conditions this session, 52.1 min; all three windows complete: True",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rotary table has no head dimension (every head in a block uses the same frequencies)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max ratio 8.6e-07",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "references registered the expected hooks and saw every image",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 40",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 36 probes + 39 SSDC",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref probe noise measured (new in RB-2) and finite",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "combined SD (pts): 0.19, 0.17, 0.24, 0.20",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[cref window] masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[row window] masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "windows with every single head measured",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 108 single-head conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head condition registered window + 1 hooks and saw every image",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to the window reference",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 108 conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 36 heads; 0 missing in RB-0",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 32 conditions (116 probes)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "1 session(s): 2026-11-05T04-31-07Z:91002",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "112 new conditions this session, 26.2 min; all three windows complete: True",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "rotary table has no head dimension (every head in a block uses the same frequencies)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max ratio 6.0e-05",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "FINAL readout uses fc_norm per token (pooled model)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "fc_norm",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "references registered the expected hooks and saw every image",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "baseline:0h/1000img, Cref:6h/1000img, Dref_row:6h/1000img, Dref_col:6h/1000img",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference SSDC equals W5 bit for bit (baseline, Cref, Dref_row, Dref_col; 12 readouts each)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "reference probes equal W5 bit for bit (4 references x blocks 7-11 x row/col)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 40",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref and baseline SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "baseline and Dref SSDC + probes equal RB-0 part B bit for bit (blocks 7-11 and output of 11)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 36 probes + 39 SSDC",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Dref probe noise equals RB-0 part B bit for bit (entering block 11 and output of block 11)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "Cref probe noise measured (new in RB-2) and finite",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "combined SD (pts): 0.23, 0.22, 0.19, 0.15",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[cref window] masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "[row window] masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "windows with every single head measured",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "done ['cref', 'row', 'col']; requested ['cref', 'row', 'col']; 216 single-head conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head condition registered window + 1 hooks and saw every image",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to the window reference",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 216 conditions",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "single heads probed at the planned readouts (blocks 6-10: entering 11 + output of 11; block 11: output of 11)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every cref-window single head's SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 72 heads; 0 missing in RB-0",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "row/col single heads that RB-0 also ran equal RB-0 part B bit for bit (SSDC + probes)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 32 conditions (120 probes)",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "1 session(s): 2026-11-05T04-31-07Z:91002",
+   "session": "2026-11-05T04-31-07Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "220 new conditions this session, 52.5 min; all three windows complete: True",
+   "session": "2026-11-05T04-31-07Z"
+  }
+ ],
+ "gate_summary": {
+  "total": 168,
+  "fail": 0,
+  "skip": 0,
+  "sessions": [
+   "2026-11-05T04-31-07Z"
+  ],
+  "complete": {
+   "naver": true,
+   "DINOv3": true,
+   "small": true,
+   "reg1_gap": true
+  }
+ }
+}

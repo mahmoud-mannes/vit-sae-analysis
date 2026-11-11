@@ -87,3 +87,37 @@ and one head's rotations held off in blocks 6-11, against the same window with a
   the file names (were `w7_reviewer_controls_*.py`), the APE script's location (moved into this
   folder, with its source-root path adjusted), the default SAE directory, and the header comments;
   the output folder was renamed to `w7/` and the run logs were dropped.
+
+## Rebuttal runs (RB-0 to RB-9)
+
+The November runs for the ICLR rebuttal are notebooks in `rebuttal/`, each with its executed copy, and
+their outputs are in `results/runs/imagenet1k_val/rope_interventions/rb0/` to `rb9/`. Each notebook
+writes to `./<run>_output/` and checks the earlier outputs it builds on by sha256.
+
+Setup: one H100, PyTorch 2.10.0+cu128 with cuDNN 9.10.2, timm 1.0.29, in float32. SSDC and probes use
+1,000 images of the repack and top-1 uses 5,000 images of the gated ILSVRC split. RB-1 and RB-1b are
+the exception: they compare cuDNN versions and TF32 settings to explain why the September ViT-S
+numbers moved. RB-0 is the single-head run repeated under cuDNN 9.10.2, the version that matches the
+September numerics.
+
+| Notebook | What it measures |
+| --- | --- |
+| `Paper5_W8_Single_Head_Controls` (RB-0) | single-head rebuilding controls; the reference the later runs are checked against |
+| `Paper5_RB1_Drift_Check` | ViT-S drift under free GPU memory, TF32, cuDNN flags and load order |
+| `Paper5_RB1b_cuDNN_Check` | patch embedding under cuDNN 9.10.2 and 9.26 |
+| `Paper5_RB2_Axis_Map` | row and column axis of single heads |
+| `Paper5_RB3_Intact_Shuffle_Null` | single heads in the intact model, with shuffled rotations, and against random head sets |
+| `Paper5_RB4_Mixed_RoPE` | mixed-frequency RoPE: single-head axis map and top-1 |
+| `Paper5_RB5_Key_Block` | windows 0-3, 0-5 and 0-7: is the top rebuilder a fixed head or the first block after the window |
+| `Paper5_RB6_Shared_Erasure` | positional component of the residual stream erased at block 4 (APE also block 2), encoding left on |
+| `Paper5_RB7_Generality` | 320 input, ViT-L, the Qwen2-VL vision encoder, a block-matched null for the top SSDC heads, attention statistics |
+| `Paper5_RB8_AllBlock_Erasure` | the erasure at the input of every block at once |
+| `Paper5_RB9_AllSites_Erasure` | the erasure before attention and before the MLP of every block, and after the last block |
+
+Notes:
+
+- Not committed, for size: the fit files of RB-6, RB-8 and RB-9, and the cuDNN logs and patch-embedding
+  tensors of RB-1 and RB-1b.
+- After the runs, comments were tidied, and names, machine paths and the host name were removed from
+  the notebooks and outputs. The sha256 values in the notebooks were updated to match the committed
+  files. Nothing else in the code or the numbers changed.

@@ -1,0 +1,974 @@
+{
+ "generated_utc": "2026-11-04T00-06-44Z",
+ "cutoff": "2026-09-14T00:00:00+00:00",
+ "python": "3.11.18 (main, Oct 26 2026, 18:19:35) [GCC 14.3.0]",
+ "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+ "executable": "/workspace/NRDL/env_paper5/bin/python3.11",
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "packages_key": [
+  {
+   "name": "datasets",
+   "version": "5.1.0",
+   "installed_utc": "2026-11-02T04:08:03.231079+00:00"
+  },
+  {
+   "name": "fsspec",
+   "version": "2026.7.0",
+   "installed_utc": "2026-11-02T04:07:14.516058+00:00"
+  },
+  {
+   "name": "numpy",
+   "version": "2.4.6",
+   "installed_utc": "2026-11-02T04:07:14.093857+00:00"
+  },
+  {
+   "name": "nvidia-cublas-cu12",
+   "version": "12.8.4.1",
+   "installed_utc": "2026-11-02T04:05:48.394545+00:00"
+  },
+  {
+   "name": "nvidia-cuda-nvrtc-cu12",
+   "version": "12.8.93",
+   "installed_utc": "2026-11-02T04:05:44.532976+00:00"
+  },
+  {
+   "name": "nvidia-cuda-runtime-cu12",
+   "version": "12.8.90",
+   "installed_utc": "2026-11-02T04:05:43.543993+00:00"
+  },
+  {
+   "name": "nvidia-cudnn-cu12",
+   "version": "9.10.2.21",
+   "installed_utc": "2026-11-02T04:06:00.320909+00:00"
+  },
+  {
+   "name": "nvidia-cufft-cu12",
+   "version": "11.3.3.83",
+   "installed_utc": "2026-11-02T04:05:53.931157+00:00"
+  },
+  {
+   "name": "nvidia-nvjitlink-cu12",
+   "version": "12.8.93",
+   "installed_utc": "2026-11-02T04:05:40.183286+00:00"
+  },
+  {
+   "name": "pillow",
+   "version": "13.0.0",
+   "installed_utc": "2026-11-02T04:07:09.429699+00:00"
+  },
+  {
+   "name": "pyarrow",
+   "version": "26.0.0",
+   "installed_utc": "2026-11-02T04:07:09.011578+00:00"
+  },
+  {
+   "name": "safetensors",
+   "version": "0.8.0",
+   "installed_utc": "2026-11-02T04:07:06.844415+00:00"
+  },
+  {
+   "name": "scipy",
+   "version": "1.17.1",
+   "installed_utc": "2026-11-02T04:07:20.988368+00:00"
+  },
+  {
+   "name": "timm",
+   "version": "1.0.29",
+   "installed_utc": "2026-11-02T04:08:11.617809+00:00"
+  },
+  {
+   "name": "torch",
+   "version": "2.10.0+cu128",
+   "installed_utc": "2026-11-02T04:09:50.425278+00:00"
+  },
+  {
+   "name": "torchvision",
+   "version": "0.25.0+cu128",
+   "installed_utc": "2026-11-02T04:09:53.851374+00:00"
+  },
+  {
+   "name": "transformers",
+   "version": "5.22.1",
+   "installed_utc": "2026-11-02T04:08:10.511949+00:00"
+  },
+  {
+   "name": "triton",
+   "version": "3.6.0",
+   "installed_utc": "2026-11-02T04:09:24.502711+00:00"
+  }
+ ],
+ "packages_changed_after_cutoff": [
+  {
+   "name": "aiohappyeyeballs",
+   "version": "2.7.1",
+   "installed_utc": "2026-11-02T04:07:16.828659+00:00"
+  },
+  {
+   "name": "aiohttp",
+   "version": "3.14.5",
+   "installed_utc": "2026-11-02T04:07:42.467618+00:00"
+  },
+  {
+   "name": "aiosignal",
+   "version": "1.4.0",
+   "installed_utc": "2026-11-02T04:07:30.477375+00:00"
+  },
+  {
+   "name": "annotated-doc",
+   "version": "0.0.5",
+   "installed_utc": "2026-11-02T04:07:16.818448+00:00"
+  },
+  {
+   "name": "anyio",
+   "version": "4.16.0",
+   "installed_utc": "2026-11-02T04:07:30.469628+00:00"
+  },
+  {
+   "name": "asttokens",
+   "version": "3.0.2",
+   "installed_utc": "2026-11-02T04:07:16.812334+00:00"
+  },
+  {
+   "name": "attrs",
+   "version": "26.1.0",
+   "installed_utc": "2026-11-02T04:07:16.796366+00:00"
+  },
+  {
+   "name": "beautifulsoup4",
+   "version": "4.15.0",
+   "installed_utc": "2026-11-02T04:07:30.310682+00:00"
+  },
+  {
+   "name": "bleach",
+   "version": "6.4.0",
+   "installed_utc": "2026-11-02T04:07:30.238633+00:00"
+  },
+  {
+   "name": "click",
+   "version": "8.5.0",
+   "installed_utc": "2026-11-02T04:07:16.759486+00:00"
+  },
+  {
+   "name": "comm",
+   "version": "0.2.3",
+   "installed_utc": "2026-11-02T04:07:16.698269+00:00"
+  },
+  {
+   "name": "contourpy",
+   "version": "1.3.3",
+   "installed_utc": "2026-11-02T04:07:30.086389+00:00"
+  },
+  {
+   "name": "cuda-bindings",
+   "version": "12.9.4",
+   "installed_utc": "2026-11-02T04:09:25.170735+00:00"
+  },
+  {
+   "name": "cuda-pathfinder",
+   "version": "1.6.0",
+   "installed_utc": "2026-11-02T04:05:49.751514+00:00"
+  },
+  {
+   "name": "cuda-toolkit",
+   "version": "13.2.2",
+   "installed_utc": "2026-11-02T04:07:00.781125+00:00"
+  },
+  {
+   "name": "cycler",
+   "version": "0.12.1",
+   "installed_utc": "2026-11-02T04:07:16.120409+00:00"
+  },
+  {
+   "name": "datasets",
+   "version": "5.1.0",
+   "installed_utc": "2026-11-02T04:08:03.231079+00:00"
+  },
+  {
+   "name": "debugpy",
+   "version": "1.8.22",
+   "installed_utc": "2026-11-02T04:07:16.112199+00:00"
+  },
+  {
+   "name": "defusedxml",
+   "version": "0.7.1",
+   "installed_utc": "2026-11-02T04:07:15.499928+00:00"
+  },
+  {
+   "name": "dill",
+   "version": "0.4.1",
+   "installed_utc": "2026-11-02T04:07:15.480626+00:00"
+  },
+  {
+   "name": "executing",
+   "version": "2.3.0",
+   "installed_utc": "2026-11-02T04:07:15.396054+00:00"
+  },
+  {
+   "name": "fastjsonschema",
+   "version": "2.22.3",
+   "installed_utc": "2026-11-02T04:07:15.377306+00:00"
+  },
+  {
+   "name": "filelock",
+   "version": "4.2.4",
+   "installed_utc": "2026-11-02T04:05:49.711221+00:00"
+  },
+  {
+   "name": "fonttools",
+   "version": "4.68.0",
+   "installed_utc": "2026-11-02T04:07:15.355838+00:00"
+  },
+  {
+   "name": "frozenlist",
+   "version": "1.8.0",
+   "installed_utc": "2026-11-02T04:07:14.543368+00:00"
+  },
+  {
+   "name": "fsspec",
+   "version": "2026.7.0",
+   "installed_utc": "2026-11-02T04:07:14.516058+00:00"
+  },
+  {
+   "name": "h11",
+   "version": "0.16.0",
+   "installed_utc": "2026-11-02T04:07:14.363076+00:00"
+  },
+  {
+   "name": "hf-xet",
+   "version": "1.8.0",
+   "installed_utc": "2026-11-02T04:07:14.342018+00:00"
+  },
+  {
+   "name": "httpcore2",
+   "version": "2.16.0",
+   "installed_utc": "2026-11-02T04:07:30.034435+00:00"
+  },
+  {
+   "name": "httpx2",
+   "version": "2.16.0",
+   "installed_utc": "2026-11-02T04:07:42.190693+00:00"
+  },
+  {
+   "name": "huggingface_hub",
+   "version": "2.4.0",
+   "installed_utc": "2026-11-02T04:07:43.389915+00:00"
+  },
+  {
+   "name": "idna",
+   "version": "3.20",
+   "installed_utc": "2026-11-02T04:07:14.287760+00:00"
+  },
+  {
+   "name": "imageio",
+   "version": "2.38.1",
+   "installed_utc": "2026-11-02T04:07:29.948100+00:00"
+  },
+  {
+   "name": "ipykernel",
+   "version": "7.4.0",
+   "installed_utc": "2026-11-02T04:07:42.801857+00:00"
+  },
+  {
+   "name": "ipython",
+   "version": "9.18.0",
+   "installed_utc": "2026-11-02T04:07:42.085921+00:00"
+  },
+  {
+   "name": "ipython_pygments_lexers",
+   "version": "1.1.1",
+   "installed_utc": "2026-11-02T04:07:29.715452+00:00"
+  },
+  {
+   "name": "jedi",
+   "version": "0.20.1",
+   "installed_utc": "2026-11-02T04:07:29.703482+00:00"
+  },
+  {
+   "name": "jinja2",
+   "version": "3.1.6",
+   "installed_utc": "2026-11-02T04:06:00.390641+00:00"
+  },
+  {
+   "name": "jsonschema",
+   "version": "4.26.0",
+   "installed_utc": "2026-11-02T04:07:42.690596+00:00"
+  },
+  {
+   "name": "jsonschema-specifications",
+   "version": "2025.9.1",
+   "installed_utc": "2026-11-02T04:07:41.596369+00:00"
+  },
+  {
+   "name": "jupyter_client",
+   "version": "8.10.0",
+   "installed_utc": "2026-11-02T04:07:41.576688+00:00"
+  },
+  {
+   "name": "jupyter_core",
+   "version": "5.9.1",
+   "installed_utc": "2026-11-02T04:07:27.446957+00:00"
+  },
+  {
+   "name": "jupyterlab_pygments",
+   "version": "0.3.0",
+   "installed_utc": "2026-11-02T04:07:14.252853+00:00"
+  },
+  {
+   "name": "kiwisolver",
+   "version": "1.5.1",
+   "installed_utc": "2026-11-02T04:07:14.242502+00:00"
+  },
+  {
+   "name": "lazy-loader",
+   "version": "0.6",
+   "installed_utc": "2026-11-02T04:07:14.215327+00:00"
+  },
+  {
+   "name": "markdown-it-py",
+   "version": "4.2.0",
+   "installed_utc": "2026-11-02T04:07:27.412649+00:00"
+  },
+  {
+   "name": "markupsafe",
+   "version": "3.0.3",
+   "installed_utc": "2026-11-02T04:05:49.507160+00:00"
+  },
+  {
+   "name": "matplotlib",
+   "version": "3.11.2",
+   "installed_utc": "2026-11-02T04:07:41.463830+00:00"
+  },
+  {
+   "name": "matplotlib-inline",
+   "version": "0.2.2",
+   "installed_utc": "2026-11-02T04:07:27.311156+00:00"
+  },
+  {
+   "name": "mdurl",
+   "version": "0.1.2",
+   "installed_utc": "2026-11-02T04:07:14.208638+00:00"
+  },
+  {
+   "name": "mistune",
+   "version": "3.4.0",
+   "installed_utc": "2026-11-02T04:07:14.197814+00:00"
+  },
+  {
+   "name": "mpmath",
+   "version": "1.3.0",
+   "installed_utc": "2026-11-02T04:05:30.117245+00:00"
+  },
+  {
+   "name": "multidict",
+   "version": "7.2.1",
+   "installed_utc": "2026-11-02T04:07:14.127749+00:00"
+  },
+  {
+   "name": "multiprocess",
+   "version": "0.70.19",
+   "installed_utc": "2026-11-02T04:07:27.302882+00:00"
+  },
+  {
+   "name": "nbclient",
+   "version": "0.11.0",
+   "installed_utc": "2026-11-02T04:08:10.923028+00:00"
+  },
+  {
+   "name": "nbconvert",
+   "version": "7.17.2",
+   "installed_utc": "2026-11-02T04:08:11.697503+00:00"
+  },
+  {
+   "name": "nbformat",
+   "version": "5.11.1",
+   "installed_utc": "2026-11-02T04:08:02.742897+00:00"
+  },
+  {
+   "name": "nest-asyncio2",
+   "version": "1.7.4",
+   "installed_utc": "2026-11-02T04:07:14.101679+00:00"
+  },
+  {
+   "name": "networkx",
+   "version": "3.6.1",
+   "installed_utc": "2026-11-02T04:05:49.498159+00:00"
+  },
+  {
+   "name": "numpy",
+   "version": "2.4.6",
+   "installed_utc": "2026-11-02T04:07:14.093857+00:00"
+  },
+  {
+   "name": "nvidia-cublas",
+   "version": "13.4.1.3",
+   "installed_utc": "2026-11-02T04:07:27.198253+00:00"
+  },
+  {
+   "name": "nvidia-cublas-cu12",
+   "version": "12.8.4.1",
+   "installed_utc": "2026-11-02T04:05:48.394545+00:00"
+  },
+  {
+   "name": "nvidia-cuda-cccl",
+   "version": "13.3.4.3.1",
+   "installed_utc": "2026-11-02T04:07:12.325286+00:00"
+  },
+  {
+   "name": "nvidia-cuda-cupti",
+   "version": "13.2.86",
+   "installed_utc": "2026-11-02T04:07:11.565286+00:00"
+  },
+  {
+   "name": "nvidia-cuda-cupti-cu12",
+   "version": "12.8.90",
+   "installed_utc": "2026-11-02T04:05:44.683987+00:00"
+  },
+  {
+   "name": "nvidia-cuda-nvrtc",
+   "version": "13.2.86",
+   "installed_utc": "2026-11-02T04:07:11.359922+00:00"
+  },
+  {
+   "name": "nvidia-cuda-nvrtc-cu12",
+   "version": "12.8.93",
+   "installed_utc": "2026-11-02T04:05:44.532976+00:00"
+  },
+  {
+   "name": "nvidia-cuda-runtime",
+   "version": "13.2.86",
+   "installed_utc": "2026-11-02T04:07:10.806821+00:00"
+  },
+  {
+   "name": "nvidia-cuda-runtime-cu12",
+   "version": "12.8.90",
+   "installed_utc": "2026-11-02T04:05:43.543993+00:00"
+  },
+  {
+   "name": "nvidia-cudnn-cu12",
+   "version": "9.10.2.21",
+   "installed_utc": "2026-11-02T04:06:00.320909+00:00"
+  },
+  {
+   "name": "nvidia-cudnn-cu13",
+   "version": "9.26.0.51",
+   "installed_utc": "2026-11-02T04:07:39.951445+00:00"
+  },
+  {
+   "name": "nvidia-cufft",
+   "version": "12.2.0.57",
+   "installed_utc": "2026-11-02T04:07:24.852213+00:00"
+  },
+  {
+   "name": "nvidia-cufft-cu12",
+   "version": "11.3.3.83",
+   "installed_utc": "2026-11-02T04:05:53.931157+00:00"
+  },
+  {
+   "name": "nvidia-cufile",
+   "version": "1.17.1.22",
+   "installed_utc": "2026-11-02T04:07:10.749163+00:00"
+  },
+  {
+   "name": "nvidia-cufile-cu12",
+   "version": "1.13.1.3",
+   "installed_utc": "2026-11-02T04:05:43.493866+00:00"
+  },
+  {
+   "name": "nvidia-curand-cu12",
+   "version": "10.3.9.90",
+   "installed_utc": "2026-11-02T04:05:43.469517+00:00"
+  },
+  {
+   "name": "nvidia-cusolver",
+   "version": "12.2.0.11",
+   "installed_utc": "2026-11-02T04:07:36.941511+00:00"
+  },
+  {
+   "name": "nvidia-cusolver-cu12",
+   "version": "11.7.3.90",
+   "installed_utc": "2026-11-02T04:06:03.234188+00:00"
+  },
+  {
+   "name": "nvidia-cusparse",
+   "version": "12.7.10.12",
+   "installed_utc": "2026-11-02T04:07:23.228334+00:00"
+  },
+  {
+   "name": "nvidia-cusparse-cu12",
+   "version": "12.5.8.93",
+   "installed_utc": "2026-11-02T04:05:52.378006+00:00"
+  },
+  {
+   "name": "nvidia-cusparselt-cu12",
+   "version": "0.7.1",
+   "installed_utc": "2026-11-02T04:05:29.803284+00:00"
+  },
+  {
+   "name": "nvidia-cusparselt-cu13",
+   "version": "0.8.1",
+   "installed_utc": "2026-11-02T04:07:00.774855+00:00"
+  },
+  {
+   "name": "nvidia-nccl-cu12",
+   "version": "2.27.5",
+   "installed_utc": "2026-11-02T04:05:43.091819+00:00"
+  },
+  {
+   "name": "nvidia-nccl-cu13",
+   "version": "2.30.7",
+   "installed_utc": "2026-11-02T04:07:10.725821+00:00"
+  },
+  {
+   "name": "nvidia-nvjitlink",
+   "version": "13.4.92",
+   "installed_utc": "2026-11-02T04:07:10.049386+00:00"
+  },
+  {
+   "name": "nvidia-nvjitlink-cu12",
+   "version": "12.8.93",
+   "installed_utc": "2026-11-02T04:05:40.183286+00:00"
+  },
+  {
+   "name": "nvidia-nvshmem-cu12",
+   "version": "3.4.5",
+   "installed_utc": "2026-11-02T04:05:39.753420+00:00"
+  },
+  {
+   "name": "nvidia-nvshmem-cu13",
+   "version": "3.7.2",
+   "installed_utc": "2026-11-02T04:07:22.840765+00:00"
+  },
+  {
+   "name": "nvidia-nvtx",
+   "version": "13.2.86",
+   "installed_utc": "2026-11-02T04:07:09.543645+00:00"
+  },
+  {
+   "name": "nvidia-nvtx-cu12",
+   "version": "12.8.90",
+   "installed_utc": "2026-11-02T04:05:38.474015+00:00"
+  },
+  {
+   "name": "packaging",
+   "version": "26.3",
+   "installed_utc": "2026-11-02T04:04:38.474846+00:00"
+  },
+  {
+   "name": "pandas",
+   "version": "3.1.0",
+   "installed_utc": "2026-11-02T04:07:36.254687+00:00"
+  },
+  {
+   "name": "pandocfilters",
+   "version": "1.5.1",
+   "installed_utc": "2026-11-02T04:07:09.525883+00:00"
+  },
+  {
+   "name": "parso",
+   "version": "0.8.7",
+   "installed_utc": "2026-11-02T04:07:09.519493+00:00"
+  },
+  {
+   "name": "pexpect",
+   "version": "4.9.0",
+   "installed_utc": "2026-11-02T04:07:09.464644+00:00"
+  },
+  {
+   "name": "pillow",
+   "version": "13.0.0",
+   "installed_utc": "2026-11-02T04:07:09.429699+00:00"
+  },
+  {
+   "name": "pip",
+   "version": "26.2.2",
+   "installed_utc": "2026-11-02T04:04:38.820220+00:00"
+  },
+  {
+   "name": "platformdirs",
+   "version": "4.14.3",
+   "installed_utc": "2026-11-02T04:07:09.098255+00:00"
+  },
+  {
+   "name": "prompt_toolkit",
+   "version": "3.0.53",
+   "installed_utc": "2026-11-02T04:07:21.429146+00:00"
+  },
+  {
+   "name": "propcache",
+   "version": "0.5.4",
+   "installed_utc": "2026-11-02T04:07:09.070666+00:00"
+  },
+  {
+   "name": "psutil",
+   "version": "7.2.2",
+   "installed_utc": "2026-11-02T04:07:09.057906+00:00"
+  },
+  {
+   "name": "ptyprocess",
+   "version": "0.7.0",
+   "installed_utc": "2026-11-02T04:07:00.100762+00:00"
+  },
+  {
+   "name": "pure_eval",
+   "version": "0.2.4",
+   "installed_utc": "2026-11-02T04:07:00.089892+00:00"
+  },
+  {
+   "name": "pyarrow",
+   "version": "26.0.0",
+   "installed_utc": "2026-11-02T04:07:09.011578+00:00"
+  },
+  {
+   "name": "pygments",
+   "version": "2.21.0",
+   "installed_utc": "2026-11-02T04:07:07.746434+00:00"
+  },
+  {
+   "name": "pyparsing",
+   "version": "3.3.3",
+   "installed_utc": "2026-11-02T04:07:07.160513+00:00"
+  },
+  {
+   "name": "python-dateutil",
+   "version": "4.0.0",
+   "installed_utc": "2026-11-02T04:07:21.079652+00:00"
+  },
+  {
+   "name": "pyyaml",
+   "version": "6.0.3",
+   "installed_utc": "2026-11-02T04:07:07.098906+00:00"
+  },
+  {
+   "name": "pyzmq",
+   "version": "27.2.0",
+   "installed_utc": "2026-11-02T04:07:07.045787+00:00"
+  },
+  {
+   "name": "referencing",
+   "version": "0.37.0",
+   "installed_utc": "2026-11-02T04:07:21.016699+00:00"
+  },
+  {
+   "name": "regex",
+   "version": "2026.9.29",
+   "installed_utc": "2026-11-02T04:07:06.921628+00:00"
+  },
+  {
+   "name": "rich",
+   "version": "15.0.0",
+   "installed_utc": "2026-11-02T04:07:31.245074+00:00"
+  },
+  {
+   "name": "rpds-py",
+   "version": "2026.9.1",
+   "installed_utc": "2026-11-02T04:07:06.854838+00:00"
+  },
+  {
+   "name": "safetensors",
+   "version": "0.8.0",
+   "installed_utc": "2026-11-02T04:07:06.844415+00:00"
+  },
+  {
+   "name": "scikit-image",
+   "version": "0.26.0",
+   "installed_utc": "2026-11-02T04:07:31.029845+00:00"
+  },
+  {
+   "name": "scipy",
+   "version": "1.17.1",
+   "installed_utc": "2026-11-02T04:07:20.988368+00:00"
+  },
+  {
+   "name": "setuptools",
+   "version": "84.2.1",
+   "installed_utc": "2026-11-02T04:04:38.513619+00:00"
+  },
+  {
+   "name": "shellingham",
+   "version": "1.5.4",
+   "installed_utc": "2026-11-02T04:07:06.823323+00:00"
+  },
+  {
+   "name": "soupsieve",
+   "version": "3.0.4",
+   "installed_utc": "2026-11-02T04:07:06.811380+00:00"
+  },
+  {
+   "name": "stack-data",
+   "version": "0.6.3",
+   "installed_utc": "2026-11-02T04:07:17.006977+00:00"
+  },
+  {
+   "name": "sympy",
+   "version": "1.14.0",
+   "installed_utc": "2026-11-02T04:05:38.457552+00:00"
+  },
+  {
+   "name": "tifffile",
+   "version": "2026.3.3",
+   "installed_utc": "2026-11-02T04:07:16.991274+00:00"
+  },
+  {
+   "name": "timm",
+   "version": "1.0.29",
+   "installed_utc": "2026-11-02T04:08:11.617809+00:00"
+  },
+  {
+   "name": "tinycss2",
+   "version": "1.5.1",
+   "installed_utc": "2026-11-02T04:07:16.875510+00:00"
+  },
+  {
+   "name": "tokenizers",
+   "version": "0.23.3",
+   "installed_utc": "2026-11-02T04:08:02.661964+00:00"
+  },
+  {
+   "name": "torch",
+   "version": "2.10.0+cu128",
+   "installed_utc": "2026-11-02T04:09:50.425278+00:00"
+  },
+  {
+   "name": "torchvision",
+   "version": "0.25.0+cu128",
+   "installed_utc": "2026-11-02T04:09:53.851374+00:00"
+  },
+  {
+   "name": "tornado",
+   "version": "6.6",
+   "installed_utc": "2026-11-02T04:07:06.784896+00:00"
+  },
+  {
+   "name": "tqdm",
+   "version": "4.70.1",
+   "installed_utc": "2026-11-02T04:07:06.529871+00:00"
+  },
+  {
+   "name": "traitlets",
+   "version": "5.16.1",
+   "installed_utc": "2026-11-02T04:07:06.476696+00:00"
+  },
+  {
+   "name": "transformers",
+   "version": "5.22.1",
+   "installed_utc": "2026-11-02T04:08:10.511949+00:00"
+  },
+  {
+   "name": "triton",
+   "version": "3.6.0",
+   "installed_utc": "2026-11-02T04:09:24.502711+00:00"
+  },
+  {
+   "name": "truststore",
+   "version": "0.10.5",
+   "installed_utc": "2026-11-02T04:07:01.379082+00:00"
+  },
+  {
+   "name": "typer",
+   "version": "0.27.3",
+   "installed_utc": "2026-11-02T04:07:42.585457+00:00"
+  },
+  {
+   "name": "typing_extensions",
+   "version": "4.16.0",
+   "installed_utc": "2026-11-02T04:05:30.137220+00:00"
+  },
+  {
+   "name": "tzdata",
+   "version": "2026.6",
+   "installed_utc": "2026-11-02T04:07:01.356657+00:00"
+  },
+  {
+   "name": "wcwidth",
+   "version": "0.9.4",
+   "installed_utc": "2026-11-02T04:07:01.135642+00:00"
+  },
+  {
+   "name": "webencodings",
+   "version": "0.6.1",
+   "installed_utc": "2026-11-02T04:07:00.824433+00:00"
+  },
+  {
+   "name": "wheel",
+   "version": "0.48.0",
+   "installed_utc": "2026-11-02T04:04:38.779189+00:00"
+  },
+  {
+   "name": "xxhash",
+   "version": "4.0.2",
+   "installed_utc": "2026-11-02T04:07:00.808249+00:00"
+  },
+  {
+   "name": "yarl",
+   "version": "1.25.1",
+   "installed_utc": "2026-11-02T04:07:16.851609+00:00"
+  }
+ ],
+ "nvidia_smi_gpus": "index, name, uuid, driver_version, pci.bus_id, memory.total [MiB], memory.used [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 00000000:46:00.0, 81559 MiB, 0 MiB\n",
+ "nvidia_smi_apps": "gpu_uuid, pid, process_name, used_gpu_memory [MiB]\n",
+ "nvidia_proc_version": "NVRM version: NVIDIA UNIX Open Kernel Module for x86_64  580.178.04  Release Build  (dvs-builder@U22-I3-AE18-16-4)  Tue Jul  7 12:18:12 UTC 2026\nGCC version:  gcc version 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1) \n",
+ "libcuda_files": "lrwxrwxrwx 1 root root       12 2026-11-03 05:23:09.657957431 +0000 /usr/lib/x86_64-linux-gnu/libcuda.so -> libcuda.so.1\nlrwxrwxrwx 1 root root       21 2026-11-03 05:23:09.657957431 +0000 /usr/lib/x86_64-linux-gnu/libcuda.so.1 -> libcuda.so.580.178.04\n-rw-r--r-- 1 root root 96284520 2026-07-07 12:41:41.000000000 +0000 /usr/lib/x86_64-linux-gnu/libcuda.so.580.178.04\n",
+ "driver_package_log": "",
+ "uptime_since": "2026-10-22 03:55:34\n",
+ "hf_cache": {
+  "timm/vit_small_patch16_rope_224.naver_in1k": [
+   {
+    "commit": "91eb2b2dbd275277ba865c63d20b8c26c7cfbfb5",
+    "refs": [
+     "main"
+    ],
+    "last_modified_utc": "2026-09-12T22:42:50.539571+00:00",
+    "files": [
+     {
+      "name": "model.safetensors",
+      "size": 87952704,
+      "blob_modified_utc": "2026-09-12T22:42:50.539571+00:00"
+     }
+    ]
+   }
+  ],
+  "timm/vit_base_patch16_rope_224.naver_in1k": [
+   {
+    "commit": "7845c682313a4e85dd3eef793812130b9385b795",
+    "refs": [
+     "main"
+    ],
+    "last_modified_utc": "2026-09-09T07:56:44.866567+00:00",
+    "files": [
+     {
+      "name": "model.safetensors",
+      "size": 345755224,
+      "blob_modified_utc": "2026-09-09T07:56:44.866567+00:00"
+     }
+    ]
+   }
+  ],
+  "benjamin-paine/imagenet-1k-256x256": [
+   {
+    "commit": "1bd0400450249a7fe90c0aece37d0d03e7ea956a",
+    "refs": [
+     "main"
+    ],
+    "last_modified_utc": "2026-09-09T07:36:06.992998+00:00",
+    "files": [
+     {
+      "name": "README.md",
+      "size": 88069,
+      "blob_modified_utc": "2026-09-09T07:36:06.992998+00:00"
+     }
+    ]
+   }
+  ],
+  "timm/vit_base_patch16_dinov3.lvd1689m": [
+   {
+    "commit": "c6a5fb7d12bbd3cf3b0079253141c3332aaed7da",
+    "refs": [
+     "main"
+    ],
+    "last_modified_utc": "2026-09-09T08:02:15.651338+00:00",
+    "files": [
+     {
+      "name": "model.safetensors",
+      "size": 342579728,
+      "blob_modified_utc": "2026-09-09T08:02:15.651338+00:00"
+     },
+     {
+      "name": "config.json",
+      "size": 669,
+      "blob_modified_utc": "2026-09-09T08:01:17.252143+00:00"
+     }
+    ]
+   }
+  ]
+ },
+ "hf_remote": {
+  "timm/vit_small_patch16_rope_224.naver_in1k": [
+   {
+    "commit": "91eb2b2dbd275277ba865c63d20b8c26c7cfbfb5",
+    "date": "2025-07-02T15:41:13+00:00",
+    "title": "Update model config and README"
+   },
+   {
+    "commit": "db1e163eb09ab344930f15734d287ff5153464f3",
+    "date": "2025-07-02T14:49:23+00:00",
+    "title": "Add model"
+   },
+   {
+    "commit": "f46132033117e45b60a29247e2834af904ce0f92",
+    "date": "2025-07-02T14:49:18+00:00",
+    "title": "initial commit"
+   }
+  ],
+  "timm/vit_base_patch16_rope_224.naver_in1k": [
+   {
+    "commit": "7845c682313a4e85dd3eef793812130b9385b795",
+    "date": "2025-07-02T15:40:01+00:00",
+    "title": "Update model config and README"
+   },
+   {
+    "commit": "aa75914f882248b080b9fa224d06d66d4b6f4529",
+    "date": "2025-07-02T14:44:00+00:00",
+    "title": "Add model"
+   },
+   {
+    "commit": "62c1f4240d8b65c744dd47827899198cc09a5117",
+    "date": "2025-07-02T14:43:42+00:00",
+    "title": "initial commit"
+   }
+  ],
+  "timm/vit_base_patch16_dinov3.lvd1689m": [
+   {
+    "commit": "c6a5fb7d12bbd3cf3b0079253141c3332aaed7da",
+    "date": "2025-09-24T22:41:56+00:00",
+    "title": "Update model config and README"
+   },
+   {
+    "commit": "a4d65d41eacb515e2a51c7e9e25ea2be2718b7ee",
+    "date": "2025-09-18T20:14:27+00:00",
+    "title": "Add LICENSE.md"
+   },
+   {
+    "commit": "4303bab85d3541baabf3215f23fcd3d14ea25064",
+    "date": "2025-09-17T18:49:56+00:00",
+    "title": "Update model config and README"
+   },
+   {
+    "commit": "5dfe77637bc7b6636a1190e1709adbd64c157aa1",
+    "date": "2025-09-17T17:53:49+00:00",
+    "title": "Update README.md"
+   },
+   {
+    "commit": "e2d80655c8189be2e61f55ed9cc4d4d8e7e31b88",
+    "date": "2025-09-17T16:31:50+00:00",
+    "title": "Add model"
+   },
+   {
+    "commit": "62561541263d3f01eaeb7284495212ea51fb27bf",
+    "date": "2025-09-17T16:31:36+00:00",
+    "title": "initial commit"
+   }
+  ],
+  "benjamin-paine/imagenet-1k-256x256": [
+   {
+    "commit": "1bd0400450249a7fe90c0aece37d0d03e7ea956a",
+    "date": "2024-09-15T11:15:04+00:00",
+    "title": "Upload dataset"
+   },
+   {
+    "commit": "394b587f5b946bb372046d191035804131035a14",
+    "date": "2024-09-13T14:58:52+00:00",
+    "title": "Update README.md"
+   },
+   {
+    "commit": "3bddaf1dfaf7561af6f20946701d42d0b9b90077",
+    "date": "2024-09-13T13:55:22+00:00",
+    "title": "Update README.md"
+   },
+   {
+    "commit": "de3c97374f758914b3129352e6cd6c03dc217e52",
+    "date": "2024-09-13T13:50:22+00:00",
+    "title": "initial commit"
+   }
+  ]
+ }
+}

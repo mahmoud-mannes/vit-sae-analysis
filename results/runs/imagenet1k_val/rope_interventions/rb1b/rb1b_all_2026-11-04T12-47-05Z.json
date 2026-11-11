@@ -1,0 +1,504 @@
+{
+ "notebook": "RB-1b",
+ "generated_utc": "2026-11-04T12-47-05Z",
+ "test_mode": false,
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "driver": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 0 MiB, 81559 MiB\n",
+ "preflight": {
+  "926": {
+   "python": "/workspace/NRDL/env_paper5/bin/python",
+   "torch": "2.10.0+cu128",
+   "cudnn_reported": 92600,
+   "libcudnn_loaded": [
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_tensor_ir.so.9",
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+    "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+   ],
+   "packages": {
+    "torchvision": "0.25.0+cu128",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pillow": "13.0.0",
+    "nvidia-cudnn-cu13": "9.26.0.51",
+    "timm": "1.0.29",
+    "safetensors": "0.8.0",
+    "nvidia-cudnn-cu12": "9.10.2.21",
+    "datasets": "5.1.0"
+   }
+  },
+  "910": {
+   "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+   "torch": "2.10.0+cu128",
+   "cudnn_reported": 91002,
+   "libcudnn_loaded": [
+    "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+    "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+    "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+    "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+    "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+   ],
+   "packages": {
+    "torchvision": "0.25.0+cu128",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "pillow": "13.0.0",
+    "timm": "1.0.29",
+    "safetensors": "0.8.0",
+    "nvidia-cudnn-cu12": "9.10.2.21",
+    "datasets": "5.1.0"
+   }
+  }
+ },
+ "settings": {
+  "cudnn926_default": {
+   "env_tag": "926",
+   "flags": {},
+   "env": {
+    "python": "/workspace/NRDL/env_paper5/bin/python",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 92600,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": false,
+    "cudnn_deterministic": false,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_uuid": "b21b009a-6dce-151e-bfd1-8cff52cddd01",
+    "free_gb_at_start": 84.46377984,
+    "libcudnn_loaded": [
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_tensor_ir.so.9",
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+     "/workspace/NRDL/env_paper5/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+    ]
+   }
+  },
+  "cudnn910_default_a": {
+   "env_tag": "910",
+   "flags": {},
+   "env": {
+    "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": false,
+    "cudnn_deterministic": false,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_uuid": "b21b009a-6dce-151e-bfd1-8cff52cddd01",
+    "free_gb_at_start": 84.46377984,
+    "libcudnn_loaded": [
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+    ]
+   }
+  },
+  "cudnn910_default_b": {
+   "env_tag": "910",
+   "flags": {},
+   "env": {
+    "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "cudnn_allow_tf32": true,
+    "matmul_allow_tf32": false,
+    "cudnn_deterministic": false,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_uuid": "b21b009a-6dce-151e-bfd1-8cff52cddd01",
+    "free_gb_at_start": 84.46377984,
+    "libcudnn_loaded": [
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+    ]
+   }
+  },
+  "cudnn910_tf32_off": {
+   "env_tag": "910",
+   "flags": {
+    "cudnn_allow_tf32": false
+   },
+   "env": {
+    "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "cudnn": 91002,
+    "cudnn_allow_tf32": false,
+    "matmul_allow_tf32": false,
+    "cudnn_deterministic": false,
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_uuid": "b21b009a-6dce-151e-bfd1-8cff52cddd01",
+    "free_gb_at_start": 84.46377984,
+    "libcudnn_loaded": [
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+     "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+    ]
+   }
+  }
+ },
+ "comparison": [
+  {
+   "setting": "cudnn926_default",
+   "model": "naver",
+   "first_layer_vs_float64": 0.0004129786339293456,
+   "vs_W5": 5.643855014482446e-07,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": -5.992694676951182e-08
+  },
+  {
+   "setting": "cudnn926_default",
+   "model": "DINOv3",
+   "first_layer_vs_float64": 0.00047466823893597477,
+   "vs_W5": 6.269381030259147e-07,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": 7.057532878940176e-08
+  },
+  {
+   "setting": "cudnn926_default",
+   "model": "small",
+   "first_layer_vs_float64": 1.0462299091945986e-06,
+   "vs_W5": 0.00040836745816114073,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": -1.3236692325384325e-06
+  },
+  {
+   "setting": "cudnn926_default",
+   "model": "rope_ape",
+   "first_layer_vs_float64": 0.00040400575387637076,
+   "vs_W5": 9.31959692751505e-07,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": -6.106180512610582e-07
+  },
+  {
+   "setting": "cudnn926_default",
+   "model": "reg1_gap",
+   "first_layer_vs_float64": 0.0002676904790385947,
+   "vs_W5": 5.424682984200846e-07,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": -1.4088488902927465e-07
+  },
+  {
+   "setting": "cudnn910_default_a",
+   "model": "naver",
+   "first_layer_vs_float64": 0.00041303808169361526,
+   "vs_W5": 0.0,
+   "vs_RB0": 5.643855014482446e-07,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_a",
+   "model": "DINOv3",
+   "first_layer_vs_float64": 0.0004745740108653513,
+   "vs_W5": 0.0,
+   "vs_RB0": 6.269381030259147e-07,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_a",
+   "model": "small",
+   "first_layer_vs_float64": 0.000510305810057617,
+   "vs_W5": 0.0,
+   "vs_RB0": 0.00040836745816114073,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_a",
+   "model": "rope_ape",
+   "first_layer_vs_float64": 0.0004037739187340887,
+   "vs_W5": 0.0,
+   "vs_RB0": 9.31959692751505e-07,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_a",
+   "model": "reg1_gap",
+   "first_layer_vs_float64": 0.00026782853342761795,
+   "vs_W5": 0.0,
+   "vs_RB0": 5.424682984200846e-07,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_b",
+   "model": "small",
+   "first_layer_vs_float64": 0.000510305810057617,
+   "vs_W5": 0.0,
+   "vs_RB0": 0.00040836745816114073,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_default_b",
+   "model": "naver",
+   "first_layer_vs_float64": 0.00041303808169361526,
+   "vs_W5": 0.0,
+   "vs_RB0": 5.643855014482446e-07,
+   "b0_vs_W5": 0.0
+  },
+  {
+   "setting": "cudnn910_tf32_off",
+   "model": "small",
+   "first_layer_vs_float64": 1.0462299091945986e-06,
+   "vs_W5": 0.00040836745816114073,
+   "vs_RB0": 0.0,
+   "b0_vs_W5": -1.3236692325384325e-06
+  },
+  {
+   "setting": "cudnn910_tf32_off",
+   "model": "naver",
+   "first_layer_vs_float64": 1.156002627608428e-06,
+   "vs_W5": 9.423494060861737e-05,
+   "vs_RB0": 9.448017989494017e-05,
+   "b0_vs_W5": -4.4649508616420586e-07
+  }
+ ],
+ "verdict": {
+  "vs_September_with_cudnn910": {
+   "naver": 0.0,
+   "DINOv3": 0.0,
+   "small": 0.0,
+   "rope_ape": 0.0,
+   "reg1_gap": 0.0
+  },
+  "vs_September_with_cudnn926": {
+   "naver": 5.643855014482446e-07,
+   "DINOv3": 6.269381030259147e-07,
+   "small": 0.00040836745816114073,
+   "rope_ape": 9.31959692751505e-07,
+   "reg1_gap": 5.424682984200846e-07
+  },
+  "case": "1",
+  "explanation": "cuDNN 9.10.2 reproduces September bit for bit on all five models. The drift came from env_paper5 loading cuDNN 9.26 instead of the 9.10.2 that PyTorch 2.10 is built for.",
+  "next": "Use the clean cuDNN 9.10.2 environment from now on. Re-run RB-0 there unchanged (~2 h), then RB-2.",
+  "tf32_off_vs_September_small": 0.00040836745816114073,
+  "first_layer_small": {
+   "cudnn926_default": 1.0462299091945986e-06,
+   "cudnn910_default_a": 0.000510305810057617,
+   "cudnn910_default_b": 0.000510305810057617,
+   "cudnn910_tf32_off": 1.0462299091945986e-06
+  }
+ },
+ "gates": [
+  {
+   "gate": "environment 926 loads cuDNN 9.26",
+   "scope": "926",
+   "status": "PASS",
+   "detail": "reported 92600; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_engines_tensor_ir.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "environment 910 loads cuDNN 9.10",
+   "scope": "910",
+   "status": "PASS",
+   "detail": "reported 91002; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "both environments run torch 2.10.0+cu128",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "2.10.0+cu128 / 2.10.0+cu128",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "the two environments differ only in cuDNN (same timm, pillow, numpy, scipy, datasets, torchvision, hub, safetensors)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "identical",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "typed RB-0 anchors equal the w8_partA files (all five models)",
+   "scope": "anchors",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "setting completed (result saved for every model)",
+   "scope": "cudnn926_default",
+   "status": "PASS",
+   "detail": "170s, exit code 0",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "setting completed (result saved for every model)",
+   "scope": "cudnn910_default_a",
+   "status": "PASS",
+   "detail": "182s, exit code 0",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "setting completed (result saved for every model)",
+   "scope": "cudnn910_default_b",
+   "status": "PASS",
+   "detail": "77s, exit code 0",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "setting completed (result saved for every model)",
+   "scope": "cudnn910_tf32_off",
+   "status": "PASS",
+   "detail": "75s, exit code 0",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "worker ran with the intended cuDNN",
+   "scope": "cudnn926_default",
+   "status": "PASS",
+   "detail": "92600",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "worker ran with the intended cuDNN",
+   "scope": "cudnn910_default_a",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "worker ran with the intended cuDNN",
+   "scope": "cudnn910_default_b",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "worker ran with the intended cuDNN",
+   "scope": "cudnn910_tf32_off",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "images identical in every setting and both environments",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "weights identical in every setting and both environments",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "images identical in every setting and both environments",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "weights identical in every setting and both environments",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "images identical in every setting and both environments",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "weights identical in every setting and both environments",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "images identical in every setting and both environments",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "weights identical in every setting and both environments",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "images identical in every setting and both environments",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "weights identical in every setting and both environments",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "control: env_paper5 (cuDNN 9.26) still reproduces RB-0 on all five models",
+   "scope": "control",
+   "status": "PASS",
+   "detail": "0",
+   "session": "2026-11-04T12-47-05Z"
+  },
+  {
+   "gate": "the cuDNN 9.10.2 environment is repeatable (default_a = default_b)",
+   "scope": "cudnn910",
+   "status": "PASS",
+   "detail": "0",
+   "session": "2026-11-04T12-47-05Z"
+  }
+ ]
+}

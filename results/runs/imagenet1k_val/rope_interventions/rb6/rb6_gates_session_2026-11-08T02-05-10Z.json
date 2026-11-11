@@ -1,0 +1,1801 @@
+[
+ {
+  "gate": "CUDA available",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "torch is 2.10.0+cu128",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "2.10.0+cu128",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000/-0.005",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-6 are present and complete",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-6 are present and complete",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "A=complete",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-6 are present and complete",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-6 are present and complete",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-6 are present and complete",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "committed W1b file found and is the expected one (sha256)",
+  "scope": "W1b",
+  "status": "PASS",
+  "detail": "/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "benjamin-paine/imagenet-1k-256x256",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "ILSVRC/imagenet-1k",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "mean erasure: every slot's mean equals the average over slots",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "mean+scale erasure: equal slot means and equal slot spread",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "spread range 104.0862-104.0862",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "subspace erasure removes >= 99% of the positional component's energy",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "r=15 of 32; energy left 1.78e-30",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "random subspace: orthonormal, same dimension as the positional subspace, reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "random-subspace control leaves most of the positional component (it is a control, not an erasure)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "energy left 0.529",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "scramble: slot p carries slot pi(p)'s component; pi has no fixed point",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "derangement is reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edit hook removed on exit",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "Part A: no positional component gives bias-corrected PVF ~ 0",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "raw 0.0002, corrected +0.00001",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "Part A: bias-corrected PVF recovers the true value; row / column split is right",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "PVF 0.6165 vs 0.6156; row 1.000, col 1.000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "84.64 vs 84.64",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "38.84 vs 38.84",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "b4: 0.469 -> 0.013",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "22/22",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "22 new arms, 4.7 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "b4: 0.949 -> 0.018",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "11/11",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "11 new arms, 3.5 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "81.36 vs 81.36",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "24.06 vs 24.06",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "b4: 0.371 -> 0.011",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "22/22",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "22 new arms, 3.8 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "83.88 vs 83.88",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "29.50 vs 29.50",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "b4: 0.689 -> 0.014",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "22/22",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "22 new arms, 5.2 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "4.0377e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "ape_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "both_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "84.82 vs 84.82",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "42.60 vs 42.60",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "83.90 vs 83.90",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "33.42 vs 33.42",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "b4: 0.590 -> 0.014",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "26/26",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "26 new arms, 5.3 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "vit.embeddings.position_embeddings",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "3.3375e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "supervised",
+  "status": "FAIL",
+  "detail": "RuntimeError(\"cannot pin 'torch.cuda.FloatTensor' only dense CPU tensors can be pinned\")",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "2.5880e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 1.5e-04; block 11 0.5241 vs 0.5242",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 1.0e-05; block 11 0.0222 vs 0.0222",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "b4: 0.766 -> 0.014, b2: 0.470 -> 0.011",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "12/12",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "12 new arms, 6.6 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2.3762e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "78.60 vs 78.60; per-image agreement 100.00%",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "b4: 0.808 -> 0.014, b2: 0.731 -> 0.016",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "24/24",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "24 new arms, 7.8 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "3.4938e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "81.00 vs 81.00; per-image agreement 100.00%",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "b4: 0.742 -> 0.014, b2: 0.539 -> 0.013",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "24/24",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "24 new arms, 7.7 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "4.0602e-04 (batch 256)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [rep] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "fitting images [acc] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "84.58 vs 84.58; per-image agreement 100.00%",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every edit site",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "b4: 0.763 -> 0.017, b2: 0.442 -> 0.013",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "24/24",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "edits leave every readout before the edited block bit-identical to intact",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-08T02-05-10Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "24 new arms, 7.5 min; complete True",
+  "session": "2026-11-08T02-05-10Z"
+ }
+]

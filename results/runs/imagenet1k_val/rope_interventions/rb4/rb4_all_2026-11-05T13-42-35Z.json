@@ -1,0 +1,797 @@
+{
+ "notebook": "RB-4",
+ "generated_utc": "2026-11-05T13-42-35Z",
+ "test_mode": false,
+ "environment": {
+  "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+  "prefix": "/workspace/NRDL/env_paper5_cudnn910",
+  "host": "gpu-pod",
+  "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "numpy": "2.4.6",
+  "cudnn_reported": 91002,
+  "libcudnn_loaded": [
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+  ],
+  "cudnn_packages": {
+   "nvidia-cudnn-cu12": "9.10.2.21"
+  },
+  "flags": {
+   "matmul_allow_tf32": false,
+   "cudnn_allow_tf32": true,
+   "cudnn_benchmark": false,
+   "cudnn_deterministic": false,
+   "float32_matmul_precision": "highest"
+  },
+  "cuda_visible_devices": null,
+  "gpu": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 543 MiB, 81559 MiB"
+ },
+ "repo": "/workspace/NRDL/clone/vit-sae-analysis/project_code/src",
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "rb0_dir": "/workspace/NRDL/experiments/rb0_cudnn910/w8_output",
+ "config": {
+  "n_ssdc": 1000,
+  "n_acc": 5000,
+  "batch": 256,
+  "seed": 20260908,
+  "ssdc_dataset": "benjamin-paine/imagenet-1k-256x256",
+  "acc_dataset": "ILSVRC/imagenet-1k",
+  "metric": "manhattan",
+  "window": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "post": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "p_ref": [
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ],
+  "p_single": [
+   11,
+   12
+  ],
+  "noise_at": [
+   11,
+   12
+  ],
+  "probe": [
+   0.005,
+   20,
+   512,
+   0.8
+  ],
+  "noise": [
+   [
+    0,
+    1,
+    2
+   ],
+   200
+  ],
+  "test_mode": false,
+  "strict": true
+ },
+ "rules": {
+  "bar": "as RB-2: 3 x the larger combined probe SD at that readout (row/col windows: Dref_row's row probe and Dref_col's column probe; cref: Cref's two probes)",
+  "label": "as RB-2: row if row cost > bar and row cost - col cost > bar; col likewise; mixed if a cost > bar but no gap; none otherwise",
+  "rank": "as RB-2's pre-registered decision: ssdc_b11 for heads in blocks 6-10; block-11 heads separately at the output of block 11",
+  "orientation": "orientation of (block, head) = (sum_p |f_row| - sum_p |f_col|) / (sum_p |f_row| + sum_p |f_col|) over its 32 planes, from the learned frequencies; +1 = every plane turns with the row only, -1 = column only, 0 = balanced. Test: Spearman of orientation with (row cost - col cost) entering block 11 over the 60 heads in blocks 6-10, permutation p; and whether each specialist's axis matches the sign of its orientation."
+ },
+ "analysis": {
+  "mixed": {
+   "windows_done": [
+    "cref",
+    "row",
+    "col"
+   ],
+   "bars_pts": {
+    "axis_b11": 0.7666727818650899,
+    "cref_b11": 0.789455651536202,
+    "axis_out11": 0.806878874465726,
+    "cref_out11": 0.7032284937247572
+   },
+   "references_probe_pts": {
+    "baseline": {
+     "b11": {
+      "row": 34.13010204081633,
+      "col": 24.239795918367346
+     },
+     "out11": {
+      "row": 32.352040816326536,
+      "col": 22.323979591836736
+     }
+    },
+    "Cref": {
+     "b11": {
+      "row": 18.987244897959183,
+      "col": 9.428571428571429
+     },
+     "out11": {
+      "row": 18.681122448979593,
+      "col": 9.418367346938776
+     }
+    },
+    "Dref_row": {
+     "b11": {
+      "row": 19.58673469387755,
+      "col": 27.798469387755105
+     },
+     "out11": {
+      "row": 19.214285714285715,
+      "col": 25.71428571428571
+     }
+    },
+    "Dref_col": {
+     "b11": {
+      "row": 38.96938775510204,
+      "col": 10.321428571428571
+     },
+     "out11": {
+      "row": 36.775510204081634,
+      "col": 10.165816326530612
+     }
+    }
+   },
+   "references_top1": {
+    "baseline": 84.79999899864197,
+    "floor": 45.46000063419342,
+    "Cref": 73.61999750137329,
+    "win_row": 78.07999849319458,
+    "win_col": 76.98000073432922
+   },
+   "favours_counts": {
+    "blocks 6-10 (b11)": {
+     "row": 4,
+     "col": 0,
+     "mixed": 3,
+     "none": 53
+    },
+    "block 11 (out11)": {
+     "row": 0,
+     "col": 0,
+     "mixed": 0,
+     "none": 12
+    }
+   },
+   "specialists": [
+    {
+     "block": 6,
+     "head": 5,
+     "primary": "b11",
+     "row_cost": 3.286,
+     "col_cost": 0.258,
+     "favours": "row",
+     "orientation": 0.214,
+     "top1_window_cost": 2.08,
+     "top1_intact_cost": 0.0
+    },
+    {
+     "block": 6,
+     "head": 11,
+     "primary": "b11",
+     "row_cost": 1.446,
+     "col_cost": -0.013,
+     "favours": "row",
+     "orientation": -0.001,
+     "top1_window_cost": 0.66,
+     "top1_intact_cost": 0.66
+    },
+    {
+     "block": 8,
+     "head": 9,
+     "primary": "b11",
+     "row_cost": 1.048,
+     "col_cost": 0.115,
+     "favours": "row",
+     "orientation": 0.131,
+     "top1_window_cost": 0.42,
+     "top1_intact_cost": 0.06
+    },
+    {
+     "block": 6,
+     "head": 4,
+     "primary": "b11",
+     "row_cost": 0.543,
+     "col_cost": 0.939,
+     "favours": "mixed",
+     "orientation": 0.2,
+     "top1_window_cost": -0.02,
+     "top1_intact_cost": 0.16
+    },
+    {
+     "block": 7,
+     "head": 2,
+     "primary": "b11",
+     "row_cost": 0.862,
+     "col_cost": -0.143,
+     "favours": "row",
+     "orientation": 0.024,
+     "top1_window_cost": 0.7,
+     "top1_intact_cost": 0.5
+    },
+    {
+     "block": 6,
+     "head": 10,
+     "primary": "b11",
+     "row_cost": 0.86,
+     "col_cost": 0.097,
+     "favours": "mixed",
+     "orientation": 0.093,
+     "top1_window_cost": 1.46,
+     "top1_intact_cost": 0.0
+    },
+    {
+     "block": 6,
+     "head": 3,
+     "primary": "b11",
+     "row_cost": 0.798,
+     "col_cost": 0.288,
+     "favours": "mixed",
+     "orientation": -0.011,
+     "top1_window_cost": 0.34,
+     "top1_intact_cost": 0.18
+    }
+   ],
+   "concentration_b11": {
+    "row": {
+     "top_head": [
+      6,
+      5
+     ],
+     "top_cost": 3.2857142857142834,
+     "share_of_positive_total": 0.24884080370942882,
+     "positive_total": 13.204081632653015
+    },
+    "col": {
+     "top_head": [
+      6,
+      4
+     ],
+     "top_cost": 0.9387755102040818,
+     "share_of_positive_total": 0.12751212751212734,
+     "positive_total": 7.362244897959195
+    }
+   },
+   "orientation_test": {
+    "rule": "orientation of (block, head) = (sum_p |f_row| - sum_p |f_col|) / (sum_p |f_row| + sum_p |f_col|) over its 32 planes, from the learned frequencies; +1 = every plane turns with the row only, -1 = column only, 0 = balanced. Test: Spearman of orientation with (row cost - col cost) entering block 11 over the 60 heads in blocks 6-10, permutation p; and whether each specialist's axis matches the sign of its orientation.",
+    "spearman_L1": [
+     0.045904828176066094,
+     0.7305269473052695
+    ],
+    "spearman_L2": [
+     -0.11692948968818773,
+     0.37166283371662834
+    ],
+    "specialists_axis_matches_orientation_sign": "3/4",
+    "specialists": [
+     [
+      6,
+      5,
+      "row",
+      0.214,
+      true
+     ],
+     [
+      6,
+      11,
+      "row",
+      -0.001,
+      false
+     ],
+     [
+      7,
+      2,
+      "row",
+      0.024,
+      true
+     ],
+     [
+      8,
+      9,
+      "row",
+      0.131,
+      true
+     ]
+    ],
+    "orientation_all_heads_6_10": {
+     "median_abs": 0.09713217616081238,
+     "frac_abs_above_0.5": 0.0
+    }
+   },
+   "top1": {
+    "n_heads": 60,
+    "ssdc_b11_vs_top1": [
+     0.5288738460453173,
+     0.00019998000199980003
+    ],
+    "probe_b11_vs_top1": [
+     0.2926364457884882,
+     0.022797720227977204
+    ],
+    "rule_top": {
+     "head": [
+      6,
+      5
+     ],
+     "ssdc_cost_b11": 0.04426679587447313,
+     "top1_window_cost": [
+      2.08,
+      0.2560231035783942
+     ],
+     "top1_intact_cost": [
+      0.0,
+      0.13857792309077818
+     ],
+     "rank_in_window_top1": [
+      1,
+      72
+     ],
+     "favours_b11": "row"
+    },
+    "second_by_ssdc": [
+     8,
+     9,
+     0.01790385150172713,
+     0.42
+    ],
+    "costliest_window": [
+     6,
+     5,
+     2.08,
+     0.2560231035783942,
+     "row",
+     0.0
+    ],
+    "costliest_minus_next": [
+     6,
+     10,
+     0.62,
+     0.25206314122741763
+    ],
+    "intact": {
+     "max_any_head": [
+      6,
+      11,
+      0.66,
+      0.23393123939515428
+     ],
+     "n_heads_above_3se": 0
+    },
+    "costliest_window_minus_intact": [
+     2.08,
+     0.2897438701716749
+    ]
+   }
+  }
+ },
+ "gates": [
+  {
+   "gate": "CUDA available",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "torch is 2.10.0+cu128",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "2.10.0+cu128",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000/-0.005",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "w8_partF_mixed.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "sha256 82bc61b76766f80c... (expected 82bc61b76766f80c...)",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "RB-0 part F is complete and has the three windows and their top-1",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "row component = freqs[1]",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "SSDC dataset is the repack (W2-W6, RB-0, RB-2)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "benjamin-paine/imagenet-1k-256x256",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "top-1 dataset is the ILSVRC split (W7, RB-0, RB-3)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "ILSVRC/imagenet-1k",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "full plane mask equals identity [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "full plane mask equals identity [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "win_plus builds the window plus one segment for the single head's block",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "win_plus REJECTS a single head inside the window",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "MixedSpec zeroes exactly one (block, head)'s 2 x 32 frequencies",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "MixedSpec composes a one-coordinate window with one (block, head)",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "MixedSpec restores the exact tensor",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "model is the mixed-RoPE ViT (rope_mixed, learned freqs (2, 12, heads, 32))",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "rope_mixed=True, freqs (2, 12, 12, 32), heads 12",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "component 0 depends on exactly one grid axis",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "variation across rows 1.09e-08, across columns 2.14e-01",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "row component equals RB-0 part F's",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "freqs[1] vs freqs[1]",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "all frequencies zero gives exact identity rotations",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "masking (block 8, head 3) makes exactly that head's rotations identity and leaves every other (block, head) bit-identical",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "frequency edits restore the exact tensor",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level (cuDNN 9.10.2's kernel, as for the other five models; not exact fp32)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "4.7691e-04 (batch 256)",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "references registered the expected edits and saw every image",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "reference SSDC (13 readouts) and probes (entering 11, output of 11) equal RB-0 part F bit for bit",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 4 x 13 SSDC + 16 probes",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "top-1 references (baseline, floor, Cref, win_row, win_col) equal RB-0 part F bit for bit",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "baseline 84.80, floor 45.46, Cref 73.62, win_row 78.08, win_col 76.98",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "probe noise measured on the three window references (new) and finite",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "[cref window] editing (block 6, head 0) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "[row window] editing (block 6, head 0) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "windows with every single head measured",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "done ['cref', 'row', 'col']",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every single-head condition registered window + head edits and saw every image",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "single-head edits leave every readout at or before their block bit-identical to the window reference",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 216",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every single-head edit changes the SSDC at the output of block 11 (no inert edit)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "single heads probed at the planned readouts",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every planned top-1 arm measured",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "149/149",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every top-1 arm registered the expected edits and saw every image",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "frequency tensor unchanged at the end (baseline SSDC re-measured equals the first)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-05T13-42-35Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "369 new measurements, 65.0 min; complete True",
+   "session": "2026-11-05T13-42-35Z"
+  }
+ ],
+ "gate_summary": {
+  "total": 57,
+  "fail": 0,
+  "skip": 0,
+  "complete": true,
+  "sessions": [
+   "2026-11-05T13-42-35Z"
+  ]
+ }
+}

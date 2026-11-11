@@ -1,0 +1,11 @@
+loaded benjamin-paine/imagenet-1k-256x256 [validation]
+  default_a            small   b4 baseline 0.371374000  Cref b11 0.244094874  33.1s
+  default_a            naver   b4 baseline 0.469422709  Cref b11 0.329663144  33.7s
+WORKER DONE
+
+--- stderr ---
+'[Errno 9] Bad file descriptor' thrown while requesting GET https://huggingface.co/datasets/benjamin-paine/imagenet-1k-256x256/resolve/1bd0400450249a7fe90c0aece37d0d03e7ea956a/data/validation-00000-of-00002.parquet
+Retrying in 1s [Retry 1/5].
+Fatal Python error: PyGILState_Release: auto-releasing thread-state, but no thread-state for this thread
+Python runtime state: finalizing (tstate=0x00005c1dd89d2098)
+

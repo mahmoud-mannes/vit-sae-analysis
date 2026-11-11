@@ -1,0 +1,138 @@
+gate,scope,status,detail,session
+CUDA available,env,PASS,,2026-11-05T10-07-19Z
+torch is 2.10.0+cu128,env,PASS,2.10.0+cu128,2026-11-05T10-07-19Z
+PyTorch reports cuDNN 91002 (9.10.2),env,PASS,91002,2026-11-05T10-07-19Z
+every loaded libcudnn file comes from this environment's nvidia/cudnn folder,env,PASS,libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910),2026-11-05T10-07-19Z
+the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13),env,PASS,{'nvidia-cudnn-cu12': '9.10.2.21'},2026-11-05T10-07-19Z
+TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0),env,PASS,"{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",2026-11-05T10-07-19Z
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-05T10-07-19Z
+w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 f50b694d24279ce6... (expected f50b694d24279ce6...),2026-11-05T10-07-19Z
+w8_partD_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 4b385c6bfde78d76... (expected 4b385c6bfde78d76...),2026-11-05T10-07-19Z
+w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 c983414404ca645b... (expected c983414404ca645b...),2026-11-05T10-07-19Z
+w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...),2026-11-05T10-07-19Z
+w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 f1d963652ac3867c... (expected f1d963652ac3867c...),2026-11-05T10-07-19Z
+w8_partD_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 6a49100079cfe304... (expected 6a49100079cfe304...),2026-11-05T10-07-19Z
+w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 be01ed6297ef819a... (expected be01ed6297ef819a...),2026-11-05T10-07-19Z
+w8_partD_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 5de620a0ea29fa08... (expected 5de620a0ea29fa08...),2026-11-05T10-07-19Z
+w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 bf895274486dfaa9... (expected bf895274486dfaa9...),2026-11-05T10-07-19Z
+w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 b9f6a3833766b736... (expected b9f6a3833766b736...),2026-11-05T10-07-19Z
+w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...),2026-11-05T10-07-19Z
+w8_partD_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 85d72d98fff492d5... (expected 85d72d98fff492d5...),2026-11-05T10-07-19Z
+w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...),2026-11-05T10-07-19Z
+w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...),2026-11-05T10-07-19Z
+RB-0 parts needed by RB-3 are present and complete,naver,PASS,"A=complete, C=complete, D=complete",2026-11-05T10-07-19Z
+RB-0 parts needed by RB-3 are present and complete,DINOv3,PASS,"A=complete, D=complete",2026-11-05T10-07-19Z
+RB-0 parts needed by RB-3 are present and complete,small,PASS,"A=complete, C=complete, D=complete",2026-11-05T10-07-19Z
+RB-0 parts needed by RB-3 are present and complete,reg1_gap,PASS,"A=complete, C=complete, D=complete",2026-11-05T10-07-19Z
+"pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",naver,PASS,"[(6, 6), (7, 2), (6, 1), (6, 2), (8, 10)]",2026-11-05T10-07-19Z
+"pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",DINOv3,PASS,"[(6, 2), (9, 10), (7, 9), (10, 0), (10, 8)]",2026-11-05T10-07-19Z
+"pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",small,PASS,"[(7, 2), (7, 4), (6, 0), (7, 3), (8, 4)]",2026-11-05T10-07-19Z
+"pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",reg1_gap,PASS,"[(6, 9), (7, 7), (6, 7), (6, 4), (7, 6)]",2026-11-05T10-07-19Z
+committed W7 files match their headline values,naver,PASS,"w7rope_R12_naver_2026-09-24T17-54-52Z.json, w7rope_C3_naver_2026-09-24T22-49-53Z.json",2026-11-05T10-07-19Z
+committed W7 files match their headline values,small,PASS,"w7rope_R12_small_2026-09-24T22-49-53Z.json, w7rope_C3_small_2026-09-24T22-49-53Z.json",2026-11-05T10-07-19Z
+committed W7 files match their headline values,reg1_gap,PASS,"w7rope_R12_reg1_gap_MERGED.json, w7rope_C3_reg1_gap_2026-09-25T01-38-38Z.json",2026-11-05T10-07-19Z
+"SSDC dataset is the repack (W2-W6, RB-0, RB-2)",data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-05T10-07-19Z
+"top-1 dataset is the ILSVRC split (W7, RB-0)",data,PASS,ILSVRC/imagenet-1k,2026-11-05T10-07-19Z
+empty plane mask bit-identical [interleaved],algebra,PASS,,2026-11-05T10-07-19Z
+full plane mask equals identity [interleaved],algebra,PASS,,2026-11-05T10-07-19Z
+plane 3 touches only its own columns [interleaved],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]",2026-11-05T10-07-19Z
+mask NO heads equals unmodified rope [interleaved],per-head,PASS,,2026-11-05T10-07-19Z
+mask head 3 leaves others untouched [interleaved],per-head,PASS,,2026-11-05T10-07-19Z
+mask head 3 changes head 3 [interleaved],per-head,PASS,,2026-11-05T10-07-19Z
+one-axis window leaves the other axis's planes bit-identical [interleaved],algebra,PASS,,2026-11-05T10-07-19Z
+empty plane mask bit-identical [rotate_half],algebra,PASS,,2026-11-05T10-07-19Z
+full plane mask equals identity [rotate_half],algebra,PASS,,2026-11-05T10-07-19Z
+plane 3 touches only its own columns [rotate_half],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]",2026-11-05T10-07-19Z
+mask NO heads equals unmodified rope [rotate_half],per-head,PASS,,2026-11-05T10-07-19Z
+mask head 3 leaves others untouched [rotate_half],per-head,PASS,,2026-11-05T10-07-19Z
+mask head 3 changes head 3 [rotate_half],per-head,PASS,,2026-11-05T10-07-19Z
+one-axis window leaves the other axis's planes bit-identical [rotate_half],algebra,PASS,,2026-11-05T10-07-19Z
+win_plus builds the window plus one segment for the single head's block,composite,PASS,,2026-11-05T10-07-19Z
+win_plus REJECTS a single head inside the window,composite,PASS,,2026-11-05T10-07-19Z
+"W7 permutation 0 equals RB-0's shuffle permutation (randperm, seed 7)",algebra,PASS,,2026-11-05T10-07-19Z
+the two W7 permutations differ and are permutations of 0..195,algebra,PASS,,2026-11-05T10-07-19Z
+heads_only builds one segment for the single head's block and no window,composite,PASS,,2026-11-05T10-07-19Z
+forward grid is 14x14,naver,PASS,14x14,2026-11-05T10-07-19Z
+num_heads matches W5,naver,PASS,12 vs 12,2026-11-05T10-07-19Z
+num_heads matches RB-0,naver,PASS,12 vs 12,2026-11-05T10-07-19Z
+"rope rows equal patch tokens (196, as the W7 permutations assume)",naver,PASS,196 vs 196,2026-11-05T10-07-19Z
+rotary table has no head dimension,naver,PASS,"shape (196, 128)",2026-11-05T10-07-19Z
+row/col planes equal W5's runtime derivation,naver,PASS,"row [16, 17, 18]..",2026-11-05T10-07-19Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",naver,PASS,4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256),2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [baseline],naver,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [Cref],naver,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed top-1 on the first 512 images,naver,PASS,0 images differ,2026-11-05T10-07-19Z
+"top-1 references (baseline, window, floor) equal RB-0 part C bit for bit (mean and per image)",naver,PASS,"baseline 84.64, window 70.52, floor 38.84",2026-11-05T10-07-19Z
+top-1 references equal W7 bit for bit (cuDNN-insensitive model),naver,PASS,max |delta| 0.00 pts,2026-11-05T10-07-19Z
+Cref SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-05T10-07-19Z
+every planned arm measured,naver,PASS,109/109,2026-11-05T10-07-19Z
+every arm registered exactly the expected hooks,naver,PASS,,2026-11-05T10-07-19Z
+every arm saw every image,naver,PASS,,2026-11-05T10-07-19Z
+every arm RB-0 part C also ran equals it bit for bit (mean and per image),naver,PASS,"8 arms: ['int_s_b6_h1', 'int_s_b6_h6', 'int_s_b7_h2', 's_b6_h1', 's_b6_h6', 's_b6_h6_shuf0']...",2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (top-1, mean and per image)",naver,PASS,,2026-11-05T10-07-19Z
+W7 Table 18 shuffled arms reproduce W7 bit for bit (cuDNN-insensitive model),naver,PASS,max |delta| 0.00 pts; per-image 5 arms all equal: True,2026-11-05T10-07-19Z
+prefix-blocked top-1 (Table 10) reproduces W7 C3 bit for bit,naver,PASS,82.80 vs 82.80,2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (SSDC, 13 readouts)",naver,PASS,,2026-11-05T10-07-19Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,naver,PASS,1 session(s),2026-11-05T10-07-19Z
+model finished,naver,PASS,"109 new arms, 8.2 min; complete True",2026-11-05T10-07-19Z
+forward grid is 14x14,DINOv3,PASS,14x14,2026-11-05T10-07-19Z
+num_heads matches W5,DINOv3,PASS,12 vs 12,2026-11-05T10-07-19Z
+num_heads matches RB-0,DINOv3,PASS,12 vs 12,2026-11-05T10-07-19Z
+"rope rows equal patch tokens (196, as the W7 permutations assume)",DINOv3,PASS,196 vs 196,2026-11-05T10-07-19Z
+rotary table has no head dimension,DINOv3,PASS,"shape (196, 128)",2026-11-05T10-07-19Z
+row/col planes equal W5's runtime derivation,DINOv3,PASS,"row [0, 1, 2]..",2026-11-05T10-07-19Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",DINOv3,PASS,4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256),2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [baseline],DINOv3,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [Cref],DINOv3,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+Cref SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-05T10-07-19Z
+every planned arm measured,DINOv3,PASS,5/5,2026-11-05T10-07-19Z
+every arm registered exactly the expected hooks,DINOv3,PASS,,2026-11-05T10-07-19Z
+every arm saw every image,DINOv3,PASS,,2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (SSDC, 13 readouts)",DINOv3,PASS,,2026-11-05T10-07-19Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,DINOv3,PASS,1 session(s),2026-11-05T10-07-19Z
+model finished,DINOv3,PASS,"5 new arms, 0.1 min; complete True",2026-11-05T10-07-19Z
+forward grid is 14x14,small,PASS,14x14,2026-11-05T10-07-19Z
+num_heads matches W5,small,PASS,6 vs 6,2026-11-05T10-07-19Z
+num_heads matches RB-0,small,PASS,6 vs 6,2026-11-05T10-07-19Z
+"rope rows equal patch tokens (196, as the W7 permutations assume)",small,PASS,196 vs 196,2026-11-05T10-07-19Z
+rotary table has no head dimension,small,PASS,"shape (196, 128)",2026-11-05T10-07-19Z
+row/col planes equal W5's runtime derivation,small,PASS,"row [16, 17, 18]..",2026-11-05T10-07-19Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",small,PASS,5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256),2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [baseline],small,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [Cref],small,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed top-1 on the first 512 images,small,PASS,0 images differ,2026-11-05T10-07-19Z
+"top-1 references (baseline, window, floor) equal RB-0 part C bit for bit (mean and per image)",small,PASS,"baseline 81.36, window 48.60, floor 24.06",2026-11-05T10-07-19Z
+top-1 references vs W7 recorded (ViT-S: W7 used cuDNN 9.26-like numerics),small,PASS,"max |delta| 0.08 pts; per-image agreement baseline 99.96%, window 99.88%, floor 99.94%",2026-11-05T10-07-19Z
+Cref SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-05T10-07-19Z
+every planned arm measured,small,PASS,74/74,2026-11-05T10-07-19Z
+every arm registered exactly the expected hooks,small,PASS,,2026-11-05T10-07-19Z
+every arm saw every image,small,PASS,,2026-11-05T10-07-19Z
+every arm RB-0 part C also ran equals it bit for bit (mean and per image),small,PASS,"8 arms: ['int_s_b11_h0', 'int_s_b11_h3', 'int_s_b8_h2', 's_b11_h3_shuf0', 's_b6_h0', 's_b7_h2']...",2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (top-1, mean and per image)",small,PASS,,2026-11-05T10-07-19Z
+W7 Table 18 / Table 10 arms vs W7 recorded (ViT-S: 9.10.2 values replace W7's),small,PASS,"max |delta| 0.04 pts; prefix-blocked 0.02 pts; per-image agreement floor_shuffled_s0 99.92%, floor_shuffled_s1 99.98%, window_shuffled 99.92%, win_h2_shuffled 99.88%, int_h2_shuffled 100.00%",2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (SSDC, 13 readouts)",small,PASS,,2026-11-05T10-07-19Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,small,PASS,1 session(s),2026-11-05T10-07-19Z
+model finished,small,PASS,"74 new arms, 2.0 min; complete True",2026-11-05T10-07-19Z
+forward grid is 14x14,reg1_gap,PASS,14x14,2026-11-05T10-07-19Z
+num_heads matches W5,reg1_gap,PASS,12 vs 12,2026-11-05T10-07-19Z
+num_heads matches RB-0,reg1_gap,PASS,12 vs 12,2026-11-05T10-07-19Z
+"rope rows equal patch tokens (196, as the W7 permutations assume)",reg1_gap,PASS,196 vs 196,2026-11-05T10-07-19Z
+rotary table has no head dimension,reg1_gap,PASS,"shape (196, 128)",2026-11-05T10-07-19Z
+row/col planes equal W5's runtime derivation,reg1_gap,PASS,"row [0, 1, 2]..",2026-11-05T10-07-19Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",reg1_gap,PASS,2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256),2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [baseline],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed evaluate_ssdc [Cref],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-05T10-07-19Z
+cached replay reproduces streamed top-1 on the first 512 images,reg1_gap,PASS,0 images differ,2026-11-05T10-07-19Z
+"top-1 references (baseline, window, floor) equal RB-0 part C bit for bit (mean and per image)",reg1_gap,PASS,"baseline 83.88, window 56.28, floor 29.50",2026-11-05T10-07-19Z
+top-1 references equal W7 bit for bit (cuDNN-insensitive model),reg1_gap,PASS,max |delta| 0.00 pts,2026-11-05T10-07-19Z
+Cref SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-05T10-07-19Z
+every planned arm measured,reg1_gap,PASS,109/109,2026-11-05T10-07-19Z
+every arm registered exactly the expected hooks,reg1_gap,PASS,,2026-11-05T10-07-19Z
+every arm saw every image,reg1_gap,PASS,,2026-11-05T10-07-19Z
+every arm RB-0 part C also ran equals it bit for bit (mean and per image),reg1_gap,PASS,"8 arms: ['int_s_b6_h4', 'int_s_b6_h9', 'int_s_b7_h7', 's_b6_h4_shuf0', 's_b6_h7', 's_b6_h9']...",2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (top-1, mean and per image)",reg1_gap,PASS,,2026-11-05T10-07-19Z
+W7 Table 18 shuffled arms reproduce W7 bit for bit (cuDNN-insensitive model),reg1_gap,PASS,max |delta| 0.00 pts; per-image 2 arms all equal: True,2026-11-05T10-07-19Z
+prefix-blocked top-1 (Table 10) reproduces W7 C3 bit for bit,reg1_gap,PASS,74.42 vs 74.42,2026-11-05T10-07-19Z
+"RB-0 part D random sets 0-1 reproduce bit for bit (SSDC, 13 readouts)",reg1_gap,PASS,,2026-11-05T10-07-19Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,reg1_gap,PASS,1 session(s),2026-11-05T10-07-19Z
+model finished,reg1_gap,PASS,"109 new arms, 8.2 min; complete True",2026-11-05T10-07-19Z

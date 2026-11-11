@@ -1,0 +1,2858 @@
+[
+ {
+  "gate": "CUDA available",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "torch is 2.10.0+cu128",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "2.10.0+cu128",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000/-0.005",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "A=complete",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "committed W1b file found and is the expected one (sha256)",
+  "scope": "W1b",
+  "status": "PASS",
+  "detail": "/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_naver.json is the expected RB-6 file (sha256)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "28a489decf34309d...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_naver.npz is the expected RB-6 file (sha256)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "4db2a67c2ef8167e...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_naver.npz is the expected RB-6 file (sha256)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "05087792b78aa1cf...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_DINOv3.json is the expected RB-6 file (sha256)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "d7b16fec00c37598...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_DINOv3.npz is the expected RB-6 file (sha256)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "d720768340af9f1f...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_small.json is the expected RB-6 file (sha256)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "9bf1394097b38e6d...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_small.npz is the expected RB-6 file (sha256)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "ed1d36d548363ebb...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_small.npz is the expected RB-6 file (sha256)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "ec3c11c7340874c9...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_reg1_gap.json is the expected RB-6 file (sha256)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "51a86f1218ea5a31...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_reg1_gap.npz is the expected RB-6 file (sha256)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "3d93460d78606668...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_reg1_gap.npz is the expected RB-6 file (sha256)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "bf5e03578c8ec6ef...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_rope_ape.json is the expected RB-6 file (sha256)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "a9399ae172e997eb...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_rope_ape.npz is the expected RB-6 file (sha256)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "fd1515e7230bc457...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_rope_ape.npz is the expected RB-6 file (sha256)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2adb571e0f41be23...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_supervised.json is the expected RB-6 file (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "5d4a531c52ebb61e...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_supervised.npz is the expected RB-6 file (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "e37117b4a8723836...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_supervised.npz is the expected RB-6 file (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "de29593c87cc0e49...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_dino.json is the expected RB-6 file (sha256)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "5773be6de1c6e6c9...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_dino.npz is the expected RB-6 file (sha256)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "52bc24627bd44013...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_augreg.json is the expected RB-6 file (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "ba9996e48cba15a4...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_augreg.npz is the expected RB-6 file (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "14e91be44de748a5...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_augreg.npz is the expected RB-6 file (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "d01ab7cfc593c2cc...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_sam.json is the expected RB-6 file (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "ff7c9f3707cb842d...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_sam.npz is the expected RB-6 file (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "c65477568dc11673...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_sam.npz is the expected RB-6 file (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "ab8d74dadb7b4e72...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_deit3.json is the expected RB-6 file (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "605747894fade803...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_fit_deit3.npz is the expected RB-6 file (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "25d5ab7255899c38...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rb6_perimage_deit3.npz is the expected RB-6 file (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "68d9b1ab37344c48...",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "benjamin-paine/imagenet-1k-256x256",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "ILSVRC/imagenet-1k",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "mean erasure: every slot's mean equals the average over slots",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "mean+scale erasure: equal slot means and equal slot spread",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "spread range 104.0862-104.0862",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "subspace erasure removes >= 99% of the positional component's energy",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "r=15 of 32; energy left 1.78e-30",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "random subspace: orthonormal, same dimension as the positional subspace, reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "random-subspace control leaves most of the positional component (it is a control, not an erasure)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "energy left 0.529",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "scramble: slot p carries slot pi(p)'s component; pi has no fixed point",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "derangement is reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edit hook removed on exit",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "Part A: no positional component gives bias-corrected PVF ~ 0",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "raw 0.0002, corrected +0.00001",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "Part A: bias-corrected PVF recovers the true value; row / column split is right",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "PVF 0.6165 vs 0.6156; row 1.000, col 1.000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "AllEdit: the listed blocks are edited, the others are not, one hook per block",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "AllEdit hooks removed on exit",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "offset control: subtracts another slot's component, same vector sizes as the mean edit, position left in place",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.76e-08; positional component / token rms 7.16e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.83e-08; positional component / token rms 2.45e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.75e-08; positional component / token rms 7.30e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.92e-08; positional component / token rms 2.45e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "84.64 vs 84.64",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "38.84 vs 38.84",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "b4: 0.469 -> 0.013",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "84.44 vs 84.44",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "18 new arms, 13.6 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.00e-08; positional component / token rms 5.56e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.74e-08; positional component / token rms 4.52e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "b4: 0.949 -> 0.018",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "9/9",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "9 new arms, 12.5 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.86e-08; positional component / token rms 5.89e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.55e-08; positional component / token rms 1.69e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.89e-08; positional component / token rms 5.85e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.61e-08; positional component / token rms 1.84e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "81.36 vs 81.36",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "24.06 vs 24.06",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "b4: 0.371 -> 0.011",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "81.06 vs 81.06",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "18 new arms, 12.5 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.83e-08; positional component / token rms 1.37e-01",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.30e-08; positional component / token rms 2.78e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.87e-08; positional component / token rms 1.36e-01",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.33e-08; positional component / token rms 2.73e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "83.88 vs 83.88",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "29.50 vs 29.50",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "b4: 0.689 -> 0.014",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "83.82 vs 83.82",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "18 new arms, 13.5 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "4.0377e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.66e-08; positional component / token rms 4.51e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.73e-08; positional component / token rms 2.30e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.70e-08; positional component / token rms 4.64e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.79e-08; positional component / token rms 2.35e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "ape_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "both_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "84.82 vs 84.82",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "42.60 vs 42.60",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "83.90 vs 83.90",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "33.42 vs 33.42",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "b4: 0.590 -> 0.014",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "84.40 vs 84.40",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "22/22",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "22 new arms, 14.1 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "vit.embeddings.position_embeddings",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "3.3375e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.49e-08; positional component / token rms 1.97e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.60e-08; positional component / token rms 1.96e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.45e-08; positional component / token rms 2.03e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.64e-08; positional component / token rms 2.31e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 2.7e-05; block 11 0.2030 vs 0.2030",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 3.1e-05; block 11 0.0070 vs 0.0070",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "81.16 vs 81.16; per-image agreement 100.00%",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "b4: 0.797 -> 0.017, b2: 0.741 -> 0.015",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "77.68 vs 77.68",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "18 new arms, 13.6 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "2.5880e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.70e-08; positional component / token rms 1.09e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.06e-08; positional component / token rms 3.60e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 1.5e-04; block 11 0.5241 vs 0.5242",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 1.0e-05; block 11 0.0222 vs 0.0222",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "b4: 0.766 -> 0.014, b2: 0.470 -> 0.011",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "9/9",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "9 new arms, 12.4 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2.3762e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.75e-08; positional component / token rms 9.13e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.68e-08; positional component / token rms 1.19e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.75e-08; positional component / token rms 9.11e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.69e-08; positional component / token rms 1.18e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "78.60 vs 78.60; per-image agreement 100.00%",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "b4: 0.808 -> 0.014, b2: 0.731 -> 0.016",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "70.98 vs 70.98",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "18 new arms, 13.6 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "3.4938e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.33e-08; positional component / token rms 1.55e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.97e-08; positional component / token rms 1.52e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.31e-08; positional component / token rms 1.49e-02",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.99e-08; positional component / token rms 1.55e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "81.00 vs 81.00; per-image agreement 100.00%",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "b4: 0.742 -> 0.014, b2: 0.539 -> 0.013",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "78.12 vs 78.12",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "18 new arms, 14.8 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "pos_embed",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "4.0602e-04 (batch 256)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 2000 images, right after the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [rep] equals RB-6's saved fit bit for bit",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.94e-08; positional component / token rms 8.33e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.78e-08; positional component / token rms 6.22e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 2000 images, right after the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "2000",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "2000 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 5)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "unedited block-4 fit [acc] equals RB-6's saved fit bit for bit",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.94e-08; positional component / token rms 8.70e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc]",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.83e-08; positional component / token rms 6.69e-03",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "84.58 vs 84.58; per-image agreement 100.00%",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "floor lowers SSDC at every RB-6 edit site",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "b4: 0.763 -> 0.017, b2: 0.442 -> 0.013",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "73.26 vs 73.26",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "18/18",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every all-block arm changes the state entering block 4",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-09T01-43-14Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "18 new arms, 14.5 min; complete True",
+  "session": "2026-11-09T01-43-14Z"
+ }
+]

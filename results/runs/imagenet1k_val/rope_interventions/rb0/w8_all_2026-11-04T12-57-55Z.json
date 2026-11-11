@@ -1,0 +1,4267 @@
+{
+ "notebook": "W8",
+ "generated_utc": "2026-11-04T12-57-55Z",
+ "test_mode": false,
+ "environment": {
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "device": "cuda",
+  "gpu": "NVIDIA H100 80GB HBM3",
+  "dtype": "float32",
+  "tf32_matmul": false,
+  "repo": "/workspace/NRDL/clone/vit-sae-analysis/project_code/src"
+ },
+ "config": {
+  "parts": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E",
+   "F",
+   "G"
+  ],
+  "models": [
+   "naver",
+   "DINOv3",
+   "small",
+   "reg1_gap",
+   "rope_ape",
+   "mixed"
+  ],
+  "n_ssdc": 1000,
+  "n_acc": 5000,
+  "batch": 256,
+  "torch_seed": 20260908,
+  "ssdc_dataset": "benjamin-paine/imagenet-1k-256x256",
+  "acc_dataset": "ILSVRC/imagenet-1k",
+  "window": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "post": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11
+  ],
+  "final_readout": "output of block 11 through the model's final LayerNorm",
+  "boot": [
+   500,
+   8086
+  ],
+  "rpi_seeds_extra": [
+   12345,
+   777
+  ],
+  "probe": [
+   0.005,
+   20,
+   512,
+   0.8
+  ],
+  "rules": {
+   "single": "largest drop in SSDC at the output of block 11 (readout 12) vs Cref; ties by (block, head)",
+   "best_per_block": "in each block 6-11, the head with the largest single-head drop at readout 12",
+   "top6": "the six single heads with the largest drop at readout 12, any blocks"
+  },
+  "named_groups": {
+   "naver": [
+    6
+   ],
+   "DINOv3": [
+    2,
+    9,
+    1
+   ],
+   "reg1_gap": [
+    7,
+    3
+   ],
+   "small": [
+    2,
+    0
+   ]
+  },
+  "anchor_tolerances": [
+   0.0001,
+   0.005,
+   0.001
+  ]
+ },
+ "anchors_used": {
+  "W5": {
+   "naver": "w5_partA_naver_2026-09-13T10-16-41Z.json",
+   "DINOv3": "w5_partA_DINOv3_2026-09-13T10-16-41Z.json",
+   "small": "w5_partA_small_2026-09-13T10-16-41Z.json",
+   "reg1_gap": "w5_partA_reg1_gap_2026-09-13T10-16-41Z.json",
+   "rope_ape": "w5_partA_rope_ape_2026-09-13T10-16-41Z.json"
+  },
+  "W7": {
+   "naver": "w7rope_R12_naver_2026-09-24T17-54-52Z.json",
+   "small": "w7rope_R12_small_2026-09-24T22-49-53Z.json",
+   "reg1_gap": "w7rope_R12_reg1_gap_MERGED.json"
+  }
+ },
+ "analysis": {
+  "naver": {
+   "A": {
+    "cref_out11": 0.4080343790204645,
+    "baseline_out11": 0.4761879801604569,
+    "floor_out11": 0.01934168392924031,
+    "recovery_b11": 0.7100287473877304,
+    "recovery_out11": 0.8508172186089065,
+    "top_single": [
+     6,
+     6
+    ],
+    "top_single_cost_out11": 0.036796828762901135,
+    "top_single_share_of_recovery": 0.09466817675661515,
+    "block_cost_out11": {
+     "6": 0.054213687271969735,
+     "7": 0.052527617423990536,
+     "8": 0.0331603277638618,
+     "9": 0.02754184583585617,
+     "10": 0.0059511818200853606,
+     "11": 0.07461024130726734
+    },
+    "top_head_share_of_its_block": 0.6787368765069464,
+    "groups": {
+     "0": {
+      "cost_b11": 0.0016520571539495044,
+      "cost_out11": -0.0006304637737691299,
+      "sum_of_member_singles_out11": -0.001278791978337246,
+      "best_member": [
+       7,
+       0
+      ],
+      "best_member_cost_out11": 0.00843825725352021,
+      "best_member_share": null
+     },
+     "1": {
+      "cost_b11": 0.044922846981174935,
+      "cost_out11": 0.047481254884657986,
+      "sum_of_member_singles_out11": 0.044762464392651746,
+      "best_member": [
+       6,
+       1
+      ],
+      "best_member_cost_out11": 0.01887360963320528,
+      "best_member_share": 0.3974960156182323
+     },
+     "2": {
+      "cost_b11": 0.04917275392249437,
+      "cost_out11": 0.051482957183776434,
+      "sum_of_member_singles_out11": 0.05114598353543082,
+      "best_member": [
+       7,
+       2
+      ],
+      "best_member_cost_out11": 0.021385633461223186,
+      "best_member_share": 0.41539248386381217
+     },
+     "3": {
+      "cost_b11": -0.060380324233950955,
+      "cost_out11": -0.03794806830928649,
+      "sum_of_member_singles_out11": -0.045722218346156085,
+      "best_member": [
+       8,
+       3
+      ],
+      "best_member_cost_out11": 0.008688145241791678,
+      "best_member_share": null
+     },
+     "4": {
+      "cost_b11": -0.0023308031114774863,
+      "cost_out11": 0.002465752389990805,
+      "sum_of_member_singles_out11": 0.0012909044641840617,
+      "best_member": [
+       6,
+       4
+      ],
+      "best_member_cost_out11": 0.004392840655896568,
+      "best_member_share": 1.781541680230491
+     },
+     "5": {
+      "cost_b11": 0.02724532175106259,
+      "cost_out11": 0.023786018017908472,
+      "sum_of_member_singles_out11": 0.02464501561596988,
+      "best_member": [
+       7,
+       5
+      ],
+      "best_member_cost_out11": 0.007807711758886782,
+      "best_member_share": 0.32824795444989413
+     },
+     "6": {
+      "cost_b11": 0.05526224499601079,
+      "cost_out11": 0.059350420878790666,
+      "sum_of_member_singles_out11": 0.05722002771022394,
+      "best_member": [
+       6,
+       6
+      ],
+      "best_member_cost_out11": 0.036796828762901135,
+      "best_member_share": 0.6199927181316884
+     },
+     "7": {
+      "cost_b11": 0.01580310266364171,
+      "cost_out11": 0.032894030433643306,
+      "sum_of_member_singles_out11": 0.03190897668155068,
+      "best_member": [
+       11,
+       7
+      ],
+      "best_member_cost_out11": 0.013203676442737844,
+      "best_member_share": 0.4014003838591153
+     },
+     "8": {
+      "cost_b11": 0.00710558473115791,
+      "cost_out11": 0.009671602615455854,
+      "sum_of_member_singles_out11": 0.0096463210718295,
+      "best_member": [
+       8,
+       8
+      ],
+      "best_member_cost_out11": 0.006222656971884788,
+      "best_member_share": 0.6433946078326848
+     },
+     "9": {
+      "cost_b11": 0.01124587933980048,
+      "cost_out11": 0.00932980493923069,
+      "sum_of_member_singles_out11": 0.010506308955534338,
+      "best_member": [
+       11,
+       9
+      ],
+      "best_member_cost_out11": 0.0040362226998801876,
+      "best_member_share": 0.4326159792375041
+     },
+     "10": {
+      "cost_b11": -0.025395257350971645,
+      "cost_out11": -0.009250702234288644,
+      "sum_of_member_singles_out11": -0.009834698755955107,
+      "best_member": [
+       8,
+       10
+      ],
+      "best_member_cost_out11": 0.009357132985468919,
+      "best_member_share": null
+     },
+     "11": {
+      "cost_b11": 0.034138524876167475,
+      "cost_out11": 0.03202923691572429,
+      "sum_of_member_singles_out11": 0.03207972281510879,
+      "best_member": [
+       7,
+       11
+      ],
+      "best_member_cost_out11": 0.009682734886020838,
+      "best_member_share": 0.30230925924018004
+     }
+    },
+    "boot_p_top_single_stays_top": 1.0,
+    "boot_rank_interval_top5": {
+     "b6_h6": [
+      1,
+      1
+     ],
+     "b7_h2": [
+      2,
+      2
+     ],
+     "b6_h1": [
+      3,
+      3
+     ],
+     "b11_h7": [
+      4,
+      5
+     ],
+     "b6_h2": [
+      5,
+      10
+     ]
+    },
+    "boot_top1_minus_top2_out11": [
+     0.014828870072960854,
+     0.00156755605712533
+    ],
+    "boot_p_top_index_group_stays_top_b11": 1.0,
+    "boot_top_index_group": 6,
+    "rpi_seeds_top_single_still_top": "2/2"
+   },
+   "C": {
+    "window_top1": 70.52000164985657,
+    "baseline_top1": 84.64000225067139,
+    "floor_top1": 38.839998841285706,
+    "top_index_group": 6,
+    "top_group_cost": [
+     4.3,
+     0.3416509111198356
+    ],
+    "top_group_minus_mean_of_others": [
+     3.0745454545454542,
+     0.2708757936131602
+    ],
+    "top_group_is_costliest": true,
+    "next_group": 1,
+    "top_minus_next": [
+     0.9199999999999999,
+     0.3134491506991442
+    ],
+    "singles_spearman_ssdc_vs_top1": [
+     0.40908824216596723,
+     0.00039996000399960006,
+     72
+    ],
+    "singles_partial_spearman_given_head_norm": [
+     0.3822753731490976,
+     0.0008999100089991
+    ],
+    "top_ssdc_single": [
+     6,
+     6
+    ],
+    "top_ssdc_single_rank_in_top1_cost": [
+     1,
+     72
+    ],
+    "chance_that_rank_is_1": 0.013888888888888888,
+    "top_ssdc_single_top1_cost": [
+     3.04,
+     0.28942776937733067
+    ],
+    "groups_spearman_ssdc_vs_top1": [
+     0.7342657342657343,
+     0.0084991500849915,
+     12
+    ],
+    "block_cost": {
+     "6": 15.36000370979309,
+     "7": 2.9000043869018555,
+     "8": 2.0200014114379883,
+     "9": 0.8199989795684814,
+     "10": -0.019997358322143555,
+     "11": 0.0
+    }
+   },
+   "D": {
+    "ssdc": {
+     "null_mean": 0.018076965177454742,
+     "null_p95": 0.046954286471700184,
+     "n_null": 48,
+     "paper_top_group": 6,
+     "paper_top_group_cost": 0.059350420878790666,
+     "paper_top_group_percentile": 97.91666666666666,
+     "index_group_percentiles": {
+      "0": 16.666666666666664,
+      "1": 95.83333333333334,
+      "2": 97.91666666666666,
+      "3": 2.083333333333333,
+      "4": 20.833333333333336,
+      "5": 62.5,
+      "6": 97.91666666666666,
+      "7": 79.16666666666666,
+      "8": 22.916666666666664,
+      "9": 22.916666666666664,
+      "10": 10.416666666666668,
+      "11": 79.16666666666666
+     },
+     "top_index_group": 6,
+     "top_index_group_cost": 0.059350420878790666,
+     "expected_max_of_n_random_sets": [
+      0.048011045650239,
+      0.02762680008620494,
+      0.06682016770183352
+     ],
+     "p_max_random_ge_top_group": 0.2233,
+     "best_per_block": 0.1006973535871119,
+     "top6": 0.11621040654896986
+    },
+    "acc": {
+     "null_mean": 1.6233349839846294,
+     "null_p95": 3.973002135753631,
+     "n_null": 24,
+     "paper_top_group": 6,
+     "paper_top_group_cost": 4.300004243850708,
+     "paper_top_group_percentile": 95.83333333333334,
+     "index_group_percentiles": {
+      "0": 54.166666666666664,
+      "1": 79.16666666666666,
+      "2": 62.5,
+      "3": 4.166666666666666,
+      "4": 66.66666666666666,
+      "5": 70.83333333333334,
+      "6": 95.83333333333334,
+      "7": 4.166666666666666,
+      "8": 25.0,
+      "9": 62.5,
+      "10": 0.0,
+      "11": 66.66666666666666
+     },
+     "top_index_group": 6,
+     "top_index_group_cost": 4.300004243850708,
+     "expected_max_of_n_random_sets": [
+      3.948703810572624,
+      2.6600003242492676,
+      4.320001602172852
+     ],
+     "p_max_random_ge_top_group": 0.3974,
+     "best_per_block": 4.879999160766602,
+     "top6": 9.10000205039978
+    }
+   },
+   "B": {
+    "noise_bar_3sd_points": {
+     "11": 0.7934997303653601,
+     "12": 0.7998538500099919
+    },
+    "singles": [
+     {
+      "model": "naver",
+      "block": 6,
+      "head": 6,
+      "row_cost_b11": 2.982142857142858,
+      "col_cost_b11": -0.053571428571427826,
+      "favours_b11": "row",
+      "row_cost_out11": 2.1581632653061207,
+      "col_cost_out11": -0.1250000000000001,
+      "favours_out11": "row"
+     },
+     {
+      "model": "naver",
+      "block": 7,
+      "head": 6,
+      "row_cost_b11": 0.1913265306122458,
+      "col_cost_b11": 0.0663265306122457,
+      "favours_b11": "none",
+      "row_cost_out11": 0.22704081632652917,
+      "col_cost_out11": 0.053571428571429214,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 8,
+      "head": 6,
+      "row_cost_b11": 0.07908163265306356,
+      "col_cost_b11": -0.022959183673468275,
+      "favours_b11": "none",
+      "row_cost_out11": -0.05612244897959251,
+      "col_cost_out11": -0.1403061224489799,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 9,
+      "head": 6,
+      "row_cost_b11": 0.033163265306124234,
+      "col_cost_b11": 0.08418367346938876,
+      "favours_b11": "none",
+      "row_cost_out11": 0.002551020408161908,
+      "col_cost_out11": -0.020408163265306367,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 10,
+      "head": 6,
+      "row_cost_b11": -0.002551020408161908,
+      "col_cost_b11": -0.03826530612244805,
+      "favours_b11": "none",
+      "row_cost_out11": 0.1403061224489771,
+      "col_cost_out11": 0.0,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 11,
+      "head": 6,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.43622448979591666,
+      "col_cost_out11": 0.10969387755102034,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 7,
+      "head": 2,
+      "row_cost_b11": 1.5586734693877558,
+      "col_cost_b11": -0.03316326530612146,
+      "favours_b11": "row",
+      "row_cost_out11": 1.5076530612244898,
+      "col_cost_out11": -0.010204081632653184,
+      "favours_out11": "row"
+     },
+     {
+      "model": "naver",
+      "block": 6,
+      "head": 1,
+      "row_cost_b11": 1.920918367346941,
+      "col_cost_b11": -0.022959183673468275,
+      "favours_b11": "row",
+      "row_cost_out11": 1.6938775510204063,
+      "col_cost_out11": -0.2040816326530609,
+      "favours_out11": "row"
+     },
+     {
+      "model": "naver",
+      "block": 11,
+      "head": 7,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.568877551020408,
+      "col_cost_out11": 0.005102040816326592,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 6,
+      "head": 2,
+      "row_cost_b11": -0.05102040816326314,
+      "col_cost_b11": 0.08673469387755206,
+      "favours_b11": "none",
+      "row_cost_out11": -0.05867346938775719,
+      "col_cost_out11": -0.045918367346939326,
+      "favours_out11": "none"
+     },
+     {
+      "model": "naver",
+      "block": 11,
+      "head": 2,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.10969387755102034,
+      "col_cost_out11": -0.01785714285714307,
+      "favours_out11": "none"
+     }
+    ],
+    "groups": {
+     "6": {
+      "row_cost_mean7_11": 5.193367346938775,
+      "col_cost_mean7_11": 0.08571428571428646,
+      "row_cost_out11": 2.9642857142857135,
+      "col_cost_out11": -0.015306122448979775
+     }
+    },
+    "recovery_of_removed_axis": {
+     "row": {
+      "11": 0.4862622658340767,
+      "12": 0.5273172569706103
+     },
+     "col": {
+      "11": 0.24779817883266161,
+      "12": 0.31473580571053494
+     }
+    }
+   },
+   "E": {
+    "top_single_carrier": [
+     3,
+     2
+    ],
+    "top_single_share": 0.19397185126636,
+    "top_index_group": 2,
+    "top_index_group_share": 0.31411406148117577,
+    "best_member_of_top_group": [
+     3,
+     2
+    ],
+    "block_share": {
+     "0": 0.239743970201966,
+     "1": 0.08473630524488567,
+     "2": 0.5485095513352306,
+     "3": 0.5042767408646941
+    }
+   },
+   "G": {
+    "baseline": {
+     "ssdc4": 0.469422489792919,
+     "exact@4": 0.32693877551020406,
+     "row@4": 0.6548469387755103,
+     "col@4": 0.6258418367346938,
+     "ridge_row_r2": 0.9495619732419004,
+     "ridge_col_r2": 0.884665548018288,
+     "ridge_row_null_r2": -0.00643789491236646,
+     "ridge_col_null_r2": -0.0038427330887731426
+    },
+    "axis_row": {
+     "ssdc4": 0.15872522173270387,
+     "exact@4": 0.05798469387755102,
+     "row@4": 0.07834183673469387,
+     "col@4": 0.6341836734693878,
+     "ridge_row_r2": -0.004391554721167479,
+     "ridge_col_r2": 0.8903846050636066,
+     "ridge_row_null_r2": -0.006084327719446447,
+     "ridge_col_null_r2": -0.003418630441341497
+    },
+    "axis_col": {
+     "ssdc4": 0.2342965323645898,
+     "exact@4": 0.06262755102040816,
+     "row@4": 0.7166581632653061,
+     "col@4": 0.07811224489795919,
+     "ridge_row_r2": 0.9536927591922126,
+     "ridge_col_r2": -0.003974750337006672,
+     "ridge_row_null_r2": -0.006779699264160222,
+     "ridge_col_null_r2": -0.004123352645108325
+    },
+    "floor": {
+     "ssdc4": 0.01286503293016077,
+     "exact@4": 0.008316326530612246,
+     "row@4": 0.07854591836734694,
+     "col@4": 0.07732142857142857,
+     "ridge_row_r2": -0.004333149468582764,
+     "ridge_col_r2": -0.0032761891682284716,
+     "ridge_row_null_r2": -0.006066001799679643,
+     "ridge_col_null_r2": -0.0037693228324664485
+    }
+   }
+  },
+  "DINOv3": {
+   "A": {
+    "cref_out11": 0.5257770070300182,
+    "baseline_out11": 0.8882864763068934,
+    "floor_out11": 0.02974867951764658,
+    "recovery_b11": 0.5047028224402473,
+    "recovery_out11": 0.5777594526035017,
+    "top_single": [
+     9,
+     10
+    ],
+    "top_single_cost_out11": 0.047532724421996464,
+    "top_single_share_of_recovery": 0.09582663284651004,
+    "block_cost_out11": {
+     "6": 0.07329749509324968,
+     "7": 0.06638462976234366,
+     "8": 0.06655307618690726,
+     "9": 0.12702906582350804,
+     "10": 0.13720544933122375,
+     "11": 0.2097280053160851
+    },
+    "top_head_share_of_its_block": 0.3741877822516431,
+    "groups": {
+     "0": {
+      "cost_b11": 0.031042199767868317,
+      "cost_out11": 0.03944869940258516,
+      "sum_of_member_singles_out11": 0.0391055724025689,
+      "best_member": [
+       10,
+       0
+      ],
+      "best_member_cost_out11": 0.03773765854182948,
+      "best_member_share": 0.9566261781334277
+     },
+     "1": {
+      "cost_b11": 0.06730343523863286,
+      "cost_out11": 0.07572624807839745,
+      "sum_of_member_singles_out11": 0.07893355017269743,
+      "best_member": [
+       7,
+       1
+      ],
+      "best_member_cost_out11": 0.027757527217869504,
+      "best_member_share": 0.36655093738610744
+     },
+     "2": {
+      "cost_b11": 0.06587690836796262,
+      "cost_out11": 0.06072618153127396,
+      "sum_of_member_singles_out11": 0.060915741359999664,
+      "best_member": [
+       6,
+       2
+      ],
+      "best_member_cost_out11": 0.03824724984962313,
+      "best_member_share": 0.6298312998640597
+     },
+     "3": {
+      "cost_b11": 0.015057611702652685,
+      "cost_out11": 0.02170106581398057,
+      "sum_of_member_singles_out11": 0.020865111206414766,
+      "best_member": [
+       9,
+       3
+      ],
+      "best_member_cost_out11": 0.011861339036083107,
+      "best_member_share": 0.5465786398583994
+     },
+     "4": {
+      "cost_b11": 0.05431712749569817,
+      "cost_out11": 0.09109598691568943,
+      "sum_of_member_singles_out11": 0.09537693676573278,
+      "best_member": [
+       9,
+       4
+      ],
+      "best_member_cost_out11": 0.025535604847477744,
+      "best_member_share": 0.28031536527631334
+     },
+     "5": {
+      "cost_b11": 0.04075484777463528,
+      "cost_out11": 0.06713473331008918,
+      "sum_of_member_singles_out11": 0.07431741957089666,
+      "best_member": [
+       11,
+       5
+      ],
+      "best_member_cost_out11": 0.03433430486916367,
+      "best_member_share": 0.5114238662508223
+     },
+     "6": {
+      "cost_b11": 0.018074082466108643,
+      "cost_out11": 0.015076415192514014,
+      "sum_of_member_singles_out11": 0.01378126288189907,
+      "best_member": [
+       6,
+       6
+      ],
+      "best_member_cost_out11": 0.006438649000108598,
+      "best_member_share": 0.42706763629762734
+     },
+     "7": {
+      "cost_b11": 0.0004265077664631356,
+      "cost_out11": 0.046563767181035776,
+      "sum_of_member_singles_out11": 0.049041405476323074,
+      "best_member": [
+       11,
+       7
+      ],
+      "best_member_cost_out11": 0.044312686582971605,
+      "best_member_share": 0.951655960538756
+     },
+     "8": {
+      "cost_b11": 0.02179805313782951,
+      "cost_out11": 0.03768009523478194,
+      "sum_of_member_singles_out11": 0.03570511844343044,
+      "best_member": [
+       10,
+       8
+      ],
+      "best_member_cost_out11": 0.033068128459318114,
+      "best_member_share": 0.8776020403683431
+     },
+     "9": {
+      "cost_b11": 0.07028664257314449,
+      "cost_out11": 0.05947123200822302,
+      "sum_of_member_singles_out11": 0.05767254427883034,
+      "best_member": [
+       7,
+       9
+      ],
+      "best_member_cost_out11": 0.026521729369789526,
+      "best_member_share": 0.44595896997934054
+     },
+     "10": {
+      "cost_b11": 0.058026177806906276,
+      "cost_out11": 0.07046863991767582,
+      "sum_of_member_singles_out11": 0.0712379093689261,
+      "best_member": [
+       9,
+       10
+      ],
+      "best_member_cost_out11": 0.047532724421996464,
+      "best_member_share": 0.6745230854111278
+     },
+     "11": {
+      "cost_b11": 0.008887641305373728,
+      "cost_out11": 0.05149934558617042,
+      "sum_of_member_singles_out11": 0.05223750470710742,
+      "best_member": [
+       11,
+       11
+      ],
+      "best_member_cost_out11": 0.04418763376399604,
+      "best_member_share": 0.8580232090534008
+     }
+    },
+    "boot_p_top_single_stays_top": 1.0,
+    "boot_rank_interval_top5": {
+     "b9_h10": [
+      1,
+      1
+     ],
+     "b11_h7": [
+      2,
+      3
+     ],
+     "b11_h11": [
+      2,
+      3
+     ],
+     "b6_h2": [
+      4,
+      5
+     ],
+     "b10_h0": [
+      4,
+      5
+     ]
+    },
+    "boot_top1_minus_top2_out11": [
+     0.0034103579819202423,
+     0.0006854796665720642
+    ],
+    "boot_p_top_index_group_stays_top_b11": 0.998,
+    "boot_top_index_group": 9,
+    "rpi_seeds_top_single_still_top": "2/2"
+   },
+   "D": {
+    "ssdc": {
+     "null_mean": 0.04904637923742287,
+     "null_p95": 0.11028611144926244,
+     "n_null": 48,
+     "paper_top_group": 9,
+     "paper_top_group_cost": 0.05947123200822302,
+     "paper_top_group_percentile": 66.66666666666666,
+     "index_group_percentiles": {
+      "0": 50.0,
+      "1": 77.08333333333334,
+      "2": 66.66666666666666,
+      "3": 20.833333333333336,
+      "4": 83.33333333333334,
+      "5": 72.91666666666666,
+      "6": 14.583333333333334,
+      "7": 58.333333333333336,
+      "8": 45.83333333333333,
+      "9": 66.66666666666666,
+      "10": 77.08333333333334,
+      "11": 60.416666666666664
+     },
+     "top_index_group": 4,
+     "top_index_group_cost": 0.09109598691568943,
+     "expected_max_of_n_random_sets": [
+      0.11305424920099397,
+      0.065160465173622,
+      0.14631732247254242
+     ],
+     "p_max_random_ge_top_group": 0.8817,
+     "best_per_block": 0.22591236752291405,
+     "top6": 0.2563767523038288
+    }
+   },
+   "B": {
+    "noise_bar_3sd_points": {
+     "11": 1.2733934672538816,
+     "12": 1.7875790457489777
+    },
+    "singles": [
+     {
+      "model": "DINOv3",
+      "block": 6,
+      "head": 2,
+      "row_cost_b11": 0.18877551020408112,
+      "col_cost_b11": 5.683673469387757,
+      "favours_b11": "col",
+      "row_cost_out11": 0.16836734693877475,
+      "col_cost_out11": 5.323979591836736,
+      "favours_out11": "col"
+     },
+     {
+      "model": "DINOv3",
+      "block": 7,
+      "head": 2,
+      "row_cost_b11": 0.5918367346938791,
+      "col_cost_b11": 0.15306122448979775,
+      "favours_b11": "none",
+      "row_cost_out11": 0.987244897959183,
+      "col_cost_out11": 0.1403061224489799,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 8,
+      "head": 2,
+      "row_cost_b11": -0.03316326530611868,
+      "col_cost_b11": -0.08163265306121992,
+      "favours_b11": "none",
+      "row_cost_out11": -0.12755102040816202,
+      "col_cost_out11": -0.06122448979591355,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 9,
+      "head": 2,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.22448979591837004,
+      "favours_b11": "none",
+      "row_cost_out11": 0.040816326530612734,
+      "col_cost_out11": -0.06632653061224292,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 10,
+      "head": 2,
+      "row_cost_b11": 0.0612244897959191,
+      "col_cost_b11": 0.07653061224490165,
+      "favours_b11": "none",
+      "row_cost_out11": 0.0688775510204076,
+      "col_cost_out11": -0.21173469387754662,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 2,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.015306122448977,
+      "col_cost_out11": -0.08928571428571397,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 6,
+      "head": 9,
+      "row_cost_b11": -0.4030612244897924,
+      "col_cost_b11": -0.3545918367346912,
+      "favours_b11": "none",
+      "row_cost_out11": -0.18622448979591644,
+      "col_cost_out11": -0.19642857142856962,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 7,
+      "head": 9,
+      "row_cost_b11": -0.09693877551020247,
+      "col_cost_b11": 4.849489795918371,
+      "favours_b11": "col",
+      "row_cost_out11": -0.1250000000000029,
+      "col_cost_out11": 4.119897959183677,
+      "favours_out11": "col"
+     },
+     {
+      "model": "DINOv3",
+      "block": 8,
+      "head": 9,
+      "row_cost_b11": 0.859693877551021,
+      "col_cost_b11": 0.18112244897959262,
+      "favours_b11": "none",
+      "row_cost_out11": 0.9923469387755124,
+      "col_cost_out11": 0.20408163265306367,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 9,
+      "head": 9,
+      "row_cost_b11": 0.03571428571428892,
+      "col_cost_b11": 0.1301020408163267,
+      "favours_b11": "none",
+      "row_cost_out11": 0.1454081632653037,
+      "col_cost_out11": -0.028061224489794867,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 10,
+      "head": 9,
+      "row_cost_b11": 1.2219387755102062,
+      "col_cost_b11": 0.08163265306122547,
+      "favours_b11": "none",
+      "row_cost_out11": 0.8112244897959198,
+      "col_cost_out11": -0.5255102040816306,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 9,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": -0.03571428571428337,
+      "col_cost_out11": 0.025510204081635734,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 6,
+      "head": 1,
+      "row_cost_b11": -0.24489795918367085,
+      "col_cost_b11": 1.5714285714285736,
+      "favours_b11": "col",
+      "row_cost_out11": -0.1224489795918382,
+      "col_cost_out11": 0.9948979591836771,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 7,
+      "head": 1,
+      "row_cost_b11": 2.6377551020408174,
+      "col_cost_b11": 0.1147959183673497,
+      "favours_b11": "row",
+      "row_cost_out11": 3.196428571428572,
+      "col_cost_out11": 0.005102040816329367,
+      "favours_out11": "row"
+     },
+     {
+      "model": "DINOv3",
+      "block": 8,
+      "head": 1,
+      "row_cost_b11": 0.07908163265306078,
+      "col_cost_b11": -0.21938775510204067,
+      "favours_b11": "none",
+      "row_cost_out11": 0.17857142857142794,
+      "col_cost_out11": -0.3010204081632606,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 9,
+      "head": 1,
+      "row_cost_b11": 0.05867346938775442,
+      "col_cost_b11": 0.08928571428571397,
+      "favours_b11": "none",
+      "row_cost_out11": 0.04591836734693655,
+      "col_cost_out11": -0.0076530612244885,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 10,
+      "head": 1,
+      "row_cost_b11": -0.3367346938775495,
+      "col_cost_b11": 7.03571428571429,
+      "favours_b11": "col",
+      "row_cost_out11": -0.568877551020408,
+      "col_cost_out11": 6.079081632653066,
+      "favours_out11": "col"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 1,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": -0.03571428571428337,
+      "col_cost_out11": 0.03061224489795955,
+      "favours_out11": "none"
+     },
+     {
+      "model": "DINOv3",
+      "block": 9,
+      "head": 10,
+      "row_cost_b11": 3.502551020408168,
+      "col_cost_b11": 0.05102040816326592,
+      "favours_b11": "row",
+      "row_cost_out11": 4.3520408163265305,
+      "col_cost_out11": -0.012755102040812316,
+      "favours_out11": "row"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 7,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 2.0408163265306145,
+      "col_cost_out11": 0.16581632653061562,
+      "favours_out11": "row"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 11,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 1.9081632653061231,
+      "col_cost_out11": -0.025510204081630183,
+      "favours_out11": "row"
+     },
+     {
+      "model": "DINOv3",
+      "block": 10,
+      "head": 0,
+      "row_cost_b11": 3.002551020408167,
+      "col_cost_b11": 0.017857142857147235,
+      "favours_b11": "row",
+      "row_cost_out11": 3.528061224489798,
+      "col_cost_out11": 0.017857142857147235,
+      "favours_out11": "row"
+     },
+     {
+      "model": "DINOv3",
+      "block": 11,
+      "head": 5,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": -0.36734693877550906,
+      "col_cost_out11": 4.168367346938778,
+      "favours_out11": "col"
+     }
+    ],
+    "groups": {
+     "2": {
+      "row_cost_mean7_11": 0.927551020408165,
+      "col_cost_mean7_11": 9.257142857142858,
+      "row_cost_out11": 1.2448979591836717,
+      "col_cost_out11": 5.466836734693881
+     },
+     "9": {
+      "row_cost_mean7_11": 0.9933673469387767,
+      "col_cost_mean7_11": 5.198469387755101,
+      "row_cost_out11": 1.354591836734692,
+      "col_cost_out11": 3.6709183673469425
+     },
+     "1": {
+      "row_cost_mean7_11": 3.833673469387757,
+      "col_cost_mean7_11": 3.393367346938774,
+      "row_cost_out11": 2.466836734693878,
+      "col_cost_out11": 7.010204081632654
+     }
+    },
+    "recovery_of_removed_axis": {
+     "row": {
+      "11": 0.4553924830992329,
+      "12": 0.5140394773422295
+     },
+     "col": {
+      "11": 0.4324470798265749,
+      "12": 0.4374587240787215
+     }
+    }
+   },
+   "E": {
+    "top_single_carrier": [
+     1,
+     2
+    ],
+    "top_single_share": 0.8287684459076213,
+    "top_index_group": 2,
+    "top_index_group_share": 0.876027642949286,
+    "best_member_of_top_group": [
+     1,
+     2
+    ],
+    "block_share": {
+     "0": -0.004557868855386634,
+     "1": 0.8193271941523936,
+     "2": 0.06758391231224756,
+     "3": 0.14366317466676953
+    }
+   },
+   "G": {
+    "baseline": {
+     "ssdc4": 0.9486539968699039,
+     "exact@4": 0.39803571428571427,
+     "row@4": 0.754234693877551,
+     "col@4": 0.7717857142857143,
+     "ridge_row_r2": 0.9938326115877721,
+     "ridge_col_r2": 0.9919526816665641,
+     "ridge_row_null_r2": -0.004849938626543038,
+     "ridge_col_null_r2": -0.004597575526694264
+    },
+    "axis_row": {
+     "ssdc4": 0.3704458129119205,
+     "exact@4": 0.07505102040816326,
+     "row@4": 0.08239795918367347,
+     "col@4": 0.7029081632653061,
+     "ridge_row_r2": -0.005481580891695259,
+     "ridge_col_r2": 0.8748127958750378,
+     "ridge_row_null_r2": -0.004934244641283225,
+     "ridge_col_null_r2": -0.004050282025277019
+    },
+    "axis_col": {
+     "ssdc4": 0.6487726829233088,
+     "exact@4": 0.08288265306122448,
+     "row@4": 0.8170663265306123,
+     "col@4": 0.08323979591836735,
+     "ridge_row_r2": 0.994013999755766,
+     "ridge_col_r2": -0.00489448036303175,
+     "ridge_row_null_r2": -0.0048651833734412175,
+     "ridge_col_null_r2": -0.0034916223412422287
+    },
+    "floor": {
+     "ssdc4": 0.01771153193184029,
+     "exact@4": 0.011607142857142858,
+     "row@4": 0.08066326530612244,
+     "col@4": 0.0814795918367347,
+     "ridge_row_r2": -0.004491425073572364,
+     "ridge_col_r2": -0.004912356042859223,
+     "ridge_row_null_r2": -0.004517207351051988,
+     "ridge_col_null_r2": -0.003642870851393809
+    }
+   }
+  },
+  "small": {
+   "A": {
+    "cref_out11": 0.3875155211564889,
+    "baseline_out11": 0.5154266874690673,
+    "floor_out11": 0.018329833383736834,
+    "recovery_b11": 0.5815180374098473,
+    "recovery_out11": 0.7426836133414325,
+    "top_single": [
+     11,
+     3
+    ],
+    "top_single_cost_out11": 0.09858689343617699,
+    "top_single_share_of_recovery": 0.26703877398644177,
+    "block_cost_out11": {
+     "6": -0.0067664103890979765,
+     "7": 0.047222750489645804,
+     "8": -0.011855946700248421,
+     "9": 0.030225732947812833,
+     "10": -0.007609352525937918,
+     "11": 0.15952409663293232
+    },
+    "top_head_share_of_its_block": 0.618006279408854,
+    "groups": {
+     "0": {
+      "cost_b11": 0.029510673599110582,
+      "cost_out11": 0.03269531244778234,
+      "sum_of_member_singles_out11": 0.027583806839192426,
+      "best_member": [
+       11,
+       0
+      ],
+      "best_member_cost_out11": 0.022686026009954396,
+      "best_member_share": 0.6938617285332945
+     },
+     "1": {
+      "cost_b11": -0.010224549147072243,
+      "cost_out11": 0.005462567164378818,
+      "sum_of_member_singles_out11": 0.006652275522480711,
+      "best_member": [
+       8,
+       1
+      ],
+      "best_member_cost_out11": 0.007820390907639974,
+      "best_member_share": 1.4316329067103157
+     },
+     "2": {
+      "cost_b11": 0.08126971515647066,
+      "cost_out11": 0.04064185236055562,
+      "sum_of_member_singles_out11": 0.046790755123699346,
+      "best_member": [
+       8,
+       2
+      ],
+      "best_member_cost_out11": 0.018302614256693106,
+      "best_member_share": 0.4503390764358086
+     },
+     "3": {
+      "cost_b11": -0.06884883161554581,
+      "cost_out11": 0.05813932290584528,
+      "sum_of_member_singles_out11": 0.05155905816903428,
+      "best_member": [
+       11,
+       3
+      ],
+      "best_member_cost_out11": 0.09858689343617699,
+      "best_member_share": 1.695700749660178
+     },
+     "4": {
+      "cost_b11": 0.07058539707828895,
+      "cost_out11": 0.05047576941473492,
+      "sum_of_member_singles_out11": 0.0633370874824069,
+      "best_member": [
+       8,
+       4
+      ],
+      "best_member_cost_out11": 0.01816086747482487,
+      "best_member_share": 0.3597937720494329
+     },
+     "5": {
+      "cost_b11": -0.017792082616903987,
+      "cost_out11": -0.006854500678860731,
+      "sum_of_member_singles_out11": -0.023532303308598734,
+      "best_member": [
+       7,
+       5
+      ],
+      "best_member_cost_out11": 0.014426974829266581,
+      "best_member_share": null
+     }
+    },
+    "boot_p_top_single_stays_top": 1.0,
+    "boot_rank_interval_top5": {
+     "b11_h3": [
+      1,
+      1
+     ],
+     "b11_h0": [
+      2,
+      5
+     ],
+     "b8_h2": [
+      2,
+      7
+     ],
+     "b8_h4": [
+      2,
+      8
+     ],
+     "b7_h4": [
+      2,
+      11
+     ]
+    },
+    "boot_top1_minus_top2_out11": [
+     0.07082220166921616,
+     0.003723382018506527
+    ],
+    "boot_p_top_index_group_stays_top_b11": 0.998,
+    "boot_top_index_group": 2,
+    "rpi_seeds_top_single_still_top": "2/2"
+   },
+   "C": {
+    "window_top1": 48.60000014305115,
+    "baseline_top1": 81.36000037193298,
+    "floor_top1": 24.060000479221344,
+    "top_index_group": 2,
+    "top_group_cost": [
+     7.48,
+     0.4578775495370722
+    ],
+    "top_group_minus_mean_of_others": [
+     4.279999999999999,
+     0.37512193123391024
+    ],
+    "top_group_is_costliest": true,
+    "next_group": 4,
+    "top_minus_next": [
+     1.1400000000000001,
+     0.45008954233488235
+    ],
+    "singles_spearman_ssdc_vs_top1": [
+     0.37473446508213215,
+     0.025197480251974803,
+     36
+    ],
+    "singles_partial_spearman_given_head_norm": [
+     0.39846435937025365,
+     0.015798420157984203
+    ],
+    "top_ssdc_single": [
+     11,
+     3
+    ],
+    "top_ssdc_single_rank_in_top1_cost": [
+     15,
+     36
+    ],
+    "chance_that_rank_is_1": 0.027777777777777776,
+    "top_ssdc_single_top1_cost": [
+     0.08,
+     0.0979828562965257
+    ],
+    "groups_spearman_ssdc_vs_top1": [
+     0.6571428571428573,
+     0.1795820417958204,
+     6
+    ],
+    "block_cost": {
+     "6": 2.68000066280365,
+     "7": 10.280001163482666,
+     "8": 4.559999704360962,
+     "9": 2.2000014781951904,
+     "10": 0.04000067710876465,
+     "11": 0.09999871253967285
+    }
+   },
+   "D": {
+    "ssdc": {
+     "null_mean": 0.03997461935568671,
+     "null_p95": 0.1364638594928951,
+     "n_null": 48,
+     "paper_top_group": 2,
+     "paper_top_group_cost": 0.04064185236055562,
+     "paper_top_group_percentile": 60.416666666666664,
+     "index_group_percentiles": {
+      "0": 52.083333333333336,
+      "1": 29.166666666666668,
+      "2": 60.416666666666664,
+      "3": 66.66666666666666,
+      "4": 64.58333333333334,
+      "5": 18.75
+     },
+     "top_index_group": 3,
+     "top_index_group_cost": 0.05813932290584528,
+     "expected_max_of_n_random_sets": [
+      0.1093163874297652,
+      0.03749213090783848,
+      0.15238229900230638
+     ],
+     "p_max_random_ge_top_group": 0.9101,
+     "best_per_block": 0.16899031534981734,
+     "top6": 0.20260674276282253
+    },
+    "acc": {
+     "null_mean": 4.925833394130071,
+     "null_p95": 10.369999408721922,
+     "n_null": 24,
+     "paper_top_group": 2,
+     "paper_top_group_cost": 7.480001449584961,
+     "paper_top_group_percentile": 62.5,
+     "index_group_percentiles": {
+      "0": 37.5,
+      "1": 16.666666666666664,
+      "2": 62.5,
+      "3": 50.0,
+      "4": 62.5,
+      "5": 12.5
+     },
+     "top_index_group": 2,
+     "top_index_group_cost": 7.480001449584961,
+     "expected_max_of_n_random_sets": [
+      9.792530386149883,
+      5.379998683929443,
+      13.64000141620636
+     ],
+     "p_max_random_ge_top_group": 0.9403,
+     "best_per_block": 15.380001068115234,
+     "top6": 11.540001630783081
+    }
+   },
+   "B": {
+    "noise_bar_3sd_points": {
+     "11": 0.6717415137077544,
+     "12": 0.8027866780770481
+    },
+    "singles": [
+     {
+      "model": "small",
+      "block": 6,
+      "head": 2,
+      "row_cost_b11": 0.12244897959183543,
+      "col_cost_b11": 0.12499999999999872,
+      "favours_b11": "none",
+      "row_cost_out11": 0.005102040816326592,
+      "col_cost_out11": 0.15561224489795966,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 7,
+      "head": 2,
+      "row_cost_b11": 0.03826530612244805,
+      "col_cost_b11": 0.002551020408163296,
+      "favours_b11": "none",
+      "row_cost_out11": 0.0688775510204076,
+      "col_cost_out11": 0.08418367346938876,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 8,
+      "head": 2,
+      "row_cost_b11": 0.8698979591836742,
+      "col_cost_b11": -0.07653061224489888,
+      "favours_b11": "row",
+      "row_cost_out11": 0.4795918367346941,
+      "col_cost_out11": 0.010204081632653184,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 9,
+      "head": 2,
+      "row_cost_b11": 0.18112244897958985,
+      "col_cost_b11": 0.005102040816325204,
+      "favours_b11": "none",
+      "row_cost_out11": 0.03826530612244805,
+      "col_cost_out11": -0.028061224489794867,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 10,
+      "head": 2,
+      "row_cost_b11": -0.04336734693877742,
+      "col_cost_b11": -0.0637755102040824,
+      "favours_b11": "none",
+      "row_cost_out11": 0.0688775510204076,
+      "col_cost_out11": 0.03316326530612285,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 11,
+      "head": 2,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.07142857142857229,
+      "col_cost_out11": -0.04336734693877464,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 6,
+      "head": 0,
+      "row_cost_b11": 0.9999999999999981,
+      "col_cost_b11": 0.15306122448979498,
+      "favours_b11": "row",
+      "row_cost_out11": 0.545918367346937,
+      "col_cost_out11": 0.20408163265306228,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 7,
+      "head": 0,
+      "row_cost_b11": 0.03316326530612146,
+      "col_cost_b11": -0.03571428571428614,
+      "favours_b11": "none",
+      "row_cost_out11": 0.1989795918367343,
+      "col_cost_out11": 0.1275510204081634,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 8,
+      "head": 0,
+      "row_cost_b11": 0.23214285714285576,
+      "col_cost_b11": -0.0612244897959191,
+      "favours_b11": "none",
+      "row_cost_out11": 0.048469387755101234,
+      "col_cost_out11": 0.06887755102040899,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 9,
+      "head": 0,
+      "row_cost_b11": 0.06377551020408101,
+      "col_cost_b11": -0.005102040816326592,
+      "favours_b11": "none",
+      "row_cost_out11": -0.10204081632653184,
+      "col_cost_out11": 0.03826530612244944,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 10,
+      "head": 0,
+      "row_cost_b11": 0.19132653061224303,
+      "col_cost_b11": -0.020408163265306367,
+      "favours_b11": "none",
+      "row_cost_out11": -0.02551020408163296,
+      "col_cost_out11": 0.03316326530612285,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 11,
+      "head": 0,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.02551020408163296,
+      "col_cost_out11": 0.3163265306122459,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 11,
+      "head": 3,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 3.025510204081633,
+      "col_cost_out11": 0.053571428571429214,
+      "favours_out11": "row"
+     },
+     {
+      "model": "small",
+      "block": 8,
+      "head": 4,
+      "row_cost_b11": 0.08673469387754928,
+      "col_cost_b11": -0.10459183673469513,
+      "favours_b11": "none",
+      "row_cost_out11": 0.03571428571428614,
+      "col_cost_out11": -0.09183673469387726,
+      "favours_out11": "none"
+     },
+     {
+      "model": "small",
+      "block": 7,
+      "head": 4,
+      "row_cost_b11": 1.6301020408163254,
+      "col_cost_b11": 0.04336734693877464,
+      "favours_b11": "row",
+      "row_cost_out11": 0.9770408163265298,
+      "col_cost_out11": 0.020408163265306367,
+      "favours_out11": "row"
+     },
+     {
+      "model": "small",
+      "block": 7,
+      "head": 5,
+      "row_cost_b11": 0.25255102040816213,
+      "col_cost_b11": 0.005102040816325204,
+      "favours_b11": "none",
+      "row_cost_out11": 0.10714285714285565,
+      "col_cost_out11": 0.13265306122449,
+      "favours_out11": "none"
+     }
+    ],
+    "groups": {
+     "2": {
+      "row_cost_mean7_11": 0.7321428571428568,
+      "col_cost_mean7_11": 0.6841836734693876,
+      "row_cost_out11": 0.8392857142857146,
+      "col_cost_out11": 0.23214285714285715
+     },
+     "0": {
+      "row_cost_mean7_11": 3.0336734693877547,
+      "col_cost_mean7_11": 0.7755102040816323,
+      "row_cost_out11": 0.6760204081632637,
+      "col_cost_out11": 0.5178571428571435
+     }
+    },
+    "recovery_of_removed_axis": {
+     "row": {
+      "11": 0.458802703572578,
+      "12": 0.5954928664072633
+     },
+     "col": {
+      "11": 0.27987530308278485,
+      "12": 0.3167372881355933
+     }
+    }
+   },
+   "E": {
+    "top_single_carrier": [
+     1,
+     4
+    ],
+    "top_single_share": 0.47242499629918017,
+    "top_index_group": 4,
+    "top_index_group_share": 0.7069322947151587,
+    "best_member_of_top_group": [
+     1,
+     4
+    ],
+    "block_share": {
+     "0": 0.030411943716296692,
+     "1": 0.40988906110261436,
+     "2": 0.4217025835506456,
+     "3": 0.4004960248872501
+    }
+   },
+   "G": {
+    "baseline": {
+     "ssdc4": 0.3714341327757368,
+     "exact@4": 0.17869897959183673,
+     "row@4": 0.3597959183673469,
+     "col@4": 0.5019132653061225,
+     "ridge_row_r2": 0.4766927786713915,
+     "ridge_col_r2": 0.9012329268224822,
+     "ridge_row_null_r2": -0.002475704512073351,
+     "ridge_col_null_r2": -0.002286271982009813
+    },
+    "axis_row": {
+     "ssdc4": 0.26028057420010225,
+     "exact@4": 0.04466836734693878,
+     "row@4": 0.07806122448979592,
+     "col@4": 0.4973724489795918,
+     "ridge_row_r2": -0.002866431397699376,
+     "ridge_col_r2": 0.91772609921588,
+     "ridge_row_null_r2": -0.0027297833399855254,
+     "ridge_col_null_r2": -0.0025495768142573816
+    },
+    "axis_col": {
+     "ssdc4": 0.035519807867407306,
+     "exact@4": 0.030612244897959183,
+     "row@4": 0.31035714285714283,
+     "col@4": 0.07885204081632653,
+     "ridge_row_r2": 0.33189039761004957,
+     "ridge_col_r2": -0.002742204574974094,
+     "ridge_row_null_r2": -0.0029570346138594328,
+     "ridge_col_null_r2": -0.002286657103360845
+    },
+    "floor": {
+     "ssdc4": 0.011329704520471648,
+     "exact@4": 0.008545918367346939,
+     "row@4": 0.07716836734693877,
+     "col@4": 0.07813775510204081,
+     "ridge_row_r2": -0.0027665396678981935,
+     "ridge_col_r2": -0.0025914073067170307,
+     "ridge_row_null_r2": -0.002736236836615724,
+     "ridge_col_null_r2": -0.002748937019658504
+    }
+   }
+  },
+  "reg1_gap": {
+   "A": {
+    "cref_out11": 0.28903192647592263,
+    "baseline_out11": 0.48232752492091535,
+    "floor_out11": 0.011086104157529583,
+    "recovery_b11": 0.5423729452345712,
+    "recovery_out11": 0.5898161962675856,
+    "top_single": [
+     6,
+     4
+    ],
+    "top_single_cost_out11": 0.02132591019503255,
+    "top_single_share_of_recovery": 0.07672685999433101,
+    "block_cost_out11": {
+     "6": 0.04458731453672962,
+     "7": 0.045434025302042796,
+     "8": 0.045908804021081995,
+     "9": 0.027249657887509104,
+     "10": 0.0137567032878807,
+     "11": 0.029373706155675527
+    },
+    "top_head_share_of_its_block": 0.4782954617611011,
+    "groups": {
+     "0": {
+      "cost_b11": 0.00951372973489073,
+      "cost_out11": 0.010182933963953533,
+      "sum_of_member_singles_out11": 0.009508258819452997,
+      "best_member": [
+       7,
+       0
+      ],
+      "best_member_cost_out11": 0.004392905523977697,
+      "best_member_share": 0.4313988030883928
+     },
+     "1": {
+      "cost_b11": 0.004571161465068058,
+      "cost_out11": 0.01685971402516173,
+      "sum_of_member_singles_out11": 0.016051429184935018,
+      "best_member": [
+       8,
+       1
+      ],
+      "best_member_cost_out11": 0.009876602062679818,
+      "best_member_share": 0.5858107704519664
+     },
+     "2": {
+      "cost_b11": 0.021567998215806183,
+      "cost_out11": 0.029923032990676446,
+      "sum_of_member_singles_out11": 0.030430159809403057,
+      "best_member": [
+       6,
+       2
+      ],
+      "best_member_cost_out11": 0.009307408667620365,
+      "best_member_share": 0.31104496227105083
+     },
+     "3": {
+      "cost_b11": 0.021742588645500688,
+      "cost_out11": 0.020938146204180608,
+      "sum_of_member_singles_out11": 0.020932627314955432,
+      "best_member": [
+       6,
+       3
+      ],
+      "best_member_cost_out11": 0.007657964743872647,
+      "best_member_share": 0.3657422519259906
+     },
+     "4": {
+      "cost_b11": -0.03068605419671877,
+      "cost_out11": -0.016058416731995206,
+      "sum_of_member_singles_out11": -0.016341003046874802,
+      "best_member": [
+       6,
+       4
+      ],
+      "best_member_cost_out11": 0.02132591019503255,
+      "best_member_share": null
+     },
+     "5": {
+      "cost_b11": 0.010287289201566074,
+      "cost_out11": 0.014577293196741059,
+      "sum_of_member_singles_out11": 0.01472835835724412,
+      "best_member": [
+       7,
+       5
+      ],
+      "best_member_cost_out11": 0.008050729429639969,
+      "best_member_share": 0.5522787612888114
+     },
+     "6": {
+      "cost_b11": 0.03347148917452458,
+      "cost_out11": 0.024483688398668046,
+      "sum_of_member_singles_out11": 0.028865143063094623,
+      "best_member": [
+       7,
+       6
+      ],
+      "best_member_cost_out11": 0.018581740454193585,
+      "best_member_share": 0.7589436751369725
+     },
+     "7": {
+      "cost_b11": 0.05211456728085359,
+      "cost_out11": 0.05037985446674387,
+      "sum_of_member_singles_out11": 0.04880110613079702,
+      "best_member": [
+       7,
+       7
+      ],
+      "best_member_cost_out11": 0.02124807141717594,
+      "best_member_share": 0.4217573004543305
+     },
+     "8": {
+      "cost_b11": -0.006111474947713025,
+      "cost_out11": -0.003141232464125232,
+      "sum_of_member_singles_out11": -0.002262638035215647,
+      "best_member": [
+       10,
+       8
+      ],
+      "best_member_cost_out11": 0.0052920573449452,
+      "best_member_share": null
+     },
+     "9": {
+      "cost_b11": 0.02786721148685506,
+      "cost_out11": 0.02562257811951718,
+      "sum_of_member_singles_out11": 0.0255573764111936,
+      "best_member": [
+       6,
+       9
+      ],
+      "best_member_cost_out11": 0.02083266402660061,
+      "best_member_share": 0.8130588549452795
+     },
+     "10": {
+      "cost_b11": -0.0770826090516305,
+      "cost_out11": -0.05719351096058717,
+      "sum_of_member_singles_out11": -0.061631007882034405,
+      "best_member": [
+       7,
+       10
+      ],
+      "best_member_cost_out11": 0.011007694813077729,
+      "best_member_share": null
+     },
+     "11": {
+      "cost_b11": 0.012275118343387181,
+      "cost_out11": 0.024460279512868555,
+      "sum_of_member_singles_out11": 0.026442826217965065,
+      "best_member": [
+       6,
+       11
+      ],
+      "best_member_cost_out11": 0.01017468088370227,
+      "best_member_share": 0.4159674822337729
+     }
+    },
+    "boot_p_top_single_stays_top": 0.34,
+    "boot_rank_interval_top5": {
+     "b6_h4": [
+      1,
+      4
+     ],
+     "b7_h7": [
+      1,
+      4
+     ],
+     "b6_h9": [
+      1,
+      4
+     ],
+     "b6_h7": [
+      1,
+      5
+     ],
+     "b7_h6": [
+      4,
+      5
+     ]
+    },
+    "boot_top1_minus_top2_out11": [
+     -0.00017950870096683502,
+     0.0012810170883312821
+    ],
+    "boot_p_top_index_group_stays_top_b11": 1.0,
+    "boot_top_index_group": 7,
+    "rpi_seeds_top_single_still_top": "0/2"
+   },
+   "C": {
+    "window_top1": 56.279999017715454,
+    "baseline_top1": 83.88000130653381,
+    "floor_top1": 29.499998688697815,
+    "top_index_group": 7,
+    "top_group_cost": [
+     5.74,
+     0.3952742444754896
+    ],
+    "top_group_minus_mean_of_others": [
+     4.625454545454545,
+     0.31514719910724265
+    ],
+    "top_group_is_costliest": true,
+    "next_group": 9,
+    "top_minus_next": [
+     0.84,
+     0.3368702662973731
+    ],
+    "singles_spearman_ssdc_vs_top1": [
+     0.580310020823999,
+     9.999000099990002e-05,
+     72
+    ],
+    "singles_partial_spearman_given_head_norm": [
+     0.5867469187724657,
+     9.999000099990002e-05
+    ],
+    "top_ssdc_single": [
+     6,
+     4
+    ],
+    "top_ssdc_single_rank_in_top1_cost": [
+     11,
+     72
+    ],
+    "chance_that_rank_is_1": 0.013888888888888888,
+    "top_ssdc_single_top1_cost": [
+     0.8,
+     0.2206393807715872
+    ],
+    "groups_spearman_ssdc_vs_top1": [
+     0.9090909090909092,
+     0.00029997000299970003,
+     12
+    ],
+    "block_cost": {
+     "6": 11.559998989105225,
+     "7": 2.2599995136260986,
+     "8": 2.779996395111084,
+     "9": 0.679999589920044,
+     "10": -0.7600009441375732,
+     "11": -0.959998369216919
+    }
+   },
+   "D": {
+    "ssdc": {
+     "null_mean": 0.015069748567776153,
+     "null_p95": 0.04276557785124683,
+     "n_null": 48,
+     "paper_top_group": 7,
+     "paper_top_group_cost": 0.05037985446674387,
+     "paper_top_group_percentile": 100.0,
+     "index_group_percentiles": {
+      "0": 25.0,
+      "1": 39.58333333333333,
+      "2": 66.66666666666666,
+      "3": 43.75,
+      "4": 12.5,
+      "5": 31.25,
+      "6": 56.25,
+      "7": 100.0,
+      "8": 16.666666666666664,
+      "9": 56.25,
+      "10": 6.25,
+      "11": 56.25
+     },
+     "top_index_group": 7,
+     "top_index_group_cost": 0.05037985446674387,
+     "expected_max_of_n_random_sets": [
+      0.04262526859346064,
+      0.032214009878217764,
+      0.047030278747531046
+     ],
+     "p_max_random_ge_top_group": 0.0,
+     "best_per_block": 0.07258308779017375,
+     "top6": 0.11454429131610916
+    },
+    "acc": {
+     "null_mean": 1.2908322115739186,
+     "null_p95": 3.7919995188713065,
+     "n_null": 24,
+     "paper_top_group": 7,
+     "paper_top_group_cost": 5.739998817443848,
+     "paper_top_group_percentile": 100.0,
+     "index_group_percentiles": {
+      "0": 33.33333333333333,
+      "1": 20.833333333333336,
+      "2": 100.0,
+      "3": 100.0,
+      "4": 12.5,
+      "5": 41.66666666666667,
+      "6": 54.166666666666664,
+      "7": 100.0,
+      "8": 12.5,
+      "9": 100.0,
+      "10": 12.5,
+      "11": 16.666666666666664
+     },
+     "top_index_group": 7,
+     "top_index_group_cost": 5.739998817443848,
+     "expected_max_of_n_random_sets": [
+      3.6533863854408266,
+      2.8199970722198486,
+      3.8999974727630615
+     ],
+     "p_max_random_ge_top_group": 0.0,
+     "best_per_block": 1.639997959136963,
+     "top6": 17.67999827861786
+    }
+   },
+   "B": {
+    "noise_bar_3sd_points": {
+     "11": 0.6479305679600665,
+     "12": 0.5082536070002771
+    },
+    "singles": [
+     {
+      "model": "reg1_gap",
+      "block": 6,
+      "head": 7,
+      "row_cost_b11": 1.658163265306123,
+      "col_cost_b11": -0.1301020408163267,
+      "favours_b11": "row",
+      "row_cost_out11": 1.0535714285714273,
+      "col_cost_out11": -0.07908163265306217,
+      "favours_out11": "row"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 7,
+      "head": 7,
+      "row_cost_b11": 0.8724489795918361,
+      "col_cost_b11": 0.0,
+      "favours_b11": "row",
+      "row_cost_out11": 0.4872448979591826,
+      "col_cost_out11": 0.040816326530611347,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 8,
+      "head": 7,
+      "row_cost_b11": 0.0076530612244912755,
+      "col_cost_b11": -0.10714285714285843,
+      "favours_b11": "none",
+      "row_cost_out11": 0.06377551020408101,
+      "col_cost_out11": 0.010204081632653184,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 9,
+      "head": 7,
+      "row_cost_b11": 0.1352040816326533,
+      "col_cost_b11": 0.030612244897956775,
+      "favours_b11": "none",
+      "row_cost_out11": 0.1250000000000001,
+      "col_cost_out11": -0.03061224489795955,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 10,
+      "head": 7,
+      "row_cost_b11": -0.020408163265306367,
+      "col_cost_b11": 0.015306122448977,
+      "favours_b11": "none",
+      "row_cost_out11": 0.12755102040816202,
+      "col_cost_out11": -0.058673469387755806,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 11,
+      "head": 7,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": 0.1377551020408152,
+      "col_cost_out11": 0.08418367346938738,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 6,
+      "head": 3,
+      "row_cost_b11": 0.01785714285714446,
+      "col_cost_b11": 1.0357142857142843,
+      "favours_b11": "col",
+      "row_cost_out11": -0.05102040816326592,
+      "col_cost_out11": 0.37755102040816224,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 7,
+      "head": 3,
+      "row_cost_b11": -0.10204081632652906,
+      "col_cost_b11": -0.033163265306124234,
+      "favours_b11": "none",
+      "row_cost_out11": 0.18877551020408112,
+      "col_cost_out11": 0.03826530612244805,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 8,
+      "head": 3,
+      "row_cost_b11": 0.22193877551020535,
+      "col_cost_b11": 0.04081632653060996,
+      "favours_b11": "none",
+      "row_cost_out11": 0.17857142857142794,
+      "col_cost_out11": -0.01275510204081648,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 9,
+      "head": 3,
+      "row_cost_b11": -0.022959183673468275,
+      "col_cost_b11": 0.017857142857141683,
+      "favours_b11": "none",
+      "row_cost_out11": 0.07142857142856951,
+      "col_cost_out11": -0.007653061224489888,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 10,
+      "head": 3,
+      "row_cost_b11": -0.015306122448979775,
+      "col_cost_b11": 0.012755102040815092,
+      "favours_b11": "none",
+      "row_cost_out11": 0.14540816326530648,
+      "col_cost_out11": -0.05612244897959251,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 11,
+      "head": 3,
+      "row_cost_b11": 0.0,
+      "col_cost_b11": 0.0,
+      "favours_b11": "none",
+      "row_cost_out11": -0.0076530612244912755,
+      "col_cost_out11": -0.002551020408163296,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 6,
+      "head": 4,
+      "row_cost_b11": -0.1403061224489799,
+      "col_cost_b11": -0.06887755102041038,
+      "favours_b11": "none",
+      "row_cost_out11": 0.002551020408161908,
+      "col_cost_out11": -0.07397959183673558,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 6,
+      "head": 9,
+      "row_cost_b11": 1.997448979591837,
+      "col_cost_b11": 0.012755102040815092,
+      "favours_b11": "row",
+      "row_cost_out11": 1.145408163265306,
+      "col_cost_out11": 0.08163265306122408,
+      "favours_out11": "row"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 7,
+      "head": 6,
+      "row_cost_b11": -0.015306122448979775,
+      "col_cost_b11": -0.11224489795918502,
+      "favours_b11": "none",
+      "row_cost_out11": -0.01785714285714446,
+      "col_cost_out11": -0.01785714285714307,
+      "favours_out11": "none"
+     },
+     {
+      "model": "reg1_gap",
+      "block": 7,
+      "head": 10,
+      "row_cost_b11": 0.8010204081632666,
+      "col_cost_b11": 0.2015306122448962,
+      "favours_b11": "none",
+      "row_cost_out11": 0.5535714285714283,
+      "col_cost_out11": 0.05867346938775442,
+      "favours_out11": "none"
+     }
+    ],
+    "groups": {
+     "7": {
+      "row_cost_mean7_11": 3.839795918367347,
+      "col_cost_mean7_11": 5.551115123125783e-16,
+      "row_cost_out11": 1.7755102040816317,
+      "col_cost_out11": 0.196428571428571
+     },
+     "3": {
+      "row_cost_mean7_11": 0.30051020408163265,
+      "col_cost_mean7_11": 2.7030612244897956,
+      "row_cost_out11": 0.2602040816326534,
+      "col_cost_out11": 0.31377551020408123
+     }
+    },
+    "recovery_of_removed_axis": {
+     "row": {
+      "11": 0.3108314263920672,
+      "12": 0.29394544244843646
+     },
+     "col": {
+      "11": 0.2499502091216889,
+      "12": 0.27525526830328045
+     }
+    }
+   },
+   "E": {
+    "top_single_carrier": [
+     1,
+     0
+    ],
+    "top_single_share": 0.4465898368099065,
+    "top_index_group": 0,
+    "top_index_group_share": 0.4564944771145812,
+    "best_member_of_top_group": [
+     1,
+     0
+    ],
+    "block_share": {
+     "0": -0.07476542348806652,
+     "1": 0.6639402057196954,
+     "2": 0.4256005452383926,
+     "3": 0.40841430030765763
+    }
+   },
+   "G": {
+    "baseline": {
+     "ssdc4": 0.6890233015380197,
+     "exact@4": 0.3679081632653061,
+     "row@4": 0.6965561224489796,
+     "col@4": 0.6921428571428572,
+     "ridge_row_r2": 0.979513135434396,
+     "ridge_col_r2": 0.9590909982927706,
+     "ridge_row_null_r2": -0.006028085061298594,
+     "ridge_col_null_r2": -0.0038021729428037165
+    },
+    "axis_row": {
+     "ssdc4": 0.26228407765585854,
+     "exact@4": 0.05920918367346939,
+     "row@4": 0.07767857142857143,
+     "col@4": 0.6984183673469387,
+     "ridge_row_r2": -0.00532505063282418,
+     "ridge_col_r2": 0.9543790967598806,
+     "ridge_row_null_r2": -0.005646047278585531,
+     "ridge_col_null_r2": -0.003953729340452128
+    },
+    "axis_col": {
+     "ssdc4": 0.44699392783712805,
+     "exact@4": 0.06219387755102041,
+     "row@4": 0.7422704081632653,
+     "col@4": 0.07596938775510204,
+     "ridge_row_r2": 0.9773395822160402,
+     "ridge_col_r2": -0.0036648323883901046,
+     "ridge_row_null_r2": -0.005720833894723443,
+     "ridge_col_null_r2": -0.004107755547182013
+    },
+    "floor": {
+     "ssdc4": 0.014417191906507,
+     "exact@4": 0.007168367346938776,
+     "row@4": 0.07755102040816327,
+     "col@4": 0.07497448979591836,
+     "ridge_row_r2": -0.00535551859277783,
+     "ridge_col_r2": -0.0045435770611710335,
+     "ridge_row_null_r2": -0.005175059548260252,
+     "ridge_col_null_r2": -0.005430661167231676
+    }
+   }
+  },
+  "rope_ape": {
+   "A": {
+    "cref_out11": 0.42160698406186586,
+    "baseline_out11": 0.47041813574920116,
+    "floor_out11": 0.22684255904838596,
+    "recovery_b11": null,
+    "recovery_out11": null,
+    "top_single": [
+     6,
+     3
+    ],
+    "top_single_cost_out11": 0.019440821360864002,
+    "top_single_share_of_recovery": null,
+    "block_cost_out11": {
+     "6": 0.08645869042756665,
+     "7": 0.06457162240339531,
+     "8": 0.0418884811946324,
+     "9": -0.018645776154213034,
+     "10": -0.06305453803508992,
+     "11": 0.03705328903384758
+    },
+    "top_head_share_of_its_block": 0.22485676413467226,
+    "groups": {
+     "0": {
+      "cost_b11": -0.009546716683599632,
+      "cost_out11": 0.005191743274097549,
+      "sum_of_member_singles_out11": 0.0055634738899300595,
+      "best_member": [
+       11,
+       0
+      ],
+      "best_member_cost_out11": 0.005827900653731677,
+      "best_member_share": 1.1225325186643995
+     },
+     "1": {
+      "cost_b11": -0.0046669927063603955,
+      "cost_out11": -0.025133211458859495,
+      "sum_of_member_singles_out11": -0.02356503869851223,
+      "best_member": [
+       7,
+       1
+      ],
+      "best_member_cost_out11": 0.008919951211074584,
+      "best_member_share": null
+     },
+     "2": {
+      "cost_b11": 0.005864881167054858,
+      "cost_out11": 0.006435322034040292,
+      "sum_of_member_singles_out11": 0.006931196148098284,
+      "best_member": [
+       7,
+       2
+      ],
+      "best_member_cost_out11": 0.014540081326782028,
+      "best_member_share": 2.259417827090981
+     },
+     "3": {
+      "cost_b11": 0.05837860338613529,
+      "cost_out11": 0.028569346097615522,
+      "sum_of_member_singles_out11": 0.02728207938371774,
+      "best_member": [
+       6,
+       3
+      ],
+      "best_member_cost_out11": 0.019440821360864002,
+      "best_member_share": 0.6804783453719505
+     },
+     "4": {
+      "cost_b11": -0.013598274106013886,
+      "cost_out11": -0.006557882208354016,
+      "sum_of_member_singles_out11": -0.004563302579001671,
+      "best_member": [
+       6,
+       4
+      ],
+      "best_member_cost_out11": 0.006205034766000428,
+      "best_member_share": null
+     },
+     "5": {
+      "cost_b11": 0.005048934840153396,
+      "cost_out11": -0.0005714120081893315,
+      "sum_of_member_singles_out11": -0.0005309010187007357,
+      "best_member": [
+       8,
+       5
+      ],
+      "best_member_cost_out11": 0.0035913867415439116,
+      "best_member_share": null
+     },
+     "6": {
+      "cost_b11": -0.002856366598453841,
+      "cost_out11": 0.008433036998792998,
+      "sum_of_member_singles_out11": 0.004147892926106345,
+      "best_member": [
+       8,
+       6
+      ],
+      "best_member_cost_out11": 0.011121202233966454,
+      "best_member_share": 1.3187659719218838
+     },
+     "7": {
+      "cost_b11": 0.011354905428680895,
+      "cost_out11": 0.0031417668786389297,
+      "sum_of_member_singles_out11": 0.0019778124484056137,
+      "best_member": [
+       8,
+       7
+      ],
+      "best_member_cost_out11": 0.005660538752006894,
+      "best_member_share": 1.8017055277058436
+     },
+     "8": {
+      "cost_b11": -0.005736852115147628,
+      "cost_out11": 0.0025109310324751832,
+      "sum_of_member_singles_out11": 0.005410968444936826,
+      "best_member": [
+       11,
+       8
+      ],
+      "best_member_cost_out11": 0.008137939718769305,
+      "best_member_share": 3.2410048756883714
+     },
+     "9": {
+      "cost_b11": 0.05322568390951185,
+      "cost_out11": 0.02295607391142923,
+      "sum_of_member_singles_out11": 0.023730666492861263,
+      "best_member": [
+       6,
+       9
+      ],
+      "best_member_cost_out11": 0.01826296895980295,
+      "best_member_share": 0.7955615158875357
+     },
+     "10": {
+      "cost_b11": -0.0011733035582701112,
+      "cost_out11": 0.011859735609974664,
+      "sum_of_member_singles_out11": 0.01137758506637887,
+      "best_member": [
+       7,
+       10
+      ],
+      "best_member_cost_out11": 0.012217803420600248,
+      "best_member_share": 1.030191888116328
+     },
+     "11": {
+      "cost_b11": 0.024373489125648212,
+      "cost_out11": 0.0272021219024709,
+      "sum_of_member_singles_out11": 0.02600863146993454,
+      "best_member": [
+       6,
+       11
+      ],
+      "best_member_cost_out11": 0.018442181225787613,
+      "best_member_share": 0.6779684795145492
+     }
+    },
+    "boot_p_top_single_stays_top": 0.572,
+    "boot_rank_interval_top5": {
+     "b6_h3": [
+      1,
+      3
+     ],
+     "b6_h11": [
+      1,
+      3
+     ],
+     "b6_h9": [
+      1,
+      3
+     ],
+     "b7_h2": [
+      4,
+      5
+     ],
+     "b8_h9": [
+      5,
+      8
+     ]
+    },
+    "boot_top1_minus_top2_out11": [
+     0.0009595956653356552,
+     0.002038641832768917
+    ],
+    "boot_p_top_index_group_stays_top_b11": 0.992,
+    "boot_top_index_group": 3,
+    "rpi_seeds_top_single_still_top": "1/2"
+   },
+   "C": {
+    "window_top1": 70.1799988746643,
+    "baseline_top1": 84.82000231742859,
+    "floor_top1": 42.59999990463257,
+    "top_index_group": 3,
+    "top_group_cost": [
+     0.7000000000000001,
+     0.26891720527452034
+    ],
+    "top_group_minus_mean_of_others": [
+     -0.9363636363636362,
+     0.2340111465425336
+    ],
+    "top_group_is_costliest": false,
+    "next_group": 9,
+    "top_minus_next": [
+     -3.1199999999999997,
+     0.35394657172393557
+    ],
+    "singles_spearman_ssdc_vs_top1": [
+     0.4794518490454091,
+     9.999000099990002e-05,
+     72
+    ],
+    "singles_partial_spearman_given_head_norm": [
+     0.4800881241978979,
+     9.999000099990002e-05
+    ],
+    "top_ssdc_single": [
+     6,
+     3
+    ],
+    "top_ssdc_single_rank_in_top1_cost": [
+     71,
+     72
+    ],
+    "chance_that_rank_is_1": 0.013888888888888888,
+    "top_ssdc_single_top1_cost": [
+     -0.5,
+     0.22706895882619554
+    ],
+    "groups_spearman_ssdc_vs_top1": [
+     0.21678321678321683,
+     0.49435056494350565,
+     12
+    ],
+    "block_cost": {
+     "6": 11.180001497268677,
+     "7": 4.739999771118164,
+     "8": 2.52000093460083,
+     "9": 0.31999945640563965,
+     "10": 0.279998779296875,
+     "11": 0.26000142097473145
+    },
+    "hybrid_refs": {
+     "baseline": 84.82000231742859,
+     "floor": 42.59999990463257,
+     "ape_off": 83.89999866485596,
+     "both_off": 33.4199994802475,
+     "window": 70.1799988746643,
+     "ape_off_window": 61.97999715805054
+    }
+   }
+  },
+  "mixed": {
+   "F": {
+    "baseline": {
+     "ssdc4": 0.37587737912970676,
+     "exact@4": 0.28448979591836737,
+     "row@4": 0.5880867346938775,
+     "col@4": 0.5864285714285714,
+     "row@11": 0.3413010204081633,
+     "col@11": 0.24239795918367346,
+     "row@12": 0.3235204081632653,
+     "col@12": 0.22323979591836735,
+     "ridge_row_r2": 0.921684837272175,
+     "ridge_col_r2": 0.9094173047613846,
+     "ridge_row_null_r2": -0.005981672644601366,
+     "ridge_col_null_r2": -0.004119760313652243
+    },
+    "floor": {
+     "ssdc4": 0.016318838346166813,
+     "exact@4": 0.007933673469387755,
+     "row@4": 0.07798469387755103,
+     "col@4": 0.07785714285714286,
+     "ridge_row_r2": -0.004824117014854412,
+     "ridge_col_r2": -0.004093516233147021,
+     "ridge_row_null_r2": -0.006869902743490641,
+     "ridge_col_null_r2": -0.00448817203114471
+    },
+    "row_off": {
+     "ssdc4": 0.14321726661868744,
+     "exact@4": 0.05558673469387755,
+     "row@4": 0.07834183673469387,
+     "col@4": 0.6116836734693878,
+     "ridge_row_r2": -0.004533148244489693,
+     "ridge_col_r2": 0.9101810703717075,
+     "ridge_row_null_r2": -0.006662577911255463,
+     "ridge_col_null_r2": -0.004136166404771879
+    },
+    "col_off": {
+     "ssdc4": 0.14883914976241713,
+     "exact@4": 0.05887755102040816,
+     "row@4": 0.6666326530612245,
+     "col@4": 0.07928571428571428,
+     "ridge_row_r2": 0.9322473887836334,
+     "ridge_col_r2": -0.004421413966263943,
+     "ridge_row_null_r2": -0.007234762358432789,
+     "ridge_col_null_r2": -0.004736247124441206
+    },
+    "rand_planes": {
+     "ssdc4": 0.18772264142385559,
+     "exact@4": 0.17512755102040817,
+     "row@4": 0.5402295918367347,
+     "col@4": 0.3555867346938775,
+     "ridge_row_r2": 0.847770307414729,
+     "ridge_col_r2": 0.7131168640718977,
+     "ridge_row_null_r2": -0.006944443102242515,
+     "ridge_col_null_r2": -0.004744741186210266
+    },
+    "Cref": {
+     "ssdc4": 0.016318838346166813,
+     "row@11": 0.18987244897959182,
+     "col@11": 0.09428571428571429,
+     "row@12": 0.18681122448979592,
+     "col@12": 0.09418367346938776
+    },
+    "win_row": {
+     "ssdc4": 0.14321726661868744,
+     "row@11": 0.1958673469387755,
+     "col@11": 0.27798469387755104,
+     "row@12": 0.19214285714285714,
+     "col@12": 0.2571428571428571
+    },
+    "win_col": {
+     "ssdc4": 0.14883914976241713,
+     "row@11": 0.3896938775510204,
+     "col@11": 0.10321428571428572,
+     "row@12": 0.36775510204081635,
+     "col@12": 0.10165816326530612
+    },
+    "_acc": {
+     "baseline": 0.8479999899864197,
+     "floor": 0.4546000063419342,
+     "row_off": 0.6317999958992004,
+     "col_off": 0.6869999766349792,
+     "Cref": 0.7361999750137329,
+     "win_row": 0.7807999849319458,
+     "win_col": 0.7698000073432922
+    },
+    "_obliqueness": {
+     "median_min_over_max": 0.22485345602035522,
+     "frac_above_0.5": 0.2745225727558136
+    }
+   }
+  }
+ },
+ "gates": [
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000/-0.005",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "SSDC dataset is the repack every W2-W6 SSDC/probe number used",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "benjamin-paine/imagenet-1k-256x256",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "accuracy dataset is the ILSVRC split W7 used",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "ILSVRC/imagenet-1k",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "w5_partA_naver_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "w5_partA_DINOv3_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "w5_partA_small_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "w5_partA_reg1_gap_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "w5_partA_rope_ape_2026-09-13T10-16-41Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W7 file matches its headline values",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "w7rope_R12_naver_2026-09-24T17-54-52Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W7 file matches its headline values",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "w7rope_R12_small_2026-09-24T22-49-53Z.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "committed W7 file matches its headline values",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "w7rope_R12_reg1_gap_MERGED.json",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "full plane mask equals identity [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask ALL heads equals global identity [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "full plane mask equals identity [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask ALL heads equals global identity [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "composite REJECTS overlapping segments",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "win_plus builds the window plus one segment per listed block",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "win_plus REJECTS a single head inside the window",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max ratio 8.6e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "baseline reproduces W5 at block 4",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.469422 vs 0.469422 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor reproduces W5 at block 4",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.012865 vs 0.012865 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Cref reproduces W5 prefix_5 at block 11",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.329663 vs 0.329663 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor equals baseline at block 0",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "3.6e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "six one-block segments equal W5's single POST segment for head 6",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "all heads of block 6 via per_head equals identity on that block",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block untouched",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every intervening condition registered hooks",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index-group ranking matches W5 stage C (top 4)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "[6, 2, 1, 11] vs [6, 2, 1, 11]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part A completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "93 conditions, 125.1s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references reproduce W5 probes at blocks 7-11",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 30",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_row reproduces W5 SSDC at block 11",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.382360 vs 0.382360 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_col reproduces W5 SSDC at block 11",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.419516 vs 0.419516 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h6 (row window) reproduces W5 stage D probes",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h6 (col window) reproduces W5 stage D probes",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part B completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "27 conditions, 588.6s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references and index groups reproduce W7 top-1 (28 arms)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-image agreement with W7 (28 arms with W7 per-image files)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "min 100.00%",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part C completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "110 arms, 513.3s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part D completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "172.1s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier index groups reproduce W5 stage A at block 4",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier single-head masks leave upstream readouts untouched",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part E completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "66 conditions, 68.1s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 probes reproduced at block 4",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 SSDC reproduced at block 4",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 4",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part G completed",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "54.8s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max ratio 1.4e-06",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "baseline reproduces W5 at block 4",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.948654 vs 0.948654 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor reproduces W5 at block 4",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.017712 vs 0.017712 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Cref reproduces W5 prefix_5 at block 11",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.442640 vs 0.442640 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor equals baseline at block 0",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "3.3e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "six one-block segments equal W5's single POST segment for head 9",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "all heads of block 6 via per_head equals identity on that block",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block untouched",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every intervening condition registered hooks",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index-group ranking matches W5 stage C (top 4)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "[9, 1, 2, 10] vs [9, 1, 2, 10]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part A completed",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "93 conditions, 128.5s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references reproduce W5 probes at blocks 7-11",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 30",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_row reproduces W5 SSDC at block 11",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.627570 vs 0.627570 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_col reproduces W5 SSDC at block 11",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.652320 vs 0.652320 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h2 (row window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h2 (col window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h9 (row window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h9 (col window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h1 (row window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h1 (col window) reproduces W5 stage D probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part B completed",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "55 conditions, 1154.0s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part D completed",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "52.0s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier index groups reproduce W5 stage A at block 4",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier single-head masks leave upstream readouts untouched",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part E completed",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "66 conditions, 70.6s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 probes reproduced at block 4",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 SSDC reproduced at block 4",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 4",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part G completed",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "57.8s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max ratio 8.6e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "baseline reproduces W5 at block 4",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.371434 vs 0.371434 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor reproduces W5 at block 4",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.011330 vs 0.011330 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Cref reproduces W5 prefix_5 at block 11",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.244217 vs 0.244217 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor equals baseline at block 0",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "2.9e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 6",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "six one-block segments equal W5's single POST segment for head 2",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "all heads of block 6 via per_head equals identity on that block",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block untouched",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every intervening condition registered hooks",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index-group ranking matches W5 stage C (top 4)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "[2, 4, 0, 1] vs [2, 4, 0, 1]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part A completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "51 conditions, 35.2s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references reproduce W5 probes at blocks 7-11",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 30",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_row reproduces W5 SSDC at block 11",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.246982 vs 0.246982 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_col reproduces W5 SSDC at block 11",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.361226 vs 0.361226 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h2 (row window) reproduces W5 stage D probes",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h2 (col window) reproduces W5 stage D probes",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h0 (row window) reproduces W5 stage D probes",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h0 (col window) reproduces W5 stage D probes",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part B completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "39 conditions, 817.3s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references and index groups reproduce W7 top-1 (16 arms)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.08 pts",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-image agreement with W7 (16 arms with W7 per-image files)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "min 99.88%",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part C completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "62 arms, 108.6s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part D completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "65.5s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier index groups reproduce W5 stage A at block 4",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 6",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier single-head masks leave upstream readouts untouched",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part E completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "36 conditions, 15.1s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 probes reproduced at block 4",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 SSDC reproduced at block 4",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 4",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part G completed",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "47.7s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max ratio 6.0e-05",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout uses fc_norm per token (pooled model)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "fc_norm",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "baseline reproduces W5 at block 4",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.689023 vs 0.689023 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor reproduces W5 at block 4",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.014417 vs 0.014417 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Cref reproduces W5 prefix_5 at block 11",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.244575 vs 0.244575 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor equals baseline at block 0",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "9.9e-08",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "six one-block segments equal W5's single POST segment for head 7",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "all heads of block 6 via per_head equals identity on that block",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block untouched",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every intervening condition registered hooks",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index-group ranking matches W5 stage C (top 4)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "[7, 6, 9, 3] vs [7, 6, 9, 3]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part A completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "93 conditions, 134.4s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references reproduce W5 probes at blocks 7-11",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 30",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_row reproduces W5 SSDC at block 11",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.373408 vs 0.373408 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Dref_col reproduces W5 SSDC at block 11",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.449947 vs 0.449947 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h7 (row window) reproduces W5 stage D probes",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h7 (col window) reproduces W5 stage D probes",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h3 (row window) reproduces W5 stage D probes",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index group h3 (col window) reproduces W5 stage D probes",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 10",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part B completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "39 conditions, 858.8s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references and index groups reproduce W7 top-1 (28 arms)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-image agreement with W7 (5 arms with W7 per-image files)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "min 100.00%",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part C completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "110 arms, 516.5s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part D completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "173.5s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier index groups reproduce W5 stage A at block 4",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "carrier single-head masks leave upstream readouts untouched",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part E completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "66 conditions, 68.1s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 probes reproduced at block 4",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00 pts over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Table 9 SSDC reproduced at block 4",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 4",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part G completed",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "54.3s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "shape (196, 128); 32 planes per head",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every plane classifies decisively",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max ratio 8.6e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "axis split is balanced",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "16/16",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "baseline reproduces W5 at block 4",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.589777 vs 0.589777 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor reproduces W5 at block 4",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.633780 vs 0.633780 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "Cref reproduces W5 prefix_5 at block 11",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.263854 vs 0.263854 (|delta| 0.0e+00, tol 1e-04)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "floor equals baseline at block 0",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "2.4e-07",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00 over 12",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "six one-block segments equal W5's single POST segment for head 3",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "masking (block 6, head 3) changes that head's attention output and leaves the other 11 bit-identical",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "all heads of block 6 via per_head equals identity on that block",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block untouched",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "every intervening condition registered hooks",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "index-group ranking matches W5 stage C (top 4)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "[3, 9, 11, 7] vs [3, 9, 11, 7]",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part A completed",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "95 conditions, 127.9s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "references reproduce W7 top-1",
+   "scope": "rope_ape",
+   "status": "SKIP",
+   "detail": "no W7 anchor for this model",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part C completed",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "113 arms, 741.2s",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "FINAL readout equals model.norm's own output",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "mixed rope exposes learned frequencies (2, depth, heads, planes)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "(2, 12, 12, 32)",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "component 0 depends on exactly one grid axis",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "variation across rows 1.09e-08, across columns 2.14e-01",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "both components zero gives exact identity rotations",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "frequency mask restores the exact tensor on exit",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "model is unchanged after every frequency edit (baseline re-measured)",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "0.0e+00",
+   "session": "2026-11-04T12-57-55Z"
+  },
+  {
+   "gate": "part F completed",
+   "scope": "mixed",
+   "status": "PASS",
+   "detail": "208.4s",
+   "session": "2026-11-04T12-57-55Z"
+  }
+ ],
+ "gate_summary": {
+  "total": 233,
+  "fail": 0,
+  "skip": 1,
+  "sessions": [
+   "2026-11-04T12-57-55Z"
+  ]
+ }
+}

@@ -1,0 +1,11 @@
+loaded benjamin-paine/imagenet-1k-256x256 [validation]
+  hog_58GB             small   b4 baseline 0.371374000  Cref b11 0.244094874  32.2s
+  hog_58GB             naver   b4 baseline 0.469422709  Cref b11 0.329663144  33.5s
+WORKER DONE
+
+--- stderr ---
+'peer closed connection without sending complete message body (received 1583923 bytes, expected 32473051)' thrown while requesting GET https://huggingface.co/datasets/benjamin-paine/imagenet-1k-256x256/resolve/1bd0400450249a7fe90c0aece37d0d03e7ea956a/data/validation-00000-of-00002.parquet
+Retrying in 1s [Retry 1/5].
+Fatal Python error: PyGILState_Release: auto-releasing thread-state, but no thread-state for this thread
+Python runtime state: finalizing (tstate=0x0000590c39153098)
+

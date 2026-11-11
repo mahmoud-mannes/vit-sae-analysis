@@ -1,0 +1,7 @@
+loaded benjamin-paine/imagenet-1k-256x256 [validation]
+  cudnn910_default_b   small    first layer vs float64 5.1e-04 | b4 baseline 0.371434133 | Cref b11 0.244216582 | 32.3s
+  cudnn910_default_b   naver    first layer vs float64 4.1e-04 | b4 baseline 0.469422490 | Cref b11 0.329662899 | 31.6s
+WORKER DONE
+
+--- exit code 0 ---
+--- stderr ---
