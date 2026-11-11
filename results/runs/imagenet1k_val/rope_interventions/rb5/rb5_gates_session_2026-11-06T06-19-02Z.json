@@ -1,0 +1,933 @@
+[
+ {
+  "gate": "CUDA available",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "torch is 2.10.0+cu128",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "2.10.0+cu128",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000/-0.005",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-5 are present and complete",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-5 are present and complete",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "A=complete",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-5 are present and complete",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-5 are present and complete",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "[(6, 6), (7, 2), (6, 1), (6, 2), (8, 10)]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "[(6, 2), (9, 10), (7, 9), (10, 0), (10, 8)]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "[(7, 2), (7, 4), (6, 0), (7, 3), (8, 4)]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "[(6, 9), (7, 7), (6, 7), (6, 4), (7, 6)]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "committed W3 file is the one RB-5 was written against (sha256)",
+  "scope": "W3",
+  "status": "PASS",
+  "detail": "a83dc9d85ce0c99c...",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "W3's own windows are blocks 0-3 / 0-5 / 0-7",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "{'w3': [0, 1, 2, 3], 'w5': [0, 1, 2, 3, 4, 5], 'w7': [0, 1, 2, 3, 4, 5, 6, 7]}",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "W3's own windows are blocks 0-3 / 0-5 / 0-7",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "{'w3': [0, 1, 2, 3], 'w5': [0, 1, 2, 3, 4, 5], 'w7': [0, 1, 2, 3, 4, 5, 6, 7]}",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "W3 prefix_5 and baseline equal W5 bit for bit (same protocol, so W3's other windows are usable anchors)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "W3 prefix_5 and baseline equal W5 bit for bit (same protocol, so W3's other windows are usable anchors)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "SSDC dataset is the repack (W2-W6, RB-0, RB-2)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "benjamin-paine/imagenet-1k-256x256",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "top-1 dataset is the ILSVRC split (W7, RB-0)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "ILSVRC/imagenet-1k",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "empty plane mask bit-identical [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "full plane mask equals identity [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "plane 3 touches only its own columns [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask NO heads equals unmodified rope [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask head 3 leaves others untouched [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask head 3 changes head 3 [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "one-axis window leaves the other axis's planes bit-identical [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "empty plane mask bit-identical [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "full plane mask equals identity [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "plane 3 touches only its own columns [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask NO heads equals unmodified rope [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask head 3 leaves others untouched [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "mask head 3 changes head 3 [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "one-axis window leaves the other axis's planes bit-identical [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "win_plus builds the window plus one segment for the single head's block",
+  "scope": "composite",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "win_plus REJECTS a single head inside the window",
+  "scope": "composite",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rotary table has no head dimension",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "row [16, 17, 18]..",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "0-3, 0-5 and 0-7 window SSDC equal W3 prefix_3 / prefix_5 / prefix_7 bit for bit (12 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "w3 b11 0.397172, w5 b11 0.329663, w7 b11 0.205319; max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "baseline 84.64, ref_w3 82.30, ref_w5 70.52, ref_w7 45.36",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "320/320",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "[]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "320 new arms, 15.2 min; complete True",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rotary table has no head dimension",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "row [0, 1, 2]..",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "0-3, 0-5 and 0-7 window SSDC equal W3 prefix_3 / prefix_5 / prefix_7 bit for bit (12 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "w3 b11 0.681938, w5 b11 0.442640, w7 b11 0.309150; max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "160/160",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "160 new arms, 2.8 min; complete True",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rotary table has no head dimension",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "row [16, 17, 18]..",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "0-3 / 0-7 window references: no W3 anchor for this model (W3 ran naver and DINOv3 only); same code path as the W3-gated models",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "baseline 81.36, ref_w3 75.26, ref_w5 48.60, ref_w7 34.22",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "164/164",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "[]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "164 new arms, 2.9 min; complete True",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "rotary table has no head dimension",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "row [0, 1, 2]..",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "0-3 / 0-7 window references: no W3 anchor for this model (W3 ran naver and DINOv3 only); same code path as the W3-gated models",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "baseline 83.88, ref_w3 77.88, ref_w5 56.28, ref_w7 34.16",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "320/320",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "[]",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-06T06-19-02Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "320 new arms, 15.3 min; complete True",
+  "session": "2026-11-06T06-19-02Z"
+ }
+]

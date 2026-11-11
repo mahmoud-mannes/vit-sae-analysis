@@ -1,0 +1,2648 @@
+[
+ {
+  "gate": "CUDA available",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "torch is 2.10.0+cu128",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "2.10.0+cu128",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000/-0.005",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "A=complete, C=complete",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-0 parts needed by RB-8 are present and complete",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "A=complete",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "committed W1b file found and is the expected one (sha256)",
+  "scope": "W1b",
+  "status": "PASS",
+  "detail": "/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_naver.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "955758b94ccaa331...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_naver.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "6961b15b820d77c4...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_naver_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_naver.json)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "7d155b2eec5ca016...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_naver_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_naver.json)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "ba10ac2b2553e1c4...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_small.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "bcd83fe4faad6f19...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_small.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "e39a622e1471d284...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_small_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_small.json)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "92691e8b57836b44...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_small_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_small.json)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "cdaf0ea7f547ac6b...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_reg1_gap.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2c5dae5a29ae8506...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_reg1_gap.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2778638dc98631e6...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_reg1_gap_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_reg1_gap.json)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "e2033dcb41d54339...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_reg1_gap_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_reg1_gap.json)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "4bb685b0c397b42c...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_rope_ape.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "60df27f2d54b4938...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_rope_ape.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "ff0e96e60c638486...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_rope_ape_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_rope_ape.json)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "c397ae2cffea39b6...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_rope_ape_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_rope_ape.json)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "7194e2a747ad5aa5...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_DINOv3.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "e5f9576da1403b9a...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_DINOv3_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_DINOv3.json)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "314c8d1e806a54f1...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_supervised.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "45a5df6d2310be6f...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_supervised.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "6b7227051222f1e1...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_supervised_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_supervised.json)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "2f5c80eedd67c034...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_supervised_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_supervised.json)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "3bf1525acbdfe2f9...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_augreg.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "adee9ed55ba986da...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_augreg.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "00efba18dabc3223...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_augreg_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_augreg.json)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "9a91603fb4b41735...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_augreg_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_augreg.json)",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "d0bbdbb8fcce766a...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_sam.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "2c5c9cb45076ccd8...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_sam.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "3a407b4a8ec364f4...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_sam_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_sam.json)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "65b909b8e7e2cd80...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_sam_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_sam.json)",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "444b4c9ee5f51ccc...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_deit3.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "fd64de5a39c68a7a...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_perimage_deit3.npz is the RB-8 file of 9 Nov (sha256)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "568095cb07c45a83...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_deit3_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_deit3.json)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "c2ab221ffb15c7b8...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_deit3_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_deit3.json)",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "296fdaefa8e474db...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_dino.json is the RB-8 file of 9 Nov (sha256)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "6ea27cf31aa8f6b3...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rb8_fit_dino_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_dino.json)",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "c182f94241fb1ff6...",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "augreg",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "sam",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "deit3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8 result for this model is complete",
+  "scope": "dino",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "benjamin-paine/imagenet-1k-256x256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "ILSVRC/imagenet-1k",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "mean erasure: every slot's mean equals the average over slots",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "mean+scale erasure: equal slot means and equal slot spread",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "spread range 104.0862-104.0862",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "subspace erasure removes >= 99% of the positional component's energy",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "r=15 of 32; energy left 1.78e-30",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "random subspace: orthonormal, same dimension as the positional subspace, reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "random-subspace control leaves most of the positional component (it is a control, not an erasure)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "energy left 0.529",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "scramble: slot p carries slot pi(p)'s component; pi has no fixed point",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "derangement is reproducible",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "edit hook removed on exit",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "Part A: no positional component gives bias-corrected PVF ~ 0",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "raw 0.0002, corrected +0.00001",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "Part A: bias-corrected PVF recovers the true value; row / column split is right",
+  "scope": "partA-algebra",
+  "status": "PASS",
+  "detail": "PVF 0.6165 vs 0.6156; row 1.000, col 1.000",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "AllEdit: the listed blocks are edited, the others are not, one hook per block",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "AllEdit hooks removed on exit",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "offset control: subtracts another slot's component, same vector sizes as the mean edit, position left in place",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [mean] on a EvaBlock: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 1.8e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [offset] on a EvaBlock: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 1.9e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit with a zero component leaves a EvaBlock bit-identical",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site hooks removed on exit (EvaBlock)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [mean] on a Block: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 1.8e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [offset] on a Block: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 1.0e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit with a zero component leaves a Block bit-identical",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site hooks removed on exit (Block)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [mean] on a ViTLayer: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 2.0e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit [offset] on a ViTLayer: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 1.7e-16",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site edit with a zero component leaves a ViTLayer bit-identical",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "MLP-site hooks removed on exit (ViTLayer)",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "AllSites: attention, MLP and output sites applied in forward order equal a step-by-step reference; hook count",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "rel. diff 2.0e-16; 9 hooks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "site lists: RoPE 24 sites starting at mlp0, hybrid / APE 25 starting at attn0, both ending with out",
+  "scope": "edit-algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "['EvaBlock'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max rel. diff 8.1e-08 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.79e-08; positional component / token rms 3.96e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.65e-08; positional component / token rms 3.94e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.45e-08; positional component / token rms 4.18e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.51e-08; positional component / token rms 7.45e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [acc] are RB-8's (same image hashes)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.76e-08; positional component / token rms 4.03e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.66e-08; positional component / token rms 3.82e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.45e-08; positional component / token rms 4.48e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [acc]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.56e-08; positional component / token rms 7.64e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "84.64 vs 84.64",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "38.84 vs 38.84",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "intact probes at the final readout equal RB-8's (same code, seeds and images)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "84.36 vs 84.36",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "10/10",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "arms probed in several sweeps gave the same SSDC in every sweep (bit for bit)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "full_mean changes the stream at every edited site's readout",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: readout 0 (block 0's attention input) is untouched by every site arm",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "10 new arms, 7.4 min; complete True",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "['EvaBlock'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max rel. diff 7.5e-08 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.87e-08; positional component / token rms 4.18e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.26e-08; positional component / token rms 6.35e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.60e-08; positional component / token rms 3.87e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.78e-08; positional component / token rms 6.21e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [acc] are RB-8's (same image hashes)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.86e-08; positional component / token rms 4.12e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.13e-08; positional component / token rms 6.21e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.64e-08; positional component / token rms 4.59e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [acc]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.86e-08; positional component / token rms 4.96e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "81.36 vs 81.36",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "24.06 vs 24.06",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "intact probes at the final readout equal RB-8's (same code, seeds and images)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "80.74 vs 80.74",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "10/10",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "arms probed in several sweeps gave the same SSDC in every sweep (bit for bit)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "full_mean changes the stream at every edited site's readout",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: readout 0 (block 0's attention input) is untouched by every site arm",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "10 new arms, 6.8 min; complete True",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "['EvaBlock'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max rel. diff 1.8e-08 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.83e-08; positional component / token rms 5.35e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.79e-08; positional component / token rms 1.10e-01",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.07e-08; positional component / token rms 2.76e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.62e-08; positional component / token rms 2.58e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [acc] are RB-8's (same image hashes)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.86e-08; positional component / token rms 5.21e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.77e-08; positional component / token rms 1.09e-01",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.07e-08; positional component / token rms 2.84e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [acc]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.61e-08; positional component / token rms 2.61e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "83.88 vs 83.88",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "29.50 vs 29.50",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "intact probes at the final readout equal RB-8's (same code, seeds and images)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "83.36 vs 83.36",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "10/10",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "arms probed in several sweeps gave the same SSDC in every sweep (bit for bit)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "full_mean changes the stream at every edited site's readout",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: readout 0 (block 0's attention input) is untouched by every site arm",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "10 new arms, 7.6 min; complete True",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "4.0377e-04 (batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "['EvaBlock'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max rel. diff 1.0e-07 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.73e-08; positional component / token rms 3.85e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.06e-08; positional component / token rms 1.92e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.45e-08; positional component / token rms 2.84e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.39e-08; positional component / token rms 6.97e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [acc] has 16384 images, right after the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [acc] are disjoint from the evaluation images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "1 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [acc] are RB-8's (same image hashes)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.71e-08; positional component / token rms 3.90e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.05e-08; positional component / token rms 1.95e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.46e-08; positional component / token rms 3.16e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [acc]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.40e-08; positional component / token rms 7.56e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "ape_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "both_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "84.82 vs 84.82",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "42.60 vs 42.60",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "83.90 vs 83.90",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "33.42 vs 33.42",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "ape_floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "ape_floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "both_floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "both_floor top-1 equals RB-8 bit for bit (mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "intact probes at the final readout equal RB-8's (same code, seeds and images)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "84.18 vs 84.18",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14/14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "arms probed in several sweeps gave the same SSDC in every sweep (bit for bit)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "full_mean changes the stream at every edited site's readout",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14 new arms, 7.9 min; complete True",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "num_heads matches RB-0",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "shape (196, 128)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "['EvaBlock'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max rel. diff 5.2e-08 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.04e-08; positional component / token rms 4.05e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.40e-08; positional component / token rms 7.76e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.94e-08; positional component / token rms 1.74e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.52e-08; positional component / token rms 2.11e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "baseline SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "floor SSDC equals RB-8 bit for bit (13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "intact probes at the final readout equal RB-8's (same code, seeds and images)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every planned arm measured",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "5/5",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm registered exactly the expected hooks",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm saw every image",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every arm has its planned probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "arms probed in several sweeps gave the same SSDC in every sweep (bit for bit)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "full_mean changes the stream at every edited site's readout",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "RoPE: readout 0 (block 0's attention input) is untouched by every site arm",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "1 session(s)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model finished",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "5 new arms, 6.9 min; complete True",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "APE floor finds the learned position embedding",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "vit.embeddings.position_embeddings",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "3.3375e-04 (batch 256)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "['ViTLayer'], 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "each block's MLP norm runs exactly once per forward pass",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "12 calls for 12 blocks",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max rel. diff 1.1e-07 (float add order only; tolerance 1e-05); batch 256",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "a zero MLP-site edit leaves real blocks bit-identical",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "model setup completed",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fit [rep] has 16384 images, right after the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "16384",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "16384 fitting images [rep] are disjoint from the evaluation images",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "0 shared (allowed 41)",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "fitting images [rep] are RB-8's (same image hashes)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "max |delta mu| 0.0e+00",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit)",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "2048 images",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at attn4 on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.49e-08; positional component / token rms 1.64e-02",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.33e-08; positional component / token rms 8.69e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 1.96e-08; positional component / token rms 6.62e-03",
+  "session": "2026-11-10T12-46-23Z"
+ },
+ {
+  "gate": "sequential edit flattens the per-slot mean at out on the fitting images [rep]",
+  "scope": "supervised",
+  "status": "PASS",
+  "detail": "leftover / token rms 2.16e-08; positional component / token rms 2.85e-02",
+  "session": "2026-11-10T12-46-23Z"
+ }
+]

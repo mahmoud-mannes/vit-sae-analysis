@@ -1,0 +1,30 @@
+{
+ "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+ "prefix": "/workspace/NRDL/env_paper5_cudnn910",
+ "host": "gpu-pod",
+ "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+ "torch": "2.10.0+cu128",
+ "timm": "1.0.29",
+ "transformers": "5.22.1",
+ "numpy": "2.4.6",
+ "cudnn_reported": 91002,
+ "libcudnn_loaded": [
+  "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+  "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+  "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+  "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+  "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+ ],
+ "cudnn_packages": {
+  "nvidia-cudnn-cu12": "9.10.2.21"
+ },
+ "flags": {
+  "matmul_allow_tf32": false,
+  "cudnn_allow_tf32": true,
+  "cudnn_benchmark": false,
+  "cudnn_deterministic": false,
+  "float32_matmul_precision": "highest"
+ },
+ "cuda_visible_devices": null,
+ "gpu": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 33241 MiB, 81559 MiB"
+}

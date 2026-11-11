@@ -1,0 +1,142 @@
+{
+ "notebook": "RB-1",
+ "generated_utc": "2026-11-03T23-54-14Z",
+ "test_mode": false,
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "protocol": {
+  "dataset": "benjamin-paine/imagenet-1k-256x256",
+  "n_images": 1000,
+  "batch": 256,
+  "seed": 20260908,
+  "metric": "manhattan",
+  "input_size": 224,
+  "window": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "path": "W5 measure(): evaluate_ssdc, RPI, fp32"
+ },
+ "settings": {},
+ "comparison": [],
+ "summary": {
+  "small": {
+   "vs_W5": {},
+   "vs_RB0": {}
+  },
+  "naver": {
+   "vs_W5": {},
+   "vs_RB0": {}
+  },
+  "DINOv3": {
+   "vs_W5": {},
+   "vs_RB0": {}
+  }
+ },
+ "patch_embed": [],
+ "sensitivity": {},
+ "verdict": {
+  "settings_reproducing_RB0_exactly": [],
+  "settings_reproducing_September_exactly": [],
+  "settings_within_1e-9_of_September": [],
+  "case": "D",
+  "explanation": "No setting brings back September, and first-layer rounding is too small to explain the drift. Look at the inputs: packages changed after 14 Sept ['datasets', 'fsspec', 'numpy', 'nvidia-cublas-cu12', 'nvidia-cuda-nvrtc-cu12', 'nvidia-cuda-runtime-cu12', 'nvidia-cudnn-cu12', 'nvidia-cufft-cu12', 'nvidia-nvjitlink-cu12', 'pillow', 'pyarrow', 'safetensors', 'scipy', 'timm', 'torch', 'torchvision', 'transformers', 'triton'], Hub commits after 14 Sept none.",
+  "recommendation": "Keep PyTorch's defaults for RB-2 to RB-5 so every number stays comparable with W2 to RB-0. Gate new runs against RB-0 (same machine, bit for bit), never subtract a September ViT-S value from a November one, and record cuDNN, driver and free GPU memory in every output."
+ },
+ "gates": [
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "committed W5 file matches its headline values",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "typed RB-0 anchors equal the w8_partA files",
+   "scope": "anchors",
+   "status": "PASS",
+   "detail": "/workspace/NRDL/experiments/w8/w8_output max |delta| 0.0e+00",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "default_a",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "default_b",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "w8_order",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "tf32_off",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "cudnn_deterministic",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "hog_27GB",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "setting ran to completion",
+   "scope": "exact_patch",
+   "status": "FAIL",
+   "detail": "exit -6",
+   "session": "2026-11-03T23-54-14Z"
+  },
+  {
+   "gate": "the current environment still reproduces RB-0 in at least one setting",
+   "scope": "env",
+   "status": "FAIL",
+   "detail": "[]",
+   "session": "2026-11-03T23-54-14Z"
+  }
+ ]
+}

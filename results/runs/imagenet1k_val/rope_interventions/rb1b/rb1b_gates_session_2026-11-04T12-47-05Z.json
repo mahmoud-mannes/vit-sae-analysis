@@ -1,0 +1,212 @@
+[
+ {
+  "gate": "environment 926 loads cuDNN 9.26",
+  "scope": "926",
+  "status": "PASS",
+  "detail": "reported 92600; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_engines_tensor_ir.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "environment 910 loads cuDNN 9.10",
+  "scope": "910",
+  "status": "PASS",
+  "detail": "reported 91002; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "both environments run torch 2.10.0+cu128",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "2.10.0+cu128 / 2.10.0+cu128",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "the two environments differ only in cuDNN (same timm, pillow, numpy, scipy, datasets, torchvision, hub, safetensors)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "identical",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "typed RB-0 anchors equal the w8_partA files (all five models)",
+  "scope": "anchors",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "setting completed (result saved for every model)",
+  "scope": "cudnn926_default",
+  "status": "PASS",
+  "detail": "170s, exit code 0",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "setting completed (result saved for every model)",
+  "scope": "cudnn910_default_a",
+  "status": "PASS",
+  "detail": "182s, exit code 0",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "setting completed (result saved for every model)",
+  "scope": "cudnn910_default_b",
+  "status": "PASS",
+  "detail": "77s, exit code 0",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "setting completed (result saved for every model)",
+  "scope": "cudnn910_tf32_off",
+  "status": "PASS",
+  "detail": "75s, exit code 0",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "worker ran with the intended cuDNN",
+  "scope": "cudnn926_default",
+  "status": "PASS",
+  "detail": "92600",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "worker ran with the intended cuDNN",
+  "scope": "cudnn910_default_a",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "worker ran with the intended cuDNN",
+  "scope": "cudnn910_default_b",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "worker ran with the intended cuDNN",
+  "scope": "cudnn910_tf32_off",
+  "status": "PASS",
+  "detail": "91002",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "images identical in every setting and both environments",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "weights identical in every setting and both environments",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "images identical in every setting and both environments",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "weights identical in every setting and both environments",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "images identical in every setting and both environments",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "weights identical in every setting and both environments",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "images identical in every setting and both environments",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "weights identical in every setting and both environments",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "images identical in every setting and both environments",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "weights identical in every setting and both environments",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "control: env_paper5 (cuDNN 9.26) still reproduces RB-0 on all five models",
+  "scope": "control",
+  "status": "PASS",
+  "detail": "0",
+  "session": "2026-11-04T12-47-05Z"
+ },
+ {
+  "gate": "the cuDNN 9.10.2 environment is repeatable (default_a = default_b)",
+  "scope": "cudnn910",
+  "status": "PASS",
+  "detail": "0",
+  "session": "2026-11-04T12-47-05Z"
+ }
+]

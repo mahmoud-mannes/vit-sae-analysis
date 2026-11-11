@@ -1,0 +1,2152 @@
+{
+ "notebook": "RB-5",
+ "generated_utc": "2026-11-06T06-19-02Z",
+ "test_mode": false,
+ "environment": {
+  "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+  "prefix": "/workspace/NRDL/env_paper5_cudnn910",
+  "host": "gpu-pod",
+  "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "numpy": "2.4.6",
+  "cudnn_reported": 91002,
+  "libcudnn_loaded": [
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+  ],
+  "cudnn_packages": {
+   "nvidia-cudnn-cu12": "9.10.2.21"
+  },
+  "flags": {
+   "matmul_allow_tf32": false,
+   "cudnn_allow_tf32": true,
+   "cudnn_benchmark": false,
+   "cudnn_deterministic": false,
+   "float32_matmul_precision": "highest"
+  },
+  "cuda_visible_devices": null,
+  "gpu": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 543 MiB, 81559 MiB"
+ },
+ "repo": "/workspace/NRDL/clone/vit-sae-analysis/project_code/src",
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "rb0_dir": "/workspace/NRDL/experiments/rb0_cudnn910/w8_output",
+ "config": {
+  "n_ssdc": 1000,
+  "n_acc": 5000,
+  "batch": 256,
+  "seed": 20260908,
+  "ssdc_dataset": "benjamin-paine/imagenet-1k-256x256",
+  "acc_dataset": "ILSVRC/imagenet-1k",
+  "metric": "manhattan",
+  "windows": {
+   "w3": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "w5": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "w7": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ]
+  },
+  "test_mode": false,
+  "models": [
+   "naver",
+   "DINOv3",
+   "small",
+   "reg1_gap"
+  ],
+  "strict": true
+ },
+ "rules": {
+  "rank": "within each window, single heads in the blocks after it up to block 10 are ranked by SSDC lost entering block 11 vs that window's reference; block-11 heads separately, at the output of block 11 (RB-2's pre-registered rule)",
+  "reading": "Window 0-3 is the test (the 0-5 top heads are outside it, so they can be compared directly). FIXED HEAD if, under 0-3, the 0-5 top head (by the rule) is still in the top 3 by SSDC AND, on the classifiers, in the top 3 by top-1 cost. EDGE-FOLLOWING if, under 0-3, the top head by SSDC is in block 4 and the 0-5 top head is outside the top 10 by SSDC. Anything else is reported as MIXED, with the ranks. Window 0-7 cannot test the 0-5 top head (it lies inside the window); it shows whether block 8 takes over when it is the first block after the window."
+ },
+ "analysis": {
+  "naver": {
+   "w3": {
+    "first_block_after_window": 4,
+    "top5_by_ssdc": [
+     [
+      6,
+      6,
+      0.04099
+     ],
+     [
+      6,
+      1,
+      0.02987
+     ],
+     [
+      7,
+      2,
+      0.02208
+     ],
+     [
+      5,
+      11,
+      0.01813
+     ],
+     [
+      5,
+      0,
+      0.01373
+     ]
+    ],
+    "top_head_in_first_block": false,
+    "share_of_positive_ssdc_cost_by_block": {
+     "4": 0.108,
+     "5": 0.186,
+     "6": 0.273,
+     "7": 0.196,
+     "8": 0.112,
+     "9": 0.098,
+     "10": 0.027
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     1,
+     84
+    ],
+    "top5_by_top1": [
+     [
+      5,
+      11,
+      0.5,
+      0.16
+     ],
+     [
+      4,
+      11,
+      0.36,
+      0.14
+     ],
+     [
+      4,
+      8,
+      0.3,
+      0.15
+     ],
+     [
+      4,
+      10,
+      0.28,
+      0.16
+     ],
+     [
+      5,
+      2,
+      0.26,
+      0.13
+     ]
+    ],
+    "costliest_top1_in_first_block": false,
+    "rank_of_0to5_top_head_by_top1": [
+     13,
+     96
+    ],
+    "0to5_top_head_top1_cost": [
+     0.16,
+     0.16970751346957388
+    ],
+    "window_top1": 82.3,
+    "window_ssdc_b11": 0.3971724544014784
+   },
+   "w5": {
+    "first_block_after_window": 6,
+    "top5_by_ssdc": [
+     [
+      6,
+      6,
+      0.04223
+     ],
+     [
+      7,
+      2,
+      0.02933
+     ],
+     [
+      6,
+      1,
+      0.0238
+     ],
+     [
+      6,
+      2,
+      0.01182
+     ],
+     [
+      8,
+      10,
+      0.0098
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "6": 0.371,
+     "7": 0.272,
+     "8": 0.157,
+     "9": 0.113,
+     "10": 0.087
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     1,
+     60
+    ],
+    "top5_by_top1": [
+     [
+      6,
+      6,
+      3.04,
+      0.29
+     ],
+     [
+      6,
+      1,
+      2.92,
+      0.28
+     ],
+     [
+      6,
+      4,
+      2.14,
+      0.24
+     ],
+     [
+      7,
+      5,
+      1.42,
+      0.22
+     ],
+     [
+      6,
+      11,
+      1.04,
+      0.19
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "rank_of_0to5_top_head_by_top1": [
+     1,
+     72
+    ],
+    "0to5_top_head_top1_cost": [
+     3.04,
+     0.28942776937733067
+    ],
+    "window_top1": 70.52000000000001,
+    "window_ssdc_b11": 0.32966289910113356
+   },
+   "w7": {
+    "first_block_after_window": 8,
+    "top5_by_ssdc": [
+     [
+      10,
+      5,
+      0.01508
+     ],
+     [
+      8,
+      3,
+      0.01349
+     ],
+     [
+      10,
+      1,
+      0.01227
+     ],
+     [
+      8,
+      10,
+      0.01018
+     ],
+     [
+      8,
+      11,
+      0.00952
+     ]
+    ],
+    "top_head_in_first_block": false,
+    "share_of_positive_ssdc_cost_by_block": {
+     "8": 0.377,
+     "9": 0.351,
+     "10": 0.272
+    },
+    "top5_by_top1": [
+     [
+      8,
+      10,
+      1.24,
+      0.21
+     ],
+     [
+      8,
+      9,
+      0.82,
+      0.18
+     ],
+     [
+      8,
+      8,
+      0.74,
+      0.2
+     ],
+     [
+      8,
+      3,
+      0.54,
+      0.23
+     ],
+     [
+      8,
+      1,
+      0.46,
+      0.19
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "window_top1": 45.36,
+    "window_ssdc_b11": 0.2053191297941702
+   },
+   "consistency_across_windows": {
+    "w3_vs_w5": {
+     "blocks": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n": 60,
+     "ssdc_b11": [
+      0.8259516532370104,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.012414776321909828,
+      0.9232076792320768
+     ]
+    },
+    "w5_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.9315315315315315,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.7137049117145603,
+      9.999000099990002e-05
+     ]
+    },
+    "w3_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.72998712998713,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      -0.25945779311276984,
+      0.12958704129587043
+     ]
+    }
+   },
+   "reading": {
+    "rule": "Window 0-3 is the test (the 0-5 top heads are outside it, so they can be compared directly). FIXED HEAD if, under 0-3, the 0-5 top head (by the rule) is still in the top 3 by SSDC AND, on the classifiers, in the top 3 by top-1 cost. EDGE-FOLLOWING if, under 0-3, the top head by SSDC is in block 4 and the 0-5 top head is outside the top 10 by SSDC. Anything else is reported as MIXED, with the ranks. Window 0-7 cannot test the 0-5 top head (it lies inside the window); it shows whether block 8 takes over when it is the first block after the window.",
+    "0to5_top_head": [
+     6,
+     6
+    ],
+    "rank_under_0to3_ssdc": [
+     1,
+     84
+    ],
+    "rank_under_0to3_top1": [
+     13,
+     96
+    ],
+    "verdict": "MIXED"
+   }
+  },
+  "DINOv3": {
+   "w3": {
+    "first_block_after_window": 4,
+    "top5_by_ssdc": [
+     [
+      4,
+      10,
+      0.11784
+     ],
+     [
+      10,
+      1,
+      0.0525
+     ],
+     [
+      4,
+      0,
+      0.04351
+     ],
+     [
+      10,
+      8,
+      0.03729
+     ],
+     [
+      10,
+      0,
+      0.02246
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "4": 0.298,
+     "5": 0.077,
+     "6": 0.103,
+     "7": 0.103,
+     "8": 0.095,
+     "9": 0.099,
+     "10": 0.224
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     17,
+     84
+    ],
+    "window_ssdc_b11": 0.6819380409201578
+   },
+   "w5": {
+    "first_block_after_window": 6,
+    "top5_by_ssdc": [
+     [
+      6,
+      2,
+      0.05224
+     ],
+     [
+      9,
+      10,
+      0.03891
+     ],
+     [
+      7,
+      9,
+      0.03602
+     ],
+     [
+      10,
+      0,
+      0.03119
+     ],
+     [
+      10,
+      8,
+      0.02662
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "6": 0.215,
+     "7": 0.175,
+     "8": 0.151,
+     "9": 0.229,
+     "10": 0.231
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     1,
+     60
+    ],
+    "window_ssdc_b11": 0.44264042591545566
+   },
+   "w7": {
+    "first_block_after_window": 8,
+    "top5_by_ssdc": [
+     [
+      9,
+      10,
+      0.05274
+     ],
+     [
+      10,
+      0,
+      0.03904
+     ],
+     [
+      9,
+      4,
+      0.03163
+     ],
+     [
+      10,
+      8,
+      0.02423
+     ],
+     [
+      8,
+      9,
+      0.02242
+     ]
+    ],
+    "top_head_in_first_block": false,
+    "share_of_positive_ssdc_cost_by_block": {
+     "8": 0.248,
+     "9": 0.417,
+     "10": 0.335
+    },
+    "window_ssdc_b11": 0.30915015534699036
+   },
+   "consistency_across_windows": {
+    "w3_vs_w5": {
+     "blocks": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n": 60,
+     "ssdc_b11": [
+      0.9086412892470133,
+      9.999000099990002e-05
+     ]
+    },
+    "w5_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.9124839124839126,
+      9.999000099990002e-05
+     ]
+    },
+    "w3_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.7879021879021879,
+      9.999000099990002e-05
+     ]
+    }
+   },
+   "reading": {
+    "rule": "Window 0-3 is the test (the 0-5 top heads are outside it, so they can be compared directly). FIXED HEAD if, under 0-3, the 0-5 top head (by the rule) is still in the top 3 by SSDC AND, on the classifiers, in the top 3 by top-1 cost. EDGE-FOLLOWING if, under 0-3, the top head by SSDC is in block 4 and the 0-5 top head is outside the top 10 by SSDC. Anything else is reported as MIXED, with the ranks. Window 0-7 cannot test the 0-5 top head (it lies inside the window); it shows whether block 8 takes over when it is the first block after the window.",
+    "0to5_top_head": [
+     6,
+     2
+    ],
+    "rank_under_0to3_ssdc": [
+     17,
+     84
+    ],
+    "rank_under_0to3_top1": null,
+    "verdict": "EDGE-FOLLOWING"
+   }
+  },
+  "small": {
+   "w3": {
+    "first_block_after_window": 4,
+    "top5_by_ssdc": [
+     [
+      4,
+      0,
+      0.0548
+     ],
+     [
+      7,
+      4,
+      0.04957
+     ],
+     [
+      7,
+      3,
+      0.03447
+     ],
+     [
+      6,
+      0,
+      0.02897
+     ],
+     [
+      5,
+      5,
+      0.02607
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "4": 0.207,
+     "5": 0.19,
+     "6": 0.116,
+     "7": 0.23,
+     "8": 0.113,
+     "9": 0.109,
+     "10": 0.035
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     13,
+     42
+    ],
+    "top5_by_top1": [
+     [
+      4,
+      3,
+      2.66,
+      0.32
+     ],
+     [
+      4,
+      0,
+      1.64,
+      0.29
+     ],
+     [
+      4,
+      2,
+      1.6,
+      0.29
+     ],
+     [
+      7,
+      4,
+      1.3,
+      0.29
+     ],
+     [
+      5,
+      0,
+      1.28,
+      0.29
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "rank_of_0to5_top_head_by_top1": [
+     16,
+     48
+    ],
+    "0to5_top_head_top1_cost": [
+     0.33999999999999997,
+     0.17995376259287904
+    ],
+    "window_top1": 75.26,
+    "window_ssdc_b11": 0.43727950351406697
+   },
+   "w5": {
+    "first_block_after_window": 6,
+    "top5_by_ssdc": [
+     [
+      7,
+      2,
+      0.04477
+     ],
+     [
+      7,
+      4,
+      0.04447
+     ],
+     [
+      6,
+      0,
+      0.02329
+     ],
+     [
+      7,
+      3,
+      0.02324
+     ],
+     [
+      8,
+      4,
+      0.01703
+     ]
+    ],
+    "top_head_in_first_block": false,
+    "share_of_positive_ssdc_cost_by_block": {
+     "6": 0.135,
+     "7": 0.486,
+     "8": 0.139,
+     "9": 0.155,
+     "10": 0.086
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     1,
+     30
+    ],
+    "top5_by_top1": [
+     [
+      7,
+      4,
+      6.08,
+      0.4
+     ],
+     [
+      6,
+      0,
+      3.6,
+      0.34
+     ],
+     [
+      7,
+      3,
+      3.24,
+      0.32
+     ],
+     [
+      6,
+      2,
+      3.02,
+      0.36
+     ],
+     [
+      8,
+      2,
+      2.82,
+      0.31
+     ]
+    ],
+    "costliest_top1_in_first_block": false,
+    "rank_of_0to5_top_head_by_top1": [
+     31,
+     36
+    ],
+    "0to5_top_head_top1_cost": [
+     -0.36,
+     0.20194612263494796
+    ],
+    "window_top1": 48.6,
+    "window_ssdc_b11": 0.2442165816054329
+   },
+   "w7": {
+    "first_block_after_window": 8,
+    "top5_by_ssdc": [
+     [
+      8,
+      4,
+      0.02763
+     ],
+     [
+      8,
+      2,
+      0.02739
+     ],
+     [
+      9,
+      3,
+      0.02333
+     ],
+     [
+      9,
+      2,
+      0.01919
+     ],
+     [
+      10,
+      2,
+      0.01801
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "8": 0.402,
+     "9": 0.393,
+     "10": 0.205
+    },
+    "top5_by_top1": [
+     [
+      8,
+      2,
+      3.6,
+      0.32
+     ],
+     [
+      8,
+      1,
+      2.56,
+      0.3
+     ],
+     [
+      8,
+      4,
+      1.6,
+      0.24
+     ],
+     [
+      9,
+      2,
+      1.16,
+      0.21
+     ],
+     [
+      9,
+      3,
+      0.82,
+      0.21
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "window_top1": 34.22,
+    "window_ssdc_b11": 0.20581540150410793
+   },
+   "consistency_across_windows": {
+    "w3_vs_w5": {
+     "blocks": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n": 30,
+     "ssdc_b11": [
+      0.9332591768631814,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.3143466661507297,
+      0.09569043095690431
+     ]
+    },
+    "w5_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 18,
+     "ssdc_b11": [
+      0.9298245614035088,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.6153846973928541,
+      0.007899210078992101
+     ]
+    },
+    "w3_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 18,
+     "ssdc_b11": [
+      0.9628482972136224,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.889126809358671,
+      9.999000099990002e-05
+     ]
+    }
+   },
+   "reading": {
+    "rule": "Window 0-3 is the test (the 0-5 top heads are outside it, so they can be compared directly). FIXED HEAD if, under 0-3, the 0-5 top head (by the rule) is still in the top 3 by SSDC AND, on the classifiers, in the top 3 by top-1 cost. EDGE-FOLLOWING if, under 0-3, the top head by SSDC is in block 4 and the 0-5 top head is outside the top 10 by SSDC. Anything else is reported as MIXED, with the ranks. Window 0-7 cannot test the 0-5 top head (it lies inside the window); it shows whether block 8 takes over when it is the first block after the window.",
+    "0to5_top_head": [
+     7,
+     2
+    ],
+    "rank_under_0to3_ssdc": [
+     13,
+     42
+    ],
+    "rank_under_0to3_top1": [
+     16,
+     48
+    ],
+    "verdict": "EDGE-FOLLOWING"
+   }
+  },
+  "reg1_gap": {
+   "w3": {
+    "first_block_after_window": 4,
+    "top5_by_ssdc": [
+     [
+      5,
+      6,
+      0.04514
+     ],
+     [
+      5,
+      10,
+      0.03371
+     ],
+     [
+      5,
+      2,
+      0.03147
+     ],
+     [
+      6,
+      11,
+      0.03132
+     ],
+     [
+      4,
+      8,
+      0.02724
+     ]
+    ],
+    "top_head_in_first_block": false,
+    "share_of_positive_ssdc_cost_by_block": {
+     "4": 0.206,
+     "5": 0.334,
+     "6": 0.188,
+     "7": 0.102,
+     "8": 0.063,
+     "9": 0.048,
+     "10": 0.059
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     10,
+     84
+    ],
+    "top5_by_top1": [
+     [
+      4,
+      8,
+      1.46,
+      0.25
+     ],
+     [
+      4,
+      1,
+      1.24,
+      0.23
+     ],
+     [
+      4,
+      3,
+      0.9,
+      0.22
+     ],
+     [
+      4,
+      9,
+      0.64,
+      0.21
+     ],
+     [
+      6,
+      3,
+      0.64,
+      0.19
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "rank_of_0to5_top_head_by_top1": [
+     16,
+     96
+    ],
+    "0to5_top_head_top1_cost": [
+     0.3,
+     0.19897215378941024
+    ],
+    "window_top1": 77.88000000000001,
+    "window_ssdc_b11": 0.4755870772044528
+   },
+   "w5": {
+    "first_block_after_window": 6,
+    "top5_by_ssdc": [
+     [
+      6,
+      9,
+      0.024
+     ],
+     [
+      7,
+      7,
+      0.02292
+     ],
+     [
+      6,
+      7,
+      0.02016
+     ],
+     [
+      6,
+      4,
+      0.01632
+     ],
+     [
+      7,
+      6,
+      0.0159
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "6": 0.403,
+     "7": 0.285,
+     "8": 0.183,
+     "9": 0.081,
+     "10": 0.049
+    },
+    "rank_of_0to5_top_head_by_ssdc": [
+     1,
+     60
+    ],
+    "top5_by_top1": [
+     [
+      6,
+      9,
+      4.52,
+      0.34
+     ],
+     [
+      6,
+      7,
+      4.26,
+      0.32
+     ],
+     [
+      6,
+      2,
+      3.16,
+      0.31
+     ],
+     [
+      6,
+      3,
+      2.68,
+      0.29
+     ],
+     [
+      6,
+      6,
+      1.46,
+      0.31
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "rank_of_0to5_top_head_by_top1": [
+     1,
+     72
+    ],
+    "0to5_top_head_top1_cost": [
+     4.52,
+     0.34166835887083646
+    ],
+    "window_top1": 56.279999999999994,
+    "window_ssdc_b11": 0.24457517775928683
+   },
+   "w7": {
+    "first_block_after_window": 8,
+    "top5_by_ssdc": [
+     [
+      8,
+      1,
+      0.01267
+     ],
+     [
+      8,
+      3,
+      0.00916
+     ],
+     [
+      8,
+      7,
+      0.00652
+     ],
+     [
+      8,
+      6,
+      0.00646
+     ],
+     [
+      8,
+      9,
+      0.00619
+     ]
+    ],
+    "top_head_in_first_block": true,
+    "share_of_positive_ssdc_cost_by_block": {
+     "8": 0.534,
+     "9": 0.298,
+     "10": 0.169
+    },
+    "top5_by_top1": [
+     [
+      8,
+      2,
+      1.46,
+      0.22
+     ],
+     [
+      8,
+      3,
+      1.3,
+      0.21
+     ],
+     [
+      8,
+      1,
+      1.26,
+      0.22
+     ],
+     [
+      8,
+      8,
+      1.1,
+      0.22
+     ],
+     [
+      8,
+      10,
+      0.54,
+      0.18
+     ]
+    ],
+    "costliest_top1_in_first_block": true,
+    "window_top1": 34.160000000000004,
+    "window_ssdc_b11": 0.11699651763436662
+   },
+   "consistency_across_windows": {
+    "w3_vs_w5": {
+     "blocks": [
+      6,
+      7,
+      8,
+      9,
+      10
+     ],
+     "n": 60,
+     "ssdc_b11": [
+      0.8642400666851905,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.3579872113612011,
+      0.0053994600539946005
+     ]
+    },
+    "w5_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.8424710424710425,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      0.6076913150083881,
+      0.00019998000199980003
+     ]
+    },
+    "w3_vs_w7": {
+     "blocks": [
+      8,
+      9,
+      10
+     ],
+     "n": 36,
+     "ssdc_b11": [
+      0.7554697554697556,
+      9.999000099990002e-05
+     ],
+     "top1": [
+      -0.025733922922489254,
+      0.8772122787721228
+     ]
+    }
+   },
+   "reading": {
+    "rule": "Window 0-3 is the test (the 0-5 top heads are outside it, so they can be compared directly). FIXED HEAD if, under 0-3, the 0-5 top head (by the rule) is still in the top 3 by SSDC AND, on the classifiers, in the top 3 by top-1 cost. EDGE-FOLLOWING if, under 0-3, the top head by SSDC is in block 4 and the 0-5 top head is outside the top 10 by SSDC. Anything else is reported as MIXED, with the ranks. Window 0-7 cannot test the 0-5 top head (it lies inside the window); it shows whether block 8 takes over when it is the first block after the window.",
+    "0to5_top_head": [
+     6,
+     9
+    ],
+    "rank_under_0to3_ssdc": [
+     10,
+     84
+    ],
+    "rank_under_0to3_top1": [
+     16,
+     96
+    ],
+    "verdict": "MIXED"
+   }
+  }
+ },
+ "gates": [
+  {
+   "gate": "CUDA available",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "torch is 2.10.0+cu128",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "2.10.0+cu128",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000/-0.005",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-5 are present and complete",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-5 are present and complete",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "A=complete",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-5 are present and complete",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-5 are present and complete",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "[(6, 6), (7, 2), (6, 1), (6, 2), (8, 10)]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "[(6, 2), (9, 10), (7, 9), (10, 0), (10, 8)]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "[(7, 2), (7, 4), (6, 0), (7, 3), (8, 4)]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "pre-registered top heads (ssdc_b11, from RB-0 A) equal RB-2's printed ranking",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "[(6, 9), (7, 7), (6, 7), (6, 4), (7, 6)]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "committed W3 file is the one RB-5 was written against (sha256)",
+   "scope": "W3",
+   "status": "PASS",
+   "detail": "a83dc9d85ce0c99c...",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "W3's own windows are blocks 0-3 / 0-5 / 0-7",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "{'w3': [0, 1, 2, 3], 'w5': [0, 1, 2, 3, 4, 5], 'w7': [0, 1, 2, 3, 4, 5, 6, 7]}",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "W3's own windows are blocks 0-3 / 0-5 / 0-7",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "{'w3': [0, 1, 2, 3], 'w5': [0, 1, 2, 3, 4, 5], 'w7': [0, 1, 2, 3, 4, 5, 6, 7]}",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "W3 prefix_5 and baseline equal W5 bit for bit (same protocol, so W3's other windows are usable anchors)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "W3 prefix_5 and baseline equal W5 bit for bit (same protocol, so W3's other windows are usable anchors)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "SSDC dataset is the repack (W2-W6, RB-0, RB-2)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "benjamin-paine/imagenet-1k-256x256",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "top-1 dataset is the ILSVRC split (W7, RB-0)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "ILSVRC/imagenet-1k",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "full plane mask equals identity [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [interleaved]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [interleaved]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "empty plane mask bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "full plane mask equals identity [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "plane 3 touches only its own columns [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask NO heads equals unmodified rope [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask head 3 leaves others untouched [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "mask head 3 changes head 3 [rotate_half]",
+   "scope": "per-head",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "one-axis window leaves the other axis's planes bit-identical [rotate_half]",
+   "scope": "algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "win_plus builds the window plus one segment for the single head's block",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "win_plus REJECTS a single head inside the window",
+   "scope": "composite",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rotary table has no head dimension",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "0-3, 0-5 and 0-7 window SSDC equal W3 prefix_3 / prefix_5 / prefix_7 bit for bit (12 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "w3 b11 0.397172, w5 b11 0.329663, w7 b11 0.205319; max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "baseline 84.64, ref_w3 82.30, ref_w5 70.52, ref_w7 45.36",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "320/320",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "[]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "320 new arms, 15.2 min; complete True",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rotary table has no head dimension",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "0-3, 0-5 and 0-7 window SSDC equal W3 prefix_3 / prefix_5 / prefix_7 bit for bit (12 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "w3 b11 0.681938, w5 b11 0.442640, w7 b11 0.309150; max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "160/160",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "160 new arms, 2.8 min; complete True",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rotary table has no head dimension",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "row [16, 17, 18]..",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "0-3 / 0-7 window references: no W3 anchor for this model (W3 ran naver and DINOv3 only); same code path as the W3-gated models",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "baseline 81.36, ref_w3 75.26, ref_w5 48.60, ref_w7 34.22",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "164/164",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "[]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "164 new arms, 2.9 min; complete True",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches W5",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "196 vs 196",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "rotary table has no head dimension",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "row/col planes equal W5's runtime derivation",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "row [0, 1, 2]..",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "baseline and 0-5 window SSDC equal RB-0 part A bit for bit (13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "0-3 / 0-7 window references: no W3 anchor for this model (W3 ran naver and DINOv3 only); same code path as the W3-gated models",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "top-1 baseline and 0-5 window equal RB-0 part C bit for bit (mean and per image)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "baseline 83.88, ref_w3 77.88, ref_w5 56.28, ref_w7 34.16",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "320/320",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part A bit for bit (SSDC, 13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "single-head masks leave every readout at or before their block bit-identical to their window's reference",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every single-head mask changes the SSDC at the output of block 11 (no inert mask)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "block-6 single heads under the 0-5 window equal RB-0 part C bit for bit (top-1, mean and per image)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "[]",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-06T06-19-02Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "320 new arms, 15.3 min; complete True",
+   "session": "2026-11-06T06-19-02Z"
+  }
+ ],
+ "gate_summary": {
+  "total": 133,
+  "fail": 0,
+  "skip": 0,
+  "complete": {
+   "naver": true,
+   "DINOv3": true,
+   "small": true,
+   "reg1_gap": true
+  },
+  "sessions": [
+   "2026-11-06T06-19-02Z"
+  ]
+ }
+}

@@ -1,0 +1,107 @@
+[
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "typed RB-0 anchors equal the w8_partA files",
+  "scope": "anchors",
+  "status": "PASS",
+  "detail": "/workspace/NRDL/experiments/w8/w8_output max |delta| 0.0e+00",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "images identical in every setting",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 e6d5e9be840755fa",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "weights identical in every setting",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "sha256 c56cefca2f0fccb7",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "images identical in every setting",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 e6d5e9be840755fa",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "weights identical in every setting",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "sha256 c372708a448440ee",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "images identical in every setting",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 48d923c6f79a4e1e",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "weights identical in every setting",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "sha256 96c6d59af51c88aa",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "exact patch embedding computes the same convolution (relative difference < 1e-2)",
+  "scope": "exact_patch",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "current environment is repeatable (default_a equals default_b)",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "the current environment still reproduces RB-0 in at least one setting",
+  "scope": "env",
+  "status": "PASS",
+  "detail": "['default_a', 'default_b', 'w8_order', 'tf32_off', 'cudnn_deterministic', 'hog_27GB', 'hog_58GB']",
+  "session": "2026-11-04T00-06-44Z"
+ },
+ {
+  "gate": "naver stays within RB-0's 1.1e-6 of September",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "5.6e-07",
+  "session": "2026-11-04T00-06-44Z"
+ }
+]

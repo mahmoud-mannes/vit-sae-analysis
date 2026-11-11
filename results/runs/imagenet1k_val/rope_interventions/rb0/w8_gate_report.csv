@@ -1,0 +1,234 @@
+gate,scope,status,detail,session
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-04T12-57-55Z
+SSDC dataset is the repack every W2-W6 SSDC/probe number used,data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-04T12-57-55Z
+accuracy dataset is the ILSVRC split W7 used,data,PASS,ILSVRC/imagenet-1k,2026-11-04T12-57-55Z
+committed W5 file matches its headline values,naver,PASS,w5_partA_naver_2026-09-13T10-16-41Z.json,2026-11-04T12-57-55Z
+committed W5 file matches its headline values,DINOv3,PASS,w5_partA_DINOv3_2026-09-13T10-16-41Z.json,2026-11-04T12-57-55Z
+committed W5 file matches its headline values,small,PASS,w5_partA_small_2026-09-13T10-16-41Z.json,2026-11-04T12-57-55Z
+committed W5 file matches its headline values,reg1_gap,PASS,w5_partA_reg1_gap_2026-09-13T10-16-41Z.json,2026-11-04T12-57-55Z
+committed W5 file matches its headline values,rope_ape,PASS,w5_partA_rope_ape_2026-09-13T10-16-41Z.json,2026-11-04T12-57-55Z
+committed W7 file matches its headline values,naver,PASS,w7rope_R12_naver_2026-09-24T17-54-52Z.json,2026-11-04T12-57-55Z
+committed W7 file matches its headline values,small,PASS,w7rope_R12_small_2026-09-24T22-49-53Z.json,2026-11-04T12-57-55Z
+committed W7 file matches its headline values,reg1_gap,PASS,w7rope_R12_reg1_gap_MERGED.json,2026-11-04T12-57-55Z
+empty plane mask bit-identical [interleaved],algebra,PASS,,2026-11-04T12-57-55Z
+full plane mask equals identity [interleaved],algebra,PASS,,2026-11-04T12-57-55Z
+plane 3 touches only its own columns [interleaved],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]",2026-11-04T12-57-55Z
+mask NO heads equals unmodified rope [interleaved],per-head,PASS,,2026-11-04T12-57-55Z
+mask ALL heads equals global identity [interleaved],per-head,PASS,,2026-11-04T12-57-55Z
+mask head 3 leaves others untouched [interleaved],per-head,PASS,,2026-11-04T12-57-55Z
+mask head 3 changes head 3 [interleaved],per-head,PASS,,2026-11-04T12-57-55Z
+empty plane mask bit-identical [rotate_half],algebra,PASS,,2026-11-04T12-57-55Z
+full plane mask equals identity [rotate_half],algebra,PASS,,2026-11-04T12-57-55Z
+plane 3 touches only its own columns [rotate_half],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]",2026-11-04T12-57-55Z
+mask NO heads equals unmodified rope [rotate_half],per-head,PASS,,2026-11-04T12-57-55Z
+mask ALL heads equals global identity [rotate_half],per-head,PASS,,2026-11-04T12-57-55Z
+mask head 3 leaves others untouched [rotate_half],per-head,PASS,,2026-11-04T12-57-55Z
+mask head 3 changes head 3 [rotate_half],per-head,PASS,,2026-11-04T12-57-55Z
+composite REJECTS overlapping segments,composite,PASS,,2026-11-04T12-57-55Z
+win_plus builds the window plus one segment per listed block,composite,PASS,,2026-11-04T12-57-55Z
+win_plus REJECTS a single head inside the window,composite,PASS,,2026-11-04T12-57-55Z
+forward grid is 14x14,naver,PASS,14x14,2026-11-04T12-57-55Z
+num_heads matches W5,naver,PASS,12 vs 12,2026-11-04T12-57-55Z
+rope rows equal patch tokens,naver,PASS,196 vs 196,2026-11-04T12-57-55Z
+"rotary table has no head dimension, so every head in a block uses the same frequencies",naver,PASS,"shape (196, 128); 32 planes per head",2026-11-04T12-57-55Z
+every plane classifies decisively,naver,PASS,max ratio 8.6e-07,2026-11-04T12-57-55Z
+axis split is balanced,naver,PASS,16/16,2026-11-04T12-57-55Z
+row/col planes equal W5's runtime derivation,naver,PASS,"row [16, 17, 18]..",2026-11-04T12-57-55Z
+FINAL readout equals model.norm's own output,naver,PASS,,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],naver,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [Cref],naver,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed top-1 on the first 512 images,naver,PASS,0 images differ,2026-11-04T12-57-55Z
+baseline reproduces W5 at block 4,naver,PASS,"0.469422 vs 0.469422 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor reproduces W5 at block 4,naver,PASS,"0.012865 vs 0.012865 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Cref reproduces W5 prefix_5 at block 11,naver,PASS,"0.329663 vs 0.329663 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor equals baseline at block 0,naver,PASS,0.0e+00,2026-11-04T12-57-55Z
+per-head mask of ALL heads reproduces the global floor (all 13 readouts),naver,PASS,0.0e+00,2026-11-04T12-57-55Z
+bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent),naver,PASS,3.6e-07,2026-11-04T12-57-55Z
+index groups reproduce W5 stage C at block 11 (all heads),naver,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+six one-block segments equal W5's single POST segment for head 6,naver,PASS,0.0e+00,2026-11-04T12-57-55Z
+"masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",naver,PASS,,2026-11-04T12-57-55Z
+all heads of block 6 via per_head equals identity on that block,naver,PASS,0.0e+00,2026-11-04T12-57-55Z
+single-head masks leave every readout at or before their block untouched,naver,PASS,max |delta| 0.0e+00,2026-11-04T12-57-55Z
+every intervening condition registered hooks,naver,PASS,,2026-11-04T12-57-55Z
+index-group ranking matches W5 stage C (top 4),naver,PASS,"[6, 2, 1, 11] vs [6, 2, 1, 11]",2026-11-04T12-57-55Z
+part A completed,naver,PASS,"93 conditions, 125.1s",2026-11-04T12-57-55Z
+references reproduce W5 probes at blocks 7-11,naver,PASS,max |delta| 0.00 pts over 30,2026-11-04T12-57-55Z
+Dref_row reproduces W5 SSDC at block 11,naver,PASS,"0.382360 vs 0.382360 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Dref_col reproduces W5 SSDC at block 11,naver,PASS,"0.419516 vs 0.419516 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+index group h6 (row window) reproduces W5 stage D probes,naver,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h6 (col window) reproduces W5 stage D probes,naver,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+part B completed,naver,PASS,"27 conditions, 588.6s",2026-11-04T12-57-55Z
+references and index groups reproduce W7 top-1 (28 arms),naver,PASS,max |delta| 0.00 pts,2026-11-04T12-57-55Z
+per-image agreement with W7 (28 arms with W7 per-image files),naver,PASS,min 100.00%,2026-11-04T12-57-55Z
+part C completed,naver,PASS,"110 arms, 513.3s",2026-11-04T12-57-55Z
+part D completed,naver,PASS,172.1s,2026-11-04T12-57-55Z
+carrier index groups reproduce W5 stage A at block 4,naver,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+carrier single-head masks leave upstream readouts untouched,naver,PASS,0.0e+00,2026-11-04T12-57-55Z
+part E completed,naver,PASS,"66 conditions, 68.1s",2026-11-04T12-57-55Z
+Table 9 probes reproduced at block 4,naver,PASS,max |delta| 0.00 pts over 12,2026-11-04T12-57-55Z
+Table 9 SSDC reproduced at block 4,naver,PASS,max |delta| 0.0e+00 over 4,2026-11-04T12-57-55Z
+part G completed,naver,PASS,54.8s,2026-11-04T12-57-55Z
+forward grid is 14x14,DINOv3,PASS,14x14,2026-11-04T12-57-55Z
+num_heads matches W5,DINOv3,PASS,12 vs 12,2026-11-04T12-57-55Z
+rope rows equal patch tokens,DINOv3,PASS,196 vs 196,2026-11-04T12-57-55Z
+"rotary table has no head dimension, so every head in a block uses the same frequencies",DINOv3,PASS,"shape (196, 128); 32 planes per head",2026-11-04T12-57-55Z
+every plane classifies decisively,DINOv3,PASS,max ratio 1.4e-06,2026-11-04T12-57-55Z
+axis split is balanced,DINOv3,PASS,16/16,2026-11-04T12-57-55Z
+row/col planes equal W5's runtime derivation,DINOv3,PASS,"row [0, 1, 2]..",2026-11-04T12-57-55Z
+FINAL readout equals model.norm's own output,DINOv3,PASS,,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],DINOv3,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [Cref],DINOv3,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+baseline reproduces W5 at block 4,DINOv3,PASS,"0.948654 vs 0.948654 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor reproduces W5 at block 4,DINOv3,PASS,"0.017712 vs 0.017712 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Cref reproduces W5 prefix_5 at block 11,DINOv3,PASS,"0.442640 vs 0.442640 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor equals baseline at block 0,DINOv3,PASS,0.0e+00,2026-11-04T12-57-55Z
+per-head mask of ALL heads reproduces the global floor (all 13 readouts),DINOv3,PASS,0.0e+00,2026-11-04T12-57-55Z
+bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent),DINOv3,PASS,3.3e-07,2026-11-04T12-57-55Z
+index groups reproduce W5 stage C at block 11 (all heads),DINOv3,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+six one-block segments equal W5's single POST segment for head 9,DINOv3,PASS,0.0e+00,2026-11-04T12-57-55Z
+"masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",DINOv3,PASS,,2026-11-04T12-57-55Z
+all heads of block 6 via per_head equals identity on that block,DINOv3,PASS,0.0e+00,2026-11-04T12-57-55Z
+single-head masks leave every readout at or before their block untouched,DINOv3,PASS,max |delta| 0.0e+00,2026-11-04T12-57-55Z
+every intervening condition registered hooks,DINOv3,PASS,,2026-11-04T12-57-55Z
+index-group ranking matches W5 stage C (top 4),DINOv3,PASS,"[9, 1, 2, 10] vs [9, 1, 2, 10]",2026-11-04T12-57-55Z
+part A completed,DINOv3,PASS,"93 conditions, 128.5s",2026-11-04T12-57-55Z
+references reproduce W5 probes at blocks 7-11,DINOv3,PASS,max |delta| 0.00 pts over 30,2026-11-04T12-57-55Z
+Dref_row reproduces W5 SSDC at block 11,DINOv3,PASS,"0.627570 vs 0.627570 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Dref_col reproduces W5 SSDC at block 11,DINOv3,PASS,"0.652320 vs 0.652320 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+index group h2 (row window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h2 (col window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h9 (row window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h9 (col window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h1 (row window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h1 (col window) reproduces W5 stage D probes,DINOv3,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+part B completed,DINOv3,PASS,"55 conditions, 1154.0s",2026-11-04T12-57-55Z
+part D completed,DINOv3,PASS,52.0s,2026-11-04T12-57-55Z
+carrier index groups reproduce W5 stage A at block 4,DINOv3,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+carrier single-head masks leave upstream readouts untouched,DINOv3,PASS,0.0e+00,2026-11-04T12-57-55Z
+part E completed,DINOv3,PASS,"66 conditions, 70.6s",2026-11-04T12-57-55Z
+Table 9 probes reproduced at block 4,DINOv3,PASS,max |delta| 0.00 pts over 12,2026-11-04T12-57-55Z
+Table 9 SSDC reproduced at block 4,DINOv3,PASS,max |delta| 0.0e+00 over 4,2026-11-04T12-57-55Z
+part G completed,DINOv3,PASS,57.8s,2026-11-04T12-57-55Z
+forward grid is 14x14,small,PASS,14x14,2026-11-04T12-57-55Z
+num_heads matches W5,small,PASS,6 vs 6,2026-11-04T12-57-55Z
+rope rows equal patch tokens,small,PASS,196 vs 196,2026-11-04T12-57-55Z
+"rotary table has no head dimension, so every head in a block uses the same frequencies",small,PASS,"shape (196, 128); 32 planes per head",2026-11-04T12-57-55Z
+every plane classifies decisively,small,PASS,max ratio 8.6e-07,2026-11-04T12-57-55Z
+axis split is balanced,small,PASS,16/16,2026-11-04T12-57-55Z
+row/col planes equal W5's runtime derivation,small,PASS,"row [16, 17, 18]..",2026-11-04T12-57-55Z
+FINAL readout equals model.norm's own output,small,PASS,,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],small,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [Cref],small,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed top-1 on the first 512 images,small,PASS,0 images differ,2026-11-04T12-57-55Z
+baseline reproduces W5 at block 4,small,PASS,"0.371434 vs 0.371434 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor reproduces W5 at block 4,small,PASS,"0.011330 vs 0.011330 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Cref reproduces W5 prefix_5 at block 11,small,PASS,"0.244217 vs 0.244217 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor equals baseline at block 0,small,PASS,0.0e+00,2026-11-04T12-57-55Z
+per-head mask of ALL heads reproduces the global floor (all 13 readouts),small,PASS,0.0e+00,2026-11-04T12-57-55Z
+bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent),small,PASS,2.9e-07,2026-11-04T12-57-55Z
+index groups reproduce W5 stage C at block 11 (all heads),small,PASS,max |delta| 0.0e+00 over 6,2026-11-04T12-57-55Z
+six one-block segments equal W5's single POST segment for head 2,small,PASS,0.0e+00,2026-11-04T12-57-55Z
+"masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",small,PASS,,2026-11-04T12-57-55Z
+all heads of block 6 via per_head equals identity on that block,small,PASS,0.0e+00,2026-11-04T12-57-55Z
+single-head masks leave every readout at or before their block untouched,small,PASS,max |delta| 0.0e+00,2026-11-04T12-57-55Z
+every intervening condition registered hooks,small,PASS,,2026-11-04T12-57-55Z
+index-group ranking matches W5 stage C (top 4),small,PASS,"[2, 4, 0, 1] vs [2, 4, 0, 1]",2026-11-04T12-57-55Z
+part A completed,small,PASS,"51 conditions, 35.2s",2026-11-04T12-57-55Z
+references reproduce W5 probes at blocks 7-11,small,PASS,max |delta| 0.00 pts over 30,2026-11-04T12-57-55Z
+Dref_row reproduces W5 SSDC at block 11,small,PASS,"0.246982 vs 0.246982 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Dref_col reproduces W5 SSDC at block 11,small,PASS,"0.361226 vs 0.361226 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+index group h2 (row window) reproduces W5 stage D probes,small,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h2 (col window) reproduces W5 stage D probes,small,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h0 (row window) reproduces W5 stage D probes,small,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h0 (col window) reproduces W5 stage D probes,small,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+part B completed,small,PASS,"39 conditions, 817.3s",2026-11-04T12-57-55Z
+references and index groups reproduce W7 top-1 (16 arms),small,PASS,max |delta| 0.08 pts,2026-11-04T12-57-55Z
+per-image agreement with W7 (16 arms with W7 per-image files),small,PASS,min 99.88%,2026-11-04T12-57-55Z
+part C completed,small,PASS,"62 arms, 108.6s",2026-11-04T12-57-55Z
+part D completed,small,PASS,65.5s,2026-11-04T12-57-55Z
+carrier index groups reproduce W5 stage A at block 4,small,PASS,max |delta| 0.0e+00 over 6,2026-11-04T12-57-55Z
+carrier single-head masks leave upstream readouts untouched,small,PASS,0.0e+00,2026-11-04T12-57-55Z
+part E completed,small,PASS,"36 conditions, 15.1s",2026-11-04T12-57-55Z
+Table 9 probes reproduced at block 4,small,PASS,max |delta| 0.00 pts over 12,2026-11-04T12-57-55Z
+Table 9 SSDC reproduced at block 4,small,PASS,max |delta| 0.0e+00 over 4,2026-11-04T12-57-55Z
+part G completed,small,PASS,47.7s,2026-11-04T12-57-55Z
+forward grid is 14x14,reg1_gap,PASS,14x14,2026-11-04T12-57-55Z
+num_heads matches W5,reg1_gap,PASS,12 vs 12,2026-11-04T12-57-55Z
+rope rows equal patch tokens,reg1_gap,PASS,196 vs 196,2026-11-04T12-57-55Z
+"rotary table has no head dimension, so every head in a block uses the same frequencies",reg1_gap,PASS,"shape (196, 128); 32 planes per head",2026-11-04T12-57-55Z
+every plane classifies decisively,reg1_gap,PASS,max ratio 6.0e-05,2026-11-04T12-57-55Z
+axis split is balanced,reg1_gap,PASS,16/16,2026-11-04T12-57-55Z
+row/col planes equal W5's runtime derivation,reg1_gap,PASS,"row [0, 1, 2]..",2026-11-04T12-57-55Z
+FINAL readout uses fc_norm per token (pooled model),reg1_gap,PASS,fc_norm,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [Cref],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed top-1 on the first 512 images,reg1_gap,PASS,0 images differ,2026-11-04T12-57-55Z
+baseline reproduces W5 at block 4,reg1_gap,PASS,"0.689023 vs 0.689023 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor reproduces W5 at block 4,reg1_gap,PASS,"0.014417 vs 0.014417 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Cref reproduces W5 prefix_5 at block 11,reg1_gap,PASS,"0.244575 vs 0.244575 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor equals baseline at block 0,reg1_gap,PASS,0.0e+00,2026-11-04T12-57-55Z
+per-head mask of ALL heads reproduces the global floor (all 13 readouts),reg1_gap,PASS,0.0e+00,2026-11-04T12-57-55Z
+bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent),reg1_gap,PASS,9.9e-08,2026-11-04T12-57-55Z
+index groups reproduce W5 stage C at block 11 (all heads),reg1_gap,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+six one-block segments equal W5's single POST segment for head 7,reg1_gap,PASS,0.0e+00,2026-11-04T12-57-55Z
+"masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",reg1_gap,PASS,,2026-11-04T12-57-55Z
+all heads of block 6 via per_head equals identity on that block,reg1_gap,PASS,0.0e+00,2026-11-04T12-57-55Z
+single-head masks leave every readout at or before their block untouched,reg1_gap,PASS,max |delta| 0.0e+00,2026-11-04T12-57-55Z
+every intervening condition registered hooks,reg1_gap,PASS,,2026-11-04T12-57-55Z
+index-group ranking matches W5 stage C (top 4),reg1_gap,PASS,"[7, 6, 9, 3] vs [7, 6, 9, 3]",2026-11-04T12-57-55Z
+part A completed,reg1_gap,PASS,"93 conditions, 134.4s",2026-11-04T12-57-55Z
+references reproduce W5 probes at blocks 7-11,reg1_gap,PASS,max |delta| 0.00 pts over 30,2026-11-04T12-57-55Z
+Dref_row reproduces W5 SSDC at block 11,reg1_gap,PASS,"0.373408 vs 0.373408 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Dref_col reproduces W5 SSDC at block 11,reg1_gap,PASS,"0.449947 vs 0.449947 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+index group h7 (row window) reproduces W5 stage D probes,reg1_gap,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h7 (col window) reproduces W5 stage D probes,reg1_gap,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h3 (row window) reproduces W5 stage D probes,reg1_gap,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+index group h3 (col window) reproduces W5 stage D probes,reg1_gap,PASS,max |delta| 0.00 pts over 10,2026-11-04T12-57-55Z
+part B completed,reg1_gap,PASS,"39 conditions, 858.8s",2026-11-04T12-57-55Z
+references and index groups reproduce W7 top-1 (28 arms),reg1_gap,PASS,max |delta| 0.00 pts,2026-11-04T12-57-55Z
+per-image agreement with W7 (5 arms with W7 per-image files),reg1_gap,PASS,min 100.00%,2026-11-04T12-57-55Z
+part C completed,reg1_gap,PASS,"110 arms, 516.5s",2026-11-04T12-57-55Z
+part D completed,reg1_gap,PASS,173.5s,2026-11-04T12-57-55Z
+carrier index groups reproduce W5 stage A at block 4,reg1_gap,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+carrier single-head masks leave upstream readouts untouched,reg1_gap,PASS,0.0e+00,2026-11-04T12-57-55Z
+part E completed,reg1_gap,PASS,"66 conditions, 68.1s",2026-11-04T12-57-55Z
+Table 9 probes reproduced at block 4,reg1_gap,PASS,max |delta| 0.00 pts over 12,2026-11-04T12-57-55Z
+Table 9 SSDC reproduced at block 4,reg1_gap,PASS,max |delta| 0.0e+00 over 4,2026-11-04T12-57-55Z
+part G completed,reg1_gap,PASS,54.3s,2026-11-04T12-57-55Z
+forward grid is 14x14,rope_ape,PASS,14x14,2026-11-04T12-57-55Z
+num_heads matches W5,rope_ape,PASS,12 vs 12,2026-11-04T12-57-55Z
+rope rows equal patch tokens,rope_ape,PASS,196 vs 196,2026-11-04T12-57-55Z
+"rotary table has no head dimension, so every head in a block uses the same frequencies",rope_ape,PASS,"shape (196, 128); 32 planes per head",2026-11-04T12-57-55Z
+every plane classifies decisively,rope_ape,PASS,max ratio 8.6e-07,2026-11-04T12-57-55Z
+axis split is balanced,rope_ape,PASS,16/16,2026-11-04T12-57-55Z
+row/col planes equal W5's runtime derivation,rope_ape,PASS,"row [16, 17, 18]..",2026-11-04T12-57-55Z
+FINAL readout equals model.norm's own output,rope_ape,PASS,,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],rope_ape,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [Cref],rope_ape,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed top-1 on the first 512 images,rope_ape,PASS,0 images differ,2026-11-04T12-57-55Z
+baseline reproduces W5 at block 4,rope_ape,PASS,"0.589777 vs 0.589777 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor reproduces W5 at block 4,rope_ape,PASS,"0.633780 vs 0.633780 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+Cref reproduces W5 prefix_5 at block 11,rope_ape,PASS,"0.263854 vs 0.263854 (|delta| 0.0e+00, tol 1e-04)",2026-11-04T12-57-55Z
+floor equals baseline at block 0,rope_ape,PASS,0.0e+00,2026-11-04T12-57-55Z
+per-head mask of ALL heads reproduces the global floor (all 13 readouts),rope_ape,PASS,0.0e+00,2026-11-04T12-57-55Z
+bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent),rope_ape,PASS,2.4e-07,2026-11-04T12-57-55Z
+index groups reproduce W5 stage C at block 11 (all heads),rope_ape,PASS,max |delta| 0.0e+00 over 12,2026-11-04T12-57-55Z
+six one-block segments equal W5's single POST segment for head 3,rope_ape,PASS,0.0e+00,2026-11-04T12-57-55Z
+"masking (block 6, head 3) changes that head's attention output and leaves the other 11 bit-identical",rope_ape,PASS,,2026-11-04T12-57-55Z
+all heads of block 6 via per_head equals identity on that block,rope_ape,PASS,0.0e+00,2026-11-04T12-57-55Z
+single-head masks leave every readout at or before their block untouched,rope_ape,PASS,max |delta| 0.0e+00,2026-11-04T12-57-55Z
+every intervening condition registered hooks,rope_ape,PASS,,2026-11-04T12-57-55Z
+index-group ranking matches W5 stage C (top 4),rope_ape,PASS,"[3, 9, 11, 7] vs [3, 9, 11, 7]",2026-11-04T12-57-55Z
+part A completed,rope_ape,PASS,"95 conditions, 127.9s",2026-11-04T12-57-55Z
+references reproduce W7 top-1,rope_ape,SKIP,no W7 anchor for this model,2026-11-04T12-57-55Z
+part C completed,rope_ape,PASS,"113 arms, 741.2s",2026-11-04T12-57-55Z
+forward grid is 14x14,mixed,PASS,14x14,2026-11-04T12-57-55Z
+FINAL readout equals model.norm's own output,mixed,PASS,,2026-11-04T12-57-55Z
+cached replay reproduces streamed evaluate_ssdc [baseline],mixed,PASS,max |delta| 0.00e+00,2026-11-04T12-57-55Z
+cached replay reproduces streamed top-1 on the first 512 images,mixed,PASS,0 images differ,2026-11-04T12-57-55Z
+"mixed rope exposes learned frequencies (2, depth, heads, planes)",mixed,PASS,"(2, 12, 12, 32)",2026-11-04T12-57-55Z
+component 0 depends on exactly one grid axis,mixed,PASS,"variation across rows 1.09e-08, across columns 2.14e-01",2026-11-04T12-57-55Z
+both components zero gives exact identity rotations,mixed,PASS,,2026-11-04T12-57-55Z
+frequency mask restores the exact tensor on exit,mixed,PASS,,2026-11-04T12-57-55Z
+model is unchanged after every frequency edit (baseline re-measured),mixed,PASS,0.0e+00,2026-11-04T12-57-55Z
+part F completed,mixed,PASS,208.4s,2026-11-04T12-57-55Z

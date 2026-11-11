@@ -1,0 +1,4688 @@
+{
+ "notebook": "RB-6",
+ "generated_utc": "2026-11-08T05-56-19Z",
+ "test_mode": false,
+ "environment": {
+  "python": "/workspace/NRDL/env_paper5_cudnn910/bin/python",
+  "prefix": "/workspace/NRDL/env_paper5_cudnn910",
+  "host": "gpu-pod",
+  "platform": "Linux-6.8.0-41-generic-x86_64-with-glibc2.35",
+  "torch": "2.10.0+cu128",
+  "timm": "1.0.29",
+  "transformers": "5.22.1",
+  "numpy": "2.4.6",
+  "cudnn_reported": 91002,
+  "libcudnn_loaded": [
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_precompiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_engines_runtime_compiled.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_graph.so.9",
+   "/workspace/NRDL/env_paper5_cudnn910/lib/python3.11/site-packages/nvidia/cudnn/lib/libcudnn_heuristic.so.9"
+  ],
+  "cudnn_packages": {
+   "nvidia-cudnn-cu12": "9.10.2.21"
+  },
+  "flags": {
+   "matmul_allow_tf32": false,
+   "cudnn_allow_tf32": true,
+   "cudnn_benchmark": false,
+   "cudnn_deterministic": false,
+   "float32_matmul_precision": "highest"
+  },
+  "cuda_visible_devices": null,
+  "gpu": "index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\n0, NVIDIA H100 80GB HBM3, GPU-b21b009a-6dce-151e-bfd1-8cff52cddd01, 580.178.04, 33241 MiB, 81559 MiB"
+ },
+ "repo": "/workspace/NRDL/clone/vit-sae-analysis/project_code/src",
+ "repo_commit": "28e0856cd87c8582aff2783368b3d2f098ae3190",
+ "rb0_dir": "/workspace/NRDL/experiments/rb0_cudnn910/w8_output",
+ "config": {
+  "n_ssdc": 1000,
+  "n_acc": 5000,
+  "n_fit": 2000,
+  "batch": 256,
+  "seed": 20260908,
+  "ssdc_dataset": "benjamin-paine/imagenet-1k-256x256",
+  "acc_dataset": "ILSVRC/imagenet-1k",
+  "metric": "manhattan",
+  "edits": [
+   "mean",
+   "scale",
+   "sub",
+   "randsub",
+   "scramble"
+  ],
+  "subspace_energy": 0.99,
+  "subspace_seed": 20261108,
+  "scramble_seed": 7,
+  "probe": [
+   0.005,
+   20,
+   512,
+   0.8
+  ],
+  "test_mode": false,
+  "models": [
+   "naver",
+   "DINOv3",
+   "small",
+   "reg1_gap",
+   "rope_ape",
+   "supervised",
+   "dino",
+   "augreg",
+   "sam",
+   "deit3"
+  ],
+  "strict": true
+ },
+ "rules": {
+  "erasure": "Erasure check at the edited state (readout s = entering block s, after the edit): normalised SSDC N_s <= 0.1, and on held-out images exact probe <= 4.0x chance and row and column probes <= 1.5x chance. The reading uses the first of ['mean', 'scale', 'sub'] that passes; none passes = ERASURE INCOMPLETE.",
+  "normalisation": "N_b = (SSDC_b - floor_b) / (intact_b - floor_b), only where intact_b - floor_b >= 0.1; raw SSDC always reported. Floor = all rotations off (RoPE), embedding zeroed (APE), both (hybrid).",
+  "reading": "R = N_max - N_s, N_max = max N_b over readouts s+1..11 where N_b is defined. REBUILDS if R >= 0.2 and N_max >= 0.5; DOES NOT REBUILD if R < 0.05; otherwise PARTIAL. Predicted: APE does not rebuild, RoPE rebuilds; a RoPE model that does not rebuild is NpkG's counterexample.",
+  "case": "Outcome case for the paper (the notebook only labels): case 1 if all four RoPE models rebuild at s=4 and no APE model does; case 2 if one or two RoPE models do not rebuild (PARTIAL counts as not rebuilding); case 3 (stop and discuss) if three or more do not; no case if any RoPE model reads ERASURE INCOMPLETE or NOT READABLE; any APE model that rebuilds is flagged."
+ },
+ "analysis": {
+  "naver": {
+   "family": "rope",
+   "label": "naver ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 39,
+     "energy_in_subspace": 0.9901790157591172,
+     "spread_ratio_range": [
+      0.974428143961628,
+      1.0359965561868028
+     ],
+     "positional_norm_mean": 6.770081670031292
+    },
+    "acc_s4": {
+     "subspace_dim": 38,
+     "energy_in_subspace": 0.9901997121813216,
+     "spread_ratio_range": [
+      0.975270365445143,
+      1.0330942294443184
+     ],
+     "positional_norm_mean": 6.80187997459204
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.4565574568627582,
+     "checks": {
+      "mean": {
+       "N_s": -0.033531706906198284,
+       "raw_s": -0.002444117899200506,
+       "exact": 0.047551020408163266,
+       "row": 0.11479591836734694,
+       "col": 0.11183673469387755,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": -0.018644766258438875,
+       "raw_s": 0.004352625863407353,
+       "exact": 0.044872448979591834,
+       "row": 0.11063775510204081,
+       "col": 0.11012755102040817,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.05193135164555317,
+       "raw_s": 0.03657467876890014,
+       "exact": 0.01489795918367347,
+       "row": 0.0909438775510204,
+       "col": 0.0914030612244898,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": true
+      },
+      "randsub": {
+       "N_s": 0.9961126624019488,
+       "raw_s": 0.4676476968251858,
+       "exact": 0.3261734693877551,
+       "row": 0.6480357142857143,
+       "col": 0.6198979591836735,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.0185635009407672,
+       "raw_s": 0.004389728150174676,
+       "exact": 0.44566326530612244,
+       "row": 0.1797704081632653,
+       "col": 0.18346938775510205,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": -0.033531706906198284,
+       "N_max": 0.9131483827774641,
+       "N_max_block": 11,
+       "R": 0.9466800896836625,
+       "N_11": 0.9131483827774641,
+       "N_final": 0.9544584160701237,
+       "verdict": "REBUILDS"
+      },
+      "scale": {
+       "N_s": -0.018644766258438875,
+       "N_max": 0.9190815942666087,
+       "N_max_block": 11,
+       "R": 0.9377263605250477,
+       "N_11": 0.9190815942666087,
+       "N_final": 0.959501128622027,
+       "verdict": "REBUILDS"
+      },
+      "sub": {
+       "N_s": 0.05193135164555317,
+       "N_max": 1.225509933915356,
+       "N_max_block": 11,
+       "R": 1.1735785822698028,
+       "N_11": 1.225509933915356,
+       "N_final": 1.3291223003477217,
+       "verdict": "REBUILDS"
+      },
+      "randsub": {
+       "N_s": 0.9961126624019488,
+       "N_max": 1.0145829331040577,
+       "N_max_block": 5,
+       "R": 0.018470270702108826,
+       "N_11": 0.9751690441816949,
+       "N_final": 0.9894311812677131,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.0185635009407672,
+       "N_max": 0.8781637145861051,
+       "N_max_block": 11,
+       "R": 0.8967272155268723,
+       "N_11": 0.8781637145861051,
+       "N_final": 0.9133420095196341,
+       "verdict": "REBUILDS"
+      },
+      "rotoff": {
+       "N_s": 1.0,
+       "N_max": 0.593406601099944,
+       "N_max_block": 5,
+       "R": -0.40659339890005597,
+       "N_11": 0.08021838608834816,
+       "N_final": 0.07672671262212837,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "mean_rotoff": {
+       "N_s": -0.033531706906198284,
+       "N_max": 0.0016988140123242053,
+       "N_max_block": 6,
+       "R": 0.03523052091852249,
+       "N_11": -0.0782185634237497,
+       "N_final": -0.051189203037891144,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale_rotoff": {
+       "N_s": -0.018644766258438875,
+       "N_max": 0.015282833954721074,
+       "N_max_block": 6,
+       "R": 0.03392760021315995,
+       "N_11": -0.06913168865013392,
+       "N_final": -0.04114077581914905,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub_rotoff": {
+       "N_s": 0.05193135164555317,
+       "N_max": 0.14406900377950788,
+       "N_max_block": 6,
+       "R": 0.09213765213395471,
+       "N_11": -0.05232027279148655,
+       "N_final": 0.01746012895029578,
+       "verdict": "PARTIAL"
+      }
+     },
+     "rotoff_retention": {
+      "N_11": 0.08021838608834816,
+      "N_final": 0.07672671262212837,
+      "raw_11": 0.057112389594217654,
+      "intact_raw_11": 0.45514799350126317,
+      "exact_probe_11": 0.030153061224489797,
+      "intact_exact_probe_11": 0.08122448979591837
+     },
+     "chosen_erasure": "sub",
+     "verdict": "REBUILDS",
+     "reading": {
+      "N_s": 0.05193135164555317,
+      "N_max": 1.225509933915356,
+      "N_max_block": 11,
+      "R": 1.1735785822698028,
+      "N_11": 1.225509933915356,
+      "N_final": 1.3291223003477217,
+      "verdict": "REBUILDS"
+     },
+     "top1": {
+      "mean": {
+       "top1": 84.44,
+       "cost": 0.2,
+       "se": 0.17663023424071422
+      },
+      "scale": {
+       "top1": 84.48,
+       "cost": 0.16,
+       "se": 0.1743587112593988
+      },
+      "sub": {
+       "top1": 74.78,
+       "cost": 9.86,
+       "se": 0.503792458625845
+      },
+      "randsub": {
+       "top1": 84.32,
+       "cost": 0.32,
+       "se": 0.1522634454863224
+      },
+      "scramble": {
+       "top1": 84.44,
+       "cost": 0.2,
+       "se": 0.18761407145510592
+      },
+      "rotoff": {
+       "top1": 61.040000000000006,
+       "cost": 23.599999999999998,
+       "se": 0.6510704866262262
+      },
+      "mean_rotoff": {
+       "top1": 58.940000000000005,
+       "cost": 25.7,
+       "se": 0.6648235841782509
+      },
+      "scale_rotoff": {
+       "top1": 58.9,
+       "cost": 25.740000000000002,
+       "se": 0.6657169937917798
+      },
+      "sub_rotoff": {
+       "top1": 30.659999999999997,
+       "cost": 53.98,
+       "se": 0.7316686325089791
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 9.54,
+       "se": 0.5042306314633624
+      },
+      "intact": 84.64,
+      "floor": 38.84
+     }
+    }
+   }
+  },
+  "DINOv3": {
+   "family": "rope",
+   "label": "DINOv3 ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 9,
+     "energy_in_subspace": 0.9919766278354503,
+     "spread_ratio_range": [
+      0.984447825825513,
+      1.0244854978855595
+     ],
+     "positional_norm_mean": 5.158842659519211
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.9309424649380637,
+     "checks": {
+      "mean": {
+       "N_s": -0.08518670025718189,
+       "raw_s": -0.06159238478552061,
+       "exact": 0.06443877551020408,
+       "row": 0.11801020408163265,
+       "col": 0.11377551020408164,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": -0.06483200881127707,
+       "raw_s": -0.04264333815781624,
+       "exact": 0.06308673469387754,
+       "row": 0.11418367346938775,
+       "col": 0.11178571428571428,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": -0.10275671944373313,
+       "raw_s": -0.07794906175605769,
+       "exact": 0.04,
+       "row": 0.11900510204081632,
+       "col": 0.11696428571428572,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.998938852773206,
+       "raw_s": 0.9476661298549302,
+       "exact": 0.4096683673469388,
+       "row": 0.7676785714285714,
+       "col": 0.7978316326530612,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.018861265062833248,
+       "raw_s": 0.00015277934239612886,
+       "exact": 0.5388520408163265,
+       "row": 0.19811224489795917,
+       "col": 0.19089285714285714,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": -0.08518670025718189,
+       "N_max": 0.8565121515433174,
+       "N_max_block": 7,
+       "R": 0.9416988518004993,
+       "N_11": 0.7527795229603633,
+       "N_final": 0.837142603798619,
+       "verdict": "REBUILDS"
+      },
+      "scale": {
+       "N_s": -0.06483200881127707,
+       "N_max": 0.857282251078237,
+       "N_max_block": 7,
+       "R": 0.922114259889514,
+       "N_11": 0.753619999312656,
+       "N_final": 0.8386878603499625,
+       "verdict": "REBUILDS"
+      },
+      "sub": {
+       "N_s": -0.10275671944373313,
+       "N_max": 0.9099856336170284,
+       "N_max_block": 7,
+       "R": 1.0127423530607615,
+       "N_11": 0.8340105276940966,
+       "N_final": 0.9407889697514238,
+       "verdict": "REBUILDS"
+      },
+      "randsub": {
+       "N_s": 0.998938852773206,
+       "N_max": 1.0009847286869027,
+       "N_max_block": 9,
+       "R": 0.0020458759136966487,
+       "N_11": 0.9995384201048352,
+       "N_final": 1.002262491133336,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.018861265062833248,
+       "N_max": 0.5584632511602865,
+       "N_max_block": 11,
+       "R": 0.5773245162231198,
+       "N_11": 0.5584632511602865,
+       "N_final": 0.6368231618702985,
+       "verdict": "REBUILDS"
+      },
+      "rotoff": {
+       "N_s": 1.0,
+       "N_max": 0.9573379326406646,
+       "N_max_block": 6,
+       "R": -0.04266206735933542,
+       "N_11": 0.6372737721784819,
+       "N_final": 0.5478093472641093,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "mean_rotoff": {
+       "N_s": -0.08518670025718189,
+       "N_max": 0.0009445641852454573,
+       "N_max_block": 7,
+       "R": 0.08613126444242734,
+       "N_11": -0.011098884533922593,
+       "N_final": -0.009883255128560888,
+       "verdict": "PARTIAL"
+      },
+      "scale_rotoff": {
+       "N_s": -0.06483200881127707,
+       "N_max": 0.009816647393651831,
+       "N_max_block": 7,
+       "R": 0.0746486562049289,
+       "N_11": -0.00548147052039984,
+       "N_final": -0.0039381261707496056,
+       "verdict": "PARTIAL"
+      },
+      "sub_rotoff": {
+       "N_s": -0.10275671944373313,
+       "N_max": -0.00592967723823715,
+       "N_max_block": 8,
+       "R": 0.09682704220549598,
+       "N_11": -0.006767309561327253,
+       "N_final": -0.008896441580311863,
+       "verdict": "PARTIAL"
+      }
+     },
+     "rotoff_retention": {
+      "N_11": 0.6372737721784819,
+      "N_final": 0.5478093472641093,
+      "raw_11": 0.5522670694451579,
+      "intact_raw_11": 0.852215579694042,
+      "exact_probe_11": 0.16895408163265307,
+      "intact_exact_probe_11": 0.4234183673469388
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE"
+    }
+   }
+  },
+  "small": {
+   "family": "rope",
+   "label": "naver ViT-S",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 45,
+     "energy_in_subspace": 0.9900512413066069,
+     "spread_ratio_range": [
+      0.9811758212259395,
+      1.047662376215504
+     ],
+     "positional_norm_mean": 4.306844180588856
+    },
+    "acc_s4": {
+     "subspace_dim": 44,
+     "energy_in_subspace": 0.9902115839092492,
+     "spread_ratio_range": [
+      0.9774830240244894,
+      1.0436862908703621
+     ],
+     "positional_norm_mean": 4.2914274456184485
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.3601044282552651,
+     "checks": {
+      "mean": {
+       "N_s": -0.07166640439332658,
+       "raw_s": -0.014477685058697842,
+       "exact": 0.032627551020408166,
+       "row": 0.10214285714285715,
+       "col": 0.10280612244897959,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": -0.03393286513968552,
+       "raw_s": -0.0008896704797178229,
+       "exact": 0.031785714285714285,
+       "row": 0.10051020408163265,
+       "col": 0.10025510204081632,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.03667813451733671,
+       "raw_s": 0.02453766318030689,
+       "exact": 0.010561224489795918,
+       "row": 0.08494897959183674,
+       "col": 0.08221938775510204,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": true
+      },
+      "randsub": {
+       "N_s": 0.9304715256256657,
+       "raw_s": 0.3463966212637063,
+       "exact": 0.1586734693877551,
+       "row": 0.33903061224489794,
+       "col": 0.4627551020408163,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.07291282635241515,
+       "raw_s": -0.014926527125640235,
+       "exact": 0.2570918367346939,
+       "row": 0.1517091836734694,
+       "col": 0.1518877551020408,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": -0.07166640439332658,
+       "N_max": 1.043870312006773,
+       "N_max_block": 11,
+       "R": 1.1155367164000995,
+       "N_11": 1.043870312006773,
+       "N_final": 1.036378391732009,
+       "verdict": "REBUILDS"
+      },
+      "scale": {
+       "N_s": -0.03393286513968552,
+       "N_max": 1.0647293693428483,
+       "N_max_block": 11,
+       "R": 1.0986622344825339,
+       "N_11": 1.0647293693428483,
+       "N_final": 1.0519536983505233,
+       "verdict": "REBUILDS"
+      },
+      "sub": {
+       "N_s": 0.03667813451733671,
+       "N_max": 1.3419711552503275,
+       "N_max_block": 7,
+       "R": 1.3052930207329907,
+       "N_11": 1.0798146805664763,
+       "N_final": 1.3986763440501442,
+       "verdict": "REBUILDS"
+      },
+      "randsub": {
+       "N_s": 0.9304715256256657,
+       "N_max": 1.0900701170582154,
+       "N_max_block": 5,
+       "R": 0.15959859143254973,
+       "N_11": 1.061033620003878,
+       "N_final": 1.0927459406887017,
+       "verdict": "PARTIAL"
+      },
+      "scramble": {
+       "N_s": -0.07291282635241515,
+       "N_max": 1.003809285382826,
+       "N_max_block": 11,
+       "R": 1.0767221117352412,
+       "N_11": 1.003809285382826,
+       "N_final": 1.0128757068027316,
+       "verdict": "REBUILDS"
+      },
+      "rotoff": {
+       "N_s": 1.0,
+       "N_max": 0.32302785967164316,
+       "N_max_block": 5,
+       "R": -0.6769721403283568,
+       "N_11": 0.0047254483833940875,
+       "N_final": -0.049121053322009375,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "mean_rotoff": {
+       "N_s": -0.07166640439332658,
+       "N_max": -0.010090682742643887,
+       "N_max_block": 7,
+       "R": 0.061575721650682695,
+       "N_11": -0.017304898259476946,
+       "N_final": -0.01585775165279205,
+       "verdict": "PARTIAL"
+      },
+      "scale_rotoff": {
+       "N_s": -0.03393286513968552,
+       "N_max": 0.023639652898987597,
+       "N_max_block": 6,
+       "R": 0.057572518038673116,
+       "N_11": 0.0010338017633914646,
+       "N_final": -0.004977461814882835,
+       "verdict": "PARTIAL"
+      },
+      "sub_rotoff": {
+       "N_s": 0.03667813451733671,
+       "N_max": 0.07727647106501379,
+       "N_max_block": 8,
+       "R": 0.040598336547677076,
+       "N_11": 0.04642690913041889,
+       "N_final": 0.049101673080722004,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "rotoff_retention": {
+      "N_11": 0.0047254483833940875,
+      "N_final": -0.049121053322009375,
+      "raw_11": 0.016780148349988745,
+      "intact_raw_11": 0.4092291819127461,
+      "exact_probe_11": 0.010535714285714285,
+      "intact_exact_probe_11": 0.03354591836734694
+     },
+     "chosen_erasure": "sub",
+     "verdict": "REBUILDS",
+     "reading": {
+      "N_s": 0.03667813451733671,
+      "N_max": 1.3419711552503275,
+      "N_max_block": 7,
+      "R": 1.3052930207329907,
+      "N_11": 1.0798146805664763,
+      "N_final": 1.3986763440501442,
+      "verdict": "REBUILDS"
+     },
+     "top1": {
+      "mean": {
+       "top1": 81.06,
+       "cost": 0.3,
+       "se": 0.16609490511000236
+      },
+      "scale": {
+       "top1": 81.08,
+       "cost": 0.27999999999999997,
+       "se": 0.16967639203967982
+      },
+      "sub": {
+       "top1": 10.22,
+       "cost": 71.14,
+       "se": 0.650157381657845
+      },
+      "randsub": {
+       "top1": 80.08,
+       "cost": 1.28,
+       "se": 0.32201406586005266
+      },
+      "scramble": {
+       "top1": 80.9,
+       "cost": 0.45999999999999996,
+       "se": 0.18858630108942617
+      },
+      "rotoff": {
+       "top1": 44.86,
+       "cost": 36.5,
+       "se": 0.7214250417182395
+      },
+      "mean_rotoff": {
+       "top1": 44.080000000000005,
+       "cost": 37.28,
+       "se": 0.7225958406673748
+      },
+      "scale_rotoff": {
+       "top1": 44.04,
+       "cost": 37.32,
+       "se": 0.7232898102627507
+      },
+      "sub_rotoff": {
+       "top1": 2.04,
+       "cost": 79.32000000000001,
+       "se": 0.5770044253048361
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 69.86,
+       "se": 0.6575732358544578
+      },
+      "intact": 81.36,
+      "floor": 24.060000000000002
+     }
+    }
+   }
+  },
+  "reg1_gap": {
+   "family": "rope",
+   "label": "reg1-gap ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 26,
+     "energy_in_subspace": 0.990112218612409,
+     "spread_ratio_range": [
+      0.9842477208996858,
+      1.0219328325972348
+     ],
+     "positional_norm_mean": 2.318210932896132
+    },
+    "acc_s4": {
+     "subspace_dim": 26,
+     "energy_in_subspace": 0.9901425216846512,
+     "spread_ratio_range": [
+      0.9846647254931312,
+      1.0226445303739145
+     ],
+     "positional_norm_mean": 2.311169358278906
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.6746061096315127,
+     "checks": {
+      "mean": {
+       "N_s": 0.03881782669710144,
+       "raw_s": 0.040603934958988876,
+       "exact": 0.04816326530612245,
+       "row": 0.10964285714285714,
+       "col": 0.11086734693877551,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.05369355010382652,
+       "raw_s": 0.05063918885435412,
+       "exact": 0.04683673469387755,
+       "row": 0.10831632653061224,
+       "col": 0.11020408163265306,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.07431262769836676,
+       "raw_s": 0.0645489445745972,
+       "exact": 0.021122448979591837,
+       "row": 0.09808673469387755,
+       "col": 0.10002551020408164,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.995263966286667,
+       "raw_s": 0.6858283442595845,
+       "exact": 0.370969387755102,
+       "row": 0.7000255102040817,
+       "col": 0.6879081632653061,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": 0.02328585893399792,
+       "raw_s": 0.030125974611399542,
+       "exact": 0.4897448979591837,
+       "row": 0.18732142857142858,
+       "col": 0.18767857142857142,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.03881782669710144,
+       "N_max": 1.0964879815736495,
+       "N_max_block": 11,
+       "R": 1.057670154876548,
+       "N_11": 1.0964879815736495,
+       "N_final": 1.0704221872090776,
+       "verdict": "REBUILDS"
+      },
+      "scale": {
+       "N_s": 0.05369355010382652,
+       "N_max": 1.1003945497359424,
+       "N_max_block": 11,
+       "R": 1.046700999632116,
+       "N_11": 1.1003945497359424,
+       "N_final": 1.0738186370638376,
+       "verdict": "REBUILDS"
+      },
+      "sub": {
+       "N_s": 0.07431262769836676,
+       "N_max": 1.1244485006457452,
+       "N_max_block": 11,
+       "R": 1.0501358729473784,
+       "N_11": 1.1244485006457452,
+       "N_final": 1.0508143393162925,
+       "verdict": "REBUILDS"
+      },
+      "randsub": {
+       "N_s": 0.995263966286667,
+       "N_max": 1.0402738825569646,
+       "N_max_block": 11,
+       "R": 0.0450099162702976,
+       "N_11": 1.0402738825569646,
+       "N_final": 1.0205463856523111,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": 0.02328585893399792,
+       "N_max": 0.9848800087663259,
+       "N_max_block": 11,
+       "R": 0.9615941498323279,
+       "N_11": 0.9848800087663259,
+       "N_final": 0.9664518746026604,
+       "verdict": "REBUILDS"
+      },
+      "rotoff": {
+       "N_s": 1.0,
+       "N_max": 0.7417009494078483,
+       "N_max_block": 5,
+       "R": -0.25829905059215175,
+       "N_11": 0.4129169029313504,
+       "N_final": 0.3604624365734518,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "mean_rotoff": {
+       "N_s": 0.03881782669710144,
+       "N_max": 0.09615628771045925,
+       "N_max_block": 5,
+       "R": 0.057338461013357815,
+       "N_11": -0.010194175848694103,
+       "N_final": 0.00023611836345259634,
+       "verdict": "PARTIAL"
+      },
+      "scale_rotoff": {
+       "N_s": 0.05369355010382652,
+       "N_max": 0.11238070938674954,
+       "N_max_block": 5,
+       "R": 0.05868715928292302,
+       "N_11": -0.00015375451098293146,
+       "N_final": 0.007853349114435155,
+       "verdict": "PARTIAL"
+      },
+      "sub_rotoff": {
+       "N_s": 0.07431262769836676,
+       "N_max": 0.13172316871394787,
+       "N_max_block": 5,
+       "R": 0.057410541015581115,
+       "N_11": -0.01851643894851364,
+       "N_final": -0.005337970032902613,
+       "verdict": "PARTIAL"
+      }
+     },
+     "rotoff_retention": {
+      "N_11": 0.4129169029313504,
+      "N_final": 0.3604624365734518,
+      "raw_11": 0.18928074073555565,
+      "intact_raw_11": 0.4400409892415602,
+      "exact_probe_11": 0.05201530612244898,
+      "intact_exact_probe_11": 0.12209183673469388
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 83.82,
+       "cost": 0.06,
+       "se": 0.1886965852374018
+      },
+      "scale": {
+       "top1": 83.78,
+       "cost": 0.1,
+       "se": 0.19080167990930066
+      },
+      "sub": {
+       "top1": 80.2,
+       "cost": 3.6799999999999997,
+       "se": 0.3936019620135298
+      },
+      "randsub": {
+       "top1": 83.74000000000001,
+       "cost": 0.13999999999999999,
+       "se": 0.16124912482259002
+      },
+      "scramble": {
+       "top1": 83.5,
+       "cost": 0.38,
+       "se": 0.20875784049274276
+      },
+      "rotoff": {
+       "top1": 61.519999999999996,
+       "cost": 22.36,
+       "se": 0.6555089766003824
+      },
+      "mean_rotoff": {
+       "top1": 58.74,
+       "cost": 25.14,
+       "se": 0.6744531543491232
+      },
+      "scale_rotoff": {
+       "top1": 58.699999999999996,
+       "cost": 25.180000000000003,
+       "se": 0.6747477876328184
+      },
+      "sub_rotoff": {
+       "top1": 47.660000000000004,
+       "cost": 36.22,
+       "se": 0.7225833829732524
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 3.54,
+       "se": 0.3861651262102007
+      },
+      "intact": 83.88,
+      "floor": 29.5
+     }
+    }
+   }
+  },
+  "rope_ape": {
+   "family": "hybrid",
+   "label": "hybrid ViT-B",
+   "floor_used": "both_floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 52,
+     "energy_in_subspace": 0.9900150863022706,
+     "spread_ratio_range": [
+      0.9734780314492623,
+      1.0310912846079618
+     ],
+     "positional_norm_mean": 11.784939340487819
+    },
+    "acc_s4": {
+     "subspace_dim": 52,
+     "energy_in_subspace": 0.9901063109299679,
+     "spread_ratio_range": [
+      0.9695611376317392,
+      1.0301801282939709
+     ],
+     "positional_norm_mean": 11.718478796439811
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.5761577491228792,
+     "checks": {
+      "mean": {
+       "N_s": -0.010662757132251646,
+       "raw_s": 0.007476128631768049,
+       "exact": 0.04788265306122449,
+       "row": 0.11086734693877551,
+       "col": 0.10915816326530613,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.004903551247977375,
+       "raw_s": 0.016444777830273413,
+       "exact": 0.04517857142857143,
+       "row": 0.10834183673469387,
+       "col": 0.1078061224489796,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.05599474250445342,
+       "raw_s": 0.04588136358461117,
+       "exact": 0.13346938775510203,
+       "row": 0.11676020408163265,
+       "col": 0.11637755102040816,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9983195269945601,
+       "raw_s": 0.5888090903591333,
+       "exact": 0.822015306122449,
+       "row": 0.977295918367347,
+       "col": 0.9657142857142857,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.010339642403580603,
+       "raw_s": 0.0076622936865476075,
+       "exact": 0.8670663265306122,
+       "row": 0.36994897959183676,
+       "col": 0.3270918367346939,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": -0.010662757132251646,
+       "N_max": 0.8245243425370572,
+       "N_max_block": 11,
+       "R": 0.8351870996693088,
+       "N_11": 0.8245243425370572,
+       "N_final": 0.7714371857848069,
+       "verdict": "REBUILDS"
+      },
+      "scale": {
+       "N_s": 0.004903551247977375,
+       "N_max": 0.8326739809771438,
+       "N_max_block": 11,
+       "R": 0.8277704297291665,
+       "N_11": 0.8326739809771438,
+       "N_final": 0.7806102936120656,
+       "verdict": "REBUILDS"
+      },
+      "sub": {
+       "N_s": 0.05599474250445342,
+       "N_max": 0.8661692485253211,
+       "N_max_block": 11,
+       "R": 0.8101745060208676,
+       "N_11": 0.8661692485253211,
+       "N_final": 0.8904029399423765,
+       "verdict": "REBUILDS"
+      },
+      "randsub": {
+       "N_s": 0.9983195269945601,
+       "N_max": 1.0354132903146007,
+       "N_max_block": 11,
+       "R": 0.03709376332004066,
+       "N_11": 1.0354132903146007,
+       "N_final": 1.0303855402571909,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.010339642403580603,
+       "N_max": 0.6794849479986456,
+       "N_max_block": 11,
+       "R": 0.6898245904022262,
+       "N_11": 0.6794849479986456,
+       "N_final": 0.6608215557721155,
+       "verdict": "REBUILDS"
+      },
+      "rotoff": {
+       "N_s": 1.0,
+       "N_max": 0.9312821356072676,
+       "N_max_block": 5,
+       "R": -0.06871786439273242,
+       "N_11": 0.3287621018224376,
+       "N_final": 0.40210653871925284,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "mean_rotoff": {
+       "N_s": -0.010662757132251646,
+       "N_max": 0.00018651725468754222,
+       "N_max_block": 5,
+       "R": 0.010849274386939188,
+       "N_11": -0.08688998397143076,
+       "N_final": -0.05236518799749732,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale_rotoff": {
+       "N_s": 0.004903551247977375,
+       "N_max": 0.013982086620531731,
+       "N_max_block": 5,
+       "R": 0.009078535372554358,
+       "N_11": -0.07463269145820972,
+       "N_final": -0.03986786640582669,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub_rotoff": {
+       "N_s": 0.05599474250445342,
+       "N_max": 0.08001193650020684,
+       "N_max_block": 5,
+       "R": 0.024017193995753423,
+       "N_11": -0.0279388004404915,
+       "N_final": 0.015106131725806915,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "rotoff_retention": {
+      "N_11": 0.3287621018224376,
+      "N_final": 0.40210653871925284,
+      "raw_11": 0.15016867444015905,
+      "intact_raw_11": 0.42615041160363315,
+      "exact_probe_11": 0.09107142857142857,
+      "intact_exact_probe_11": 0.11247448979591837
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 84.39999999999999,
+       "cost": 0.42,
+       "se": 0.19690727384964474
+      },
+      "scale": {
+       "top1": 84.39999999999999,
+       "cost": 0.42,
+       "se": 0.19690727384964474
+      },
+      "sub": {
+       "top1": 80.86,
+       "cost": 3.9600000000000004,
+       "se": 0.37535564252009634
+      },
+      "randsub": {
+       "top1": 84.94,
+       "cost": -0.12,
+       "se": 0.17889527859656001
+      },
+      "scramble": {
+       "top1": 84.06,
+       "cost": 0.76,
+       "se": 0.21329223782346868
+      },
+      "rotoff": {
+       "top1": 66.38,
+       "cost": 18.44,
+       "se": 0.6080026426280469
+      },
+      "mean_rotoff": {
+       "top1": 61.040000000000006,
+       "cost": 23.78,
+       "se": 0.6580189342135655
+      },
+      "scale_rotoff": {
+       "top1": 61.019999999999996,
+       "cost": 23.799999999999997,
+       "se": 0.6569614293578677
+      },
+      "sub_rotoff": {
+       "top1": 49.32,
+       "cost": 35.5,
+       "se": 0.7147392324715964
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 4.08,
+       "se": 0.3772256351786914
+      },
+      "intact": 84.82,
+      "floor": 33.42
+     }
+    }
+   }
+  },
+  "supervised": {
+   "family": "ape",
+   "label": "supervised ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 22,
+     "energy_in_subspace": 0.9901536607291838,
+     "spread_ratio_range": [
+      0.8271031981327592,
+      1.052798279187762
+     ],
+     "positional_norm_mean": 11.492839776619288
+    },
+    "rep_s2": {
+     "subspace_dim": 18,
+     "energy_in_subspace": 0.9901074063243793,
+     "spread_ratio_range": [
+      0.9659209072549073,
+      1.0288544977075262
+     ],
+     "positional_norm_mean": 11.54026634156944
+    },
+    "acc_s4": {
+     "subspace_dim": 23,
+     "energy_in_subspace": 0.9901300245242869,
+     "spread_ratio_range": [
+      0.8413164792458648,
+      1.0551770979168515
+     ],
+     "positional_norm_mean": 11.562617594216878
+    },
+    "acc_s2": {
+     "subspace_dim": 19,
+     "energy_in_subspace": 0.9903863623586404,
+     "spread_ratio_range": [
+      0.9622847170459624,
+      1.0285485666641592
+     ],
+     "positional_norm_mean": 11.595058751616032
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.7800853653142928,
+     "checks": {
+      "mean": {
+       "N_s": 0.28042814545716915,
+       "raw_s": 0.23567355873578816,
+       "exact": 0.07160714285714286,
+       "row": 0.1313265306122449,
+       "col": 0.12676020408163266,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.2936060657832977,
+       "raw_s": 0.24595346152747877,
+       "exact": 0.07183673469387755,
+       "row": 0.13178571428571428,
+       "col": 0.12744897959183674,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.3263739559545177,
+       "raw_s": 0.27151521310227356,
+       "exact": 0.07346938775510205,
+       "row": 0.16650510204081634,
+       "col": 0.1473469387755102,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9972151746221317,
+       "raw_s": 0.7948286302344847,
+       "exact": 0.908954081632653,
+       "row": 0.9933928571428572,
+       "col": 0.9979591836734694,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": 0.12725578426292272,
+       "raw_s": 0.11618604139752162,
+       "exact": 0.9113775510204082,
+       "row": 0.27293367346938774,
+       "col": 0.2408673469387755,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.28042814545716915,
+       "N_max": 0.20020617624243525,
+       "N_max_block": 5,
+       "R": -0.0802219692147339,
+       "N_11": -0.06716526354953847,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.2936060657832977,
+       "N_max": 0.2262701579345604,
+       "N_max_block": 5,
+       "R": -0.06733590784873728,
+       "N_11": -0.03407093829766168,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.3263739559545177,
+       "N_max": 0.29668765327846514,
+       "N_max_block": 11,
+       "R": -0.029686302676052545,
+       "N_11": 0.29668765327846514,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.9972151746221317,
+       "N_max": 1.0012591404877513,
+       "N_max_block": 5,
+       "R": 0.004043965865619614,
+       "N_11": 0.9737191849876018,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": 0.12725578426292272,
+       "N_max": 0.1418111377086754,
+       "N_max_block": 7,
+       "R": 0.014555353445752678,
+       "N_11": 0.012080951623134948,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 77.68,
+       "cost": 3.4799999999999995,
+       "se": 0.41762758836134395
+      },
+      "scale": {
+       "top1": 77.46,
+       "cost": 3.6999999999999997,
+       "se": 0.4177282602121574
+      },
+      "sub": {
+       "top1": 69.02000000000001,
+       "cost": 12.139999999999999,
+       "se": 0.5654980438582625
+      },
+      "randsub": {
+       "top1": 80.60000000000001,
+       "cost": 0.5599999999999999,
+       "se": 0.19376477739205222
+      },
+      "scramble": {
+       "top1": 75.6,
+       "cost": 5.56,
+       "se": 0.45984733544338696
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 11.58,
+       "se": 0.557173948208019
+      },
+      "intact": 81.16,
+      "floor": 24.12
+     }
+    },
+    "2": {
+     "intact_minus_floor_at_s": 0.7254930255164456,
+     "checks": {
+      "mean": {
+       "N_s": 0.11212224486778234,
+       "raw_s": 0.09647133631212726,
+       "exact": 0.07183673469387755,
+       "row": 0.1380357142857143,
+       "col": 0.14579081632653063,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.10413263314689765,
+       "raw_s": 0.09067492873204097,
+       "exact": 0.07104591836734694,
+       "row": 0.13714285714285715,
+       "col": 0.1455357142857143,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.10881163955943547,
+       "raw_s": 0.09406951525068388,
+       "exact": 0.3606122448979592,
+       "row": 0.35887755102040814,
+       "col": 0.3018112244897959,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 1.0014587475424237,
+       "raw_s": 0.7416787663397673,
+       "exact": 1.0,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": 0.010299909339282322,
+       "raw_s": 0.022599942044405106,
+       "exact": 0.9996683673469388,
+       "row": 0.35191326530612244,
+       "col": 0.32285714285714284,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.11212224486778234,
+       "N_max": 0.061636935564138684,
+       "N_max_block": 3,
+       "R": -0.05048530930364366,
+       "N_11": -0.03760134042205525,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.10413263314689765,
+       "N_max": 0.0530524848165375,
+       "N_max_block": 3,
+       "R": -0.05108014833036015,
+       "N_11": -0.06495935179921099,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.10881163955943547,
+       "N_max": 0.1395321523401338,
+       "N_max_block": 11,
+       "R": 0.03072051278069833,
+       "N_11": 0.1395321523401338,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 1.0014587475424237,
+       "N_max": 1.0025287619013414,
+       "N_max_block": 3,
+       "R": 0.0010700143589177369,
+       "N_11": 0.9663979283841329,
+       "N_final": null,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": 0.010299909339282322,
+       "N_max": 0.208863474434448,
+       "N_max_block": 11,
+       "R": 0.19856356509516568,
+       "N_11": 0.208863474434448,
+       "N_final": null,
+       "verdict": "PARTIAL"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 63.5,
+       "cost": 17.66,
+       "se": 0.6353783291270052
+      },
+      "scale": {
+       "top1": 63.46000000000001,
+       "cost": 17.7,
+       "se": 0.6345254325122839
+      },
+      "sub": {
+       "top1": 50.239999999999995,
+       "cost": 30.919999999999998,
+       "se": 0.7206209675798944
+      },
+      "randsub": {
+       "top1": 81.10000000000001,
+       "cost": 0.06,
+       "se": 0.1685377138571615
+      },
+      "scramble": {
+       "top1": 54.96,
+       "cost": 26.200000000000003,
+       "se": 0.6971436020221142
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 30.86,
+       "se": 0.7208578273150955
+      },
+      "intact": 81.16,
+      "floor": 24.12
+     }
+    }
+   }
+  },
+  "dino": {
+   "family": "ape",
+   "label": "DINO ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 16,
+     "energy_in_subspace": 0.9906375526267882,
+     "spread_ratio_range": [
+      0.9775946534975128,
+      1.016436343349372
+     ],
+     "positional_norm_mean": 3.7970151617863657
+    },
+    "rep_s2": {
+     "subspace_dim": 14,
+     "energy_in_subspace": 0.9909404084305254,
+     "spread_ratio_range": [
+      0.9788919457981545,
+      1.0246313668086813
+     ],
+     "positional_norm_mean": 3.0657559796421268
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.7514083036772932,
+     "checks": {
+      "mean": {
+       "N_s": 0.1342866740208309,
+       "raw_s": 0.11504750541557648,
+       "exact": 0.0629591836734694,
+       "row": 0.11573979591836735,
+       "col": 0.1114795918367347,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.13992747633598068,
+       "raw_s": 0.11928605111458213,
+       "exact": 0.062040816326530614,
+       "row": 0.11413265306122448,
+       "col": 0.11107142857142857,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.1054004155917275,
+       "raw_s": 0.09334213096977999,
+       "exact": 0.13941326530612244,
+       "row": 0.2134438775510204,
+       "col": 0.17104591836734695,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9983674331887024,
+       "raw_s": 0.7643249629020944,
+       "exact": 0.9970663265306122,
+       "row": 0.9989540816326531,
+       "col": 0.9992857142857143,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.0014284300276457176,
+       "raw_s": 0.01307004929912333,
+       "exact": 0.9958418367346938,
+       "row": 0.29551020408163264,
+       "col": 0.26479591836734695,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.1342866740208309,
+       "N_max": 0.1269790136075668,
+       "N_max_block": 10,
+       "R": -0.007307660413264083,
+       "N_11": 0.12237676089075011,
+       "N_final": 0.14917834615772016,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.13992747633598068,
+       "N_max": 0.13335405169769865,
+       "N_max_block": 10,
+       "R": -0.006573424638282033,
+       "N_11": 0.12820875175937294,
+       "N_final": 0.16288170710252875,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.1054004155917275,
+       "N_max": 0.13227662260613,
+       "N_max_block": 10,
+       "R": 0.026876207014402492,
+       "N_11": 0.13034689651098993,
+       "N_final": 0.1531765832845155,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.9983674331887024,
+       "N_max": 1.0014026097512014,
+       "N_max_block": 11,
+       "R": 0.0030351765624990756,
+       "N_11": 1.0014026097512014,
+       "N_final": 0.9875879120888705,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.0014284300276457176,
+       "N_max": 0.07375481936307762,
+       "N_max_block": 10,
+       "R": 0.07518324939072334,
+       "N_11": 0.07132807318685368,
+       "N_final": 0.0964807303754049,
+       "verdict": "PARTIAL"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE"
+    },
+    "2": {
+     "intact_minus_floor_at_s": 0.458638400601179,
+     "checks": {
+      "mean": {
+       "N_s": 0.0022285868234603354,
+       "raw_s": 0.012393330475239108,
+       "exact": 0.05145408163265306,
+       "row": 0.10665816326530612,
+       "col": 0.11354591836734694,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.0048891806142471236,
+       "raw_s": 0.013613580956094988,
+       "exact": 0.050025510204081636,
+       "row": 0.10561224489795919,
+       "col": 0.11260204081632653,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": -0.01595776970635244,
+       "raw_s": 0.004052369003642969,
+       "exact": 0.5376785714285715,
+       "row": 0.3967857142857143,
+       "col": 0.326734693877551,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9989747403336694,
+       "raw_s": 0.4695393921265386,
+       "exact": 0.9997704081632653,
+       "row": 0.9999234693877551,
+       "col": 0.9999489795918367,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.05385758473886983,
+       "raw_s": -0.013329941545951329,
+       "exact": 0.9999744897959184,
+       "row": 0.37239795918367347,
+       "col": 0.34275510204081633,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.0022285868234603354,
+       "N_max": 0.05187491296058512,
+       "N_max_block": 3,
+       "R": 0.04964632613712479,
+       "N_11": 0.022014956105665034,
+       "N_final": 0.025965652812747163,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.0048891806142471236,
+       "N_max": 0.05335365650921813,
+       "N_max_block": 3,
+       "R": 0.04846447589497101,
+       "N_11": 0.02326859251616599,
+       "N_final": 0.02882144875047946,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": -0.01595776970635244,
+       "N_max": 0.013388125487141425,
+       "N_max_block": 3,
+       "R": 0.029345895193493864,
+       "N_11": 0.007239333894944228,
+       "N_final": 0.011131491949628113,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.9989747403336694,
+       "N_max": 1.007026721509369,
+       "N_max_block": 11,
+       "R": 0.008051981175699496,
+       "N_11": 1.007026721509369,
+       "N_final": 1.0064206599952026,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.05385758473886983,
+       "N_max": -0.007300112958297758,
+       "N_max_block": 7,
+       "R": 0.046557471780572075,
+       "N_11": -0.026931732509510052,
+       "N_final": -0.02717269947260894,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE"
+    }
+   }
+  },
+  "augreg": {
+   "family": "ape",
+   "label": "AugReg ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 22,
+     "energy_in_subspace": 0.9905061069642239,
+     "spread_ratio_range": [
+      0.39252785214280594,
+      1.348416822248131
+     ],
+     "positional_norm_mean": 12.361336903073022
+    },
+    "rep_s2": {
+     "subspace_dim": 33,
+     "energy_in_subspace": 0.9903727703272037,
+     "spread_ratio_range": [
+      0.976358676975879,
+      1.0277912587292817
+     ],
+     "positional_norm_mean": 9.284031512960766
+    },
+    "acc_s4": {
+     "subspace_dim": 22,
+     "energy_in_subspace": 0.9903572199163074,
+     "spread_ratio_range": [
+      0.4093553539077811,
+      1.3323404369344962
+     ],
+     "positional_norm_mean": 12.418381362136685
+    },
+    "acc_s2": {
+     "subspace_dim": 32,
+     "energy_in_subspace": 0.990113041829129,
+     "spread_ratio_range": [
+      0.9776006431567857,
+      1.0249614079454334
+     ],
+     "positional_norm_mean": 9.34650847447594
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.7938434958462841,
+     "checks": {
+      "mean": {
+       "N_s": 0.17403159037709995,
+       "raw_s": 0.1525359993488777,
+       "exact": 0.09196428571428572,
+       "row": 0.14982142857142858,
+       "col": 0.13793367346938776,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.17475729946158075,
+       "raw_s": 0.15311209878546936,
+       "exact": 0.09556122448979591,
+       "row": 0.16410714285714287,
+       "col": 0.15487244897959185,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.20200881139095453,
+       "raw_s": 0.17474553428258016,
+       "exact": 0.4049234693877551,
+       "row": 0.27859693877551023,
+       "col": 0.24270408163265306,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9981206310916804,
+       "raw_s": 0.806733724318351,
+       "exact": 0.9865816326530612,
+       "row": 0.9981377551020408,
+       "col": 0.9994642857142857,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": 0.07123673241171208,
+       "raw_s": 0.07093296994661197,
+       "exact": 0.9891581632653061,
+       "row": 0.41165816326530613,
+       "col": 0.37489795918367347,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.17403159037709995,
+       "N_max": 0.12337630545448106,
+       "N_max_block": 5,
+       "R": -0.05065528492261889,
+       "N_11": -0.08662006226596917,
+       "N_final": -0.1477317606999681,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.17475729946158075,
+       "N_max": 0.14935897582587296,
+       "N_max_block": 5,
+       "R": -0.025398323635707792,
+       "N_11": -0.02706059624487676,
+       "N_final": -0.09013744511941581,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.20200881139095453,
+       "N_max": 0.15869009337972048,
+       "N_max_block": 5,
+       "R": -0.04331871801123405,
+       "N_11": -0.06204087217925717,
+       "N_final": -0.06146911315752106,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.9981206310916804,
+       "N_max": 1.0022352169362723,
+       "N_max_block": 6,
+       "R": 0.0041145858445919,
+       "N_11": 0.9991473271354807,
+       "N_final": 1.0033635478120257,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": 0.07123673241171208,
+       "N_max": 0.19134509777582717,
+       "N_max_block": 11,
+       "R": 0.1201083653641151,
+       "N_11": 0.19134509777582717,
+       "N_final": 0.19622939481180598,
+       "verdict": "PARTIAL"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 70.98,
+       "cost": 9.16,
+       "se": 0.48996621656873013
+      },
+      "scale": {
+       "top1": 71.5,
+       "cost": 8.64,
+       "se": 0.4869471259805321
+      },
+      "sub": {
+       "top1": 65.9,
+       "cost": 14.24,
+       "se": 0.5673701276700726
+      },
+      "randsub": {
+       "top1": 80.24,
+       "cost": -0.1,
+       "se": 0.17551114161832126
+      },
+      "scramble": {
+       "top1": 66.60000000000001,
+       "cost": 13.54,
+       "se": 0.5583869977066457
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 14.34,
+       "se": 0.5679237514644863
+      },
+      "intact": 80.14,
+      "floor": 29.220000000000002
+     }
+    },
+    "2": {
+     "intact_minus_floor_at_s": 0.7145714245451369,
+     "checks": {
+      "mean": {
+       "N_s": 0.07817022137517775,
+       "raw_s": 0.07180830989979566,
+       "exact": 0.0764795918367347,
+       "row": 0.15331632653061225,
+       "col": 0.15293367346938774,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.0697050929429701,
+       "raw_s": 0.0657593710170355,
+       "exact": 0.07454081632653062,
+       "row": 0.1506377551020408,
+       "col": 0.15278061224489795,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.07568222554774191,
+       "raw_s": 0.07003045917712247,
+       "exact": 0.6597704081632653,
+       "row": 0.2975,
+       "col": 0.24663265306122448,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.998370865830393,
+       "raw_s": 0.7293573952755118,
+       "exact": 0.9999234693877551,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.0018836797246387794,
+       "raw_s": 0.014604079750504253,
+       "exact": 0.9998979591836735,
+       "row": 0.5501275510204081,
+       "col": 0.5129336734693878,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.07817022137517775,
+       "N_max": 0.04168077957168366,
+       "N_max_block": 3,
+       "R": -0.03648944180349409,
+       "N_11": -0.0973771300355217,
+       "N_final": -0.1327593576406721,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.0697050929429701,
+       "N_max": 0.029626739123278803,
+       "N_max_block": 3,
+       "R": -0.0400783538196913,
+       "N_11": -0.11252503879601723,
+       "N_final": -0.14911332706330668,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.07568222554774191,
+       "N_max": 0.03732479072966191,
+       "N_max_block": 3,
+       "R": -0.03835743481808,
+       "N_11": -0.1382298642087743,
+       "N_final": -0.16957278086886945,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.998370865830393,
+       "N_max": 1.0100487810730028,
+       "N_max_block": 11,
+       "R": 0.011677915242609749,
+       "N_11": 1.0100487810730028,
+       "N_final": 1.0033449902793596,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.0018836797246387794,
+       "N_max": 0.038227304924267354,
+       "N_max_block": 10,
+       "R": 0.04011098464890613,
+       "N_11": 0.03651536782186771,
+       "N_final": 0.034367095752463495,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 61.56,
+       "cost": 18.58,
+       "se": 0.609451397735078
+      },
+      "scale": {
+       "top1": 61.4,
+       "cost": 18.740000000000002,
+       "se": 0.611749399235907
+      },
+      "sub": {
+       "top1": 49.04,
+       "cost": 31.1,
+       "se": 0.7109564626743072
+      },
+      "randsub": {
+       "top1": 79.86,
+       "cost": 0.27999999999999997,
+       "se": 0.17660848822076
+      },
+      "scramble": {
+       "top1": 52.22,
+       "cost": 27.92,
+       "se": 0.6859947796940976
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 30.819999999999997,
+       "se": 0.7094548507389652
+      },
+      "intact": 80.14,
+      "floor": 29.220000000000002
+     }
+    }
+   }
+  },
+  "sam": {
+   "family": "ape",
+   "label": "SAM ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 18,
+     "energy_in_subspace": 0.9910640271589857,
+     "spread_ratio_range": [
+      0.9516396530786266,
+      1.0301056094497385
+     ],
+     "positional_norm_mean": 12.26107101286106
+    },
+    "rep_s2": {
+     "subspace_dim": 17,
+     "energy_in_subspace": 0.9927363629461047,
+     "spread_ratio_range": [
+      0.9574077499983983,
+      1.0324209959631088
+     ],
+     "positional_norm_mean": 9.760514289867192
+    },
+    "acc_s4": {
+     "subspace_dim": 18,
+     "energy_in_subspace": 0.9908653170208396,
+     "spread_ratio_range": [
+      0.9573429465714561,
+      1.0256358035038664
+     ],
+     "positional_norm_mean": 12.315897505060967
+    },
+    "acc_s2": {
+     "subspace_dim": 17,
+     "energy_in_subspace": 0.9926311264294304,
+     "spread_ratio_range": [
+      0.9559127931583379,
+      1.03405879160338
+     ],
+     "positional_norm_mean": 9.7940923650919
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.7281119137090181,
+     "checks": {
+      "mean": {
+       "N_s": 0.17757591617030094,
+       "raw_s": 0.1429450073487931,
+       "exact": 0.08964285714285715,
+       "row": 0.16464285714285715,
+       "col": 0.14061224489795918,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.16969841873670122,
+       "raw_s": 0.1372093076171769,
+       "exact": 0.08915816326530612,
+       "row": 0.16454081632653061,
+       "col": 0.13979591836734695,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": 0.18638323341937735,
+       "raw_s": 0.14935771996566055,
+       "exact": 0.10979591836734694,
+       "row": 0.21974489795918367,
+       "col": 0.20456632653061224,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 1.0020503892887478,
+       "raw_s": 0.7432546937752998,
+       "exact": 1.0,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": 0.06040785774757112,
+       "raw_s": 0.05763354810504923,
+       "exact": 0.9999744897959184,
+       "row": 0.3166581632653061,
+       "col": 0.3147448979591837,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.17757591617030094,
+       "N_max": 0.20023635436984116,
+       "N_max_block": 10,
+       "R": 0.022660438199540223,
+       "N_11": 0.19875721725041423,
+       "N_final": 0.1978402033386599,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.16969841873670122,
+       "N_max": 0.19015308300057843,
+       "N_max_block": 11,
+       "R": 0.02045466426387721,
+       "N_11": 0.19015308300057843,
+       "N_final": 0.18427026268337177,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": 0.18638323341937735,
+       "N_max": 0.2374782690513977,
+       "N_max_block": 9,
+       "R": 0.051095035632020364,
+       "N_11": 0.2333430029138412,
+       "N_final": 0.221734237570387,
+       "verdict": "PARTIAL"
+      },
+      "randsub": {
+       "N_s": 1.0020503892887478,
+       "N_max": 1.004694837395706,
+       "N_max_block": 9,
+       "R": 0.002644448106958297,
+       "N_11": 1.0011927089548134,
+       "N_final": 1.0004260250584367,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": 0.06040785774757112,
+       "N_max": 0.1157272312620676,
+       "N_max_block": 10,
+       "R": 0.055319373514496485,
+       "N_11": 0.10862393658590977,
+       "N_final": 0.13912176660467096,
+       "verdict": "PARTIAL"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 78.12,
+       "cost": 3.1199999999999997,
+       "se": 0.3341787771403477
+      },
+      "scale": {
+       "top1": 78.14,
+       "cost": 3.1,
+       "se": 0.33361693609888926
+      },
+      "sub": {
+       "top1": 77.9,
+       "cost": 3.34,
+       "se": 0.34028229223349477
+      },
+      "randsub": {
+       "top1": 81.22,
+       "cost": 0.02,
+       "se": 0.08718623909802287
+      },
+      "scramble": {
+       "top1": 74.98,
+       "cost": 6.260000000000001,
+       "se": 0.40668852837499897
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 3.32,
+       "se": 0.33973313603583644
+      },
+      "intact": 81.24,
+      "floor": 39.14
+     }
+    },
+    "2": {
+     "intact_minus_floor_at_s": 0.5266676471081069,
+     "checks": {
+      "mean": {
+       "N_s": 0.039978828110397484,
+       "raw_s": 0.03371250023375305,
+       "exact": 0.0976530612244898,
+       "row": 0.23441326530612244,
+       "col": 0.20091836734693877,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.03324981120492565,
+       "raw_s": 0.030168544732797523,
+       "exact": 0.09579081632653061,
+       "row": 0.23267857142857143,
+       "col": 0.20076530612244897,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": -0.00483808561074173,
+       "raw_s": 0.010108881733593629,
+       "exact": 0.3368622448979592,
+       "row": 0.48946428571428574,
+       "col": 0.3483928571428571,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 1.0051401105444357,
+       "raw_s": 0.542031721933131,
+       "exact": 1.0,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.021619485660327325,
+       "raw_s": 0.001270661254298516,
+       "exact": 1.0,
+       "row": 0.37183673469387757,
+       "col": 0.3564540816326531,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.039978828110397484,
+       "N_max": 0.0738301764242511,
+       "N_max_block": 7,
+       "R": 0.03385134831385362,
+       "N_11": 0.07049939078423086,
+       "N_final": 0.07774482041918357,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.03324981120492565,
+       "N_max": 0.06401369928864452,
+       "N_max_block": 11,
+       "R": 0.03076388808371887,
+       "N_11": 0.06401369928864452,
+       "N_final": 0.0651938158296481,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": -0.00483808561074173,
+       "N_max": 0.023621233394097843,
+       "N_max_block": 8,
+       "R": 0.028459319004839573,
+       "N_11": 0.01640346928592624,
+       "N_final": 0.012823834792803399,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 1.0051401105444357,
+       "N_max": 1.0041867001685894,
+       "N_max_block": 10,
+       "R": -0.0009534103758463974,
+       "N_11": 1.0031807725732216,
+       "N_final": 1.0039300744297144,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.021619485660327325,
+       "N_max": -0.014330404083800338,
+       "N_max_block": 3,
+       "R": 0.007289081576526987,
+       "N_11": -0.06598357180119165,
+       "N_final": -0.0329941727795076,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 63.72,
+       "cost": 17.52,
+       "se": 0.5942058028219023
+      },
+      "scale": {
+       "top1": 63.82,
+       "cost": 17.419999999999998,
+       "se": 0.5931096659262627
+      },
+      "sub": {
+       "top1": 52.480000000000004,
+       "cost": 28.76,
+       "se": 0.6790174467114874
+      },
+      "randsub": {
+       "top1": 81.10000000000001,
+       "cost": 0.13999999999999999,
+       "se": 0.10769586658705146
+      },
+      "scramble": {
+       "top1": 41.74,
+       "cost": 39.5,
+       "se": 0.7236399180159903
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 28.62,
+       "se": 0.6804937430622483
+      },
+      "intact": 81.24,
+      "floor": 39.14
+     }
+    }
+   }
+  },
+  "deit3": {
+   "family": "ape",
+   "label": "DeiT-III ViT-B",
+   "floor_used": "floor",
+   "complete": true,
+   "edit_params": {
+    "rep_s4": {
+     "subspace_dim": 20,
+     "energy_in_subspace": 0.9900759666226903,
+     "spread_ratio_range": [
+      0.9821635579304785,
+      1.0235001338183183
+     ],
+     "positional_norm_mean": 14.366702555632497
+    },
+    "rep_s2": {
+     "subspace_dim": 19,
+     "energy_in_subspace": 0.9917272325775964,
+     "spread_ratio_range": [
+      0.9672667622539434,
+      1.0464198686591775
+     ],
+     "positional_norm_mean": 15.569614249719423
+    },
+    "acc_s4": {
+     "subspace_dim": 20,
+     "energy_in_subspace": 0.9902983713668518,
+     "spread_ratio_range": [
+      0.9795608070680704,
+      1.0253193435990902
+     ],
+     "positional_norm_mean": 14.36152788469426
+    },
+    "acc_s2": {
+     "subspace_dim": 19,
+     "energy_in_subspace": 0.9919083972368733,
+     "spread_ratio_range": [
+      0.9644326175213518,
+      1.0459018125737816
+     ],
+     "positional_norm_mean": 15.583569327247023
+    }
+   },
+   "sites": {
+    "4": {
+     "intact_minus_floor_at_s": 0.7465472690390756,
+     "checks": {
+      "mean": {
+       "N_s": -0.007452576819529328,
+       "raw_s": 0.011152931305139701,
+       "exact": 0.07846938775510204,
+       "row": 0.1328061224489796,
+       "col": 0.1347704081632653,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.0163934302432761,
+       "raw_s": 0.028955102755363605,
+       "exact": 0.07558673469387756,
+       "row": 0.12989795918367347,
+       "col": 0.13341836734693877,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": -0.002170351449204948,
+       "raw_s": 0.015096362229804287,
+       "exact": 0.32211734693877553,
+       "row": 0.22022959183673468,
+       "col": 0.216734693877551,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 0.9963875140670978,
+       "raw_s": 0.7605670097084887,
+       "exact": 0.9995918367346939,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.0319253997656341,
+       "raw_s": -0.00711718783095164,
+       "exact": 0.9936989795918367,
+       "row": 0.43533163265306124,
+       "col": 0.3856377551020408,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": -0.007452576819529328,
+       "N_max": -0.011296727684726797,
+       "N_max_block": 6,
+       "R": -0.0038441508651974694,
+       "N_11": -0.06830566921095145,
+       "N_final": 0.01540086825696036,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.0163934302432761,
+       "N_max": 0.008207658062511503,
+       "N_max_block": 5,
+       "R": -0.008185772180764599,
+       "N_11": -0.050495604548814986,
+       "N_final": 0.025843303201744793,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": -0.002170351449204948,
+       "N_max": 0.0021608974266284484,
+       "N_max_block": 5,
+       "R": 0.0043312488758333965,
+       "N_11": -0.08643084748164104,
+       "N_final": 0.002544342466035114,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 0.9963875140670978,
+       "N_max": 1.0001958686549226,
+       "N_max_block": 6,
+       "R": 0.0038083545878248026,
+       "N_11": 0.9446155325888388,
+       "N_final": 0.9850024308372254,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.0319253997656341,
+       "N_max": -0.02722389711394062,
+       "N_max_block": 5,
+       "R": 0.004701502651693477,
+       "N_11": -0.14371346637447266,
+       "N_final": -0.02302624861713222,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 73.26,
+       "cost": 11.32,
+       "se": 0.535190438779648
+      },
+      "scale": {
+       "top1": 73.2,
+       "cost": 11.379999999999999,
+       "se": 0.5353096592499124
+      },
+      "sub": {
+       "top1": 75.44,
+       "cost": 9.139999999999999,
+       "se": 0.4985396557523498
+      },
+      "randsub": {
+       "top1": 84.38,
+       "cost": 0.2,
+       "se": 0.11997866050175404
+      },
+      "scramble": {
+       "top1": 67.78,
+       "cost": 16.8,
+       "se": 0.5976817252425723
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 8.94,
+       "se": 0.49604888156166593
+      },
+      "intact": 84.58,
+      "floor": 23.52
+     }
+    },
+    "2": {
+     "intact_minus_floor_at_s": 0.42950993762697626,
+     "checks": {
+      "mean": {
+       "N_s": 0.011572486961019998,
+       "raw_s": 0.017899553538448958,
+       "exact": 0.0786734693877551,
+       "row": 0.1538265306122449,
+       "col": 0.14400510204081632,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scale": {
+       "N_s": 0.0016992311904314276,
+       "raw_s": 0.013658892068248277,
+       "exact": 0.06969387755102041,
+       "row": 0.151734693877551,
+       "col": 0.1413265306122449,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "sub": {
+       "N_s": -0.005610322347579,
+       "raw_s": 0.010519366184056375,
+       "exact": 0.9519897959183673,
+       "row": 0.4821173469387755,
+       "col": 0.42104591836734695,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "randsub": {
+       "N_s": 1.0232131008237568,
+       "raw_s": 0.452409250499549,
+       "exact": 0.9988010204081633,
+       "row": 1.0,
+       "col": 1.0,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      },
+      "scramble": {
+       "N_s": -0.055030164027440216,
+       "raw_s": -0.010706946933395859,
+       "exact": 0.9987755102040816,
+       "row": 0.6528826530612245,
+       "col": 0.6026020408163265,
+       "chance_exact": 0.00510204081632653,
+       "chance_row": 0.07142857142857142,
+       "pass": false
+      }
+     },
+     "arms": {
+      "mean": {
+       "N_s": 0.011572486961019998,
+       "N_max": 0.05009495528566182,
+       "N_max_block": 11,
+       "R": 0.03852246832464182,
+       "N_11": 0.05009495528566182,
+       "N_final": 0.03423579493759278,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scale": {
+       "N_s": 0.0016992311904314276,
+       "N_max": 0.04422216869157736,
+       "N_max_block": 11,
+       "R": 0.04252293750114593,
+       "N_11": 0.04422216869157736,
+       "N_final": 0.0302590250775744,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "sub": {
+       "N_s": -0.005610322347579,
+       "N_max": 0.0311875477341949,
+       "N_max_block": 5,
+       "R": 0.0367978700817739,
+       "N_11": 0.0031807984140946105,
+       "N_final": 0.007631844095397238,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "randsub": {
+       "N_s": 1.0232131008237568,
+       "N_max": 0.999761523542121,
+       "N_max_block": 6,
+       "R": -0.023451577281635827,
+       "N_11": 0.9726752755298198,
+       "N_final": 0.9806596491814527,
+       "verdict": "DOES NOT REBUILD"
+      },
+      "scramble": {
+       "N_s": -0.055030164027440216,
+       "N_max": -0.026919407917152798,
+       "N_max_block": 8,
+       "R": 0.02811075611028742,
+       "N_11": -0.06595109127616475,
+       "N_final": -0.018613869463405982,
+       "verdict": "DOES NOT REBUILD"
+      }
+     },
+     "chosen_erasure": null,
+     "verdict": "ERASURE INCOMPLETE",
+     "top1": {
+      "mean": {
+       "top1": 39.86,
+       "cost": 44.72,
+       "se": 0.7403606869555931
+      },
+      "scale": {
+       "top1": 39.98,
+       "cost": 44.6,
+       "se": 0.7401875272625872
+      },
+      "sub": {
+       "top1": 41.88,
+       "cost": 42.699999999999996,
+       "se": 0.7401699604239981
+      },
+      "randsub": {
+       "top1": 84.08,
+       "cost": 0.5,
+       "se": 0.1948270810701214
+      },
+      "scramble": {
+       "top1": 32.18,
+       "cost": 52.400000000000006,
+       "se": 0.7433427955542049
+      },
+      "sub_minus_randsub": {
+       "extra_cost": 42.199999999999996,
+       "se": 0.742928252577391
+      },
+      "intact": 84.58,
+      "floor": 23.52
+     }
+    }
+   }
+  }
+ },
+ "outcome": {
+  "rule": "Outcome case for the paper (the notebook only labels): case 1 if all four RoPE models rebuild at s=4 and no APE model does; case 2 if one or two RoPE models do not rebuild (PARTIAL counts as not rebuilding); case 3 (stop and discuss) if three or more do not; no case if any RoPE model reads ERASURE INCOMPLETE or NOT READABLE; any APE model that rebuilds is flagged.",
+  "rope_verdicts_s4": {
+   "naver": "REBUILDS",
+   "DINOv3": "ERASURE INCOMPLETE",
+   "small": "REBUILDS",
+   "reg1_gap": "ERASURE INCOMPLETE"
+  },
+  "rope_models_not_rebuilding": 0,
+  "rope_models_undetermined": [
+   "DINOv3",
+   "reg1_gap"
+  ],
+  "ape_verdicts": {
+   "supervised@s4": "ERASURE INCOMPLETE",
+   "supervised@s2": "ERASURE INCOMPLETE",
+   "dino@s4": "ERASURE INCOMPLETE",
+   "dino@s2": "ERASURE INCOMPLETE",
+   "augreg@s4": "ERASURE INCOMPLETE",
+   "augreg@s2": "ERASURE INCOMPLETE",
+   "sam@s4": "ERASURE INCOMPLETE",
+   "sam@s2": "ERASURE INCOMPLETE",
+   "deit3@s4": "ERASURE INCOMPLETE",
+   "deit3@s2": "ERASURE INCOMPLETE"
+  },
+  "hybrid_verdict_s4": "ERASURE INCOMPLETE",
+  "ape_models_rebuilding": [],
+  "case": null,
+  "note": "no case: the test could not be read for ['DINOv3', 'reg1_gap'] (erasure incomplete or range too small); discuss"
+ },
+ "gates": [
+  {
+   "gate": "CUDA available",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "torch is 2.10.0+cu128",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "2.10.0+cu128",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "PyTorch reports cuDNN 91002 (9.10.2)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "91002",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every loaded libcudnn file comes from this environment's nvidia/cudnn folder",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'nvidia-cudnn-cu12': '9.10.2.21'}",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0)",
+   "scope": "env",
+   "status": "PASS",
+   "detail": "{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "imported metric satisfies its unit test",
+   "scope": "repo-metric",
+   "status": "PASS",
+   "detail": "+1.000/-1.000/-0.005",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 f50b694d24279ce6... (expected f50b694d24279ce6...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 c983414404ca645b... (expected c983414404ca645b...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "sha256 f1d963652ac3867c... (expected f1d963652ac3867c...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 be01ed6297ef819a... (expected be01ed6297ef819a...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 bf895274486dfaa9... (expected bf895274486dfaa9...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "sha256 b9f6a3833766b736... (expected b9f6a3833766b736...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-6 are present and complete",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-6 are present and complete",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "A=complete",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-6 are present and complete",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-6 are present and complete",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "RB-0 parts needed by RB-6 are present and complete",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "A=complete, C=complete",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "committed W1b file found and is the expected one (sha256)",
+   "scope": "W1b",
+   "status": "PASS",
+   "detail": "/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "committed W7 APE files (results + per-image) found and are the expected ones (sha256)",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "benjamin-paine/imagenet-1k-256x256",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",
+   "scope": "data",
+   "status": "PASS",
+   "detail": "ILSVRC/imagenet-1k",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "mean erasure: every slot's mean equals the average over slots",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "mean+scale erasure: equal slot means and equal slot spread",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "spread range 104.0862-104.0862",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "subspace erasure removes >= 99% of the positional component's energy",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "r=15 of 32; energy left 1.78e-30",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "random subspace: orthonormal, same dimension as the positional subspace, reproducible",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "random-subspace control leaves most of the positional component (it is a control, not an erasure)",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "energy left 0.529",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "scramble: slot p carries slot pi(p)'s component; pi has no fixed point",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "derangement is reproducible",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edit hook removed on exit",
+   "scope": "edit-algebra",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "Part A: no positional component gives bias-corrected PVF ~ 0",
+   "scope": "partA-algebra",
+   "status": "PASS",
+   "detail": "raw 0.0002, corrected +0.00001",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "Part A: bias-corrected PVF recovers the true value; row / column split is right",
+   "scope": "partA-algebra",
+   "status": "PASS",
+   "detail": "PVF 0.6165 vs 0.6156; row 1.000, col 1.000",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "84.64 vs 84.64",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "38.84 vs 38.84",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "b4: 0.469 -> 0.013",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "22/22",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "naver",
+   "status": "PASS",
+   "detail": "22 new arms, 4.7 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "b4: 0.949 -> 0.018",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "11/11",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "DINOv3",
+   "status": "PASS",
+   "detail": "11 new arms, 3.5 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "6 vs 6",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "81.36 vs 81.36",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "24.06 vs 24.06",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "b4: 0.371 -> 0.011",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "22/22",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "small",
+   "status": "PASS",
+   "detail": "22 new arms, 3.8 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "83.88 vs 83.88",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "29.50 vs 29.50",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "b4: 0.689 -> 0.014",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "22/22",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "reg1_gap",
+   "status": "PASS",
+   "detail": "22 new arms, 5.2 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "num_heads matches RB-0",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "12 vs 12",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "rope rows equal patch tokens (196) and the table has no head dimension",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "shape (196, 128)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "4.0377e-04 (batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "ape_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "both_floor SSDC equals RB-0 part A bit for bit (13 readouts)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "84.82 vs 84.82",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "42.60 vs 42.60",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "83.90 vs 83.90",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "33.42 vs 33.42",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "b4: 0.590 -> 0.014",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "26/26",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "rotations off in blocks s-11 leave readouts 0..s bit-identical to intact (rotations act inside attention)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "erasure + rotations off has the same edited state as the erasure alone (readout s)",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "rope_ape",
+   "status": "PASS",
+   "detail": "26 new arms, 5.3 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "APE floor finds the learned position embedding",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "vit.embeddings.position_embeddings",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "3.3375e-04 (batch 256)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model setup completed",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "APE floor finds the learned position embedding",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "pos_embed",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "2.5880e-04 (batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "max |delta| 1.5e-04; block 11 0.5241 vs 0.5242",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "max |delta| 1.0e-05; block 11 0.0222 vs 0.0222",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "b4: 0.766 -> 0.014, b2: 0.470 -> 0.011",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "12/12",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "dino",
+   "status": "PASS",
+   "detail": "12 new arms, 6.6 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "APE floor finds the learned position embedding",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "pos_embed",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "2.3762e-04 (batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "78.60 vs 78.60; per-image agreement 100.00%",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "b4: 0.808 -> 0.014, b2: 0.731 -> 0.016",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "24/24",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "augreg",
+   "status": "PASS",
+   "detail": "24 new arms, 7.8 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "APE floor finds the learned position embedding",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "pos_embed",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "3.4938e-04 (batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "81.00 vs 81.00; per-image agreement 100.00%",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "b4: 0.742 -> 0.014, b2: 0.539 -> 0.013",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "24/24",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "sam",
+   "status": "PASS",
+   "detail": "24 new arms, 7.7 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "forward grid is 14x14",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "14x14",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "APE floor finds the learned position embedding",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "pos_embed",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "4.0602e-04 (batch 256)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "84.58 vs 84.58; per-image agreement 100.00%",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "b4: 0.763 -> 0.017, b2: 0.442 -> 0.013",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "24/24",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "deit3",
+   "status": "PASS",
+   "detail": "24 new arms, 7.5 min; complete True",
+   "session": "2026-11-08T02-05-10Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed evaluate_ssdc [floor]",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "max |delta| 0.00e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "0 images differ",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "fit [rep] saw 2000 images (benjamin-paine/imagenet-1k-256x256 images 1000..2999)",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "fitting images [rep] are disjoint from the evaluation images",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "fit [acc] saw 2000 images (ILSVRC/imagenet-1k images 5000..6999)",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "2000",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "fitting images [acc] are disjoint from the evaluation images",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "0 of 2000 identical to an evaluation image (allowed 5)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "max |delta| 2.7e-05; block 11 0.2030 vs 0.2030",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "max |delta| 3.1e-05; block 11 0.0070 vs 0.0070",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "81.16 vs 81.16; per-image agreement 100.00%",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "floor lowers SSDC at every edit site",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "b4: 0.797 -> 0.017, b2: 0.741 -> 0.015",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every planned arm measured",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "24/24",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm registered exactly the expected hooks",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm saw every image",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every arm has its planned probes",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "edits leave every readout before the edited block bit-identical to intact",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "max |delta| 0.0e+00",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every edit changes the edited state (readout s), every rotations-off arm changes the output",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "1 session(s)",
+   "session": "2026-11-08T05-56-19Z"
+  },
+  {
+   "gate": "model finished",
+   "scope": "supervised",
+   "status": "PASS",
+   "detail": "24 new arms, 7.7 min; complete True",
+   "session": "2026-11-08T05-56-19Z"
+  }
+ ],
+ "gate_summary": {
+  "total": 276,
+  "fail": 0,
+  "skip": 0,
+  "complete": {
+   "naver": true,
+   "DINOv3": true,
+   "small": true,
+   "reg1_gap": true,
+   "rope_ape": true,
+   "supervised": true,
+   "dino": true,
+   "augreg": true,
+   "sam": true,
+   "deit3": true
+  },
+  "sessions": [
+   "2026-11-08T02-05-10Z",
+   "2026-11-08T05-56-19Z"
+  ]
+ }
+}

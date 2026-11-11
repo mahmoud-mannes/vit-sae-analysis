@@ -1,0 +1,58 @@
+gate,scope,status,detail,session
+CUDA available,env,PASS,,2026-11-05T13-42-35Z
+torch is 2.10.0+cu128,env,PASS,2.10.0+cu128,2026-11-05T13-42-35Z
+PyTorch reports cuDNN 91002 (9.10.2),env,PASS,91002,2026-11-05T13-42-35Z
+every loaded libcudnn file comes from this environment's nvidia/cudnn folder,env,PASS,libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910),2026-11-05T13-42-35Z
+the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13),env,PASS,{'nvidia-cudnn-cu12': '9.10.2.21'},2026-11-05T13-42-35Z
+TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0),env,PASS,"{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",2026-11-05T13-42-35Z
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-05T13-42-35Z
+w8_partF_mixed.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),mixed,PASS,sha256 82bc61b76766f80c... (expected 82bc61b76766f80c...),2026-11-05T13-42-35Z
+RB-0 part F is complete and has the three windows and their top-1,mixed,PASS,row component = freqs[1],2026-11-05T13-42-35Z
+"SSDC dataset is the repack (W2-W6, RB-0, RB-2)",data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-05T13-42-35Z
+"top-1 dataset is the ILSVRC split (W7, RB-0, RB-3)",data,PASS,ILSVRC/imagenet-1k,2026-11-05T13-42-35Z
+empty plane mask bit-identical [interleaved],algebra,PASS,,2026-11-05T13-42-35Z
+full plane mask equals identity [interleaved],algebra,PASS,,2026-11-05T13-42-35Z
+plane 3 touches only its own columns [interleaved],algebra,PASS,"[6, 7, 70, 71] vs [6, 7, 70, 71]",2026-11-05T13-42-35Z
+mask NO heads equals unmodified rope [interleaved],per-head,PASS,,2026-11-05T13-42-35Z
+mask head 3 leaves others untouched [interleaved],per-head,PASS,,2026-11-05T13-42-35Z
+mask head 3 changes head 3 [interleaved],per-head,PASS,,2026-11-05T13-42-35Z
+one-axis window leaves the other axis's planes bit-identical [interleaved],algebra,PASS,,2026-11-05T13-42-35Z
+empty plane mask bit-identical [rotate_half],algebra,PASS,,2026-11-05T13-42-35Z
+full plane mask equals identity [rotate_half],algebra,PASS,,2026-11-05T13-42-35Z
+plane 3 touches only its own columns [rotate_half],algebra,PASS,"[3, 35, 67, 99] vs [3, 35, 67, 99]",2026-11-05T13-42-35Z
+mask NO heads equals unmodified rope [rotate_half],per-head,PASS,,2026-11-05T13-42-35Z
+mask head 3 leaves others untouched [rotate_half],per-head,PASS,,2026-11-05T13-42-35Z
+mask head 3 changes head 3 [rotate_half],per-head,PASS,,2026-11-05T13-42-35Z
+one-axis window leaves the other axis's planes bit-identical [rotate_half],algebra,PASS,,2026-11-05T13-42-35Z
+win_plus builds the window plus one segment for the single head's block,composite,PASS,,2026-11-05T13-42-35Z
+win_plus REJECTS a single head inside the window,composite,PASS,,2026-11-05T13-42-35Z
+"MixedSpec zeroes exactly one (block, head)'s 2 x 32 frequencies",algebra,PASS,,2026-11-05T13-42-35Z
+"MixedSpec composes a one-coordinate window with one (block, head)",algebra,PASS,,2026-11-05T13-42-35Z
+MixedSpec restores the exact tensor,algebra,PASS,,2026-11-05T13-42-35Z
+forward grid is 14x14,mixed,PASS,14x14,2026-11-05T13-42-35Z
+"model is the mixed-RoPE ViT (rope_mixed, learned freqs (2, 12, heads, 32))",mixed,PASS,"rope_mixed=True, freqs (2, 12, 12, 32), heads 12",2026-11-05T13-42-35Z
+component 0 depends on exactly one grid axis,mixed,PASS,"variation across rows 1.09e-08, across columns 2.14e-01",2026-11-05T13-42-35Z
+row component equals RB-0 part F's,mixed,PASS,freqs[1] vs freqs[1],2026-11-05T13-42-35Z
+all frequencies zero gives exact identity rotations,mixed,PASS,,2026-11-05T13-42-35Z
+"masking (block 8, head 3) makes exactly that head's rotations identity and leaves every other (block, head) bit-identical",mixed,PASS,,2026-11-05T13-42-35Z
+frequency edits restore the exact tensor,mixed,PASS,,2026-11-05T13-42-35Z
+"first-layer numerics are TF32-level (cuDNN 9.10.2's kernel, as for the other five models; not exact fp32)",mixed,PASS,4.7691e-04 (batch 256),2026-11-05T13-42-35Z
+cached replay reproduces streamed evaluate_ssdc [baseline],mixed,PASS,max |delta| 0.00e+00,2026-11-05T13-42-35Z
+cached replay reproduces streamed evaluate_ssdc [Cref],mixed,PASS,max |delta| 0.00e+00,2026-11-05T13-42-35Z
+cached replay reproduces streamed top-1 on the first 512 images,mixed,PASS,0 images differ,2026-11-05T13-42-35Z
+references registered the expected edits and saw every image,mixed,PASS,,2026-11-05T13-42-35Z
+"reference SSDC (13 readouts) and probes (entering 11, output of 11) equal RB-0 part F bit for bit",mixed,PASS,max |delta| 0.0e+00 over 4 x 13 SSDC + 16 probes,2026-11-05T13-42-35Z
+"top-1 references (baseline, floor, Cref, win_row, win_col) equal RB-0 part F bit for bit",mixed,PASS,"baseline 84.80, floor 45.46, Cref 73.62, win_row 78.08, win_col 76.98",2026-11-05T13-42-35Z
+probe noise measured on the three window references (new) and finite,mixed,PASS,,2026-11-05T13-42-35Z
+"[cref window] editing (block 6, head 0) changes that head's attention output and leaves the other 11 bit-identical",mixed,PASS,,2026-11-05T13-42-35Z
+"[row window] editing (block 6, head 0) changes that head's attention output and leaves the other 11 bit-identical",mixed,PASS,,2026-11-05T13-42-35Z
+windows with every single head measured,mixed,PASS,"done ['cref', 'row', 'col']",2026-11-05T13-42-35Z
+every single-head condition registered window + head edits and saw every image,mixed,PASS,,2026-11-05T13-42-35Z
+single-head edits leave every readout at or before their block bit-identical to the window reference,mixed,PASS,max |delta| 0.0e+00 over 216,2026-11-05T13-42-35Z
+every single-head edit changes the SSDC at the output of block 11 (no inert edit),mixed,PASS,,2026-11-05T13-42-35Z
+single heads probed at the planned readouts,mixed,PASS,,2026-11-05T13-42-35Z
+every planned top-1 arm measured,mixed,PASS,149/149,2026-11-05T13-42-35Z
+every top-1 arm registered the expected edits and saw every image,mixed,PASS,,2026-11-05T13-42-35Z
+frequency tensor unchanged at the end (baseline SSDC re-measured equals the first),mixed,PASS,,2026-11-05T13-42-35Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,mixed,PASS,1 session(s),2026-11-05T13-42-35Z
+model finished,mixed,PASS,"369 new measurements, 65.0 min; complete True",2026-11-05T13-42-35Z

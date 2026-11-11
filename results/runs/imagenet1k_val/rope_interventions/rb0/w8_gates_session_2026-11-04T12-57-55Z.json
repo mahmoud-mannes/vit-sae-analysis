@@ -1,0 +1,1633 @@
+[
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000/-0.005",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "SSDC dataset is the repack every W2-W6 SSDC/probe number used",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "benjamin-paine/imagenet-1k-256x256",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "accuracy dataset is the ILSVRC split W7 used",
+  "scope": "data",
+  "status": "PASS",
+  "detail": "ILSVRC/imagenet-1k",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "w5_partA_naver_2026-09-13T10-16-41Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "w5_partA_DINOv3_2026-09-13T10-16-41Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "w5_partA_small_2026-09-13T10-16-41Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "w5_partA_reg1_gap_2026-09-13T10-16-41Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "w5_partA_rope_ape_2026-09-13T10-16-41Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W7 file matches its headline values",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "w7rope_R12_naver_2026-09-24T17-54-52Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W7 file matches its headline values",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "w7rope_R12_small_2026-09-24T22-49-53Z.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "committed W7 file matches its headline values",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "w7rope_R12_reg1_gap_MERGED.json",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "empty plane mask bit-identical [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "full plane mask equals identity [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "plane 3 touches only its own columns [interleaved]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "[6, 7, 70, 71] vs [6, 7, 70, 71]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask NO heads equals unmodified rope [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask ALL heads equals global identity [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask head 3 leaves others untouched [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask head 3 changes head 3 [interleaved]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "empty plane mask bit-identical [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "full plane mask equals identity [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "plane 3 touches only its own columns [rotate_half]",
+  "scope": "algebra",
+  "status": "PASS",
+  "detail": "[3, 35, 67, 99] vs [3, 35, 67, 99]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask NO heads equals unmodified rope [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask ALL heads equals global identity [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask head 3 leaves others untouched [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mask head 3 changes head 3 [rotate_half]",
+  "scope": "per-head",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "composite REJECTS overlapping segments",
+  "scope": "composite",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "win_plus builds the window plus one segment per listed block",
+  "scope": "composite",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "win_plus REJECTS a single head inside the window",
+  "scope": "composite",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "shape (196, 128); 32 planes per head",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every plane classifies decisively",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max ratio 8.6e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "axis split is balanced",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "16/16",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "row [16, 17, 18]..",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout equals model.norm's own output",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "baseline reproduces W5 at block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.469422 vs 0.469422 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor reproduces W5 at block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.012865 vs 0.012865 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Cref reproduces W5 prefix_5 at block 11",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.329663 vs 0.329663 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor equals baseline at block 0",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "3.6e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "six one-block segments equal W5's single POST segment for head 6",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "masking (block 6, head 6) changes that head's attention output and leaves the other 11 bit-identical",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "all heads of block 6 via per_head equals identity on that block",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block untouched",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every intervening condition registered hooks",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index-group ranking matches W5 stage C (top 4)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "[6, 2, 1, 11] vs [6, 2, 1, 11]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part A completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "93 conditions, 125.1s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references reproduce W5 probes at blocks 7-11",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 30",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_row reproduces W5 SSDC at block 11",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.382360 vs 0.382360 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_col reproduces W5 SSDC at block 11",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.419516 vs 0.419516 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h6 (row window) reproduces W5 stage D probes",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h6 (col window) reproduces W5 stage D probes",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part B completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "27 conditions, 588.6s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references and index groups reproduce W7 top-1 (28 arms)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-image agreement with W7 (28 arms with W7 per-image files)",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "min 100.00%",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part C completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "110 arms, 513.3s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part D completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "172.1s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier index groups reproduce W5 stage A at block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier single-head masks leave upstream readouts untouched",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part E completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "66 conditions, 68.1s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 probes reproduced at block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 SSDC reproduced at block 4",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 4",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part G completed",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "54.8s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "shape (196, 128); 32 planes per head",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every plane classifies decisively",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max ratio 1.4e-06",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "axis split is balanced",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "16/16",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "row [0, 1, 2]..",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout equals model.norm's own output",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "baseline reproduces W5 at block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.948654 vs 0.948654 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor reproduces W5 at block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.017712 vs 0.017712 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Cref reproduces W5 prefix_5 at block 11",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.442640 vs 0.442640 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor equals baseline at block 0",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "3.3e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "six one-block segments equal W5's single POST segment for head 9",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "masking (block 6, head 9) changes that head's attention output and leaves the other 11 bit-identical",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "all heads of block 6 via per_head equals identity on that block",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block untouched",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every intervening condition registered hooks",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index-group ranking matches W5 stage C (top 4)",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "[9, 1, 2, 10] vs [9, 1, 2, 10]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part A completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "93 conditions, 128.5s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references reproduce W5 probes at blocks 7-11",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 30",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_row reproduces W5 SSDC at block 11",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.627570 vs 0.627570 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_col reproduces W5 SSDC at block 11",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.652320 vs 0.652320 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h2 (row window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h2 (col window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h9 (row window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h9 (col window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h1 (row window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h1 (col window) reproduces W5 stage D probes",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part B completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "55 conditions, 1154.0s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part D completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "52.0s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier index groups reproduce W5 stage A at block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier single-head masks leave upstream readouts untouched",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part E completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "66 conditions, 70.6s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 probes reproduced at block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 SSDC reproduced at block 4",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 4",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part G completed",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "57.8s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "6 vs 6",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "shape (196, 128); 32 planes per head",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every plane classifies decisively",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max ratio 8.6e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "axis split is balanced",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "16/16",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "row [16, 17, 18]..",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout equals model.norm's own output",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "baseline reproduces W5 at block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.371434 vs 0.371434 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor reproduces W5 at block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.011330 vs 0.011330 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Cref reproduces W5 prefix_5 at block 11",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.244217 vs 0.244217 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor equals baseline at block 0",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "2.9e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 6",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "six one-block segments equal W5's single POST segment for head 2",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "masking (block 6, head 2) changes that head's attention output and leaves the other 5 bit-identical",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "all heads of block 6 via per_head equals identity on that block",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block untouched",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every intervening condition registered hooks",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index-group ranking matches W5 stage C (top 4)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "[2, 4, 0, 1] vs [2, 4, 0, 1]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part A completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "51 conditions, 35.2s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references reproduce W5 probes at blocks 7-11",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 30",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_row reproduces W5 SSDC at block 11",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.246982 vs 0.246982 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_col reproduces W5 SSDC at block 11",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.361226 vs 0.361226 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h2 (row window) reproduces W5 stage D probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h2 (col window) reproduces W5 stage D probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h0 (row window) reproduces W5 stage D probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h0 (col window) reproduces W5 stage D probes",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part B completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "39 conditions, 817.3s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references and index groups reproduce W7 top-1 (16 arms)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.08 pts",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-image agreement with W7 (16 arms with W7 per-image files)",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "min 99.88%",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part C completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "62 arms, 108.6s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part D completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "65.5s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier index groups reproduce W5 stage A at block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 6",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier single-head masks leave upstream readouts untouched",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part E completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "36 conditions, 15.1s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 probes reproduced at block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 SSDC reproduced at block 4",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 4",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part G completed",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "47.7s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "shape (196, 128); 32 planes per head",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every plane classifies decisively",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max ratio 6.0e-05",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "axis split is balanced",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "16/16",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "row [0, 1, 2]..",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout uses fc_norm per token (pooled model)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "fc_norm",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "baseline reproduces W5 at block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.689023 vs 0.689023 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor reproduces W5 at block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.014417 vs 0.014417 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Cref reproduces W5 prefix_5 at block 11",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.244575 vs 0.244575 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor equals baseline at block 0",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "9.9e-08",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "six one-block segments equal W5's single POST segment for head 7",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "masking (block 6, head 7) changes that head's attention output and leaves the other 11 bit-identical",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "all heads of block 6 via per_head equals identity on that block",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block untouched",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every intervening condition registered hooks",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index-group ranking matches W5 stage C (top 4)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "[7, 6, 9, 3] vs [7, 6, 9, 3]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part A completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "93 conditions, 134.4s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references reproduce W5 probes at blocks 7-11",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 30",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_row reproduces W5 SSDC at block 11",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.373408 vs 0.373408 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Dref_col reproduces W5 SSDC at block 11",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.449947 vs 0.449947 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h7 (row window) reproduces W5 stage D probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h7 (col window) reproduces W5 stage D probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h3 (row window) reproduces W5 stage D probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index group h3 (col window) reproduces W5 stage D probes",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 10",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part B completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "39 conditions, 858.8s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references and index groups reproduce W7 top-1 (28 arms)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-image agreement with W7 (5 arms with W7 per-image files)",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "min 100.00%",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part C completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "110 arms, 516.5s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part D completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "173.5s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier index groups reproduce W5 stage A at block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "carrier single-head masks leave upstream readouts untouched",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part E completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "66 conditions, 68.1s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 probes reproduced at block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.00 pts over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Table 9 SSDC reproduced at block 4",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 4",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part G completed",
+  "scope": "reg1_gap",
+  "status": "PASS",
+  "detail": "54.3s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "num_heads matches W5",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "12 vs 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rope rows equal patch tokens",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "196 vs 196",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "rotary table has no head dimension, so every head in a block uses the same frequencies",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "shape (196, 128); 32 planes per head",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every plane classifies decisively",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max ratio 8.6e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "axis split is balanced",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "16/16",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "row/col planes equal W5's runtime derivation",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "row [16, 17, 18]..",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout equals model.norm's own output",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [Cref]",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "baseline reproduces W5 at block 4",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.589777 vs 0.589777 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor reproduces W5 at block 4",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.633780 vs 0.633780 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "Cref reproduces W5 prefix_5 at block 11",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.263854 vs 0.263854 (|delta| 0.0e+00, tol 1e-04)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "floor equals baseline at block 0",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "per-head mask of ALL heads reproduces the global floor (all 13 readouts)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "bootstrap SSDC with equal weights equals the repo SSDC (rank ties absent)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "2.4e-07",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index groups reproduce W5 stage C at block 11 (all heads)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00 over 12",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "six one-block segments equal W5's single POST segment for head 3",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "masking (block 6, head 3) changes that head's attention output and leaves the other 11 bit-identical",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "all heads of block 6 via per_head equals identity on that block",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "single-head masks leave every readout at or before their block untouched",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "max |delta| 0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "every intervening condition registered hooks",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "index-group ranking matches W5 stage C (top 4)",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "[3, 9, 11, 7] vs [3, 9, 11, 7]",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part A completed",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "95 conditions, 127.9s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "references reproduce W7 top-1",
+  "scope": "rope_ape",
+  "status": "SKIP",
+  "detail": "no W7 anchor for this model",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part C completed",
+  "scope": "rope_ape",
+  "status": "PASS",
+  "detail": "113 arms, 741.2s",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "forward grid is 14x14",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "14x14",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "FINAL readout equals model.norm's own output",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed evaluate_ssdc [baseline]",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "max |delta| 0.00e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "cached replay reproduces streamed top-1 on the first 512 images",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "0 images differ",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "mixed rope exposes learned frequencies (2, depth, heads, planes)",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "(2, 12, 12, 32)",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "component 0 depends on exactly one grid axis",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "variation across rows 1.09e-08, across columns 2.14e-01",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "both components zero gives exact identity rotations",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "frequency mask restores the exact tensor on exit",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "model is unchanged after every frequency edit (baseline re-measured)",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "0.0e+00",
+  "session": "2026-11-04T12-57-55Z"
+ },
+ {
+  "gate": "part F completed",
+  "scope": "mixed",
+  "status": "PASS",
+  "detail": "208.4s",
+  "session": "2026-11-04T12-57-55Z"
+ }
+]

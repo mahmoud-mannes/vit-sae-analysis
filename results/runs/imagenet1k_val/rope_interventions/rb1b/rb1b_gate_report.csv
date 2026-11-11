@@ -1,0 +1,31 @@
+gate,scope,status,detail,session
+environment 926 loads cuDNN 9.26,926,PASS,"reported 92600; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_engines_tensor_ir.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",2026-11-04T12-47-05Z
+environment 910 loads cuDNN 9.10,910,PASS,"reported 91002; loaded ['nvidia/libcudnn.so.9', 'nvidia/libcudnn_engines_precompiled.so.9', 'nvidia/libcudnn_engines_runtime_compiled.so.9', 'nvidia/libcudnn_graph.so.9', 'nvidia/libcudnn_heuristic.so.9']",2026-11-04T12-47-05Z
+both environments run torch 2.10.0+cu128,env,PASS,2.10.0+cu128 / 2.10.0+cu128,2026-11-04T12-47-05Z
+"the two environments differ only in cuDNN (same timm, pillow, numpy, scipy, datasets, torchvision, hub, safetensors)",env,PASS,identical,2026-11-04T12-47-05Z
+committed W5 file matches its headline values,small,PASS,,2026-11-04T12-47-05Z
+committed W5 file matches its headline values,naver,PASS,,2026-11-04T12-47-05Z
+committed W5 file matches its headline values,DINOv3,PASS,,2026-11-04T12-47-05Z
+committed W5 file matches its headline values,rope_ape,PASS,,2026-11-04T12-47-05Z
+committed W5 file matches its headline values,reg1_gap,PASS,,2026-11-04T12-47-05Z
+typed RB-0 anchors equal the w8_partA files (all five models),anchors,PASS,max |delta| 0.0e+00,2026-11-04T12-47-05Z
+setting completed (result saved for every model),cudnn926_default,PASS,"170s, exit code 0",2026-11-04T12-47-05Z
+setting completed (result saved for every model),cudnn910_default_a,PASS,"182s, exit code 0",2026-11-04T12-47-05Z
+setting completed (result saved for every model),cudnn910_default_b,PASS,"77s, exit code 0",2026-11-04T12-47-05Z
+setting completed (result saved for every model),cudnn910_tf32_off,PASS,"75s, exit code 0",2026-11-04T12-47-05Z
+worker ran with the intended cuDNN,cudnn926_default,PASS,92600,2026-11-04T12-47-05Z
+worker ran with the intended cuDNN,cudnn910_default_a,PASS,91002,2026-11-04T12-47-05Z
+worker ran with the intended cuDNN,cudnn910_default_b,PASS,91002,2026-11-04T12-47-05Z
+worker ran with the intended cuDNN,cudnn910_tf32_off,PASS,91002,2026-11-04T12-47-05Z
+images identical in every setting and both environments,naver,PASS,,2026-11-04T12-47-05Z
+weights identical in every setting and both environments,naver,PASS,,2026-11-04T12-47-05Z
+images identical in every setting and both environments,DINOv3,PASS,,2026-11-04T12-47-05Z
+weights identical in every setting and both environments,DINOv3,PASS,,2026-11-04T12-47-05Z
+images identical in every setting and both environments,small,PASS,,2026-11-04T12-47-05Z
+weights identical in every setting and both environments,small,PASS,,2026-11-04T12-47-05Z
+images identical in every setting and both environments,rope_ape,PASS,,2026-11-04T12-47-05Z
+weights identical in every setting and both environments,rope_ape,PASS,,2026-11-04T12-47-05Z
+images identical in every setting and both environments,reg1_gap,PASS,,2026-11-04T12-47-05Z
+weights identical in every setting and both environments,reg1_gap,PASS,,2026-11-04T12-47-05Z
+control: env_paper5 (cuDNN 9.26) still reproduces RB-0 on all five models,control,PASS,0,2026-11-04T12-47-05Z
+the cuDNN 9.10.2 environment is repeatable (default_a = default_b),cudnn910,PASS,0,2026-11-04T12-47-05Z

@@ -1,0 +1,24 @@
+gate,scope,status,detail,session
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000,2026-11-04T00-06-44Z
+committed W5 file matches its headline values,small,PASS,,2026-11-04T00-06-44Z
+committed W5 file matches its headline values,naver,PASS,,2026-11-04T00-06-44Z
+committed W5 file matches its headline values,DINOv3,PASS,,2026-11-04T00-06-44Z
+typed RB-0 anchors equal the w8_partA files,anchors,PASS,/workspace/NRDL/experiments/w8/w8_output max |delta| 0.0e+00,2026-11-04T00-06-44Z
+setting ran to completion,default_a,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,default_b,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,w8_order,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,tf32_off,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,cudnn_deterministic,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,hog_27GB,FAIL,exit -6,2026-11-03T23-54-14Z
+setting ran to completion,exact_patch,FAIL,exit -6,2026-11-03T23-54-14Z
+the current environment still reproduces RB-0 in at least one setting,env,PASS,"['default_a', 'default_b', 'w8_order', 'tf32_off', 'cudnn_deterministic', 'hog_27GB', 'hog_58GB']",2026-11-04T00-06-44Z
+setting ran to completion,hog_58GB,FAIL,exit -6,2026-11-04T00-03-30Z
+images identical in every setting,small,PASS,sha256 e6d5e9be840755fa,2026-11-04T00-06-44Z
+weights identical in every setting,small,PASS,sha256 c56cefca2f0fccb7,2026-11-04T00-06-44Z
+images identical in every setting,naver,PASS,sha256 e6d5e9be840755fa,2026-11-04T00-06-44Z
+weights identical in every setting,naver,PASS,sha256 c372708a448440ee,2026-11-04T00-06-44Z
+images identical in every setting,DINOv3,PASS,sha256 48d923c6f79a4e1e,2026-11-04T00-06-44Z
+weights identical in every setting,DINOv3,PASS,sha256 96c6d59af51c88aa,2026-11-04T00-06-44Z
+exact patch embedding computes the same convolution (relative difference < 1e-2),exact_patch,PASS,,2026-11-04T00-06-44Z
+current environment is repeatable (default_a equals default_b),env,PASS,max |delta| 0.0e+00,2026-11-04T00-06-44Z
+naver stays within RB-0's 1.1e-6 of September,naver,PASS,5.6e-07,2026-11-04T00-06-44Z

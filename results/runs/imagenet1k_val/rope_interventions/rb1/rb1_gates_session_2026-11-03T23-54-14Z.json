@@ -1,0 +1,93 @@
+[
+ {
+  "gate": "imported metric satisfies its unit test",
+  "scope": "repo-metric",
+  "status": "PASS",
+  "detail": "+1.000/-1.000",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "small",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "naver",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "committed W5 file matches its headline values",
+  "scope": "DINOv3",
+  "status": "PASS",
+  "detail": "",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "typed RB-0 anchors equal the w8_partA files",
+  "scope": "anchors",
+  "status": "PASS",
+  "detail": "/workspace/NRDL/experiments/w8/w8_output max |delta| 0.0e+00",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "default_a",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "default_b",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "w8_order",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "tf32_off",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "cudnn_deterministic",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "hog_27GB",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "setting ran to completion",
+  "scope": "exact_patch",
+  "status": "FAIL",
+  "detail": "exit -6",
+  "session": "2026-11-03T23-54-14Z"
+ },
+ {
+  "gate": "the current environment still reproduces RB-0 in at least one setting",
+  "scope": "env",
+  "status": "FAIL",
+  "detail": "[]",
+  "session": "2026-11-03T23-54-14Z"
+ }
+]

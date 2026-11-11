@@ -1,0 +1,409 @@
+gate,scope,status,detail,session
+CUDA available,env,PASS,,2026-11-09T01-43-14Z
+torch is 2.10.0+cu128,env,PASS,2.10.0+cu128,2026-11-09T01-43-14Z
+PyTorch reports cuDNN 91002 (9.10.2),env,PASS,91002,2026-11-09T01-43-14Z
+every loaded libcudnn file comes from this environment's nvidia/cudnn folder,env,PASS,libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910),2026-11-09T01-43-14Z
+the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13),env,PASS,{'nvidia-cudnn-cu12': '9.10.2.21'},2026-11-09T01-43-14Z
+TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0),env,PASS,"{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",2026-11-09T01-43-14Z
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-09T01-43-14Z
+w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 f50b694d24279ce6... (expected f50b694d24279ce6...),2026-11-09T01-43-14Z
+w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 c983414404ca645b... (expected c983414404ca645b...),2026-11-09T01-43-14Z
+w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...),2026-11-09T01-43-14Z
+w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 f1d963652ac3867c... (expected f1d963652ac3867c...),2026-11-09T01-43-14Z
+w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 be01ed6297ef819a... (expected be01ed6297ef819a...),2026-11-09T01-43-14Z
+w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 bf895274486dfaa9... (expected bf895274486dfaa9...),2026-11-09T01-43-14Z
+w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 b9f6a3833766b736... (expected b9f6a3833766b736...),2026-11-09T01-43-14Z
+w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...),2026-11-09T01-43-14Z
+w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...),2026-11-09T01-43-14Z
+w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...),2026-11-09T01-43-14Z
+w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...),2026-11-09T01-43-14Z
+w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...),2026-11-09T01-43-14Z
+w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...),2026-11-09T01-43-14Z
+RB-0 parts needed by RB-8 are present and complete,naver,PASS,"A=complete, C=complete",2026-11-09T01-43-14Z
+RB-0 parts needed by RB-8 are present and complete,DINOv3,PASS,A=complete,2026-11-09T01-43-14Z
+RB-0 parts needed by RB-8 are present and complete,small,PASS,"A=complete, C=complete",2026-11-09T01-43-14Z
+RB-0 parts needed by RB-8 are present and complete,reg1_gap,PASS,"A=complete, C=complete",2026-11-09T01-43-14Z
+RB-0 parts needed by RB-8 are present and complete,rope_ape,PASS,"A=complete, C=complete",2026-11-09T01-43-14Z
+committed W1b file found and is the expected one (sha256),W1b,PASS,/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...,2026-11-09T01-43-14Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),supervised,PASS,w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz,2026-11-09T01-43-14Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),augreg,PASS,w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz,2026-11-09T01-43-14Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),sam,PASS,w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz,2026-11-09T01-43-14Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),deit3,PASS,w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz,2026-11-09T01-43-14Z
+rb6_naver.json is the expected RB-6 file (sha256),naver,PASS,28a489decf34309d...,2026-11-09T01-43-14Z
+rb6_fit_naver.npz is the expected RB-6 file (sha256),naver,PASS,4db2a67c2ef8167e...,2026-11-09T01-43-14Z
+rb6_perimage_naver.npz is the expected RB-6 file (sha256),naver,PASS,05087792b78aa1cf...,2026-11-09T01-43-14Z
+rb6_DINOv3.json is the expected RB-6 file (sha256),DINOv3,PASS,d7b16fec00c37598...,2026-11-09T01-43-14Z
+rb6_fit_DINOv3.npz is the expected RB-6 file (sha256),DINOv3,PASS,d720768340af9f1f...,2026-11-09T01-43-14Z
+rb6_small.json is the expected RB-6 file (sha256),small,PASS,9bf1394097b38e6d...,2026-11-09T01-43-14Z
+rb6_fit_small.npz is the expected RB-6 file (sha256),small,PASS,ed1d36d548363ebb...,2026-11-09T01-43-14Z
+rb6_perimage_small.npz is the expected RB-6 file (sha256),small,PASS,ec3c11c7340874c9...,2026-11-09T01-43-14Z
+rb6_reg1_gap.json is the expected RB-6 file (sha256),reg1_gap,PASS,51a86f1218ea5a31...,2026-11-09T01-43-14Z
+rb6_fit_reg1_gap.npz is the expected RB-6 file (sha256),reg1_gap,PASS,3d93460d78606668...,2026-11-09T01-43-14Z
+rb6_perimage_reg1_gap.npz is the expected RB-6 file (sha256),reg1_gap,PASS,bf5e03578c8ec6ef...,2026-11-09T01-43-14Z
+rb6_rope_ape.json is the expected RB-6 file (sha256),rope_ape,PASS,a9399ae172e997eb...,2026-11-09T01-43-14Z
+rb6_fit_rope_ape.npz is the expected RB-6 file (sha256),rope_ape,PASS,fd1515e7230bc457...,2026-11-09T01-43-14Z
+rb6_perimage_rope_ape.npz is the expected RB-6 file (sha256),rope_ape,PASS,2adb571e0f41be23...,2026-11-09T01-43-14Z
+rb6_supervised.json is the expected RB-6 file (sha256),supervised,PASS,5d4a531c52ebb61e...,2026-11-09T01-43-14Z
+rb6_fit_supervised.npz is the expected RB-6 file (sha256),supervised,PASS,e37117b4a8723836...,2026-11-09T01-43-14Z
+rb6_perimage_supervised.npz is the expected RB-6 file (sha256),supervised,PASS,de29593c87cc0e49...,2026-11-09T01-43-14Z
+rb6_dino.json is the expected RB-6 file (sha256),dino,PASS,5773be6de1c6e6c9...,2026-11-09T01-43-14Z
+rb6_fit_dino.npz is the expected RB-6 file (sha256),dino,PASS,52bc24627bd44013...,2026-11-09T01-43-14Z
+rb6_augreg.json is the expected RB-6 file (sha256),augreg,PASS,ba9996e48cba15a4...,2026-11-09T01-43-14Z
+rb6_fit_augreg.npz is the expected RB-6 file (sha256),augreg,PASS,14e91be44de748a5...,2026-11-09T01-43-14Z
+rb6_perimage_augreg.npz is the expected RB-6 file (sha256),augreg,PASS,d01ab7cfc593c2cc...,2026-11-09T01-43-14Z
+rb6_sam.json is the expected RB-6 file (sha256),sam,PASS,ff7c9f3707cb842d...,2026-11-09T01-43-14Z
+rb6_fit_sam.npz is the expected RB-6 file (sha256),sam,PASS,c65477568dc11673...,2026-11-09T01-43-14Z
+rb6_perimage_sam.npz is the expected RB-6 file (sha256),sam,PASS,ab8d74dadb7b4e72...,2026-11-09T01-43-14Z
+rb6_deit3.json is the expected RB-6 file (sha256),deit3,PASS,605747894fade803...,2026-11-09T01-43-14Z
+rb6_fit_deit3.npz is the expected RB-6 file (sha256),deit3,PASS,25d5ab7255899c38...,2026-11-09T01-43-14Z
+rb6_perimage_deit3.npz is the expected RB-6 file (sha256),deit3,PASS,68d9b1ab37344c48...,2026-11-09T01-43-14Z
+"SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-09T01-43-14Z
+"top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",data,PASS,ILSVRC/imagenet-1k,2026-11-09T01-43-14Z
+mean erasure: every slot's mean equals the average over slots,edit-algebra,PASS,,2026-11-09T01-43-14Z
+mean+scale erasure: equal slot means and equal slot spread,edit-algebra,PASS,spread range 104.0862-104.0862,2026-11-09T01-43-14Z
+subspace erasure removes >= 99% of the positional component's energy,edit-algebra,PASS,r=15 of 32; energy left 1.78e-30,2026-11-09T01-43-14Z
+"random subspace: orthonormal, same dimension as the positional subspace, reproducible",edit-algebra,PASS,,2026-11-09T01-43-14Z
+"random-subspace control leaves most of the positional component (it is a control, not an erasure)",edit-algebra,PASS,energy left 0.529,2026-11-09T01-43-14Z
+scramble: slot p carries slot pi(p)'s component; pi has no fixed point,edit-algebra,PASS,,2026-11-09T01-43-14Z
+derangement is reproducible,edit-algebra,PASS,,2026-11-09T01-43-14Z
+"edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",edit-algebra,PASS,,2026-11-09T01-43-14Z
+edit hook removed on exit,edit-algebra,PASS,,2026-11-09T01-43-14Z
+Part A: no positional component gives bias-corrected PVF ~ 0,partA-algebra,PASS,"raw 0.0002, corrected +0.00001",2026-11-09T01-43-14Z
+Part A: bias-corrected PVF recovers the true value; row / column split is right,partA-algebra,PASS,"PVF 0.6165 vs 0.6156; row 1.000, col 1.000",2026-11-09T01-43-14Z
+"AllEdit: the listed blocks are edited, the others are not, one hook per block",edit-algebra,PASS,,2026-11-09T01-43-14Z
+AllEdit hooks removed on exit,edit-algebra,PASS,,2026-11-09T01-43-14Z
+"offset control: subtracts another slot's component, same vector sizes as the mean edit, position left in place",edit-algebra,PASS,,2026-11-09T01-43-14Z
+forward grid is 14x14,naver,PASS,14x14,2026-11-09T01-43-14Z
+num_heads matches RB-0,naver,PASS,12 vs 12,2026-11-09T01-43-14Z
+rope rows equal patch tokens (196) and the table has no head dimension,naver,PASS,"shape (196, 128)",2026-11-09T01-43-14Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",naver,PASS,4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],naver,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],naver,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,naver,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,naver,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",naver,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,naver,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,naver,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",naver,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,naver,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],naver,PASS,leftover / token rms 1.76e-08; positional component / token rms 7.16e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],naver,PASS,leftover / token rms 1.83e-08; positional component / token rms 2.45e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",naver,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,naver,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,naver,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",naver,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,naver,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],naver,PASS,leftover / token rms 1.75e-08; positional component / token rms 7.30e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],naver,PASS,leftover / token rms 1.92e-08; positional component / token rms 2.45e-02,2026-11-09T01-43-14Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),naver,PASS,84.64 vs 84.64,2026-11-09T01-43-14Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),naver,PASS,38.84 vs 38.84,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,naver,PASS,b4: 0.469 -> 0.013,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",naver,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",naver,PASS,84.44 vs 84.44,2026-11-09T01-43-14Z
+every planned arm measured,naver,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,naver,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,naver,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,naver,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,naver,PASS,,2026-11-09T01-43-14Z
+edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact,naver,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,naver,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,naver,PASS,"18 new arms, 13.6 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,DINOv3,PASS,14x14,2026-11-09T01-43-14Z
+num_heads matches RB-0,DINOv3,PASS,12 vs 12,2026-11-09T01-43-14Z
+rope rows equal patch tokens (196) and the table has no head dimension,DINOv3,PASS,"shape (196, 128)",2026-11-09T01-43-14Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",DINOv3,PASS,4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],DINOv3,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],DINOv3,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+model setup completed,DINOv3,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",DINOv3,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,DINOv3,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,DINOv3,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",DINOv3,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,DINOv3,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],DINOv3,PASS,leftover / token rms 2.00e-08; positional component / token rms 5.56e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],DINOv3,PASS,leftover / token rms 1.74e-08; positional component / token rms 4.52e-02,2026-11-09T01-43-14Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,DINOv3,PASS,b4: 0.949 -> 0.018,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",DINOv3,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every planned arm measured,DINOv3,PASS,9/9,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,DINOv3,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,DINOv3,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,DINOv3,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,DINOv3,PASS,,2026-11-09T01-43-14Z
+edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact,DINOv3,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,DINOv3,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,DINOv3,PASS,"9 new arms, 12.5 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,small,PASS,14x14,2026-11-09T01-43-14Z
+num_heads matches RB-0,small,PASS,6 vs 6,2026-11-09T01-43-14Z
+rope rows equal patch tokens (196) and the table has no head dimension,small,PASS,"shape (196, 128)",2026-11-09T01-43-14Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",small,PASS,5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],small,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],small,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,small,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,small,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",small,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,small,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,small,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",small,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,small,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],small,PASS,leftover / token rms 1.86e-08; positional component / token rms 5.89e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],small,PASS,leftover / token rms 1.55e-08; positional component / token rms 1.69e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",small,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,small,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,small,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",small,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,small,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],small,PASS,leftover / token rms 1.89e-08; positional component / token rms 5.85e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],small,PASS,leftover / token rms 1.61e-08; positional component / token rms 1.84e-02,2026-11-09T01-43-14Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),small,PASS,81.36 vs 81.36,2026-11-09T01-43-14Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),small,PASS,24.06 vs 24.06,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,small,PASS,b4: 0.371 -> 0.011,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",small,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",small,PASS,81.06 vs 81.06,2026-11-09T01-43-14Z
+every planned arm measured,small,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,small,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,small,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,small,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,small,PASS,,2026-11-09T01-43-14Z
+edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact,small,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,small,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,small,PASS,"18 new arms, 12.5 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,reg1_gap,PASS,14x14,2026-11-09T01-43-14Z
+num_heads matches RB-0,reg1_gap,PASS,12 vs 12,2026-11-09T01-43-14Z
+rope rows equal patch tokens (196) and the table has no head dimension,reg1_gap,PASS,"shape (196, 128)",2026-11-09T01-43-14Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",reg1_gap,PASS,2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,reg1_gap,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,reg1_gap,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",reg1_gap,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,reg1_gap,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,reg1_gap,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",reg1_gap,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,reg1_gap,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],reg1_gap,PASS,leftover / token rms 1.83e-08; positional component / token rms 1.37e-01,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],reg1_gap,PASS,leftover / token rms 2.30e-08; positional component / token rms 2.78e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",reg1_gap,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,reg1_gap,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,reg1_gap,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",reg1_gap,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,reg1_gap,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],reg1_gap,PASS,leftover / token rms 1.87e-08; positional component / token rms 1.36e-01,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],reg1_gap,PASS,leftover / token rms 2.33e-08; positional component / token rms 2.73e-02,2026-11-09T01-43-14Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),reg1_gap,PASS,83.88 vs 83.88,2026-11-09T01-43-14Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),reg1_gap,PASS,29.50 vs 29.50,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,reg1_gap,PASS,b4: 0.689 -> 0.014,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",reg1_gap,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",reg1_gap,PASS,83.82 vs 83.82,2026-11-09T01-43-14Z
+every planned arm measured,reg1_gap,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,reg1_gap,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,reg1_gap,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,reg1_gap,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,reg1_gap,PASS,,2026-11-09T01-43-14Z
+edits start at block 1 on pure RoPE: readout 0 is bit-identical to intact,reg1_gap,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,reg1_gap,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,reg1_gap,PASS,"18 new arms, 13.5 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,rope_ape,PASS,14x14,2026-11-09T01-43-14Z
+num_heads matches RB-0,rope_ape,PASS,12 vs 12,2026-11-09T01-43-14Z
+rope rows equal patch tokens (196) and the table has no head dimension,rope_ape,PASS,"shape (196, 128)",2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",rope_ape,PASS,4.0377e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],rope_ape,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],rope_ape,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,rope_ape,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,rope_ape,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",rope_ape,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,rope_ape,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,rope_ape,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",rope_ape,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,rope_ape,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],rope_ape,PASS,leftover / token rms 1.66e-08; positional component / token rms 4.51e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],rope_ape,PASS,leftover / token rms 1.73e-08; positional component / token rms 2.30e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",rope_ape,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,rope_ape,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,rope_ape,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",rope_ape,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,rope_ape,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],rope_ape,PASS,leftover / token rms 1.70e-08; positional component / token rms 4.64e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],rope_ape,PASS,leftover / token rms 1.79e-08; positional component / token rms 2.35e-02,2026-11-09T01-43-14Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+ape_floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+both_floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),rope_ape,PASS,84.82 vs 84.82,2026-11-09T01-43-14Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),rope_ape,PASS,42.60 vs 42.60,2026-11-09T01-43-14Z
+ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image),rope_ape,PASS,83.90 vs 83.90,2026-11-09T01-43-14Z
+both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image),rope_ape,PASS,33.42 vs 33.42,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,rope_ape,PASS,b4: 0.590 -> 0.014,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",rope_ape,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",rope_ape,PASS,84.40 vs 84.40,2026-11-09T01-43-14Z
+every planned arm measured,rope_ape,PASS,22/22,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,rope_ape,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,rope_ape,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,rope_ape,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,rope_ape,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,rope_ape,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,rope_ape,PASS,"22 new arms, 14.1 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,supervised,PASS,14x14,2026-11-09T01-43-14Z
+APE floor finds the learned position embedding,supervised,PASS,vit.embeddings.position_embeddings,2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",supervised,PASS,3.3375e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],supervised,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],supervised,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,supervised,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,supervised,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",supervised,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,supervised,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,supervised,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",supervised,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,supervised,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],supervised,PASS,leftover / token rms 2.49e-08; positional component / token rms 1.97e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],supervised,PASS,leftover / token rms 1.60e-08; positional component / token rms 1.96e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",supervised,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,supervised,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,supervised,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",supervised,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,supervised,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],supervised,PASS,leftover / token rms 2.45e-08; positional component / token rms 2.03e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],supervised,PASS,leftover / token rms 1.64e-08; positional component / token rms 2.31e-02,2026-11-09T01-43-14Z
+"baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",supervised,PASS,max |delta| 2.7e-05; block 11 0.2030 vs 0.2030,2026-11-09T01-43-14Z
+"floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",supervised,PASS,max |delta| 3.1e-05; block 11 0.0070 vs 0.0070,2026-11-09T01-43-14Z
+"intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",supervised,PASS,81.16 vs 81.16; per-image agreement 100.00%,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,supervised,PASS,"b4: 0.797 -> 0.017, b2: 0.741 -> 0.015",2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",supervised,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",supervised,PASS,77.68 vs 77.68,2026-11-09T01-43-14Z
+every planned arm measured,supervised,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,supervised,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,supervised,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,supervised,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,supervised,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,supervised,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,supervised,PASS,"18 new arms, 13.6 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,dino,PASS,14x14,2026-11-09T01-43-14Z
+APE floor finds the learned position embedding,dino,PASS,pos_embed,2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",dino,PASS,2.5880e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],dino,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],dino,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+model setup completed,dino,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",dino,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,dino,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,dino,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",dino,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,dino,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],dino,PASS,leftover / token rms 1.70e-08; positional component / token rms 1.09e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],dino,PASS,leftover / token rms 2.06e-08; positional component / token rms 3.60e-03,2026-11-09T01-43-14Z
+"baseline SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",dino,PASS,max |delta| 1.5e-04; block 11 0.5241 vs 0.5242,2026-11-09T01-43-14Z
+"floor SSDC agrees with W1b (repack, 1,000 images; W1b ran fp16 on another day) within 0.001",dino,PASS,max |delta| 1.0e-05; block 11 0.0222 vs 0.0222,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,dino,PASS,"b4: 0.766 -> 0.014, b2: 0.470 -> 0.011",2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",dino,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+every planned arm measured,dino,PASS,9/9,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,dino,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,dino,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,dino,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,dino,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,dino,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,dino,PASS,"9 new arms, 12.4 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,augreg,PASS,14x14,2026-11-09T01-43-14Z
+APE floor finds the learned position embedding,augreg,PASS,pos_embed,2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",augreg,PASS,2.3762e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],augreg,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],augreg,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,augreg,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,augreg,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",augreg,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,augreg,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,augreg,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",augreg,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,augreg,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],augreg,PASS,leftover / token rms 1.75e-08; positional component / token rms 9.13e-03,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],augreg,PASS,leftover / token rms 1.68e-08; positional component / token rms 1.19e-02,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",augreg,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,augreg,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,augreg,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",augreg,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,augreg,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],augreg,PASS,leftover / token rms 1.75e-08; positional component / token rms 9.11e-03,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],augreg,PASS,leftover / token rms 1.69e-08; positional component / token rms 1.18e-02,2026-11-09T01-43-14Z
+SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models,augreg,PASS,,2026-11-09T01-43-14Z
+"intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",augreg,PASS,78.60 vs 78.60; per-image agreement 100.00%,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,augreg,PASS,"b4: 0.808 -> 0.014, b2: 0.731 -> 0.016",2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",augreg,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",augreg,PASS,70.98 vs 70.98,2026-11-09T01-43-14Z
+every planned arm measured,augreg,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,augreg,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,augreg,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,augreg,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,augreg,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,augreg,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,augreg,PASS,"18 new arms, 13.6 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,sam,PASS,14x14,2026-11-09T01-43-14Z
+APE floor finds the learned position embedding,sam,PASS,pos_embed,2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",sam,PASS,3.4938e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],sam,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],sam,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,sam,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,sam,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",sam,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,sam,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,sam,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",sam,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,sam,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],sam,PASS,leftover / token rms 2.33e-08; positional component / token rms 1.55e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],sam,PASS,leftover / token rms 1.97e-08; positional component / token rms 1.52e-03,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",sam,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,sam,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,sam,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",sam,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,sam,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],sam,PASS,leftover / token rms 2.31e-08; positional component / token rms 1.49e-02,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],sam,PASS,leftover / token rms 1.99e-08; positional component / token rms 1.55e-03,2026-11-09T01-43-14Z
+SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models,sam,PASS,,2026-11-09T01-43-14Z
+"intact top-1 agrees with W7 on the same first 1000 ILSVRC images (W7: batch 128, other session)",sam,PASS,81.00 vs 81.00; per-image agreement 100.00%,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,sam,PASS,"b4: 0.742 -> 0.014, b2: 0.539 -> 0.013",2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",sam,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",sam,PASS,78.12 vs 78.12,2026-11-09T01-43-14Z
+every planned arm measured,sam,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,sam,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,sam,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,sam,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,sam,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,sam,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,sam,PASS,"18 new arms, 14.8 min; complete True",2026-11-09T01-43-14Z
+forward grid is 14x14,deit3,PASS,14x14,2026-11-09T01-43-14Z
+APE floor finds the learned position embedding,deit3,PASS,pos_embed,2026-11-09T01-43-14Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",deit3,PASS,4.0602e-04 (batch 256),2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [baseline],deit3,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed evaluate_ssdc [floor],deit3,PASS,max |delta| 0.00e+00,2026-11-09T01-43-14Z
+cached replay reproduces streamed top-1 on the first 512 images,deit3,PASS,0 images differ,2026-11-09T01-43-14Z
+model setup completed,deit3,PASS,,2026-11-09T01-43-14Z
+"fit [rep] has 2000 images, right after the evaluation images",deit3,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [rep] are disjoint from the evaluation images,deit3,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [rep] equals RB-6's saved fit bit for bit,deit3,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [rep] has 16384 images, right after the evaluation images",deit3,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [rep] are disjoint from the evaluation images,deit3,PASS,0 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [rep],deit3,PASS,leftover / token rms 1.94e-08; positional component / token rms 8.33e-03,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [rep],deit3,PASS,leftover / token rms 1.78e-08; positional component / token rms 6.22e-03,2026-11-09T01-43-14Z
+"fit [acc] has 2000 images, right after the evaluation images",deit3,PASS,2000,2026-11-09T01-43-14Z
+2000 fitting images [acc] are disjoint from the evaluation images,deit3,PASS,0 shared (allowed 5),2026-11-09T01-43-14Z
+unedited block-4 fit [acc] equals RB-6's saved fit bit for bit,deit3,PASS,max |delta mu| 0.0e+00,2026-11-09T01-43-14Z
+"fit [acc] has 16384 images, right after the evaluation images",deit3,PASS,16384,2026-11-09T01-43-14Z
+16384 fitting images [acc] are disjoint from the evaluation images,deit3,PASS,1 shared (allowed 41),2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 4 on the fitting images [acc],deit3,PASS,leftover / token rms 1.94e-08; positional component / token rms 8.70e-03,2026-11-09T01-43-14Z
+sequential mean edit flattens the per-slot mean at block 11 on the fitting images [acc],deit3,PASS,leftover / token rms 1.83e-08; positional component / token rms 6.69e-03,2026-11-09T01-43-14Z
+SSDC anchor: none for this model (W1b measured supervised and DINO only); same code path as the anchored models,deit3,PASS,,2026-11-09T01-43-14Z
+"intact top-1 agrees with W7 on the same first 5000 ILSVRC images (W7: batch 128, other session)",deit3,PASS,84.58 vs 84.58; per-image agreement 100.00%,2026-11-09T01-43-14Z
+floor lowers SSDC at every RB-6 edit site,deit3,PASS,"b4: 0.763 -> 0.017, b2: 0.442 -> 0.013",2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (SSDC, 13 readouts)",deit3,PASS,max |delta| 0.0e+00,2026-11-09T01-43-14Z
+"RB-6's block-4 mean erasure, re-measured here, equals RB-6 bit for bit (top-1, mean and per image)",deit3,PASS,73.26 vs 73.26,2026-11-09T01-43-14Z
+every planned arm measured,deit3,PASS,18/18,2026-11-09T01-43-14Z
+every arm registered exactly the expected hooks,deit3,PASS,,2026-11-09T01-43-14Z
+every arm saw every image,deit3,PASS,,2026-11-09T01-43-14Z
+every arm has its planned probes,deit3,PASS,,2026-11-09T01-43-14Z
+every all-block arm changes the state entering block 4,deit3,PASS,,2026-11-09T01-43-14Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,deit3,PASS,1 session(s),2026-11-09T01-43-14Z
+model finished,deit3,PASS,"18 new arms, 14.5 min; complete True",2026-11-09T01-43-14Z

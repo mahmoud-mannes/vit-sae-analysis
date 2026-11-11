@@ -1,0 +1,582 @@
+gate,scope,status,detail,session
+CUDA available,env,PASS,,2026-11-10T14-57-07Z
+torch is 2.10.0+cu128,env,PASS,2.10.0+cu128,2026-11-10T14-57-07Z
+PyTorch reports cuDNN 91002 (9.10.2),env,PASS,91002,2026-11-10T14-57-07Z
+every loaded libcudnn file comes from this environment's nvidia/cudnn folder,env,PASS,libcudnn.so.9; libcudnn_engines_precompiled.so.9; libcudnn_engines_runtime_compiled.so.9; libcudnn_graph.so.9; libcudnn_heuristic.so.9 (prefix /workspace/NRDL/env_paper5_cudnn910),2026-11-10T14-57-07Z
+the only cuDNN package installed is nvidia-cudnn-cu12 9.10.2.21 (no cu13),env,PASS,{'nvidia-cudnn-cu12': '9.10.2.21'},2026-11-10T14-57-07Z
+TF32 / cuDNN flags are PyTorch's defaults (as in W5 and RB-0),env,PASS,"{'matmul_allow_tf32': False, 'cudnn_allow_tf32': True, 'cudnn_benchmark': False, 'cudnn_deterministic': False, 'float32_matmul_precision': 'highest'}",2026-11-10T14-57-07Z
+imported metric satisfies its unit test,repo-metric,PASS,+1.000/-1.000/-0.005,2026-11-10T14-57-07Z
+w8_partA_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 f50b694d24279ce6... (expected f50b694d24279ce6...),2026-11-10T14-57-07Z
+w8_partC_naver.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 c983414404ca645b... (expected c983414404ca645b...),2026-11-10T14-57-07Z
+w8_perimage_naver.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),naver,PASS,sha256 5fe4a53ecbf99bc5... (expected 5fe4a53ecbf99bc5...),2026-11-10T14-57-07Z
+w8_partA_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 be01ed6297ef819a... (expected be01ed6297ef819a...),2026-11-10T14-57-07Z
+w8_partC_small.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 bf895274486dfaa9... (expected bf895274486dfaa9...),2026-11-10T14-57-07Z
+w8_perimage_small.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),small,PASS,sha256 b9f6a3833766b736... (expected b9f6a3833766b736...),2026-11-10T14-57-07Z
+w8_partA_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 da5ae49a2abc21aa... (expected da5ae49a2abc21aa...),2026-11-10T14-57-07Z
+w8_partC_reg1_gap.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 8b5641235e05b20b... (expected 8b5641235e05b20b...),2026-11-10T14-57-07Z
+w8_perimage_reg1_gap.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),reg1_gap,PASS,sha256 10310f0c0109d65f... (expected 10310f0c0109d65f...),2026-11-10T14-57-07Z
+w8_partA_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 679d30cbd1b8873d... (expected 679d30cbd1b8873d...),2026-11-10T14-57-07Z
+w8_partC_rope_ape.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 c0d4b9fec550b334... (expected c0d4b9fec550b334...),2026-11-10T14-57-07Z
+w8_perimage_rope_ape.npz is the canonical RB-0 file (cuDNN 9.10.2 re-run),rope_ape,PASS,sha256 73bae58e5d02d103... (expected 73bae58e5d02d103...),2026-11-10T14-57-07Z
+w8_partA_DINOv3.json is the canonical RB-0 file (cuDNN 9.10.2 re-run),DINOv3,PASS,sha256 f1d963652ac3867c... (expected f1d963652ac3867c...),2026-11-10T14-57-07Z
+RB-0 parts needed by RB-8 are present and complete,naver,PASS,"A=complete, C=complete",2026-11-10T14-57-07Z
+RB-0 parts needed by RB-8 are present and complete,small,PASS,"A=complete, C=complete",2026-11-10T14-57-07Z
+RB-0 parts needed by RB-8 are present and complete,reg1_gap,PASS,"A=complete, C=complete",2026-11-10T14-57-07Z
+RB-0 parts needed by RB-8 are present and complete,rope_ape,PASS,"A=complete, C=complete",2026-11-10T14-57-07Z
+RB-0 parts needed by RB-8 are present and complete,DINOv3,PASS,A=complete,2026-11-10T14-57-07Z
+committed W1b file found and is the expected one (sha256),W1b,PASS,/workspace/NRDL/clone/vit-sae-analysis/results/runs/imagenet1k_val/rope_interventions/w1b/w1b_floors_2026-09-09T07-55-22Z.json sha256 cd776ee5f8e62d92...,2026-11-10T14-57-07Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),supervised,PASS,w7/w7ape_supervised_2026-09-24T18-12-56Z.json; w7/perimage/ape_supervised_correct.npz,2026-11-10T14-57-07Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),augreg,PASS,w7/w7ape_augreg_2026-09-24T18-12-56Z.json; w7/perimage/ape_augreg_correct.npz,2026-11-10T14-57-07Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),sam,PASS,w7/w7ape_sam_MERGED.json; w7/perimage/ape_sam_correct.npz,2026-11-10T14-57-07Z
+committed W7 APE files (results + per-image) found and are the expected ones (sha256),deit3,PASS,w7/w7ape_deit3_2026-09-25T01-02-08Z.json; w7/perimage/ape_deit3_correct.npz,2026-11-10T14-57-07Z
+rb8_naver.json is the RB-8 file of 9 Nov (sha256),naver,PASS,955758b94ccaa331...,2026-11-10T14-57-07Z
+rb8_perimage_naver.npz is the RB-8 file of 9 Nov (sha256),naver,PASS,6961b15b820d77c4...,2026-11-10T14-57-07Z
+rb8_fit_naver_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_naver.json),naver,PASS,7d155b2eec5ca016...,2026-11-10T14-57-07Z
+rb8_fit_naver_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_naver.json),naver,PASS,ba10ac2b2553e1c4...,2026-11-10T14-57-07Z
+rb8_small.json is the RB-8 file of 9 Nov (sha256),small,PASS,bcd83fe4faad6f19...,2026-11-10T14-57-07Z
+rb8_perimage_small.npz is the RB-8 file of 9 Nov (sha256),small,PASS,e39a622e1471d284...,2026-11-10T14-57-07Z
+rb8_fit_small_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_small.json),small,PASS,92691e8b57836b44...,2026-11-10T14-57-07Z
+rb8_fit_small_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_small.json),small,PASS,cdaf0ea7f547ac6b...,2026-11-10T14-57-07Z
+rb8_reg1_gap.json is the RB-8 file of 9 Nov (sha256),reg1_gap,PASS,2c5dae5a29ae8506...,2026-11-10T14-57-07Z
+rb8_perimage_reg1_gap.npz is the RB-8 file of 9 Nov (sha256),reg1_gap,PASS,2778638dc98631e6...,2026-11-10T14-57-07Z
+rb8_fit_reg1_gap_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_reg1_gap.json),reg1_gap,PASS,e2033dcb41d54339...,2026-11-10T14-57-07Z
+rb8_fit_reg1_gap_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_reg1_gap.json),reg1_gap,PASS,4bb685b0c397b42c...,2026-11-10T14-57-07Z
+rb8_rope_ape.json is the RB-8 file of 9 Nov (sha256),rope_ape,PASS,60df27f2d54b4938...,2026-11-10T14-57-07Z
+rb8_perimage_rope_ape.npz is the RB-8 file of 9 Nov (sha256),rope_ape,PASS,ff0e96e60c638486...,2026-11-10T14-57-07Z
+rb8_fit_rope_ape_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_rope_ape.json),rope_ape,PASS,c397ae2cffea39b6...,2026-11-10T14-57-07Z
+rb8_fit_rope_ape_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_rope_ape.json),rope_ape,PASS,7194e2a747ad5aa5...,2026-11-10T14-57-07Z
+rb8_DINOv3.json is the RB-8 file of 9 Nov (sha256),DINOv3,PASS,e5f9576da1403b9a...,2026-11-10T14-57-07Z
+rb8_fit_DINOv3_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_DINOv3.json),DINOv3,PASS,314c8d1e806a54f1...,2026-11-10T14-57-07Z
+rb8_supervised.json is the RB-8 file of 9 Nov (sha256),supervised,PASS,45a5df6d2310be6f...,2026-11-10T14-57-07Z
+rb8_perimage_supervised.npz is the RB-8 file of 9 Nov (sha256),supervised,PASS,6b7227051222f1e1...,2026-11-10T14-57-07Z
+rb8_fit_supervised_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_supervised.json),supervised,PASS,2f5c80eedd67c034...,2026-11-10T14-57-07Z
+rb8_fit_supervised_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_supervised.json),supervised,PASS,3bf1525acbdfe2f9...,2026-11-10T14-57-07Z
+rb8_augreg.json is the RB-8 file of 9 Nov (sha256),augreg,PASS,adee9ed55ba986da...,2026-11-10T14-57-07Z
+rb8_perimage_augreg.npz is the RB-8 file of 9 Nov (sha256),augreg,PASS,00efba18dabc3223...,2026-11-10T14-57-07Z
+rb8_fit_augreg_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_augreg.json),augreg,PASS,9a91603fb4b41735...,2026-11-10T14-57-07Z
+rb8_fit_augreg_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_augreg.json),augreg,PASS,d0bbdbb8fcce766a...,2026-11-10T14-57-07Z
+rb8_sam.json is the RB-8 file of 9 Nov (sha256),sam,PASS,2c5c9cb45076ccd8...,2026-11-10T14-57-07Z
+rb8_perimage_sam.npz is the RB-8 file of 9 Nov (sha256),sam,PASS,3a407b4a8ec364f4...,2026-11-10T14-57-07Z
+rb8_fit_sam_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_sam.json),sam,PASS,65b909b8e7e2cd80...,2026-11-10T14-57-07Z
+rb8_fit_sam_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_sam.json),sam,PASS,444b4c9ee5f51ccc...,2026-11-10T14-57-07Z
+rb8_deit3.json is the RB-8 file of 9 Nov (sha256),deit3,PASS,fd64de5a39c68a7a...,2026-11-10T14-57-07Z
+rb8_perimage_deit3.npz is the RB-8 file of 9 Nov (sha256),deit3,PASS,568095cb07c45a83...,2026-11-10T14-57-07Z
+rb8_fit_deit3_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_deit3.json),deit3,PASS,c2ab221ffb15c7b8...,2026-11-10T14-57-07Z
+rb8_fit_deit3_acc_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_deit3.json),deit3,PASS,296fdaefa8e474db...,2026-11-10T14-57-07Z
+rb8_dino.json is the RB-8 file of 9 Nov (sha256),dino,PASS,6ea27cf31aa8f6b3...,2026-11-10T14-57-07Z
+rb8_fit_dino_rep_mean.npz is the fit RB-8 was built from (sha256 recorded in rb8_dino.json),dino,PASS,c182f94241fb1ff6...,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,naver,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,small,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,reg1_gap,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,rope_ape,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,DINOv3,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,supervised,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,augreg,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,sam,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,deit3,PASS,,2026-11-10T14-57-07Z
+RB-8 result for this model is complete,dino,PASS,,2026-11-10T14-57-07Z
+"SSDC dataset is the repack (W2-W6, RB-0 to RB-5)",data,PASS,benjamin-paine/imagenet-1k-256x256,2026-11-10T14-57-07Z
+"top-1 dataset is the ILSVRC split (W7, RB-0 to RB-5)",data,PASS,ILSVRC/imagenet-1k,2026-11-10T14-57-07Z
+mean erasure: every slot's mean equals the average over slots,edit-algebra,PASS,,2026-11-10T14-57-07Z
+mean+scale erasure: equal slot means and equal slot spread,edit-algebra,PASS,spread range 104.0862-104.0862,2026-11-10T14-57-07Z
+subspace erasure removes >= 99% of the positional component's energy,edit-algebra,PASS,r=15 of 32; energy left 1.78e-30,2026-11-10T14-57-07Z
+"random subspace: orthonormal, same dimension as the positional subspace, reproducible",edit-algebra,PASS,,2026-11-10T14-57-07Z
+"random-subspace control leaves most of the positional component (it is a control, not an erasure)",edit-algebra,PASS,energy left 0.529,2026-11-10T14-57-07Z
+scramble: slot p carries slot pi(p)'s component; pi has no fixed point,edit-algebra,PASS,,2026-11-10T14-57-07Z
+derangement is reproducible,edit-algebra,PASS,,2026-11-10T14-57-07Z
+"edit hook: prefix tokens untouched, patch tokens edited, other blocks untouched, one hook",edit-algebra,PASS,,2026-11-10T14-57-07Z
+edit hook removed on exit,edit-algebra,PASS,,2026-11-10T14-57-07Z
+Part A: no positional component gives bias-corrected PVF ~ 0,partA-algebra,PASS,"raw 0.0002, corrected +0.00001",2026-11-10T14-57-07Z
+Part A: bias-corrected PVF recovers the true value; row / column split is right,partA-algebra,PASS,"PVF 0.6165 vs 0.6156; row 1.000, col 1.000",2026-11-10T14-57-07Z
+"AllEdit: the listed blocks are edited, the others are not, one hook per block",edit-algebra,PASS,,2026-11-10T14-57-07Z
+AllEdit hooks removed on exit,edit-algebra,PASS,,2026-11-10T14-57-07Z
+"offset control: subtracts another slot's component, same vector sizes as the mean edit, position left in place",edit-algebra,PASS,,2026-11-10T14-57-07Z
+"MLP-site edit [mean] on a EvaBlock: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 1.8e-16,2026-11-10T14-57-07Z
+"MLP-site edit [offset] on a EvaBlock: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 1.9e-16,2026-11-10T14-57-07Z
+MLP-site edit with a zero component leaves a EvaBlock bit-identical,edit-algebra,PASS,,2026-11-10T14-57-07Z
+MLP-site hooks removed on exit (EvaBlock),edit-algebra,PASS,,2026-11-10T14-57-07Z
+"MLP-site edit [mean] on a Block: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 1.8e-16,2026-11-10T14-57-07Z
+"MLP-site edit [offset] on a Block: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 1.0e-16,2026-11-10T14-57-07Z
+MLP-site edit with a zero component leaves a Block bit-identical,edit-algebra,PASS,,2026-11-10T14-57-07Z
+MLP-site hooks removed on exit (Block),edit-algebra,PASS,,2026-11-10T14-57-07Z
+"MLP-site edit [mean] on a ViTLayer: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 2.0e-16,2026-11-10T14-57-07Z
+"MLP-site edit [offset] on a ViTLayer: output = edited stream + MLP(norm(edited stream)), prefix untouched, 2 hooks",edit-algebra,PASS,rel. diff 1.7e-16,2026-11-10T14-57-07Z
+MLP-site edit with a zero component leaves a ViTLayer bit-identical,edit-algebra,PASS,,2026-11-10T14-57-07Z
+MLP-site hooks removed on exit (ViTLayer),edit-algebra,PASS,,2026-11-10T14-57-07Z
+"AllSites: attention, MLP and output sites applied in forward order equal a step-by-step reference; hook count",edit-algebra,PASS,rel. diff 2.0e-16; 9 hooks,2026-11-10T14-57-07Z
+"site lists: RoPE 24 sites starting at mlp0, hybrid / APE 25 starting at attn0, both ending with out",edit-algebra,PASS,,2026-11-10T14-57-07Z
+forward grid is 14x14,naver,PASS,14x14,2026-11-10T12-46-23Z
+num_heads matches RB-0,naver,PASS,12 vs 12,2026-11-10T12-46-23Z
+rope rows equal patch tokens (196) and the table has no head dimension,naver,PASS,"shape (196, 128)",2026-11-10T12-46-23Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",naver,PASS,4.1304e-04 vs 4.1304e-04 (bit-identical: True; batch 256),2026-11-10T12-46-23Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),naver,PASS,"['EvaBlock'], 12 blocks",2026-11-10T12-46-23Z
+each block's MLP norm runs exactly once per forward pass,naver,PASS,12 calls for 12 blocks,2026-11-10T12-46-23Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",naver,PASS,max rel. diff 8.1e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T12-46-23Z
+a zero MLP-site edit leaves real blocks bit-identical,naver,PASS,,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [baseline],naver,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [floor],naver,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed top-1 on the first 512 images,naver,PASS,0 images differ,2026-11-10T12-46-23Z
+model setup completed,naver,PASS,,2026-11-10T12-46-23Z
+"fit [rep] has 16384 images, right after the evaluation images",naver,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [rep] are disjoint from the evaluation images,naver,PASS,0 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [rep] are RB-8's (same image hashes),naver,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit,naver,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),naver,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",naver,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],naver,PASS,leftover / token rms 1.79e-08; positional component / token rms 3.96e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],naver,PASS,leftover / token rms 1.65e-08; positional component / token rms 3.94e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],naver,PASS,leftover / token rms 1.45e-08; positional component / token rms 4.18e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],naver,PASS,leftover / token rms 1.51e-08; positional component / token rms 7.45e-03,2026-11-10T12-46-23Z
+"fit [acc] has 16384 images, right after the evaluation images",naver,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [acc] are disjoint from the evaluation images,naver,PASS,1 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [acc] are RB-8's (same image hashes),naver,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit,naver,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),naver,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",naver,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],naver,PASS,leftover / token rms 1.76e-08; positional component / token rms 4.03e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],naver,PASS,leftover / token rms 1.66e-08; positional component / token rms 3.82e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],naver,PASS,leftover / token rms 1.45e-08; positional component / token rms 4.48e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],naver,PASS,leftover / token rms 1.56e-08; positional component / token rms 7.64e-03,2026-11-10T12-46-23Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),naver,PASS,84.64 vs 84.64,2026-11-10T14-57-07Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),naver,PASS,38.84 vs 38.84,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),naver,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),naver,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),naver,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",naver,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",naver,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",naver,PASS,84.36 vs 84.36,2026-11-10T14-57-07Z
+every planned arm measured,naver,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,naver,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,naver,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,naver,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),naver,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,naver,PASS,,2026-11-10T14-57-07Z
+RoPE: readout 0 (block 0's attention input) is untouched by every site arm,naver,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,naver,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,naver,PASS,"10 new arms, 7.4 min; complete True",2026-11-10T12-46-23Z
+forward grid is 14x14,small,PASS,14x14,2026-11-10T12-46-23Z
+num_heads matches RB-0,small,PASS,6 vs 6,2026-11-10T12-46-23Z
+rope rows equal patch tokens (196) and the table has no head dimension,small,PASS,"shape (196, 128)",2026-11-10T12-46-23Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",small,PASS,5.1031e-04 vs 5.1031e-04 (bit-identical: True; batch 256),2026-11-10T12-46-23Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),small,PASS,"['EvaBlock'], 12 blocks",2026-11-10T12-46-23Z
+each block's MLP norm runs exactly once per forward pass,small,PASS,12 calls for 12 blocks,2026-11-10T12-46-23Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",small,PASS,max rel. diff 7.5e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T12-46-23Z
+a zero MLP-site edit leaves real blocks bit-identical,small,PASS,,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [baseline],small,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [floor],small,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed top-1 on the first 512 images,small,PASS,0 images differ,2026-11-10T12-46-23Z
+model setup completed,small,PASS,,2026-11-10T12-46-23Z
+"fit [rep] has 16384 images, right after the evaluation images",small,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [rep] are disjoint from the evaluation images,small,PASS,0 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [rep] are RB-8's (same image hashes),small,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit,small,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),small,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",small,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],small,PASS,leftover / token rms 1.87e-08; positional component / token rms 4.18e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],small,PASS,leftover / token rms 2.26e-08; positional component / token rms 6.35e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],small,PASS,leftover / token rms 1.60e-08; positional component / token rms 3.87e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],small,PASS,leftover / token rms 1.78e-08; positional component / token rms 6.21e-03,2026-11-10T12-46-23Z
+"fit [acc] has 16384 images, right after the evaluation images",small,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [acc] are disjoint from the evaluation images,small,PASS,1 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [acc] are RB-8's (same image hashes),small,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit,small,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),small,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",small,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],small,PASS,leftover / token rms 1.86e-08; positional component / token rms 4.12e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],small,PASS,leftover / token rms 2.13e-08; positional component / token rms 6.21e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],small,PASS,leftover / token rms 1.64e-08; positional component / token rms 4.59e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],small,PASS,leftover / token rms 1.86e-08; positional component / token rms 4.96e-03,2026-11-10T12-46-23Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),small,PASS,81.36 vs 81.36,2026-11-10T14-57-07Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),small,PASS,24.06 vs 24.06,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),small,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),small,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),small,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",small,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",small,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",small,PASS,80.74 vs 80.74,2026-11-10T14-57-07Z
+every planned arm measured,small,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,small,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,small,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,small,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),small,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,small,PASS,,2026-11-10T14-57-07Z
+RoPE: readout 0 (block 0's attention input) is untouched by every site arm,small,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,small,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,small,PASS,"10 new arms, 6.8 min; complete True",2026-11-10T12-46-23Z
+forward grid is 14x14,reg1_gap,PASS,14x14,2026-11-10T12-46-23Z
+num_heads matches RB-0,reg1_gap,PASS,12 vs 12,2026-11-10T12-46-23Z
+rope rows equal patch tokens (196) and the table has no head dimension,reg1_gap,PASS,"shape (196, 128)",2026-11-10T12-46-23Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",reg1_gap,PASS,2.6783e-04 vs 2.6783e-04 (bit-identical: True; batch 256),2026-11-10T12-46-23Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),reg1_gap,PASS,"['EvaBlock'], 12 blocks",2026-11-10T12-46-23Z
+each block's MLP norm runs exactly once per forward pass,reg1_gap,PASS,12 calls for 12 blocks,2026-11-10T12-46-23Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",reg1_gap,PASS,max rel. diff 1.8e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T12-46-23Z
+a zero MLP-site edit leaves real blocks bit-identical,reg1_gap,PASS,,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [baseline],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [floor],reg1_gap,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed top-1 on the first 512 images,reg1_gap,PASS,0 images differ,2026-11-10T12-46-23Z
+model setup completed,reg1_gap,PASS,,2026-11-10T12-46-23Z
+"fit [rep] has 16384 images, right after the evaluation images",reg1_gap,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [rep] are disjoint from the evaluation images,reg1_gap,PASS,0 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [rep] are RB-8's (same image hashes),reg1_gap,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit,reg1_gap,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),reg1_gap,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",reg1_gap,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],reg1_gap,PASS,leftover / token rms 1.83e-08; positional component / token rms 5.35e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],reg1_gap,PASS,leftover / token rms 1.79e-08; positional component / token rms 1.10e-01,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],reg1_gap,PASS,leftover / token rms 2.07e-08; positional component / token rms 2.76e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],reg1_gap,PASS,leftover / token rms 2.62e-08; positional component / token rms 2.58e-02,2026-11-10T12-46-23Z
+"fit [acc] has 16384 images, right after the evaluation images",reg1_gap,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [acc] are disjoint from the evaluation images,reg1_gap,PASS,1 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [acc] are RB-8's (same image hashes),reg1_gap,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [acc] equal RB-8's fit bit for bit,reg1_gap,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),reg1_gap,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [acc]",reg1_gap,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],reg1_gap,PASS,leftover / token rms 1.86e-08; positional component / token rms 5.21e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],reg1_gap,PASS,leftover / token rms 1.77e-08; positional component / token rms 1.09e-01,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],reg1_gap,PASS,leftover / token rms 2.07e-08; positional component / token rms 2.84e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],reg1_gap,PASS,leftover / token rms 2.61e-08; positional component / token rms 2.61e-02,2026-11-10T12-46-23Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),reg1_gap,PASS,83.88 vs 83.88,2026-11-10T14-57-07Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),reg1_gap,PASS,29.50 vs 29.50,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),reg1_gap,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),reg1_gap,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),reg1_gap,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",reg1_gap,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",reg1_gap,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",reg1_gap,PASS,83.36 vs 83.36,2026-11-10T14-57-07Z
+every planned arm measured,reg1_gap,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,reg1_gap,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,reg1_gap,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,reg1_gap,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),reg1_gap,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,reg1_gap,PASS,,2026-11-10T14-57-07Z
+RoPE: readout 0 (block 0's attention input) is untouched by every site arm,reg1_gap,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,reg1_gap,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,reg1_gap,PASS,"10 new arms, 7.6 min; complete True",2026-11-10T12-46-23Z
+forward grid is 14x14,rope_ape,PASS,14x14,2026-11-10T12-46-23Z
+num_heads matches RB-0,rope_ape,PASS,12 vs 12,2026-11-10T12-46-23Z
+rope rows equal patch tokens (196) and the table has no head dimension,rope_ape,PASS,"shape (196, 128)",2026-11-10T12-46-23Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",rope_ape,PASS,4.0377e-04 (batch 256),2026-11-10T12-46-23Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),rope_ape,PASS,"['EvaBlock'], 12 blocks",2026-11-10T12-46-23Z
+each block's MLP norm runs exactly once per forward pass,rope_ape,PASS,12 calls for 12 blocks,2026-11-10T12-46-23Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",rope_ape,PASS,max rel. diff 1.0e-07 (float add order only; tolerance 1e-05); batch 256,2026-11-10T12-46-23Z
+a zero MLP-site edit leaves real blocks bit-identical,rope_ape,PASS,,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [baseline],rope_ape,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [floor],rope_ape,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed top-1 on the first 512 images,rope_ape,PASS,0 images differ,2026-11-10T12-46-23Z
+model setup completed,rope_ape,PASS,,2026-11-10T12-46-23Z
+"fit [rep] has 16384 images, right after the evaluation images",rope_ape,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [rep] are disjoint from the evaluation images,rope_ape,PASS,0 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [rep] are RB-8's (same image hashes),rope_ape,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,rope_ape,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),rope_ape,PASS,2048 images,2026-11-10T12-46-23Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",rope_ape,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],rope_ape,PASS,leftover / token rms 1.73e-08; positional component / token rms 3.85e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],rope_ape,PASS,leftover / token rms 2.06e-08; positional component / token rms 1.92e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],rope_ape,PASS,leftover / token rms 1.45e-08; positional component / token rms 2.84e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],rope_ape,PASS,leftover / token rms 1.39e-08; positional component / token rms 6.97e-03,2026-11-10T12-46-23Z
+"fit [acc] has 16384 images, right after the evaluation images",rope_ape,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [acc] are disjoint from the evaluation images,rope_ape,PASS,1 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [acc] are RB-8's (same image hashes),rope_ape,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit,rope_ape,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),rope_ape,PASS,2048 images,2026-11-10T12-46-23Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",rope_ape,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],rope_ape,PASS,leftover / token rms 1.71e-08; positional component / token rms 3.90e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],rope_ape,PASS,leftover / token rms 2.05e-08; positional component / token rms 1.95e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],rope_ape,PASS,leftover / token rms 1.46e-08; positional component / token rms 3.16e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],rope_ape,PASS,leftover / token rms 1.40e-08; positional component / token rms 7.56e-03,2026-11-10T12-46-23Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+ape_floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+both_floor SSDC equals RB-0 part A bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-0 part C 'baseline' bit for bit (mean and per image),rope_ape,PASS,84.82 vs 84.82,2026-11-10T14-57-07Z
+floor top-1 equals RB-0 part C 'floor' bit for bit (mean and per image),rope_ape,PASS,42.60 vs 42.60,2026-11-10T14-57-07Z
+ape_floor top-1 equals RB-0 part C 'ape_off' bit for bit (mean and per image),rope_ape,PASS,83.90 vs 83.90,2026-11-10T14-57-07Z
+both_floor top-1 equals RB-0 part C 'both_off' bit for bit (mean and per image),rope_ape,PASS,33.42 vs 33.42,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),rope_ape,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),rope_ape,PASS,,2026-11-10T14-57-07Z
+ape_floor SSDC equals RB-8 bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+ape_floor top-1 equals RB-8 bit for bit (mean and per image),rope_ape,PASS,,2026-11-10T14-57-07Z
+both_floor SSDC equals RB-8 bit for bit (13 readouts),rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+both_floor top-1 equals RB-8 bit for bit (mean and per image),rope_ape,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",rope_ape,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",rope_ape,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",rope_ape,PASS,84.18 vs 84.18,2026-11-10T14-57-07Z
+every planned arm measured,rope_ape,PASS,14/14,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,rope_ape,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,rope_ape,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,rope_ape,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),rope_ape,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,rope_ape,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,rope_ape,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,rope_ape,PASS,"14 new arms, 7.9 min; complete True",2026-11-10T12-46-23Z
+forward grid is 14x14,DINOv3,PASS,14x14,2026-11-10T12-46-23Z
+num_heads matches RB-0,DINOv3,PASS,12 vs 12,2026-11-10T12-46-23Z
+rope rows equal patch tokens (196) and the table has no head dimension,DINOv3,PASS,"shape (196, 128)",2026-11-10T12-46-23Z
+"first-layer numerics equal RB-1b's cuDNN 9.10.2 value (TF32-level kernel, as in September)",DINOv3,PASS,4.7457e-04 vs 4.7457e-04 (bit-identical: True; batch 256),2026-11-10T12-46-23Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),DINOv3,PASS,"['EvaBlock'], 12 blocks",2026-11-10T12-46-23Z
+each block's MLP norm runs exactly once per forward pass,DINOv3,PASS,12 calls for 12 blocks,2026-11-10T12-46-23Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",DINOv3,PASS,max rel. diff 5.2e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T12-46-23Z
+a zero MLP-site edit leaves real blocks bit-identical,DINOv3,PASS,,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [baseline],DINOv3,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+cached replay reproduces streamed evaluate_ssdc [floor],DINOv3,PASS,max |delta| 0.00e+00,2026-11-10T12-46-23Z
+model setup completed,DINOv3,PASS,,2026-11-10T12-46-23Z
+"fit [rep] has 16384 images, right after the evaluation images",DINOv3,PASS,16384,2026-11-10T12-46-23Z
+16384 fitting images [rep] are disjoint from the evaluation images,DINOv3,PASS,0 shared (allowed 41),2026-11-10T12-46-23Z
+fitting images [rep] are RB-8's (same image hashes),DINOv3,PASS,,2026-11-10T12-46-23Z
+early-stop sweep: intact stats entering block 1 [rep] equal RB-8's fit bit for bit,DINOv3,PASS,max |delta mu| 0.0e+00,2026-11-10T12-46-23Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),DINOv3,PASS,2048 images,2026-11-10T12-46-23Z
+"RoPE: the first edited block input (block 1) is fitted after mlp0, so it differs from RB-8's [rep]",DINOv3,PASS,,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],DINOv3,PASS,leftover / token rms 2.04e-08; positional component / token rms 4.05e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],DINOv3,PASS,leftover / token rms 2.40e-08; positional component / token rms 7.76e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],DINOv3,PASS,leftover / token rms 1.94e-08; positional component / token rms 1.74e-02,2026-11-10T12-46-23Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],DINOv3,PASS,leftover / token rms 1.52e-08; positional component / token rms 2.11e-03,2026-11-10T12-46-23Z
+baseline SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-0 part A bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),DINOv3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",DINOv3,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",DINOv3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+every planned arm measured,DINOv3,PASS,5/5,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,DINOv3,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,DINOv3,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,DINOv3,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),DINOv3,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,DINOv3,PASS,,2026-11-10T14-57-07Z
+RoPE: readout 0 (block 0's attention input) is untouched by every site arm,DINOv3,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,DINOv3,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,DINOv3,PASS,"5 new arms, 6.9 min; complete True",2026-11-10T12-46-23Z
+forward grid is 14x14,supervised,PASS,14x14,2026-11-10T14-57-07Z
+APE floor finds the learned position embedding,supervised,PASS,vit.embeddings.position_embeddings,2026-11-10T14-57-07Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",supervised,PASS,3.3375e-04 (batch 256),2026-11-10T14-57-07Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),supervised,PASS,"['ViTLayer'], 12 blocks",2026-11-10T14-57-07Z
+each block's MLP norm runs exactly once per forward pass,supervised,PASS,12 calls for 12 blocks,2026-11-10T14-57-07Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",supervised,PASS,max rel. diff 1.1e-07 (float add order only; tolerance 1e-05); batch 256,2026-11-10T14-57-07Z
+a zero MLP-site edit leaves real blocks bit-identical,supervised,PASS,,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],supervised,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [floor],supervised,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed top-1 on the first 512 images,supervised,PASS,0 images differ,2026-11-10T14-57-07Z
+model setup completed,supervised,PASS,,2026-11-10T14-57-07Z
+"fit [rep] has 16384 images, right after the evaluation images",supervised,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [rep] are disjoint from the evaluation images,supervised,PASS,0 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [rep] are RB-8's (same image hashes),supervised,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,supervised,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),supervised,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",supervised,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],supervised,PASS,leftover / token rms 2.49e-08; positional component / token rms 1.64e-02,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],supervised,PASS,leftover / token rms 2.33e-08; positional component / token rms 8.69e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],supervised,PASS,leftover / token rms 1.96e-08; positional component / token rms 6.62e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],supervised,PASS,leftover / token rms 2.16e-08; positional component / token rms 2.85e-02,2026-11-10T14-57-07Z
+"fit [acc] has 16384 images, right after the evaluation images",supervised,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [acc] are disjoint from the evaluation images,supervised,PASS,1 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [acc] are RB-8's (same image hashes),supervised,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit,supervised,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),supervised,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",supervised,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],supervised,PASS,leftover / token rms 2.45e-08; positional component / token rms 1.70e-02,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],supervised,PASS,leftover / token rms 2.31e-08; positional component / token rms 8.94e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],supervised,PASS,leftover / token rms 1.94e-08; positional component / token rms 8.08e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],supervised,PASS,leftover / token rms 2.15e-08; positional component / token rms 3.15e-02,2026-11-10T14-57-07Z
+"baseline SSDC agrees with W1b (repack, 1,000 images; another session) within 0.001",supervised,PASS,max |delta| 2.7e-05,2026-11-10T14-57-07Z
+"floor SSDC agrees with W1b (repack, 1,000 images; another session) within 0.001",supervised,PASS,max |delta| 3.1e-05,2026-11-10T14-57-07Z
+intact top-1 agrees with W7 on the same first 5000 ILSVRC images (another session),supervised,PASS,81.16 vs 81.16; per-image agreement 100.00%,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),supervised,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),supervised,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),supervised,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),supervised,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",supervised,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",supervised,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",supervised,PASS,27.94 vs 27.94,2026-11-10T14-57-07Z
+every planned arm measured,supervised,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,supervised,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,supervised,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,supervised,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),supervised,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,supervised,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,supervised,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,supervised,PASS,"10 new arms, 7.5 min; complete True",2026-11-10T14-57-07Z
+forward grid is 14x14,augreg,PASS,14x14,2026-11-10T14-57-07Z
+APE floor finds the learned position embedding,augreg,PASS,pos_embed,2026-11-10T14-57-07Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",augreg,PASS,2.3762e-04 (batch 256),2026-11-10T14-57-07Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),augreg,PASS,"['Block'], 12 blocks",2026-11-10T14-57-07Z
+each block's MLP norm runs exactly once per forward pass,augreg,PASS,12 calls for 12 blocks,2026-11-10T14-57-07Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",augreg,PASS,max rel. diff 1.1e-07 (float add order only; tolerance 1e-05); batch 256,2026-11-10T14-57-07Z
+a zero MLP-site edit leaves real blocks bit-identical,augreg,PASS,,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],augreg,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [floor],augreg,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed top-1 on the first 512 images,augreg,PASS,0 images differ,2026-11-10T14-57-07Z
+model setup completed,augreg,PASS,,2026-11-10T14-57-07Z
+"fit [rep] has 16384 images, right after the evaluation images",augreg,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [rep] are disjoint from the evaluation images,augreg,PASS,0 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [rep] are RB-8's (same image hashes),augreg,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,augreg,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),augreg,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",augreg,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],augreg,PASS,leftover / token rms 1.74e-08; positional component / token rms 8.81e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],augreg,PASS,leftover / token rms 1.78e-08; positional component / token rms 3.59e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],augreg,PASS,leftover / token rms 1.76e-08; positional component / token rms 2.49e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],augreg,PASS,leftover / token rms 2.57e-08; positional component / token rms 4.93e-03,2026-11-10T14-57-07Z
+"fit [acc] has 16384 images, right after the evaluation images",augreg,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [acc] are disjoint from the evaluation images,augreg,PASS,1 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [acc] are RB-8's (same image hashes),augreg,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit,augreg,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),augreg,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",augreg,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],augreg,PASS,leftover / token rms 1.76e-08; positional component / token rms 8.80e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],augreg,PASS,leftover / token rms 1.83e-08; positional component / token rms 3.66e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],augreg,PASS,leftover / token rms 1.80e-08; positional component / token rms 2.60e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],augreg,PASS,leftover / token rms 2.70e-08; positional component / token rms 5.37e-03,2026-11-10T14-57-07Z
+intact top-1 agrees with W7 on the same first 1000 ILSVRC images (another session),augreg,PASS,78.60 vs 78.60; per-image agreement 100.00%,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),augreg,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),augreg,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),augreg,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),augreg,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",augreg,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",augreg,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",augreg,PASS,31.58 vs 31.58,2026-11-10T14-57-07Z
+every planned arm measured,augreg,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,augreg,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,augreg,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,augreg,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),augreg,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,augreg,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,augreg,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,augreg,PASS,"10 new arms, 7.5 min; complete True",2026-11-10T14-57-07Z
+forward grid is 14x14,sam,PASS,14x14,2026-11-10T14-57-07Z
+APE floor finds the learned position embedding,sam,PASS,pos_embed,2026-11-10T14-57-07Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",sam,PASS,3.4938e-04 (batch 256),2026-11-10T14-57-07Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),sam,PASS,"['Block'], 12 blocks",2026-11-10T14-57-07Z
+each block's MLP norm runs exactly once per forward pass,sam,PASS,12 calls for 12 blocks,2026-11-10T14-57-07Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",sam,PASS,max rel. diff 6.9e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T14-57-07Z
+a zero MLP-site edit leaves real blocks bit-identical,sam,PASS,,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],sam,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [floor],sam,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed top-1 on the first 512 images,sam,PASS,0 images differ,2026-11-10T14-57-07Z
+model setup completed,sam,PASS,,2026-11-10T14-57-07Z
+"fit [rep] has 16384 images, right after the evaluation images",sam,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [rep] are disjoint from the evaluation images,sam,PASS,0 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [rep] are RB-8's (same image hashes),sam,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,sam,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),sam,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",sam,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],sam,PASS,leftover / token rms 2.32e-08; positional component / token rms 1.40e-02,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],sam,PASS,leftover / token rms 2.23e-08; positional component / token rms 5.24e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],sam,PASS,leftover / token rms 1.91e-08; positional component / token rms 1.74e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],sam,PASS,leftover / token rms 1.89e-08; positional component / token rms 2.32e-03,2026-11-10T14-57-07Z
+"fit [acc] has 16384 images, right after the evaluation images",sam,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [acc] are disjoint from the evaluation images,sam,PASS,1 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [acc] are RB-8's (same image hashes),sam,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit,sam,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),sam,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",sam,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],sam,PASS,leftover / token rms 2.31e-08; positional component / token rms 1.36e-02,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],sam,PASS,leftover / token rms 2.23e-08; positional component / token rms 4.95e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],sam,PASS,leftover / token rms 1.93e-08; positional component / token rms 1.84e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],sam,PASS,leftover / token rms 1.91e-08; positional component / token rms 2.58e-03,2026-11-10T14-57-07Z
+intact top-1 agrees with W7 on the same first 1000 ILSVRC images (another session),sam,PASS,81.00 vs 81.00; per-image agreement 100.00%,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),sam,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),sam,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),sam,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),sam,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",sam,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",sam,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",sam,PASS,43.88 vs 43.88,2026-11-10T14-57-07Z
+every planned arm measured,sam,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,sam,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,sam,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,sam,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),sam,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,sam,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,sam,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,sam,PASS,"10 new arms, 7.6 min; complete True",2026-11-10T14-57-07Z
+forward grid is 14x14,deit3,PASS,14x14,2026-11-10T14-57-07Z
+APE floor finds the learned position embedding,deit3,PASS,pos_embed,2026-11-10T14-57-07Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",deit3,PASS,4.0602e-04 (batch 256),2026-11-10T14-57-07Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),deit3,PASS,"['Block'], 12 blocks",2026-11-10T14-57-07Z
+each block's MLP norm runs exactly once per forward pass,deit3,PASS,12 calls for 12 blocks,2026-11-10T14-57-07Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",deit3,PASS,max rel. diff 5.6e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T14-57-07Z
+a zero MLP-site edit leaves real blocks bit-identical,deit3,PASS,,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],deit3,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [floor],deit3,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed top-1 on the first 512 images,deit3,PASS,0 images differ,2026-11-10T14-57-07Z
+model setup completed,deit3,PASS,,2026-11-10T14-57-07Z
+"fit [rep] has 16384 images, right after the evaluation images",deit3,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [rep] are disjoint from the evaluation images,deit3,PASS,0 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [rep] are RB-8's (same image hashes),deit3,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,deit3,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),deit3,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",deit3,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],deit3,PASS,leftover / token rms 1.90e-08; positional component / token rms 8.04e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],deit3,PASS,leftover / token rms 2.08e-08; positional component / token rms 2.60e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],deit3,PASS,leftover / token rms 1.61e-08; positional component / token rms 2.14e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],deit3,PASS,leftover / token rms 1.58e-08; positional component / token rms 4.89e-03,2026-11-10T14-57-07Z
+"fit [acc] has 16384 images, right after the evaluation images",deit3,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [acc] are disjoint from the evaluation images,deit3,PASS,1 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [acc] are RB-8's (same image hashes),deit3,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [acc] equal RB-8's fit bit for bit,deit3,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [acc] (bit for bit),deit3,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [acc]",deit3,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [acc],deit3,PASS,leftover / token rms 1.91e-08; positional component / token rms 8.19e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [acc],deit3,PASS,leftover / token rms 2.13e-08; positional component / token rms 2.98e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [acc],deit3,PASS,leftover / token rms 1.62e-08; positional component / token rms 2.48e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [acc],deit3,PASS,leftover / token rms 1.58e-08; positional component / token rms 5.93e-03,2026-11-10T14-57-07Z
+intact top-1 agrees with W7 on the same first 5000 ILSVRC images (another session),deit3,PASS,84.58 vs 84.58; per-image agreement 100.00%,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),deit3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+baseline top-1 equals RB-8 bit for bit (mean and per image),deit3,PASS,,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),deit3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor top-1 equals RB-8 bit for bit (mean and per image),deit3,PASS,,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",deit3,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",deit3,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure equals RB-8 bit for bit (top-1, mean and per image)",deit3,PASS,26.84 vs 26.84,2026-11-10T14-57-07Z
+every planned arm measured,deit3,PASS,10/10,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,deit3,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,deit3,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,deit3,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),deit3,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,deit3,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,deit3,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,deit3,PASS,"10 new arms, 7.6 min; complete True",2026-11-10T14-57-07Z
+forward grid is 14x14,dino,PASS,14x14,2026-11-10T14-57-07Z
+APE floor finds the learned position embedding,dino,PASS,pos_embed,2026-11-10T14-57-07Z
+"first-layer numerics are TF32-level, as for every model in RB-1b (1e-04-2e-03)",dino,PASS,2.5880e-04 (batch 256),2026-11-10T14-57-07Z
+every block is a pre-norm block the MLP-site edit supports (EvaBlock / Block / ViTLayer),dino,PASS,"['Block'], 12 blocks",2026-11-10T14-57-07Z
+each block's MLP norm runs exactly once per forward pass,dino,PASS,12 calls for 12 blocks,2026-11-10T14-57-07Z
+"on real activations (blocks 0, 5, 11): the hooked block equals edited stream + MLP(norm(edited stream))",dino,PASS,max rel. diff 8.8e-08 (float add order only; tolerance 1e-05); batch 256,2026-11-10T14-57-07Z
+a zero MLP-site edit leaves real blocks bit-identical,dino,PASS,,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [baseline],dino,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+cached replay reproduces streamed evaluate_ssdc [floor],dino,PASS,max |delta| 0.00e+00,2026-11-10T14-57-07Z
+model setup completed,dino,PASS,,2026-11-10T14-57-07Z
+"fit [rep] has 16384 images, right after the evaluation images",dino,PASS,16384,2026-11-10T14-57-07Z
+16384 fitting images [rep] are disjoint from the evaluation images,dino,PASS,0 shared (allowed 41),2026-11-10T14-57-07Z
+fitting images [rep] are RB-8's (same image hashes),dino,PASS,,2026-11-10T14-57-07Z
+early-stop sweep: intact stats entering block 0 [rep] equal RB-8's fit bit for bit,dino,PASS,max |delta mu| 0.0e+00,2026-11-10T14-57-07Z
+early-stop sweep equals the repo's predict() sweep at the last MLP input [rep] (bit for bit),dino,PASS,2048 images,2026-11-10T14-57-07Z
+"first site attn0 is fitted on the intact model, so it equals RB-8's block-0 fit bit for bit [rep]",dino,PASS,,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at attn4 on the fitting images [rep],dino,PASS,leftover / token rms 1.70e-08; positional component / token rms 1.04e-02,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp4 on the fitting images [rep],dino,PASS,leftover / token rms 1.66e-08; positional component / token rms 4.69e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at mlp11 on the fitting images [rep],dino,PASS,leftover / token rms 1.99e-08; positional component / token rms 1.53e-03,2026-11-10T14-57-07Z
+sequential edit flattens the per-slot mean at out on the fitting images [rep],dino,PASS,leftover / token rms 1.83e-08; positional component / token rms 1.36e-04,2026-11-10T14-57-07Z
+"baseline SSDC agrees with W1b (repack, 1,000 images; another session) within 0.001",dino,PASS,max |delta| 1.5e-04,2026-11-10T14-57-07Z
+"floor SSDC agrees with W1b (repack, 1,000 images; another session) within 0.001",dino,PASS,max |delta| 1.0e-05,2026-11-10T14-57-07Z
+baseline SSDC equals RB-8 bit for bit (13 readouts),dino,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+floor SSDC equals RB-8 bit for bit (13 readouts),dino,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+"intact probes at the final readout equal RB-8's (same code, seeds and images)",dino,PASS,,2026-11-10T14-57-07Z
+"RB-8's all-block mean erasure, rebuilt from RB-8's fit files, equals RB-8 bit for bit (SSDC, 13 readouts)",dino,PASS,max |delta| 0.0e+00,2026-11-10T14-57-07Z
+every planned arm measured,dino,PASS,5/5,2026-11-10T14-57-07Z
+every arm registered exactly the expected hooks,dino,PASS,,2026-11-10T14-57-07Z
+every arm saw every image,dino,PASS,,2026-11-10T14-57-07Z
+every arm has its planned probes,dino,PASS,,2026-11-10T14-57-07Z
+arms probed in several sweeps gave the same SSDC in every sweep (bit for bit),dino,PASS,,2026-11-10T14-57-07Z
+full_mean changes the stream at every edited site's readout,dino,PASS,,2026-11-10T14-57-07Z
+every session that wrote this file ran torch 2.10.0+cu128 with cuDNN 91002,dino,PASS,1 session(s),2026-11-10T14-57-07Z
+model finished,dino,PASS,"5 new arms, 7.2 min; complete True",2026-11-10T14-57-07Z
